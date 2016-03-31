@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade in" id="myFlight" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Flight Details: </h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6"><div class="alert alert-info">From: {{ from }}</div></div>
+          <div class="col-sm-6"><div class="alert alert-info">To: {{ to }}</div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div class="alert alert-info">Flight Number: {{ flightNumber }}</div></div>
+          <div class="col-sm-6"><div class="alert alert-info">Airport: {{ airport }}</div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div class="alert alert-info">Departure Time: {{ departureTime }}</div></div>
+          <div class="col-sm-6"><div class="alert alert-info">Arrival Time: {{ arrivalTime }}</div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="alert alert-success">
+              <h2>Cost: {{ cost }} EGP.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <ul class="pager">
+          <li class="previous"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></li>
+          <li class="next"><button type="button" class="btn btn-primary">Proceed to Payment</button></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
