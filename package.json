@@ -1,0 +1,13 @@
+{
+  "name"         : "UnderConstruction SwissAir",
+  "version"      : "0.0.0",
+  "description"  : "UnderConstruction",
+  "main"         : "server.js",
+  "author"       : "cheatingCase.exports",
+  "dependencies" : {
+    "express"    : "~4.7.2",
+    "morgan"     : "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2"
+    }
+}
