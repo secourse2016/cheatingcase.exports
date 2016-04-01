@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
     });
 });
 
-app.listen(80, function(){
-  console.log("App listening on port 80 for http connections");
+app.listen(3000, function(){
+  console.log("App listening on port 3000 for http connections");
 
 });
