@@ -25,7 +25,7 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href="css/animate.css" rel="stylesheet">
-    <script src="./js/shared/controllers/mainCtrl.js"></script>
+    <script src="./js/shared/controllers/mainController.js"></script>
 </head>
 
 <body id="page-top" class="index" ng-app="swissAir">
@@ -75,30 +75,32 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Explore your planet!</div>
-                <div class="intro-heading">Fly with Swiss Air</div>
-                <a href="#fly" class="page-scroll btn btn-xl">Book Now</a>
-            </div>
-        </div>
+                <div class="intro-lead-in wow fadeInDown">Explore your planet!</div>
+                <div class="intro-heading wow fadeInDown">Fly with Swiss Air</div>
+                <div class="wow fadeInDown">
+                    <a href="#fly" class="page-scroll btn btn-xl wow pulse" data-wow-iteration="999">Book Now</a>
+                    <div>
+                    </div>
+                </div>
     </header>
 
     <!-- Fly Section -->
     <section id="fly" class="bg-light-gray">
         <div ng-view>
-            <div class="container" ng-controller="mainCtrl">
+            <div class="container" ng-controller="mainController">
                 <!-- this is my partial page tokyo -->
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Fly</h2>
-                        <h3 class="section-subheading text-muted">Life is short and the world is wide.</h3>
+                        <h2 class="section-heading wow fadeInDown" data-wow-offset="250">Fly</h2>
+                        <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230">Life is short and the world is wide.</h3>
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-5 col-sm-12 col-xs-12">
-                        <div class="panel panel-default">
+                        <div class="panel panel-default wow fadeInDown" data-wow-offset="200">
                             <h4 class="fly-heading">Feed your wanderlust</h4>
                         </div>
-                        <div class="panel panel-default">
+                        <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
                             <div class="panel-body">
                                 <div class="row">
                                     <!-- from and to -->
@@ -139,14 +141,14 @@
 
                                 </div>
                             </div>
-                            <div class="row text-center" style="margin-bottom: 10px">
+                            <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="120" style="margin-bottom: 10px">
                                 <button type="button" class="btn btn-xl btn-md" id='btnSearch' ng-click='SearchFlights()'>Search Flights</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <span class="fa-stack ">
-                          <i class="fa fa-plane fa-inverse " id="thePlane"></i>
+                          <i class="fa fa-plane fa-inverse wow slideInLeft" data-wow-offset="200" id="thePlane"></i>
                         </span>
                         <br>
                         <br>
@@ -162,14 +164,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">SWISS is the national airline of Switzerland. It serves over 106 destinations all over the world from Zurich and Geneva. SWISS is part of the Lufthansa Group and a member of the Star Alliance..</h3>
+                    <h2 class="section-heading wow fadeInDown" data-wow-offset="180">About</h2>
+                    <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="170">SWISS is the national airline of Switzerland. It serves over 106 destinations all over the world from Zurich and Geneva. SWISS is part of the Lufthansa Group and a member of the Star Alliance..</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="timeline">
-                        <li>
+                        <li class="wow bounceInLeft" data-wow-offset="200">
                             <div class="timeline-image">
                                 <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
                             </div>
@@ -183,7 +185,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-inverted">
+                        <li class="timeline-inverted wow bounceInRight" data-wow-offset="200">
                             <div class="timeline-image">
                                 <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
                             </div>
@@ -197,7 +199,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li class="wow bounceInLeft" data-wow-offset="200">
                             <div class="timeline-image">
                                 <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
                             </div>
@@ -211,7 +213,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-inverted">
+                        <li class="timeline-inverted wow bounceInRight" data-wow-offset="200">
                             <div class="timeline-image">
                                 <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
                             </div>
@@ -225,7 +227,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-inverted">
+                        <li class="timeline-inverted wow bounceInUp data-wow-offset=" 170 "">
                             <div class="timeline-image">
                                 <h4>Be Part
                                     <br>Of Our
@@ -242,14 +244,14 @@
     <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center wow fadeInDown" data-wow-offset="180">
                     <h2 class="section-heading">Our Amazing Team</h2>
                     <h3 class="section-subheading text-muted">When spider webs unite, they can tie up a lion.</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="team-member">
+                    <div class="team-member wow zoomIn" data-wow-offset="200">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
                         <h4>Ahmed Tokyo</h4>
                         <p class="text-muted"></p>
@@ -264,7 +266,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="team-member">
+                    <div class="team-member wow zoomIn" data-wow-offset="200">
                         <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
                         <h4>Mark Nader</h4>
                         <p class="text-muted"></p>
@@ -279,7 +281,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="team-member">
+                    <div class="team-member wow zoomIn" data-wow-offset="200">
                         <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
                         <h4>Ahmed Omran</h4>
                         <p class="text-muted"></p>
@@ -297,7 +299,7 @@
 
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="team-member">
+                    <div class="team-member wow slideInLeft" data-wow-offset="200">
                         <img src="img/team/4.jpg" class="img-responsive img-circle" alt="">
                         <h4>Baher A.Malek </h4>
                         <p class="text-muted"></p>
@@ -312,7 +314,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="team-member">
+                    <div class="team-member wow slideInUp" data-wow-offset="200">
                         <img src="img/team/5.jpg" class="img-responsive img-circle" alt="">
                         <h4>Sedki A.Hakim</h4>
                         <p class="text-muted"></p>
@@ -327,7 +329,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="team-member">
+                    <div class="team-member wow slideInUp" data-wow-offset="200">
                         <img src="img/team/6.jpg" class="img-responsive img-circle" alt="">
                         <h4>Ahmed Reda</h4>
                         <p class="text-muted"></p>
@@ -342,7 +344,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="team-member">
+                    <div class="team-member wow slideInRight" data-wow-offset="200">
                         <img src="img/team/7.jpg" class="img-responsive img-circle" alt="">
                         <h4>Ahmed Hazem</h4>
                         <p class="text-muted"></p>
@@ -358,15 +360,15 @@
                 </div>
             </div>
 
-         </div>
+        </div>
 
 
 
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Our Developers love subtle cues, because subtlety is one of the traits of sophisticated design.</p>
-                </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center wow fadeInUp" data-wow-offset="50">
+                <p class="large text-muted">Our Developers love subtle cues, because subtlety is one of the traits of sophisticated design.</p>
             </div>
+        </div>
         </div>
     </section>
 
@@ -375,15 +377,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">With passion, we serve.</h3>
+                    <h2 class="section-heading wow fadeInDown " data-wow-offset="180">Contact Us</h2>
+                    <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="170">With passion, we serve.</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 wow fadeInLeft" data-wow-offset="180" data-wow-delay="0.2s">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
                                     <p class="help-block text-danger"></p>
@@ -397,14 +399,14 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 wow fadeInRight" data-wow-offset="180" data-wow-delay="0.2s">
                                 <div class="form-group">
                                     <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
+                            <div class="col-lg-12 text-center wow fadeInUp" data-wow-offset="70">
                                 <div id="success"></div>
                                 <button type="submit" class="btn btn-xl">Send Message</button>
                             </div>
@@ -416,7 +418,7 @@
     </section>
 
     <footer>
-        <div class="container">
+        <div class="container wow zoomIn">
             <div class="row">
                 <div class="col-md-4">
                     <span class="copyright">Copyright &copy; SwissAir</span>
@@ -453,9 +455,11 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="js/shared/classie.js"></script>
     <script src="js/shared/cbpAnimatedHeader.js"></script>
-
     <script src="js/shared/custom.js"></script>
-
+    <script src="js/shared/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </body>
 
 </html>
