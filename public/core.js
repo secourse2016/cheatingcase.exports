@@ -1,17 +1,17 @@
-var swissAir = angular.module('swissAir', ['ngRoute']);
+var swissAir = angular.module('swissAir', ['ui.bootstrap', 'ngRoute']);
 
 swissAir.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
-      controller: 'js/controllers/mainController.js',
+      controller: 'mainController',
       templateUrl: 'views/home.html'
     })
     .when('/flights', {
-      controller: 'js/controllers/flightsController.js',
+      controller: 'flightsController',
       templateUrl: 'views/flights.html'
     })
     .when('/pay', {
-      controller: 'js/controllers/payementController.js',
+      controller: 'payementController',
       templateUrl: 'views/payement.html'
     })
     .otherwise({
