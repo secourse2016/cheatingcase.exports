@@ -1,4 +1,4 @@
-swissAir.controller('mainController', function($scope, FlightsSrv, $location) {
+swissAir.controller('mainController', function($scope, $location) {
 
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -24,31 +24,6 @@ swissAir.controller('mainController', function($scope, FlightsSrv, $location) {
     opened: false
   };
 
-  /*----------- Angular Bootstrap Typeahead -----------*/
 
-  /* Retrieve List of Airports Codes */
-  function AirportCodes() {
-    FlightsSrv.getAirportCodes().success(function(airports) {
-         $scope.Airports = airports;
-     });
-  };
-
-  /* Record User's Selected Origin Airport  */
-  $scope.SetOriginAirport = function(originAirport) {
-    FlightsSrv.setSelectedOriginAirport(originAirport);
-  };
-
-  /* Record User's Selected Destination Airport  */
-  $scope.SetDestinationAirport = function(destAirport) {
-    FlightsSrv.setSelectedDestinationAirport(destAirport);
-  };
-
-  /* Find All Available Flights  */
-  $scope.SearchFlights = function() {
-    $location.url('/flights');
-  };
-
-  /* Get Airports on page render  */
-  AirportCodes();
 
 });

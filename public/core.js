@@ -11,8 +11,8 @@ swissAir.config(function ($routeProvider) {
       templateUrl: 'views/flights.html'
     })
     .when('/pay', {
-      controller: 'payementController',
-      templateUrl: 'views/payement.html'
+      controller: 'paymentController',
+      templateUrl: 'views/payment.html'
     })
     .otherwise({
       redirectTo: '/'
