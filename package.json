@@ -1,7 +1,7 @@
 {
-  "name"         : "UnderConstructionSwissAir",
-  "version"      : "0.0.0",
-  "description"  : "UnderConstruction",
+  "name"         : "SwissAir",
+  "version"      : "0.2.0",
+  "description"  : "SwissAir Company",
   "main"         : "server.js",
   "author"       : "cheatingCase.exports",
   "dependencies" : {
@@ -9,5 +9,6 @@
     "morgan"     : "~1.2.2",
     "body-parser": "~1.5.2",
     "method-override": "~2.1.2"
-    }
+  },
+  "repository"   : "https://github.com/secourse2016/cheatingcase.exports"
 }
