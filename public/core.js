@@ -4,7 +4,7 @@ swissAir.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
       controller: 'mainController',
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/main.html'
     })
     .when('/flights', {
       controller: 'flightsController',
