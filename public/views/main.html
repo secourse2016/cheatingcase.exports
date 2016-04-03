@@ -1,36 +1,10 @@
-<<<<<<< HEAD:public/views/main.html
-<div class="container">
-    <!-- this is my partial page tokyo -->
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <h2 class="section-heading wow fadeInDown" data-wow-offset="250">Fly</h2>
-            <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230">Life is short and the world is wide.</h3>
-        </div>
-    </div>
-    <div class="row text-center">
-        <div class="col-md-5 col-sm-12 col-xs-12">
-            <div class="panel panel-default wow fadeInDown" data-wow-offset="200">
-                <h4 class="fly-heading">Feed your wanderlust</h4>
-            </div>
-            <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
-                <div class="panel-body">
-                    <div class="row">
-                        <!-- from and to -->
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
 
-                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
-                        </div>
-=======
 <div class="container" ng-controller="mainController">
                 <!-- this is my partial page tokyo -->
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading wow fadeInDown" data-wow-offset="250">Fly</h2>
                         <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230">Life is short and the world is wide.</h3>
->>>>>>> 4a35431ebadc396d84a02cd746fc4bb0962e7c4a:views/main.html
                     </div>
                 </div>
                 <div class="row text-center">
