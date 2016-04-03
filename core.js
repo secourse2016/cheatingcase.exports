@@ -1,4 +1,4 @@
-var swissAir = angular.module('swissAir', []);
+var swissAir = angular.module('swissAir', ['ngRoute']);
 
 swissAir.config(function ($routeProvider) {
   $routeProvider
