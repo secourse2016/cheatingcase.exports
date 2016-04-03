@@ -1,4 +1,4 @@
-App.controller('mainCtrl', function($scope, FlightsSrv, $location) {
+App.controller('mainController', function($scope, FlightsSrv, $location) {
 
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
