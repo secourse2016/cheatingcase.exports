@@ -229,10 +229,7 @@ fieldset[disabled] .btn-xl.active {
         font-size: 1.5em
     }
 }
-
-
-
-header .bigImg {
+header {
     background-image: url(../img/header-bg.jpg);
     background-repeat: none;
     background-attachment: scroll;
