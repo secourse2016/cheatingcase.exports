@@ -242,7 +242,7 @@ header .bigImg {
     background-size: cover;
     -o-background-size: cover;
     text-align: center;
-    color: #E42812
+    color: #fff
 }
 header .intro-text {
     padding-top: 100px;
@@ -403,8 +403,7 @@ section h3.section-subheading {
 }
 .timeline .timeline-body>p,
 .timeline .timeline-body>ul {
-    margin-bottom: 0;
-    text-align: left
+    margin-bottom: 0
 }
 @media (min-width: 768px) {
     .timeline:before {
@@ -458,7 +457,6 @@ section h3.section-subheading {
         padding: 0 20px 20px
     }
 }
-
 @media (min-width: 1200px) {
     .timeline>li {
         min-height: 170px
@@ -614,22 +612,15 @@ body {
     webkit-tap-highlight-color: #E42812
 }
 
-/*@media screen and (min-width: 300px) {
+@media screen and (min-width: 300px) {
     #thePlane {
         font-size: 170px;
         color:#ff4d4d;
-    }*/
+    }
 
-/*@media screen and (min-width: 990px) {*/
+@media screen and (min-width: 990px) {
     #thePlane {
         font-size: 300px;
         color:#ff4d4d;
     }
-/*}*/
-
-/*@media screen and (min-width: 990px) {*/
-    #theGlobe {
-        font-size: 300px;
-        color:#ff4d4d;
-    }
-/*}*/
+}
