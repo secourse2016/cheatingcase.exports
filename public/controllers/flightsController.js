@@ -10,8 +10,8 @@ swissAir.controller('flightsController', function($scope,$location) {
            "capacity": "100",
            "date": "Sun March 1 2016 19:54:57 GMT+0300 (EST)",
           "Duration": "2 hours",
-            "origin": " Sharm Elsheikh Airport",
-            "destination": "Tokyo International",
+            "origin": "Sharm Elsheikh Airport",
+            "destination": "London International",
             "seatmap":
               [
                 {
@@ -67,8 +67,8 @@ swissAir.controller('flightsController', function($scope,$location) {
            "capacity": "100",
            "date": "Sun March 29 2016 17:54:57 GMT+0300 (EST)",
           "Duration": "3 hours",
-            "origin": " Brandenburg Airportt",
-            "destination": "King Khalid International Airport",
+            "origin": "Brandenburg Airport",
+            "destination": "King Khalid Airport",
             "seatmap":
               [
                 {
@@ -126,7 +126,7 @@ swissAir.controller('flightsController', function($scope,$location) {
            "date": "Sun March 29 2016 17:54:57 GMT+0300 (EST)",
           "Duration": "3 hours",
             "origin": "Netherlands",
-            "destination": "King Khalid International Airport",
+            "destination": "King Khalid Airport",
             "seatmap":
               [
                 {
@@ -185,7 +185,7 @@ swissAir.controller('flightsController', function($scope,$location) {
            "date": "Sun March 2 2016 7:54:57 GMT+0300 (EST)",
           "Duration": "4 hours",
             "origin": "Netherlands",
-            "destination": "King Khalid International Airport",
+            "destination": "King Khalid Airport",
             "seatmap":
               [
                 {
@@ -240,7 +240,7 @@ swissAir.controller('flightsController', function($scope,$location) {
            "capacity": "100",
            "date": "Sun March 3 2016 18:54:57 GMT+0300 (EST)",
           "Duration": "3 hours",
-            "origin": "King Khalid International Airport",
+            "origin": "King Khalid Airport",
             "destination":"Netherlands",
             "seatmap":
               [
