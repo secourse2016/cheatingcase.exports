@@ -26,4 +26,8 @@ swissAir.controller('mainController', function($scope, $location) {
     opened: false
   };
 
+  $scope.SearchFlights = function() {
+    $location.url('/flights');
+  };
+
 });
