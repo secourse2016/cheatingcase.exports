@@ -10,5 +10,6 @@
     "body-parser": "~1.5.2",
     "method-override": "~2.1.2"
   },
-  "repository"   : "https://github.com/secourse2016/cheatingcase.exports"
+  "repository"   : "https://github.com/secourse2016/cheatingcase.exports",
+  "license"      : "UNLICENSED"
 }
