@@ -62,16 +62,16 @@ a {
 .pos-absolute {
 	position:absolute;
 }/* Position Absolute */
-.vertical-base {	
+.vertical-base {
 	vertical-align:baseline;
 }/* vertical align baseline */
-.vertical-top {	
+.vertical-top {
 	vertical-align:top;
 }/* vertical align top */
-nav.vertical ul li {	
+nav.vertical ul li {
 	display:block;
 }/* vertical menu */
-nav.horizontal ul li {	
+nav.horizontal ul li {
 	display: inline-block;
 }/* horizontal menu */
 img {
@@ -191,7 +191,7 @@ input.email {
 	color: #999;
 	font-size: 17px;
 	outline: none;
-	background: black; 
+	background: black;
 	border: none;
 	margin:3% auto;
 	border-radius:4px;
@@ -202,15 +202,15 @@ input[type="submit"] {
 	padding: 16px 20px;
 	cursor: pointer;
 	color:red;
-	background: black; 
+	background: black;
 	font-size:16px;
 	margin-left:1%;
     border-radius: 4px;
 }
 input[type="submit"]:hover {
-	background:#09204E;  
+	background:#09204E;
 	transition:all 0.5s ease-in-out;
-} 
+}
 .footer a, a:active {
 	color:#336A6D;
 	text-decoration:none;
@@ -401,4 +401,22 @@ input[type="submit"]:hover {
  filter:alpha(opacity=80);
  opacity:.50;
  z-index: 10000;
+}
+
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -300;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../img/clouds.png) no-repeat;
+    background-size: cover;
+		transition: 1s opacity;
 }
