@@ -2,7 +2,7 @@
   <div>
     <div class="panel-heading">
       <h4 class="panel-title">
-        <button class="btn {{type}} btn-lg" data-toggle="collapse"
+        <button class="btn {{type}} btn-xl btn-md" data-toggle="collapse"
         data-target="#collapse{{type}}{{index}}">
           From: {{flight.origin}} --> To: {{flight.destination}}</button>
         </h4>
@@ -24,6 +24,39 @@
             <div class="col-sm-6"><div class="alert alert-info">Arrival Time: 20</div></div>
           </div>
 
+<div class="row">
+  <div class="col-sm-9 col-md-9">
+  <label for="classes">Select class: </label>
+<div class="btn-group btn-group-justified" id="classes">
+          <div class="btn-group">
+      <button type="button" class="btn btn-xl btn-xs" style="background-color: ">Economy</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-xl btn-xs" style="background-color: ">Bussiness</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-xl btn-xs" style="background-color: ">First Class</button>
+    </div>
+  </div>
+</div>
+  <div class="col-sm-3 col-md-3 ">
+  <div class="form-group">
+      <label for="seats">Seat count:</label>
+      <select class="form-control" id="seats">
+        <option value="1">Just Me !!</option>
+        <option value="2">A couple of em</option>
+        <option value="3">3 Seats</option>
+        <option value="4">4 Seats</option>
+        <option value="5">5 Seats</option>
+        <option value="6">6 Seats</option>
+        <option value="7">7 Seats</option>
+        <option value="8">8 Seats</option>
+        <option value="9">9 Seats</option>
+        <option value="10">10 Seats</option>
+      </select>
+      <br>
+    </div>
+</div>
           <div class="row">
             <div class="col-sm-12">
               <div class="alert alert-success">
@@ -33,7 +66,7 @@
           </div>
 
           <div class="row">
-            <button type="button" class="btn btn-primary" style="align: center" ng-click="$parent.pay()"  >Proceed To Pay</button>
+            <button type="button" class="btn btn-xl btn-sm" style="align: center" ng-click="$parent.pay()"  >Proceed To Pay</button>
           </div>
 
         </div>

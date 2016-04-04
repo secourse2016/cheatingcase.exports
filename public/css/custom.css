@@ -152,6 +152,20 @@ fieldset[disabled] .btn-xl.active {
   padding: 10px 10px
 }
 
+.btn-sm {
+  font-weight: 200;
+  border-radius: 2px;
+  font-size: 12px;
+  padding: 5px 5px
+}
+
+.btn-xs {
+  font-weight: 150;
+  border-radius: 2px;
+  font-size: 10px;
+  padding: 3px 3px
+}
+
 .navbar-default {
     background-color: ##f8f8f8;
     opacity: 0.8;
