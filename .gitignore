@@ -12,5 +12,3 @@ node_modules
 
 # in case database is started here
 data
-
-.DS_Store
