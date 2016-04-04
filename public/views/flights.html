@@ -1,0 +1,17 @@
+<div class="container" ng-controller="flightsController">
+  <div class="row">
+
+    <div class="col-sm-6">
+  <div ng-repeat="outgoingFlight in outgoingFlights">
+    <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" index="$index"> </show-flights>
+  </div>
+    </div>
+
+    <div class="col-sm-6">
+  <div ng-repeat="returnFlight in returnFlights">
+    <show-flights flight="returnFlight" type="findType(returnFlight)" index="$index"> </show-flights>
+  </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="panel-group" id="accordion{{index}}">
+  <div>
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <button class="btn {{type}} btn-lg" data-toggle="collapse"
+        data-target="#collapse{{type}}{{index}}">
+          From:{{flight.origin}} and To :{{flight.destination}}</button>
+        </h4>
+      </div>
+      <div id="collapse{{type}}{{index}}" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"><div class="alert alert-info">From: {{ flight.origin }}</div></div>
+            <div class="col-sm-6"><div class="alert alert-info">To: {{ flight.destination }}</div></div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6"><div class="alert alert-info">Flight Number: {{ flight.flightNumber }}</div></div>
+            <div class="col-sm-6"><div class="alert alert-info">Aircraft: {{ flight.aircraft }}</div></div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6"><div class="alert alert-info">Departure Time: 15</div></div>
+            <div class="col-sm-6"><div class="alert alert-info">Arrival Time: 20</div></div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="alert alert-success">
+                <h2>Cost: 20 EGP.</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="button" class="btn btn-primary" style="align: center" ng-click="$parent.pay()"  >Proceed To Pay</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
