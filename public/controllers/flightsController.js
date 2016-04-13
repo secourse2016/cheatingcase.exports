@@ -1,4 +1,4 @@
-swissAir.controller('flightsController', function($scope,$location) {
+swissAir.controller('flightsController', function($scope,$location,AirportsSrv) {
   $scope.outgoingFlights = [
 
    {
@@ -302,6 +302,4 @@ swissAir.controller('flightsController', function($scope,$location) {
   $scope.pay = function() {
     $location.url('/flights/pay');
   };
-
-
 });
