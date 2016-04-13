@@ -45,6 +45,26 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
       AirportsSrv.setSelectedDestinationAirport(destAirport);
     };
 
+    /*
+    $scope.setDepartureDate = function(value){
+      Console.log(value +"hi")
+      AirportsSrv.setSelectedDepartureDate($scope.departureDate);
+    };
+
+
+    $scope.setReturnDate = function(value){
+      Console.log(value + "hii");
+      AirportsSrv.setSelectedReturnDate($scope.returnDate);
+    };
+      */
+    $scope.$watch('departureDate', function() {
+    AirportsSrv.setSelectedDepartureDate($filter('date')($scope.departureDate,'fullDate'));
+    });
+
+    $scope.$watch('returnDate', function() {
+    AirportsSrv.setSelectedReturnDate($filter('date')($scope.returnDate,'fullDate'));
+    });
+
     /* Find All Available Flights  */
     $scope.SearchFlights = function() {
       $location.url('/flights');

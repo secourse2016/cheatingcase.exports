@@ -19,10 +19,10 @@ swissAir.factory('AirportsSrv', function ($http) {
            return this.selectedDestinationAirport;
          },
          getSelectedDepartureDate: function(){
-           return this.selectedDepatureDate;
+           return this.selectedDepartureDate;
          },
          setSelectedDepartureDate: function(value){
-           this.selectedDepatureDate=value;
+           this.selectedDepartureDate=value;
          },
          getSelectedReturnDate: function(){
            return this.selectedReturnDate;

@@ -1,4 +1,5 @@
 <div class="container" ng-controller="flightsController">
+  <p>Date Selected is {{departureDate}}</p>
   <div class="row">
 
     <div class="col-lg-5">
@@ -9,7 +10,7 @@
 
     <div class="col-lg-2">
     </div>
-    
+
     <div class="col-lg-5">
   <div ng-repeat="returnFlight in returnFlights">
     <show-flights flight="returnFlight" type="findType(returnFlight)" index="$index"> </show-flights>
