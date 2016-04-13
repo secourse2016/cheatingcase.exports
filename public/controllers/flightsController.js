@@ -302,5 +302,4 @@ swissAir.controller('flightsController', function($scope,$location,AirportsSrv) 
   $scope.pay = function() {
     $location.url('/flights/pay');
   };
-  $scope.departureDate = AirportsSrv.getSelectedReturnDate();
 });
