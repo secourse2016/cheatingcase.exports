@@ -14,14 +14,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res) {
-    fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text){
-      res.send(text);
-    });
+  fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text){
+    res.send(text);
+  });
 });
 
 app.get('/api/data/airports', function(req, res) {
-      res.json( codes );
-    });
+  res.json( codes );
+});
 
 app.get('/db/seed', function(req, res) {
   db.seed(function(err,seeded){
@@ -33,6 +33,12 @@ app.get('/db/seed', function(req, res) {
     catch(err){
       res.send("Seeded Unsuccesfully ");
     }
+  });
+});
+
+app.get('/db/delete', function(req, res) {
+  db.clearDB(function(){
+    res.send("deleted succesfully ");
   });
 });
 
