@@ -39,6 +39,18 @@ app.use(function(req, res, next) {
   }
 
 });
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+        // retrieve params from req.params.{{origin | departingDate | ...}}
+        // return this exact format
+        db.DB.collection('flights').find({'origin':origin && 'destination':destination && 'departingDate':departingDate && 'returningDate':returningDate}).toArray(function(err,data){
+            if(err){
+              console.log(err);
+            }else{
+          res=data;
+        }
+        })
+        
+    }
 
 
 module.exports = app
