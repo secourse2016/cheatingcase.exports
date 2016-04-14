@@ -3,23 +3,10 @@ var mongodb = require('mongodb').MongoClient;
 var _db = null;
 var dbUrl = 'mongodb://localhost:27017/swissair';
 var flightsData = require('./flights.json');
-var request = require('request');
-var airportsData = null;
-
+var airportsData = require('./airports.json');
 
 
 var DB = {
-  getAirport: function getAirport(cb){
-    console.log("inside getAirport");
-    request('https://raw.githubusercontent.com/jbrooksuk/JSON-Airports/master/airports.json',
-     function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-    airportsData = body;
-    }
-    cb(error);
-    });
-    console.log("inside getAirport 2");
-  },
 
   connect: function connect(cb) {
     mongodb.connect(dbUrl, function(err, db) {
@@ -48,28 +35,31 @@ var DB = {
 seed: function seed(cb) {
   /* Seeding Flights*/
   DB.db().collection('flights').count(function(err, count) {
-    assert.equal(null, err);
+    if(err) console.log("error in Flights1");
+
     if (count != 0) {
       cb(err, false);
     } else {
       DB.db().collection('flights').insert(flightsData, function(err, result) {
-        assert.equal(null, err);
+        if(err) console.log("error in Flights2");
+
+        /* Seeding Airports*/
+        DB.db().collection('airports').count(function(err, count) {
+          if(err) console.log("error in airports1");
+          if (count != 0) {
+            cb(err, false);
+          } else {
+            DB.db().collection('airports').insert(airportsData, function(err, result) {
+              if(err) console.log("error in airports2");
+            });
+            cb(err, true);
+          }
+        });
+
       });
     }
   });
 
-  /* Seeding Airports*/
-  DB.db().collection('airports').count(function(err, count) {
-    assert.equal(null, err);
-    if (count != 0) {
-      cb(err, false);
-    } else {
-      DB.db().collection('airports').insert(airportsData, function(err, result) {
-        assert.equal(null, err);
-      });
-      cb(err, true);
-    }
-  });
 },
 
 
