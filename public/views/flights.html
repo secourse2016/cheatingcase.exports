@@ -1,18 +1,24 @@
 <div class="container" ng-controller="flightsController">
+    <div class="col-lg-6"> </div>
+    <div class="col-lg-6"> </div>
+
+
   <div class="row">
 
     <div class="col-lg-5">
-  <div ng-repeat="outgoingFlight in outgoingFlights">
-    <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" index="$index"> </show-flights>
+      <h1><span class="label label-info">Outgoing Flights <span class="badge">{{outgoingFlights.length}}</span></span></h1>
+        <div ng-repeat="outgoingFlight in outgoingFlights">
+          <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" index="$index"> </show-flights>
+        </div>
   </div>
-    </div>
 
     <div class="col-lg-2">
     </div>
-    
+
     <div class="col-lg-5">
-  <div ng-repeat="returnFlight in returnFlights">
-    <show-flights flight="returnFlight" type="findType(returnFlight)" index="$index"> </show-flights>
+   <h1><span class="label label-danger">Return Flights <span class="badge">{{returnFlights.length}}</span></span></h1>
+     <div ng-repeat="returnFlight in returnFlights">
+       <show-flights flight="returnFlight" type="findType(returnFlight)" index="$index"> </show-flights>
   </div>
     </div>
 

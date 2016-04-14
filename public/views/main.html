@@ -17,29 +17,29 @@
                     <div class="row">
                         <!-- from and to -->
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
                     <div class="row" style="margin-top:10px">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <p class="input-group">
-                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" placeholder="Outbound" is-open="popup1.opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" placeholder="Outbound" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                                 <span class="input-group-btn">
                       <button type="button"
                               class="btn btn-default"
                               ng-click="open1()">
                               <i class="glyphicon glyphicon-calendar"></i>
-                     </button>
+                     </button
                     </span>
                             </p>
                         </div>
 
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <p class="input-group">
-                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" placeholder="Return" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                 <span class="input-group-btn">
                                   <button type="button" class="btn btn-default" ng-click="open2()">
                                     <i class="glyphicon glyphicon-calendar"></i>

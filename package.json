@@ -8,8 +8,17 @@
     "express"    : "~4.7.2",
     "morgan"     : "~1.2.2",
     "body-parser": "~1.5.2",
-    "method-override": "~2.1.2"
+    "method-override": "~2.1.2",
+    "dotenv"      : "*",
+     "mongodb"     : "*",
+     "jsonwebtoken": "*",
+     "underscore"  : "*",
+     "moment"      : "*",
+     "request"     : "*"    
   },
-  "repository"   : "https://github.com/secourse2016/cheatingcase.exports",
+  "repository": {
+     "type": "git",
+     "url" : "https://github.com/secourse2016/cheatingcase.exports"
+   },
   "license"      : "UNLICENSED"
 }
