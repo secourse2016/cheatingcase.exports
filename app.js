@@ -3,9 +3,10 @@ var app         =   express();
 var fs          =   require('fs');
 var path        =   require('path');
 var bodyParser  =   require('body-parser');
-var jwt     = require('jsonwebtoken');
-var db = require('./db');
-var assert = require('assert');
+var jwt         = require('jsonwebtoken');
+var db          = require('./db');
+var assert      = require('assert');
+var codes       =  require('./airports.json');
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -17,6 +18,10 @@ app.get('/', function(req, res) {
       res.send(text);
     });
 });
+
+app.get('/api/data/airports', function(req, res) {
+      res.json( codes );
+    });
 
 app.get('/db/seed', function(req, res) {
   db.seed(function(err,seeded){

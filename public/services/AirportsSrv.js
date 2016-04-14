@@ -4,7 +4,7 @@
 swissAir.factory('AirportsSrv', function ($http) {
      return {
          getAirportCodes : function() {
-           return $http.get('https://raw.githubusercontent.com/jbrooksuk/JSON-Airports/master/airports.json');
+           return $http.get('/api/data/airports');
          },
          setSelectedOriginAirport: function(value) {
            this.selectedOriginAirport = value;
