@@ -27,7 +27,7 @@ var DB = {
       ]
     }
   } );
-    console.log("connected end");
+  console.log("connected end");
   cb(err, db);
 });
 },
@@ -62,6 +62,18 @@ seed: function seed(cb) {
 
 },
 
+clearDB: function clearDB(done) {
+    _db.collection("flights").remove({}, function(err) {
+      assert.equal(null, err);
+      _db.collection("airports").remove({}, function(err) {
+        assert.equal(null, err);
+        _db.collection("bookings").remove({}, function(err) {
+          assert.equal(null, err);
+          done();
+        });
+      });
+    });
+},
 
 db: function db() {
   return _db;

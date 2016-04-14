@@ -6,6 +6,7 @@ var env =  require("dotenv");
 DB.connect(function(err,db){
 assert.equal(null,err);
 console.log("connected to DB");
+DB.clearDB(function(){
   DB.seed(function(err,seeded){
     if(err) console.log("there is error after seed " + err);
     console.log("after Seed");
@@ -13,4 +14,6 @@ console.log("connected to DB");
       console.log("App listening on port 3000 for http connections");
     });
   });
+});
+
 });
