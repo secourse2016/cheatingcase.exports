@@ -2,8 +2,10 @@ var express     =   require('express');
 var app         =   express();
 var fs          =   require('fs');
 var path        =   require('path');
-
+var bodyParser  =   require('body-parser');
 var jwt     = require('jsonwebtoken');
+var db = require('./db');
+var assert = require('assert');
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -14,6 +16,19 @@ app.get('/', function(req, res) {
     fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text){
       res.send(text);
     });
+});
+
+app.get('/db/seed', function(req, res) {
+  db.seed(function(err,seeded){
+    try{
+      assert.equal(null,err);
+      assert.equal(true,seeded);
+      res.send("Seeded succesfully");
+    }
+    catch(err){
+      res.send("Seeded Unsuccesfully ");
+    }
+  });
 });
 
 
