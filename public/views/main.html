@@ -1,5 +1,5 @@
 
-<div class="container" ng-controller="mainController">
+<div class="container" ng-controller="mainController as ctrl">
     <!-- this is my partial page tokyo -->
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -12,15 +12,16 @@
             <!-- <div class="panel panel-default wow fadeInDown" data-wow-offset="200">
                             <h4 class="fly-heading">Feed your wanderlust</h4>
                         </div> -->
+        <form name= "searchForm" ng-submit="searchForm.$valid && SearchFlights()" novalidate>
             <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
                 <div class="panel-body">
                     <div class="row">
                         <!-- from and to -->
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" required uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" required uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
                     <div class="row" style="margin-top:10px">
@@ -50,10 +51,12 @@
 
                     </div>
                 </div>
+                {{searchForm.$valid}}
                 <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-xl btn-md" id='btnSearch' ng-click='SearchFlights()'>Search Flights</button>
+                    <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
                 </div>
             </div>
+          </form>
         </div>
         <div class="col-md-7 col-sm-12 col-xs-12">
             <div class="row">
