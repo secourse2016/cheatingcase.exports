@@ -7,8 +7,10 @@ var jwt         = require('jsonwebtoken');
 var db          = require('./db');
 var assert      = require('assert');
 var codes       =  require('./airports.json');
+
 var outgoingFlights=null;
 var returnFlights=null;
+
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -86,6 +88,7 @@ app.use(function(req, res, next) {
   }
 
 });
+
 
 
 module.exports = app
