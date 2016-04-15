@@ -1,6 +1,6 @@
 var assert = require('assert');
 var mongodb = require('mongodb').MongoClient;
-var _db = null;
+var myDB = null;
 var dbUrl = 'mongodb://localhost:27017/swissair';
 var flightsData = require('./flights.json');
 var airportsData = require('./airports.json');
@@ -10,24 +10,39 @@ var DB = {
 
   connect: function connect(cb) {
     mongodb.connect(dbUrl, function(err, db) {
-      _db = db;
-      console.log("connected begin");
-      db.createCollection( "flights", { validator: { $and: [
-        { flightNumber: { $type: "string" , $exists: true} },
-        { aircraftType: { $type: "string" , $exists: true} },
-        { aircraftModel: { $type: "int" , $exists: true} },
-        { departureDateTime: { $type: "timestamp" , $exists: true} },
-        { arrivalDateTime: { $type: "timestamp" , $exists: true} },
-        { origin: { $type: "string" , $exists: true} },
-        { destination: { $type: "string" , $exists: true} },
-        { cost: { $type: "int" , $exists: true} },
-        { currency: { $type: "string" , $exists: true} },
-        { class: { $type: "string" , $exists: true} },
-        { Airline: { $type: "string" , $exists: true} }
+      myDB = db;
+      console.log("initiating DB connection");
+      db.createCollection( "flights", {
+         validator: { $and: [
+        { flightNumber: { $type: 2 } },
+        { aircraftType: { $type: 2 } },
+        { aircraftModel: { $type: 'number' } },
+        { departureDateTime: { $type: 2 } }, //string for now change to 17 stamp or 9 date later
+        { arrivalDateTime: { $type: 2 } }, //string for now change to 17 stamp or 9 date later
+        { origin: { $type: 2 } },
+        { destination: { $type: 2 } },
+        { cost: { $type: 'number' } },
+        { currency: { $type: 2 } },
+        { class: { $type: 2 } },
+        { Airline: { $type: 2 } }
       ]
     }
-  } );
-  console.log("connected end");
+  });
+
+  db.createCollection( "airports", {
+     validator: { $and: [
+       {iata: {$type: 2} },
+       {iso: {$type: 2} },
+       {status: {$type: 'number'} },
+       {name: {$type: 2} },
+       {continent: {$type: 2} },
+       {continent: {$type: 2} }
+  ]
+  //care to add smth? WARNING mentioning it here means it is required or val error thrown
+  }
+  });
+
+  console.log("Terminating DB connection Process");
   cb(err, db);
 });
 },
@@ -41,11 +56,14 @@ seed: function seed(cb) {
       cb(err, false);
     } else {
       DB.db().collection('flights').insert(flightsData, function(err, result) {
-        if(err) console.log("error in Flights2");
-
+        if(err){ console.log("error in Flights2");
+        console.log(err);
+      }
         /* Seeding Airports*/
         DB.db().collection('airports').count(function(err, count) {
-          if(err) console.log("error in airports1");
+          if(err)
+            console.log("error in airports1");
+
           if (count != 0) {
             cb(err, false);
           } else {
@@ -63,11 +81,11 @@ seed: function seed(cb) {
 },
 
 clearDB: function clearDB(done) {
-    _db.collection("flights").remove({}, function(err) {
+    myDB.collection("flights").remove({}, function(err) {
       assert.equal(null, err);
-      _db.collection("airports").remove({}, function(err) {
+      myDB.collection("airports").remove({}, function(err) {
         assert.equal(null, err);
-        _db.collection("bookings").remove({}, function(err) {
+        myDB.collection("bookings").remove({}, function(err) {
           assert.equal(null, err);
           done();
         });
@@ -76,7 +94,7 @@ clearDB: function clearDB(done) {
 },
 
 db: function db() {
-  return _db;
+  return myDB;
 }
 };
 
