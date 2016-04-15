@@ -18,10 +18,10 @@
                     <div class="row">
                         <!-- from and to -->
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" required uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" required ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" required uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
                     <div class="row" style="margin-top:10px">
