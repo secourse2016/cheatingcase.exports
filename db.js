@@ -28,7 +28,7 @@ var DB = {
       ]
     }
   } );
-  db.createCollectio( "airports", {
+  db.createCollection( "airports", {
      validator: { $and: [
        {iata: {$type: 2} },
        {iso: {$type: 2} },
