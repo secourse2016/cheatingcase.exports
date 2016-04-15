@@ -66,5 +66,22 @@ app.use(function(req, res, next) {
 
 });
 
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+        // retrieve params from req.params.{{origin | departingDate | ...}}
+        // return this exact format
+        db.DB.db().collection('flights').find({'origin':req.params.origin ,'destination':req.params.destination,'departingDate':req.params.departingDate }).toArray(function(err,data){
+           var outgoingFlights=data;
+           });
+          
+           db.DB.db().collection('flights').find({'destination':req.params.origin , 'origin':req.params.destination ,'departingDate':req.params.returningDate}).toArray(function(err,data){
+           var returnFlights=data;
+           });
+           var result = {"outgoingFlights":  outgoingFlights 
+                        ,
+                        "returnFlights": returnFlights
+                                  }
+                                  res.send(result)
+        
+    });
 
 module.exports = app
