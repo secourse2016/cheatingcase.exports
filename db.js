@@ -1,6 +1,6 @@
 var assert = require('assert');
 var mongodb = require('mongodb').MongoClient;
-var _db = null;
+var myDB = null;
 var dbUrl = 'mongodb://localhost:27017/swissair';
 var flightsData = require('./flights.json');
 var airportsData = require('./airports.json');
@@ -10,24 +10,25 @@ var DB = {
 
   connect: function connect(cb) {
     mongodb.connect(dbUrl, function(err, db) {
-      _db = db;
-      console.log("connected begin");
-      db.createCollection( "flights", { validator: { $and: [
-        { flightNumber: { $type: "string" , $exists: true} },
-        { aircraftType: { $type: "string" , $exists: true} },
-        { aircraftModel: { $type: "int" , $exists: true} },
-        { departureDateTime: { $type: "timestamp" , $exists: true} },
-        { arrivalDateTime: { $type: "timestamp" , $exists: true} },
-        { origin: { $type: "string" , $exists: true} },
-        { destination: { $type: "string" , $exists: true} },
-        { cost: { $type: "int" , $exists: true} },
-        { currency: { $type: "string" , $exists: true} },
-        { class: { $type: "string" , $exists: true} },
-        { Airline: { $type: "string" , $exists: true} }
+      myDB = db;
+      console.log("initiating DB connection");
+      db.createCollection( "flights", {
+         validator: { $and: [
+        { flightNumber: { $type: 2 , $exists: true} },
+        { aircraftType: { $type: 2 , $exists: true} },
+        { aircraftModel: { $type: 16 , $exists: true} },
+        { departureDateTime: { $type: 17 , $exists: true} },
+        { arrivalDateTime: { $type: 17 , $exists: true} },
+        { origin: { $type: 2 , $exists: true} },
+        { destination: { $type: 2 , $exists: true} },
+        { cost: { $type: 16 , $exists: true} },
+        { currency: { $type: 2 , $exists: true} },
+        { class: { $type: 2 , $exists: true} },
+        { Airline: { $type: 2 , $exists: true} }
       ]
     }
   } );
-  console.log("connected end");
+  console.log("Terminating DB connection Process");
   cb(err, db);
 });
 },
@@ -63,11 +64,11 @@ seed: function seed(cb) {
 },
 
 clearDB: function clearDB(done) {
-    _db.collection("flights").remove({}, function(err) {
+    myDB.collection("flights").remove({}, function(err) {
       assert.equal(null, err);
-      _db.collection("airports").remove({}, function(err) {
+      myDB.collection("airports").remove({}, function(err) {
         assert.equal(null, err);
-        _db.collection("bookings").remove({}, function(err) {
+        myDB.collection("bookings").remove({}, function(err) {
           assert.equal(null, err);
           done();
         });
@@ -76,7 +77,7 @@ clearDB: function clearDB(done) {
 },
 
 db: function db() {
-  return _db;
+  return myDB;
 }
 };
 
