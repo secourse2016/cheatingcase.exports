@@ -17,8 +17,8 @@ var DB = {
         { flightNumber: { $type: 2 } },
         { aircraftType: { $type: 2 } },
         { aircraftModel: { $type: 'number' } },
-        { departureDateTime: { $type: 2 } },
-        { arrivalDateTime: { $type: 2 } },
+        { departureDateTime: { $type: 2 } }, //string for now change to 17 stamp or 9 date later
+        { arrivalDateTime: { $type: 2 } }, //string for now change to 17 stamp or 9 date later
         { origin: { $type: 2 } },
         { destination: { $type: 2 } },
         { cost: { $type: 'number' } },
