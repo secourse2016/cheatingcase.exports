@@ -42,11 +42,12 @@ app.get('/db/delete', function(req, res) {
     res.send("deleted succesfully ");
   });
 });
-app.get('/api/flights/search/:origin/:class', function(req, res) {
+app.get('/api/flights/search/:origin/:departingDate/:class', function(req, res) {
         // retrieve params from req.params.{{origin | departingDate | ...}}
-        var query = {origin :req.params.origin,class:req.params.class
+       
+        var query = {origin :req.params.origin,departureDateTime:req.params.departingDate,class:req.params.class
       };
-      
+     
 
         db.db().collection('flights').find(query).toArray(function(error,f)
           {
@@ -69,9 +70,9 @@ app.get('/api/flights/search/:origin/:class', function(req, res) {
 
 });
 
-app.get('/api/flights/search/:origin', function(req, res) {
+app.get('/api/flights/search/:origin/:departingDate', function(req, res) {
         // retrieve params from req.params.{{origin | departingDate | ...}}
-        var query = {origin :req.params.origin
+        var query = {origin :req.params.origin,departureDateTime:req.params.departingDate
       };
       
 
