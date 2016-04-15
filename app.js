@@ -1,6 +1,7 @@
 var express     =   require('express');
 var app         =   express();
 var fs          =   require('fs');
+var b = 'CAI';
 var path        =   require('path');
 var bodyParser  =   require('body-parser');
 var jwt         = require('jsonwebtoken');
@@ -42,6 +43,29 @@ app.get('/db/delete', function(req, res) {
   });
 });
 
+app.get('/api/flights/search/:origin', function(req, res) {
+        // retrieve params from req.params.{{origin | departingDate | ...}}
+        var query = {origin :req.params.origin
+      };
+      //var query = {origin: req.params.b};
+        db.db().collection('flights').find(query).toArray(function(error,f)
+          {
+            if(error)
+      
+  {
+    console.log(error);
+    process.exit(1);
+
+  }
+  var fr =f;
+  var result = { 'outgoingFlights': fr};
+          res.send( result);
+          });
+        // return this exact format
+
+
+});
+
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -67,27 +91,7 @@ app.use(function(req, res, next) {
 });
 
 
-app.get('/api/flights/search/:origin/:departingDate/:class', function(req, res) {
-        // retrieve params from req.params.{{origin | departingDate | ...}}
-        var query = {origin :req.params.origin,departingDate: req.params.departingDate,class:req.params.class
-      };
-        db.DB.collection('flights').find(query).toArray(function(error,f)
-          {
-            if(error)
-  {
-    console.log(error);
-    process.exit(1);
 
-  }
-  var fr =f;
-/* f.forEach(function(doc){
-console.log(JSON.stringify(doc));
-  });*/
-          });
-        // return this exact format
-res.send( 'outgoingFlights:' + fr);
-
-});
 
 
 
