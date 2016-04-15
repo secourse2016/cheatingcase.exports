@@ -28,6 +28,18 @@ var DB = {
       ]
     }
   } );
+  db.createCollectio( "airports", {
+     validator: { $and: [
+       {iata: {$type: 2} },
+       {iso: {$type: 2} },
+       {status: {$type: 'number'} },
+       {name: {$type: 2} },
+       {continent: {$type: 2} },
+       {continent: {$type: 2} }
+  ]
+  //care to add smth? WARNING mentioning it here means it is required or val error thrown
+}
+} );
   console.log("Terminating DB connection Process");
   cb(err, db);
 });
