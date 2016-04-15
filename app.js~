@@ -2,13 +2,18 @@ var express     =   require('express');
 var app         =   express();
 var fs          =   require('fs');
 var path        =   require('path');
-
+<<<<<<< HEAD
 var bodyParser  =   require('body-parser');
 var jwt         = require('jsonwebtoken');
 var db          = require('./db');
 var assert      = require('assert');
 var codes       =  require('./airports.json');
+=======
+var db          =   require('./db.js');
+var jwt     = require('jsonwebtoken');
+var bodyParser =require('body-parser');
 
+>>>>>>> ef67c9aa0c8b5f531d8d07b248a6efbb41ab70c3
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
