@@ -27,7 +27,8 @@ var DB = {
         { Airline: { $type: 2 } }
       ]
     }
-  } );
+  });
+
   db.createCollection( "airports", {
      validator: { $and: [
        {iata: {$type: 2} },
@@ -38,8 +39,9 @@ var DB = {
        {continent: {$type: 2} }
   ]
   //care to add smth? WARNING mentioning it here means it is required or val error thrown
-}
-} );
+  }
+  });
+
   console.log("Terminating DB connection Process");
   cb(err, db);
 });
