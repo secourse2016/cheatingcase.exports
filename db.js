@@ -12,22 +12,7 @@ var DB = {
     mongodb.connect(dbUrl, function(err, db) {
       myDB = db;
       console.log("initiating DB connection");
-      db.createCollection( "flights", {
-         validator: { $and: [
-        { flightNumber: { $type: 2 , $exists: true} },
-        { aircraftType: { $type: 2 , $exists: true} },
-        { aircraftModel: { $type: 16 , $exists: true} },
-        { departureDateTime: { $type: 17 , $exists: true} },
-        { arrivalDateTime: { $type: 17 , $exists: true} },
-        { origin: { $type: 2 , $exists: true} },
-        { destination: { $type: 2 , $exists: true} },
-        { cost: { $type: 16 , $exists: true} },
-        { currency: { $type: 2 , $exists: true} },
-        { class: { $type: 2 , $exists: true} },
-        { Airline: { $type: 2 , $exists: true} }
-      ]
-    }
-  } );
+      // db.createCollection( "flights" );
   console.log("Terminating DB connection Process");
   cb(err, db);
 });
@@ -42,11 +27,14 @@ seed: function seed(cb) {
       cb(err, false);
     } else {
       DB.db().collection('flights').insert(flightsData, function(err, result) {
-        if(err) console.log("error in Flights2");
-
+        if(err){ console.log("error in Flights2");
+        console.log(err);
+      }
         /* Seeding Airports*/
         DB.db().collection('airports').count(function(err, count) {
-          if(err) console.log("error in airports1");
+          if(err)
+            console.log("error in airports1");
+
           if (count != 0) {
             cb(err, false);
           } else {
