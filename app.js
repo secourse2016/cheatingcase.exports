@@ -8,6 +8,13 @@ var jwt         = require('jsonwebtoken');
 var db          = require('./db');
 var assert      = require('assert');
 var codes       =  require('./airports.json');
+
+
+var outgoingFlights=null;
+var returnFlights=null;
+var result=null;
+
+
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -26,6 +33,7 @@ app.get('/api/data/airports', function(req, res) {
 
 app.get('/db/seed', function(req, res) {
   db.seed(function(err,seeded){
+
     try{
       assert.equal(null,err);
       assert.equal(true,seeded);
@@ -42,6 +50,7 @@ app.get('/db/delete', function(req, res) {
     res.send("deleted succesfully ");
   });
 });
+
 app.get('/api/flights/search/:origin/:departingDate/:class', function(req, res) {
         // retrieve params from req.params.{{origin | departingDate | ...}}
        
@@ -94,9 +103,43 @@ app.get('/api/flights/search/:origin/:departingDate', function(req, res) {
       
         // return this exact format
 
-
 });
 
+
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+        // retrieve params from req.params.{{origin | departingDate | ...}}
+        // return this exact format 
+        
+    db.db().collection('flights').find({'origin':req.params.origin ,'destination':req.params.destination,'class':req.params.class ,'departureDateTime':req.params.departingDate}).toArray(function(err,data){
+            outgoingFlights=data;
+    db.db().collection('flights').find({'destination':req.params.origin , 'origin':req.params.destination, 'class':req.params.class,'departureDateTime':req.params.returningDate}).toArray(function(err,data){
+            returnFlights=data;
+            result = {"outgoingFlights":  outgoingFlights 
+                        ,
+                        "returnFlights": returnFlights
+                                  }
+                                  res.send(result);
+           });
+           }); 
+               
+    });
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate', function(req, res) {
+      // retrieve params from req.params.{{origin | departingDate | ...}}
+      // return this exact format 
+      
+  db.db().collection('flights').find({'origin':req.params.origin ,'destination':req.params.destination,'departureDateTime':req.params.departingDate}).toArray(function(err,data){
+          outgoingFlights=data;
+  db.db().collection('flights').find({'destination':req.params.origin , 'origin':req.params.destination,'departureDateTime':req.params.returningDate}).toArray(function(err,data){
+          returnFlights=data;
+          result = {"outgoingFlights":  outgoingFlights 
+                      ,
+                      "returnFlights": returnFlights
+                                }
+                                res.send(result);
+         });
+         }); 
+             
+});
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -120,56 +163,6 @@ app.use(function(req, res, next) {
   }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = app
