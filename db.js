@@ -10,7 +10,6 @@ var DB = {
 
   connect: function connect(cb) {
     mongodb.connect(dbUrl, function(err, db) {
-
       myDB = db;
       console.log("initiating DB connection");
       db.createCollection( "flights", {
@@ -44,7 +43,6 @@ var DB = {
   });
 
   console.log("Terminating DB connection Process");
-
   cb(err, db);
 });
 },
