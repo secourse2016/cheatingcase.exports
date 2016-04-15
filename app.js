@@ -4,6 +4,8 @@ var fs          =   require('fs');
 var path        =   require('path');
 var db          =   require('./db.js');
 var jwt     = require('jsonwebtoken');
+var bodyParser =require('body-parser');
+
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -44,15 +46,16 @@ app.use(function(req, res, next) {
 app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
         // retrieve params from req.params.{{origin | departingDate | ...}}
         // return this exact format
-        db.DB.collection('flights').find({'origin':req.params.{{origin}} && 'destination':req.params{{destination}} && 'departingDate':req.params{{departingDate}} }).toArray(function(err,data){
+        db.DB.db().collection('flights').find({'origin':req.params.origin ,'destination':req.params.destination,'departingDate':req.params.departingDate }).toArray(function(err,data){
            var outgoingFlights=data;
-           })
-        db.DB.close();
-        db.DB.collection('flights').find({'destination':req.params.{{origin}} && 'origin':req.params{{destination}} && 'departingDate':req.params{{returningDate}}}).toArray(function(err,data){
+           });
+          
+           db.DB.db().collection('flights').find({'destination':req.params.origin , 'origin':req.params.destination ,'departingDate':req.params.returningDate}).toArray(function(err,data){
            var returnFlights=data;
-           })
+           });
+           res.send(outgoingFlights+returnFlights);
         
-    }
+    });
 
 
 module.exports = app
