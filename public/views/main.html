@@ -9,22 +9,20 @@
     </div>
     <div class="row text-center">
         <div class="col-md-5 col-sm-12 col-xs-12">
-            <!-- <div class="panel panel-default wow fadeInDown" data-wow-offset="200">
-                            <h4 class="fly-heading">Feed your wanderlust</h4>
-                        </div> -->
         <form name= "searchForm" novalidate ng-submit="searchForm.$valid && SearchFlights()" >
             <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
                 <div class="panel-body">
                     <div class="row">
                         <!-- from and to -->
-                        <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput">
                             <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" required ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                         </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput" >
                             <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
-                    <div class="row" style="margin-top:10px">
+                    <div class="row searchFormInput">
+
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <p class="input-group">
                                 <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="false" placeholder="Outbound" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
@@ -33,7 +31,7 @@
                               class="btn btn-default"
                               ng-click="open1()">
                               <i class="glyphicon glyphicon-calendar"></i>
-                     </button
+                     </button>
                                 </span>
                             </p>
                         </div>
@@ -50,9 +48,9 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
-                    <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
+                    <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
+                        <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
+                    </div>
                 </div>
             </div>
           </form>
