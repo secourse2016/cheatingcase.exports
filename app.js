@@ -2,8 +2,11 @@ var express     =   require('express');
 var app         =   express();
 var fs          =   require('fs');
 var path        =   require('path');
-
-var jwt     = require('jsonwebtoken');
+var bodyParser  =   require('body-parser');
+var jwt         = require('jsonwebtoken');
+var db          = require('./db');
+var assert      = require('assert');
+var codes       =  require('./airports.json');
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -11,11 +14,38 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res) {
-    fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text){
-      res.send(text);
-    });
+  fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text){
+    res.send(text);
+  });
 });
 
+app.get('/api/data/airports', function(req, res) {
+  res.json( codes );
+});
+
+app.get('/db/seed', function(req, res) {
+  db.seed(function(err,seeded){
+    // if(err && (!seeded))
+    //   res.send("Seeding Failed");
+    // else
+    //   res.send("Seeded succesfully");
+    try{
+      assert.equal(null,err);
+      assert.equal(true,seeded);
+      res.send("Seeded succesfully");
+    }
+    catch(err){
+      res.send("Seeding Failed");
+    }
+  });
+});
+
+
+app.get('/db/delete',function(req, res) {
+  db.clearDB(function(){
+    res.send("deleted succesfully ");
+  });
+});
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {

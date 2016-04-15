@@ -13,7 +13,8 @@
      "mongodb"     : "*",
      "jsonwebtoken": "*",
      "underscore"  : "*",
-     "moment"      : "*"
+     "moment"      : "*",
+     "request"     : "*"    
   },
   "repository": {
      "type": "git",
