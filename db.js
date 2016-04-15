@@ -14,17 +14,17 @@ var DB = {
       console.log("initiating DB connection");
       db.createCollection( "flights", {
          validator: { $and: [
-        { flightNumber: { $type: 2 , $exists: true} },
-        { aircraftType: { $type: 2 , $exists: true} },
-        { aircraftModel: { $type: 16 , $exists: true} },
-        { departureDateTime: { $type: 2 , $exists: true} },
-        { arrivalDateTime: { $type: 2 , $exists: true} },
-        { origin: { $type: 2 , $exists: true} },
-        { destination: { $type: 2 , $exists: true} },
-        { cost: { $type: 16 , $exists: true} },
-        { currency: { $type: 2 , $exists: true} },
-        { class: { $type: 2 , $exists: true} },
-        { Airline: { $type: 2 , $exists: true} }
+        { flightNumber: { $type: 2 } },
+        { aircraftType: { $type: 2 } },
+        { aircraftModel: { $type: 'number' } },
+        { departureDateTime: { $type: 2 } },
+        { arrivalDateTime: { $type: 2 } },
+        { origin: { $type: 2 } },
+        { destination: { $type: 2 } },
+        { cost: { $type: 'number' } },
+        { currency: { $type: 2 } },
+        { class: { $type: 2 } },
+        { Airline: { $type: 2 } }
       ]
     }
   } );
