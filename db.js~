@@ -12,7 +12,21 @@ var DB = {
     mongodb.connect(dbUrl, function(err, db) {
       _db = db;
       console.log("connected begin");
-     
+      db.createCollection( "flights", { validator: { $and: [
+        { flightNumber: { $type: "string" , $exists: true} },
+        { aircraftType: { $type: "string" , $exists: true} },
+        { aircraftModel: { $type: "int" , $exists: true} },
+        { departureDateTime: { $type: "timestamp" , $exists: true} },
+        { arrivalDateTime: { $type: "timestamp" , $exists: true} },
+        { origin: { $type: "string" , $exists: true} },
+        { destination: { $type: "string" , $exists: true} },
+        { cost: { $type: "int" , $exists: true} },
+        { currency: { $type: "string" , $exists: true} },
+        { class: { $type: "string" , $exists: true} },
+        { Airline: { $type: "string" , $exists: true} }
+      ]
+    }
+  } );
   console.log("connected end");
   cb(err, db);
 });
