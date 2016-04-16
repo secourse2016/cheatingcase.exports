@@ -32,14 +32,14 @@ swissAir.factory('AirportsSrv', function ($http) {
          },
          searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class){
            var cls = (Class==null)?'any':Class;
-           return $http.get('/api/flights/search/:'+origin+'/:'+destination+'/:'+departingDate+'/:'+returningDate+'/:'+cls+'', {
+           return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+returningDate+'/'+cls+'', {
      				"headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'},
      		   });
          },
          searchFlightsOneWay: function(origin, destination, departingDate, Class){
            var deptDate = (departingDate==null)?'any':departingDate;
            var cls = (Class==null)?'any':Class;
-           return $http.get('/api/flights/search/:'+origin+'/:'+destination+'/:'+deptDate+'/:'+cls+'', {
+           return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+deptDate+'/'+cls+'', {
      				"headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'},
      		   });
          }

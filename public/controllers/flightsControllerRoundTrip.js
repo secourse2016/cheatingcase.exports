@@ -1,11 +1,11 @@
 swissAir.controller('flightsControllerRoundTrip', function($scope,$location,AirportsSrv) {
   $scope.origin = AirportsSrv.getSelectedOriginAirport();
   $scope.destination = AirportsSrv.getSelectedDestinationAirport();
-  $scope.departureDate= AirportSrv.getSelectedDepartureDate();
-  $scope.returnDate = AirportSrv.getSelectedReturnDate();
-  $scope.outgoingFlights ;
+  $scope.departureDate= new Date(AirportsSrv.getSelectedDepartureDate()).getTime();
+  $scope.returnDate = new Date(AirportsSrv.getSelectedReturnDate()).getTime();
+  //$scope.outgoingFlights ;
 
-  $scope.returnFlights ;
+  //$scope.returnFlights ;
 
   $scope.findType = function(flight){
     var i = $scope.outgoingFlights.length;
