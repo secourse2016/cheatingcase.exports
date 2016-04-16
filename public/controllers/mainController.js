@@ -3,21 +3,21 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
 
   // Form elements
 
-  this.tripType = 2; //initially Round-Trip
-  this.departureTime="1";
-  this.returnTime="1";
-  this.adultsCount = "1";
-  this.childrenCount = "0";
-  this.infantsCount = "0";
-  this.otherAirlines=false;
-  this.searchBy="shedule";
+  $scope.tripType = 2; //initially Round-Trip
+  $scope.departureTime="1";
+  $scope.returnTime="1";
+  $scope.adultsCount = "1";
+  $scope.childrenCount = "0";
+  $scope.infantsCount = "0";
+  $scope.otherAirlines=false;
+  $scope.searchBy="schedule";
 
-  this.selectTripType = function(setTrip){
-    this.tripType = setTrip;
+  $scope.selectTripType = function(setTrip){
+    $scope.tripType = setTrip;
   };
 
-  this.isTripType = function(checkTrip){
-    return this.tripType === checkTrip;
+  $scope.isTripType = function(checkTrip){
+    return $scope.tripType === checkTrip;
   };
 
   /*----------- Angular Bootstrap Datepicker -----------*/
@@ -76,16 +76,16 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
     };
       */
     $scope.$watch('departureDate', function() {
-    AirportsSrv.setSelectedDepartureDate($filter('date')($scope.departureDate,'fullDate'));
+      AirportsSrv.setSelectedDepartureDate($filter('date')($scope.departureDate,'fullDate'));
     });
 
     $scope.$watch('returnDate', function() {
-    AirportsSrv.setSelectedReturnDate($filter('date')($scope.returnDate,'fullDate'));
+      AirportsSrv.setSelectedReturnDate($filter('date')($scope.returnDate,'fullDate'));
     });
 
     /* Find All Available Flights  */
     $scope.SearchFlights = function() {
-          $location.url('/flights'); //edit to route to round trip or one way
+      $location.url('/flights'); //edit to route to round trip or one way
     };
     /* Get Airports on page render  */
     AirportCodes();
