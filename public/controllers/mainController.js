@@ -85,7 +85,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
 
     /* Find All Available Flights  */
     $scope.SearchFlights = function() {
-      $location.url('/flights'); //edit to route to round trip or one way
+      if($scope.tripType == 2)
+        $location.url('/flightsRoundTrip'); // edit to route to round trip or one way
+      else
+        $location.url('/flightsOneWay'); // Who implements the view must abide to this naming convention
     };
     /* Get Airports on page render  */
     AirportCodes();
