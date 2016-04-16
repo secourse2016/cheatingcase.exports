@@ -628,6 +628,9 @@ body {
     webkit-tap-highlight-color: #E42812
 }
 
+
+/*Glymphs in main view*/
+
 /*@media screen and (min-width: 300px) {
     #thePlane {
         font-size: 170px;
@@ -648,6 +651,8 @@ body {
         color:#ff4d4d;
     }
 /*}*/
+
+/*Main Form*/
 
 .searchFormInput{
   margin-top:10px;
@@ -670,3 +675,9 @@ body {
 /*.ng-valid.ng-dirty{
   border-color: #80aaff;
 }*/
+
+
+/*Other Airlines CheckBox*/
+#otherAirlines{
+  margin-left: 20px;
+}
