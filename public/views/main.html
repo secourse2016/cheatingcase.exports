@@ -14,23 +14,26 @@
                 <div class="panel-body">
                   <div class="row">
                   <ul class="nav nav-tabs nav-justified">
-                    <li> <a ng-click="ctrl.selectTripType(2)" href >Round Trip</a></li>
-                    <li> <a ng-click="ctrl.selectTripType(1)" href>One Way</a></li>
+                    <li ng-class="{active: ctrl.isTripType(2)}"> <a ng-click="ctrl.selectTripType(2)" href >Round Trip</a></li>
+                    <li ng-class="{active: ctrl.isTripType(1)}"> <a ng-click="ctrl.selectTripType(1)" href>One Way</a></li>
                   </ul>
                   </div>
                     <div class="row">
                         <!-- from and to -->
                         <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput">
+                          <label for="originAirports">Select Origin: </label>
                             <input name="originAirports" id="originAirports" type="text" placeholder="Flying From*" required ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput" >
+                            <label for="destinationAirports">Select Destination: </label>
                             <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
                     <div class="row searchFormInput">
 
                       <div class="col-md-6 col-sm-12 col-xs-12">
-                          <p class="input-group">
+                        <label for="depDate">Departure Date: </label>
+                          <p class="input-group" id="depDate">
                               <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="false" placeholder="Departure"  is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                               <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()">
@@ -41,7 +44,8 @@
                       </div>
 
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <p class="input-group" ng-show="ctrl.isTripType(2)">
+                          <label for="retDate">Return Date: </label>
+                            <p class="input-group" id="retDate" ng-show="ctrl.isTripType(2)">
                                 <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return"  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                 <span class="input-group-btn">
                                   <button type="button" class="btn btn-default" ng-click="open2()">
@@ -76,3 +80,51 @@
 
     </div>
 </div>
+
+<!--
+<div class="row">
+  <div class="col-sm-9 col-md-9">
+  <label for="classes">Select class: </label>
+<div class="btn-group btn-group-justified" id="classes">
+          <div class="btn-group">
+      <button type="button" class="btn btn-xl btn-xs" style="background-color: ">Economy</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-xl btn-xs" style="background-color: ">Bussiness</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-xl btn-xs" style="background-color: ">First Class</button>
+    </div>
+  </div>
+</div>
+  <div class="col-sm-3 col-md-3 ">
+  <div class="form-group">
+      <label for="seats">Seat count:</label>
+      <select class="form-control" id="seats">
+        <option value="1">Just Me !!</option>
+        <option value="2">A couple of em</option>
+        <option value="3">3 Seats</option>
+        <option value="4">4 Seats</option>
+        <option value="5">5 Seats</option>
+        <option value="6">6 Seats</option>
+        <option value="7">7 Seats</option>
+        <option value="8">8 Seats</option>
+        <option value="9">9 Seats</option>
+        <option value="10">10 Seats</option>
+      </select>
+      <br>
+    </div>
+</div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="alert alert-success">
+                <h2>Cost: 20 EGP.</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="button" class="btn btn-xl btn-sm" style="align: center" ng-click="$parent.pay()">Proceed To Pay</button>
+          </div>
+
+        </div> -->

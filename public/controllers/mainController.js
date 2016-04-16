@@ -2,7 +2,7 @@
 swissAir.controller('mainController', function($scope,AirportsSrv,$location,$filter) {
 
 
-  this.tripType = 2;
+  this.tripType = 2; //initially Round-Trip
   this.selectTripType = function(setTrip){
     this.tripType = setTrip;
   };
