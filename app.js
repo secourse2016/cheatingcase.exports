@@ -7,6 +7,7 @@ var jwt         = require('jsonwebtoken');
 var db          = require('./db');
 var assert      = require('assert');
 var codes       =  require('./airports.json');
+var dayInMillis = 24*60*60*1000;
 
 
 require('dotenv').load();
@@ -45,7 +46,45 @@ app.get('/db/delete', function(req, res) {
   });
 });
 
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+  // retrieve params from req.params.{{origin | departingDate | ...}}
+  // return this exact format
+  var queryOutgoing;
+  var queryReturn;
+  if(req.params.class == 'any') {
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'departureDateTime': { $gte: req.params.departingDate, $lt: (req.params.departingDate + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'departureDateTime': { $gte: req.params.returningDate, $lt: (req.params.returningDate + dayInMillis) } };
+  }
+  else {
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'class': req.params.class,
+                      'departureDateTime': { $gte: req.params.departingDate, $lt: (req.params.departingDate + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'class': req.params.class,
+                    'departureDateTime': { $gte: req.params.returningDate, $lt: (req.params.returningDate + dayInMillis) } };
 
+  }
+
+  var outgoingFlights;
+  var returnFlights;
+  var result;
+
+  db.db().collection('flights').find(queryOutgoing).toArray(function(err,data){
+    outgoingFlights = data;
+    db.db().collection('flights').find(queryReturn).toArray(function(err,data){
+      returnFlights = data;
+      result = { "outgoingFlights":  outgoingFlights ,
+                 "returnFlights": returnFlights }
+      res.send(result);
+    });
+  });
+});
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -113,45 +152,7 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
 
 
 
-app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
-  // retrieve params from req.params.{{origin | departingDate | ...}}
-  // return this exact format
-  var queryOutgoing;
-  var queryReturn;
-  if(req.params.class == 'any') {
-    queryOutgoing = { 'origin': req.params.origin,
-                      'destination': req.params.destination,
-                      'departureDateTime': { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) } };
-    queryReturn = { 'destination': req.params.origin,
-                    'origin': req.params.destination,
-                    'departureDateTime': { $gte: req.params.returningDate, $ls: (req.params.returningDate + dayInMillis) } };
-  }
-  else {
-    queryOutgoing = { 'origin': req.params.origin,
-                      'destination': req.params.destination,
-                      'class': req.params.class,
-                      'departureDateTime': { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) } };
-    queryReturn = { 'destination': req.params.origin,
-                    'origin': req.params.destination,
-                    'class': req.params.class,
-                    'departureDateTime': { $gte: req.params.returningDate, $ls: (req.params.returningDate + dayInMillis) } };
 
-  }
-
-  var outgoingFlights;
-  var returnFlights;
-  var result;
-
-  db.db().collection('flights').find(queryOutgoing).toArray(function(err,data){
-    outgoingFlights = data;
-    db.db().collection('flights').find(queryReturn).toArray(function(err,data){
-      returnFlights = data;
-      result = { "outgoingFlights":  outgoingFlights ,
-                 "returnFlights": returnFlights }
-      res.send(result);
-    });
-  });
-});
 
 
 
