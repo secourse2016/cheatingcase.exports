@@ -29,8 +29,8 @@
                             <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
-                    <div class="row searchFormInput">
 
+                    <div class="row searchFormInput">
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <label for="depDate">Departure Date: </label>
                           <p class="input-group" id="depDate">
@@ -43,18 +43,44 @@
                           </p>
                       </div>
 
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="retDate">Return Date: </label>
-                            <p class="input-group" id="retDate" ng-show="ctrl.isTripType(2)">
-                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return"  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                                <span class="input-group-btn">
-                                  <button type="button" class="btn btn-default" ng-click="open2()">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                  </button>
-                                </span>
-                            </p>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                          <label for="depTime">Departure Time:</label>
+                          <select class="form-control" id="depTime">
+                            <option value="1">Any Time</option>
+                            <option value="1">Morning</option>
+                            <option value="1">Afternoon</option>
+                            <option value="1">Evening</option>
+                            <option value="1">Night</option>
+                          </select>
                         </div>
+                      </div>
+                    </div>
 
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <label for="retDate">Return Date: </label>
+                          <p class="input-group" id="retDate" ng-show="ctrl.isTripType(2)">
+                              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return"  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open2()">
+                                  <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                              </span>
+                          </p>
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                          <label for="retTime">Return Time:</label>
+                          <select class="form-control" id="retTime">
+                            <option value="1">Any Time</option>
+                            <option value="1">Morning</option>
+                            <option value="1">Afternoon</option>
+                            <option value="1">Evening</option>
+                            <option value="1">Night</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                     <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
                         <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
