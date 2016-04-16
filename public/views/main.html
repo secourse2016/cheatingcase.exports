@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row text-center">
-        <div class="col-md-5 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-sm-12 col-xs-12">
         <form name= "searchForm" novalidate ng-submit="searchForm.$valid && SearchFlights()" >
             <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
                 <div class="panel-body">
@@ -82,6 +82,57 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-sm-4 col-xs-4">
+                      <div class="form-group">
+                          <select class="form-control" id="adults">
+                            <option value="1">1 Adult</option>
+                            <option value="1">2 Adults</option>
+                            <option value="3">3 Adults</option>
+                            <option value="4">4 Adults</option>
+                            <option value="5">5 Adults</option>
+                            <option value="6">6 Adults</option>
+                            <option value="7">7 Adults</option>
+                            <option value="8">8 Adults</option>
+                            <option value="9">9 Adults</option>
+                            <option value="10">10 Adults</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <select class="form-control" id="children">
+                              <option value="1">1 Child</option>
+                              <option value="2">2 Children</option>
+                              <option value="3">3 Children</option>
+                              <option value="4">4 Children</option>
+                              <option value="5">5 Children</option>
+                              <option value="6">6 Children</option>
+                              <option value="7">7 Children</option>
+                              <option value="8">8 Children</option>
+                              <option value="9">9 Children</option>
+                              <option value="10">10 Children</option>
+                            </select>
+                          </div>
+                      </div>
+
+                      <div class="col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <select class="form-control" id="children">
+                              <option value="1">1 Infant</option>
+                              <option value="2">2 Infants</option>
+                              <option value="3">3 Infants</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <label class="checkbox-inline"><input type="checkbox" value="">Search Other Airlines</label>
+                      </div>
+
+                    </div>
+
                     <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
                         <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
                     </div>
@@ -89,7 +140,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-7 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <!-- <span class="fa-stack "> -->
@@ -123,23 +174,23 @@
     </div>
   </div>
 </div>
-  <div class="col-sm-3 col-md-3 ">
-  <div class="form-group">
-      <label for="seats">Seat count:</label>
-      <select class="form-control" id="seats">
-        <option value="1">Just Me !!</option>
-        <option value="2">A couple of em</option>
-        <option value="3">3 Seats</option>
-        <option value="4">4 Seats</option>
-        <option value="5">5 Seats</option>
-        <option value="6">6 Seats</option>
-        <option value="7">7 Seats</option>
-        <option value="8">8 Seats</option>
-        <option value="9">9 Seats</option>
-        <option value="10">10 Seats</option>
-      </select>
-      <br>
-    </div>
+<div class="col-sm-3 col-md-3 ">
+<div class="form-group">
+    <label for="seats">Seat count:</label>
+    <select class="form-control" id="seats">
+      <option value="1">Just Me !!</option>
+      <option value="2">A couple of em</option>
+      <option value="3">3 Seats</option>
+      <option value="4">4 Seats</option>
+      <option value="5">5 Seats</option>
+      <option value="6">6 Seats</option>
+      <option value="7">7 Seats</option>
+      <option value="8">8 Seats</option>
+      <option value="9">9 Seats</option>
+      <option value="10">10 Seats</option>
+    </select>
+    <br>
+  </div>
 </div>
           <div class="row">
             <div class="col-sm-12">
