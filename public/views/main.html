@@ -19,17 +19,21 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="row">
+                        <div class="row searchFormInput">
                             <!-- from and to -->
-                            <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput">
+                            <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="originAirports">Select Origin: </label>
                                 <input name="originAirports" id="originAirports" type="text" placeholder="Flying From*" required ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                                <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
                             </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput">
+                            <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="destinationAirports">Select Destination: </label>
                                 <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                                <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
                             </div>
                         </div>
+
+                        <!-- Departure -->
 
                         <div class="row searchFormInput">
                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -58,6 +62,8 @@
                             </div>
                         </div>
 
+                        <!-- Return  -->
+
                         <div class="row" id="roundTripRow" ng-show="ctrl.isTripType(2)">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate">Return Date: </label>
@@ -84,7 +90,9 @@
                             </div>
                         </div>
 
-                        <div class="row" searchFormInput>
+                        <!-- Number of Passengers -->
+
+                        <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-4 ">
                                 <div class="form-group">
                                     <select class="form-control" id="adults">
@@ -105,26 +113,29 @@
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="form-group">
                                     <select class="form-control" id="children">
-                                        <option value="1">0 Children</option>
-                                        <option value="2">1 Child</option>
-                                        <option value="3">3 Children</option>
-                                        <option value="4">4 Children</option>
-                                        <option value="5">5 Children</option>
+                                        <option value="0">0 Children</option>
+                                        <option value="1">1 Child</option>
+                                        <option value="2">3 Children</option>
+                                        <option value="3">4 Children</option>
+                                        <option value="4">5 Children</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="form-group">
-                                    <select class="form-control" id="children">
-                                        <option value="1">0 Infant</option>
-                                        <option value="2">1 Infants</option>
-                                        <option value="3">2 Infants</option>
+                                    <select class="form-control" id="infants">
+                                        <option value="0">0 Infant</option>
+                                        <option value="1">1 Infants</option>
+                                        <option value="2">2 Infants</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row searchFormInput">
+
+                        <!-- Search Options -->
+
+                        <div class="row " id="searchOptionsRow">
                             <div class="col-md-12 text-left ">
                                 <label for="searchOptions" style="margin-left: 10px">Search Options :</label>
                                 <div class="col-md-12" id="searchOptions">
@@ -133,7 +144,7 @@
                                     <label class="radio-inline">
                                         <input type="radio" name="optradio">Price</label>
                                     <label class="checkbox-inline" id="otherAirlines">
-                                        <input type="checkbox" value="">Search Other Airlines</label>
+                                        <input type="checkbox" value="" ng-click="ctrl.otherAirlines=!ctrl.otherAirlines">Search Other Airlines</label>
                                 </div>
                             </div>
                         </div>

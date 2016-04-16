@@ -11,6 +11,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
     return this.tripType === checkTrip;
   };
 
+  this.otherAirlines=false;
 
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
