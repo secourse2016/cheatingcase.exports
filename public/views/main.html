@@ -140,9 +140,9 @@
                                 <label for="searchOptions" style="margin-left: 10px">Search Options :</label>
                                 <div class="col-md-12" id="searchOptions">
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Shedule</label>
+                                        <input type="radio" name="optradio" value="shedule" ng-model="ctrl.searchBy">Shedule</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio">Price</label>
+                                        <input type="radio" name="optradio" value="price" ng-model="ctrl.searchBy">Price</label>
                                     <label class="checkbox-inline" id="otherAirlines">
                                         <input type="checkbox" value="" ng-click="ctrl.otherAirlines=!ctrl.otherAirlines">Search Other Airlines</label>
                                 </div>

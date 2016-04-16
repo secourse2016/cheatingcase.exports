@@ -11,7 +11,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
     return this.tripType === checkTrip;
   };
 
+
+  this.adultsCount = 1;
   this.otherAirlines=false;
+  this.searchBy="shedule"
 
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
