@@ -89,12 +89,12 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
     if(req.params.class == 'any')
       query = { origin:req.params.origin,
                 destination:req.params.destination,
-                departureDateTime:req.params.departingDate };
+                departureDateTime: { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) } };
     else
-      query = { origin:req.params.origin,
-                destination:req.params.destination,
-                departureDateTime:req.params.departingDate,
-                class:req.params.class };
+      query = { origin: req.params.origin,
+                destination: req.params.destination,
+                departureDateTime: { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) },
+                class: req.params.class };
   }
 
 
@@ -119,22 +119,22 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
   var queryOutgoing;
   var queryReturn;
   if(req.params.class == 'any') {
-    queryOutgoing = { 'origin':req.params.origin,
-                      'destination':req.params.destination,
-                      'departureDateTime':req.params.departingDate };
-    queryReturn = { 'destination':req.params.origin,
-                    'origin':req.params.destination,
-                    'departureDateTime':req.params.returningDate };
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'departureDateTime': { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'departureDateTime': { $gte: req.params.returningDate, $ls: (req.params.returningDate + dayInMillis) } };
   }
   else {
-    queryOutgoing = { 'origin':req.params.origin,
-                      'destination':req.params.destination,
-                      'class':req.params.class,
-                      'departureDateTime':req.params.departingDate };
-    queryReturn = { 'destination':req.params.origin,
-                    'origin':req.params.destination,
-                    'class':req.params.class,
-                    'departureDateTime':req.params.returningDate };
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'class': req.params.class,
+                      'departureDateTime': { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'class': req.params.class,
+                    'departureDateTime': { $gte: req.params.returningDate, $ls: (req.params.returningDate + dayInMillis) } };
 
   }
 
