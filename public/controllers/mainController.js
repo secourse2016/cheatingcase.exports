@@ -1,5 +1,5 @@
 
-swissAir.controller('mainController', function($scope,AirportsSrv,$location,$filter) {
+swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
 
   // Form elements
 
@@ -21,7 +21,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
   };
 
   /*----------- Angular Bootstrap Datepicker -----------*/
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
 
   $scope.open1 = function() {
@@ -76,11 +76,11 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
     };
       */
     $scope.$watch('departureDate', function() {
-      AirportsSrv.setSelectedDepartureDate($filter('date')($scope.departureDate,'fullDate'));
+      AirportsSrv.setSelectedDepartureDate($scope.departureDate);
     });
 
     $scope.$watch('returnDate', function() {
-      AirportsSrv.setSelectedReturnDate($filter('date')($scope.returnDate,'fullDate'));
+      AirportsSrv.setSelectedReturnDate($scope.returnDate);
     });
 
     /* Find All Available Flights  */
