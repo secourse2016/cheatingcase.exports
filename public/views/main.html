@@ -51,12 +51,12 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="depTime">Departure Time:</label>
-                                    <select class="form-control" id="depTime">
+                                    <select class="form-control" id="depTime" ng-model="ctrl.departureTime">
                                         <option value="1">Any Time</option>
-                                        <option value="1">Morning</option>
-                                        <option value="1">Afternoon</option>
-                                        <option value="1">Evening</option>
-                                        <option value="1">Night</option>
+                                        <option value="2">Morning</option>
+                                        <option value="3">Afternoon</option>
+                                        <option value="4">Evening</option>
+                                        <option value="5">Night</option>
                                     </select>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate">Return Date: </label>
                                 <p class="input-group" id="retDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="ctrl.returnDate" ng-required="false" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open2()">
                                   <i class="glyphicon glyphicon-calendar"></i>
@@ -79,12 +79,12 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="retTime">Return Time:</label>
-                                    <select class="form-control" id="retTime">
+                                    <select class="form-control" id="retTime" ng-model="ctrl.returnTime">
                                         <option value="1">Any Time</option>
-                                        <option value="1">Morning</option>
-                                        <option value="1">Afternoon</option>
-                                        <option value="1">Evening</option>
-                                        <option value="1">Night</option>
+                                        <option value="2">Morning</option>
+                                        <option value="3">Afternoon</option>
+                                        <option value="4">Evening</option>
+                                        <option value="5">Night</option>
                                     </select>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-4 ">
                                 <div class="form-group">
-                                    <select class="form-control" id="adults">
+                                    <select class="form-control" id="adults" ng-model="ctrl.adultsCount">
                                         <option value="1">1 Adult</option>
                                         <option value="1">2 Adults</option>
                                         <option value="3">3 Adults</option>
@@ -112,7 +112,7 @@
 
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="form-group">
-                                    <select class="form-control" id="children">
+                                    <select class="form-control" id="children" ng-model="ctrl.childrenCount">
                                         <option value="0">0 Children</option>
                                         <option value="1">1 Child</option>
                                         <option value="2">3 Children</option>
@@ -124,7 +124,7 @@
 
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="form-group">
-                                    <select class="form-control" id="infants">
+                                    <select class="form-control" id="infants" ng-model="ctrl.infantsCount">
                                         <option value="0">0 Infant</option>
                                         <option value="1">1 Infants</option>
                                         <option value="2">2 Infants</option>

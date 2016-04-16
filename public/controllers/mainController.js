@@ -1,8 +1,17 @@
 
 swissAir.controller('mainController', function($scope,AirportsSrv,$location,$filter) {
 
+  // Form elements
 
   this.tripType = 2; //initially Round-Trip
+  this.departureTime="1";
+  this.returnTime="1";
+  this.adultsCount = "1";
+  this.childrenCount = "0";
+  this.infantsCount = "0";
+  this.otherAirlines=false;
+  this.searchBy="shedule";
+
   this.selectTripType = function(setTrip){
     this.tripType = setTrip;
   };
@@ -10,11 +19,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
   this.isTripType = function(checkTrip){
     return this.tripType === checkTrip;
   };
-
-
-  this.adultsCount = 1;
-  this.otherAirlines=false;
-  this.searchBy="shedule"
 
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
