@@ -57,10 +57,10 @@
                       </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="roundTripRow" ng-show="ctrl.isTripType(2)">
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <label for="retDate">Return Date: </label>
-                          <p class="input-group" id="retDate" ng-show="ctrl.isTripType(2)">
+                          <p class="input-group" id="retDate">
                               <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return"  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                               <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open2()">
