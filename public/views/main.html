@@ -14,8 +14,8 @@
                 <div class="panel-body">
                   <div class="row">
                   <ul class="nav nav-tabs nav-justified">
-                    <li> <a href>Round Trip</a></li>
-                    <li> <a href>One Way</a></li>
+                    <li> <a ng-click="ctrl.selectTripType(2)" href >Round Trip</a></li>
+                    <li> <a ng-click="ctrl.selectTripType(1)" href>One Way</a></li>
                   </ul>
                   </div>
                     <div class="row">
@@ -41,7 +41,7 @@
                       </div>
 
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                            <p class="input-group">
+                            <p class="input-group" ng-show="ctrl.isTripType(2)">
                                 <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return"  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                 <span class="input-group-btn">
                                   <button type="button" class="btn btn-default" ng-click="open2()">

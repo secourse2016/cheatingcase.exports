@@ -2,6 +2,16 @@
 swissAir.controller('mainController', function($scope,AirportsSrv,$location,$filter) {
 
 
+  this.tripType = 2;
+  this.selectTripType = function(setTrip){
+    this.tripType = setTrip;
+  };
+
+  this.isTripType = function(checkTrip){
+    return this.tripType === checkTrip;
+  };
+
+
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
@@ -69,7 +79,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
     $scope.SearchFlights = function() {
       $location.url('/flights');
     };
-
     /* Get Airports on page render  */
     AirportCodes();
 
