@@ -638,6 +638,7 @@ body {
     #thePlane {
         font-size: 300px;
         color:#ff4d4d;
+        z-index: -10;
     }
 /*}*/
 
@@ -651,3 +652,21 @@ body {
 .searchFormInput{
   margin-top:10px;
 }
+
+.ng-invalid.ng-dirty{
+  border-color: #FA787E;
+}
+
+.ng-submitted .ng-invalid-required{
+  border-color: #FA787E;
+}
+
+/*.input-group .ng-invalid.ng-dirty{
+  border: 1px solid;
+  border-color: #FA787E;
+  border-radius: 4px;
+}*/
+
+/*.ng-valid.ng-dirty{
+  border-color: #80aaff;
+}*/

@@ -11,30 +11,37 @@
         <div class="col-md-5 col-sm-12 col-xs-12">
         <form name= "searchForm" novalidate ng-submit="searchForm.$valid && SearchFlights()" >
             <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
+              <!-- <div class="panel-heading">
+
+              </div> -->
                 <div class="panel-body">
+                  <div class="row">
+                  <ul class="nav nav-tabs">
+                    <li> <a href>Round Trip</a></li>
+                    <li> <a href>One Way</a></li>
+                </div>
+                  </div>
                     <div class="row">
                         <!-- from and to -->
                         <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput">
-                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" required ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From*" required ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12 searchFormInput" >
-                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                         </div>
                     </div>
                     <div class="row searchFormInput">
 
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <p class="input-group">
-                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="false" placeholder="Outbound" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                <span class="input-group-btn">
-                      <button type="button"
-                              class="btn btn-default"
-                              ng-click="open1()">
-                              <i class="glyphicon glyphicon-calendar"></i>
-                     </button>
-                                </span>
-                            </p>
-                        </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                          <p class="input-group">
+                              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="false" placeholder="Departure"  is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open1()">
+                                  <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                              </span>
+                          </p>
+                      </div>
 
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <p class="input-group">
