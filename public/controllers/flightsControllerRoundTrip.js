@@ -3,9 +3,11 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
   $scope.destination = AirportsSrv.getSelectedDestinationAirport();
   $scope.departureDate= new Date(AirportsSrv.getSelectedDepartureDate()).getTime();
   $scope.returnDate = new Date(AirportsSrv.getSelectedReturnDate()).getTime();
-  //$scope.outgoingFlights ;
+  $scope.flights = AirportsSrv.searchFlightsTwoWay($scope.origin,$scope.destination,$scope.departureDate,$scope.returnDate,null);
 
-  //$scope.returnFlights ;
+  $scope.outgoingFlights = $scope.flights.outgoingFlights;
+
+  $scope.returnFlights = $scope.flights.returnFlights;
 
   $scope.findType = function(flight){
     var i = $scope.outgoingFlights.length;
