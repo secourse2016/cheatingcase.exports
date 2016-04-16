@@ -7,6 +7,8 @@ var jwt         = require('jsonwebtoken');
 var db          = require('./db');
 var assert      = require('assert');
 var codes       =  require('./airports.json');
+
+
 require('dotenv').load();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,27 +27,25 @@ app.get('/api/data/airports', function(req, res) {
 
 app.get('/db/seed', function(req, res) {
   db.seed(function(err,seeded){
-    // if(err && (!seeded))
-    //   res.send("Seeding Failed");
-    // else
-    //   res.send("Seeded succesfully");
+
     try{
       assert.equal(null,err);
       assert.equal(true,seeded);
       res.send("Seeded succesfully");
     }
     catch(err){
-      res.send("Seeding Failed");
+      res.send("Seeded Unsuccesfully ");
     }
   });
 });
 
-
-app.get('/db/delete',function(req, res) {
+app.get('/db/delete', function(req, res) {
   db.clearDB(function(){
     res.send("deleted succesfully ");
   });
 });
+
+
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -69,6 +69,90 @@ app.use(function(req, res, next) {
   }
 
 });
+
+
+
+
+app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
+  // retrieve params from req.params.{{origin | departingDate | ...}}
+
+  var query;
+  if(req.params.departingDate == 'any'){
+    if(req.params.class == 'any')
+      query = { origin:req.params.origin,
+                destination:req.params.destination };
+    else
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                class:req.params.class };
+  } else {
+    if(req.params.class == 'any')
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                departureDateTime:req.params.departingDate };
+    else
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                departureDateTime:req.params.departingDate,
+                class:req.params.class };
+  }
+
+
+
+  db.db().collection('flights').find(query).toArray(function(error,flights) {
+    if(error) {
+      console.log(error);
+      process.exit(1);
+    }
+    var result = { 'outgoingFlights':flights };
+    res.send(result);
+  });
+
+  // return this exact format
+});
+
+
+
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+  // retrieve params from req.params.{{origin | departingDate | ...}}
+  // return this exact format
+  var queryOutgoing;
+  var queryReturn;
+  if(req.params.class == 'any') {
+    queryOutgoing = { 'origin':req.params.origin,
+                      'destination':req.params.destination,
+                      'departureDateTime':req.params.departingDate };
+    queryReturn = { 'destination':req.params.origin,
+                    'origin':req.params.destination,
+                    'departureDateTime':req.params.returningDate };
+  }
+  else {
+    queryOutgoing = { 'origin':req.params.origin,
+                      'destination':req.params.destination,
+                      'class':req.params.class,
+                      'departureDateTime':req.params.departingDate };
+    queryReturn = { 'destination':req.params.origin,
+                    'origin':req.params.destination,
+                    'class':req.params.class,
+                    'departureDateTime':req.params.returningDate };
+
+  }
+
+  var outgoingFlights;
+  var returnFlights;
+  var result;
+
+  db.db().collection('flights').find(queryOutgoing).toArray(function(err,data){
+    outgoingFlights = data;
+    db.db().collection('flights').find(queryReturn).toArray(function(err,data){
+      returnFlights = data;
+      result = { "outgoingFlights":  outgoingFlights ,
+                 "returnFlights": returnFlights }
+      res.send(result);
+    });
+  });
+});
+
 
 
 module.exports = app

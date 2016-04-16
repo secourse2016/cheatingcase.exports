@@ -1,6 +1,24 @@
 
 swissAir.controller('mainController', function($scope,AirportsSrv,$location,$filter) {
 
+  // Form elements
+
+  this.tripType = 2; //initially Round-Trip
+  this.departureTime="1";
+  this.returnTime="1";
+  this.adultsCount = "1";
+  this.childrenCount = "0";
+  this.infantsCount = "0";
+  this.otherAirlines=false;
+  this.searchBy="shedule";
+
+  this.selectTripType = function(setTrip){
+    this.tripType = setTrip;
+  };
+
+  this.isTripType = function(checkTrip){
+    return this.tripType === checkTrip;
+  };
 
   /*----------- Angular Bootstrap Datepicker -----------*/
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -67,9 +85,8 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location,$fil
 
     /* Find All Available Flights  */
     $scope.SearchFlights = function() {
-      $location.url('/flights');
+          $location.url('/flights'); //edit to route to round trip or one way
     };
-
     /* Get Airports on page render  */
     AirportCodes();
 
