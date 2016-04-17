@@ -1,4 +1,4 @@
-<div class="container" ng-controller="mainController as ctrl">
+<div class="container" ng-controller="mainController">
     <!-- this is my partial page tokyo -->
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -13,9 +13,9 @@
                     <div class="panel-body">
                         <div class="row">
                             <ul class="nav nav-tabs nav-justified">
-                                <li ng-class="{active: ctrl.isTripType(2)}"> <a ng-click="ctrl.selectTripType(2)" value="roundTrip" href>Round Trip</a>
+                                <li ng-class="{active: isTripType(2)}"> <a ng-click="selectTripType(2)" value="roundTrip" href>Round Trip</a>
                                 </li>
-                                <li ng-class="{active: ctrl.isTripType(1)}"> <a ng-click="ctrl.selectTripType(1)" value="oneWay" href>One Way</a>
+                                <li ng-class="{active: isTripType(1)}"> <a ng-click="selectTripType(1)" value="oneWay" href>One Way</a>
                                 </li>
                             </ul>
                         </div>
@@ -51,7 +51,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="depTime">Departure Time:</label>
-                                    <select class="form-control" id="depTime" ng-model="ctrl.departureTime">
+                                    <select class="form-control" id="depTime" ng-model="departureTime">
                                         <option value="1">Any Time</option>
                                         <option value="2">Morning</option>
                                         <option value="3">Afternoon</option>
@@ -64,11 +64,11 @@
 
                         <!-- Return  -->
 
-                        <div class="row" id="roundTripRow" ng-show="ctrl.isTripType(2)">
+                        <div class="row" id="roundTripRow" ng-show="isTripType(2)">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate">Return Date: </label>
                                 <p class="input-group" id="retDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="ctrl.returnDate" ng-required="false" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open2()">
                                   <i class="glyphicon glyphicon-calendar"></i>
@@ -79,7 +79,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="retTime">Return Time:</label>
-                                    <select class="form-control" id="retTime" ng-model="ctrl.returnTime">
+                                    <select class="form-control" id="retTime" ng-model="returnTime">
                                         <option value="1">Any Time</option>
                                         <option value="2">Morning</option>
                                         <option value="3">Afternoon</option>
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-4 ">
                                 <div class="form-group">
-                                    <select class="form-control" id="adults" ng-model="ctrl.adultsCount">
+                                    <select class="form-control" id="adults" ng-model="adultsCount">
                                         <option value="1">1 Adult</option>
                                         <option value="1">2 Adults</option>
                                         <option value="3">3 Adults</option>
@@ -112,7 +112,7 @@
 
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="form-group">
-                                    <select class="form-control" id="children" ng-model="ctrl.childrenCount">
+                                    <select class="form-control" id="children" ng-model="childrenCount">
                                         <option value="0">0 Children</option>
                                         <option value="1">1 Child</option>
                                         <option value="2">3 Children</option>
@@ -124,7 +124,7 @@
 
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="form-group">
-                                    <select class="form-control" id="infants" ng-model="ctrl.infantsCount">
+                                    <select class="form-control" id="infants" ng-model="infantsCount">
                                         <option value="0">0 Infant</option>
                                         <option value="1">1 Infants</option>
                                         <option value="2">2 Infants</option>
@@ -140,11 +140,11 @@
                                 <label for="searchOptions" style="margin-left: 10px">Search Options :</label>
                                 <div class="col-md-12" id="searchOptions">
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio" value="shedule" ng-model="ctrl.searchBy">Shedule</label>
+                                        <input type="radio" name="optradio" value="schedule" ng-model="searchBy">Schedule</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="optradio" value="price" ng-model="ctrl.searchBy">Price</label>
+                                        <input type="radio" name="optradio" value="price" ng-model="searchBy">Price</label>
                                     <label class="checkbox-inline" id="otherAirlines">
-                                        <input type="checkbox" value="" ng-click="ctrl.otherAirlines=!ctrl.otherAirlines">Search Other Airlines</label>
+                                        <input type="checkbox" value="" ng-click="otherAirlines=!otherAirlines">Search Other Airlines</label>
                                 </div>
                             </div>
                         </div>
