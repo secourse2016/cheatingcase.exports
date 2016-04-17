@@ -12,8 +12,8 @@ var DB = {
     mongodb.connect(dbUrl, function(err, db) {
       myDB = db;
       console.log("initiating DB connection");
-      /*
-      db.createCollection( "flights", {
+
+      /*db.createCollection( "flights", {
          validator: { $and: [
         { flightNumber: { $type: 2 } },
         { aircraftType: { $type: 2 } },
@@ -28,9 +28,9 @@ var DB = {
         { Airline: { $type: 2 } }
       ]
     }
-  });
+  });*/
 
-  db.createCollection( "airports", {
+  /*db.createCollection( "airports", {
      validator: { $and: [
        {iata: {$type: 2} },
        {iso: {$type: 2} },
@@ -43,6 +43,7 @@ var DB = {
   }
   });
   */
+
 
   console.log("Terminating DB connection Process");
   cb(err, db);

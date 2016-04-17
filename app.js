@@ -23,7 +23,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/data/airports', function(req, res) {
-  db.db().collection('airports').find({}).toArray(function(err,airports){
+
+  db.db().collection('airports').find({},{'iata':1}).toArray(function(error,airports){
     res.send(airports);
   });
 });
