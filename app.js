@@ -3,10 +3,11 @@ var app         =   express();
 var fs          =   require('fs');
 var path        =   require('path');
 var bodyParser  =   require('body-parser');
-var jwt         = require('jsonwebtoken');
-var db          = require('./db');
-var assert      = require('assert');
-var codes       =  require('./airports.json');
+var jwt         =   require('jsonwebtoken');
+var db          =   require('./db');
+var assert      =   require('assert');
+var codes       =   require('./airports.json');
+
 
 
 require('dotenv').load();
@@ -47,6 +48,7 @@ app.get('/db/delete', function(req, res) {
 
 
 
+
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
 
@@ -57,7 +59,7 @@ app.use(function(req, res, next) {
   try
   {
     var jwtPayload = jwt.verify(jwtToken, jwtSecret);
-    req.payload = payload;
+    req.payload = jwtPayload;
     next();
   }
   catch (err)
@@ -75,8 +77,9 @@ app.use(function(req, res, next) {
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
   // retrieve params from req.params.{{origin | departingDate | ...}}
-
+  var dayInMillis =   24*60*60*1000;
   var query;
+
   if(req.params.departingDate == 'any'){
     if(req.params.class == 'any')
       query = { origin:req.params.origin,
@@ -89,14 +92,13 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
     if(req.params.class == 'any')
       query = { origin:req.params.origin,
                 destination:req.params.destination,
-                departureDateTime:req.params.departingDate };
+                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
     else
-      query = { origin:req.params.origin,
-                destination:req.params.destination,
-                departureDateTime:req.params.departingDate,
-                class:req.params.class };
+      query = { origin: req.params.origin,
+                destination: req.params.destination,
+                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
+                class: req.params.class };
   }
-
 
 
   db.db().collection('flights').find(query).toArray(function(error,flights) {
@@ -111,31 +113,33 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
   // return this exact format
 });
 
-
-
 app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
   // retrieve params from req.params.{{origin | departingDate | ...}}
   // return this exact format
+  var dayInMillis =   24*60*60*1000;
   var queryOutgoing;
   var queryReturn;
   if(req.params.class == 'any') {
-    queryOutgoing = { 'origin':req.params.origin,
-                      'destination':req.params.destination,
-                      'departureDateTime':req.params.departingDate };
-    queryReturn = { 'destination':req.params.origin,
-                    'origin':req.params.destination,
-                    'departureDateTime':req.params.returningDate };
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'departureDateTime': { $gte: parseInt(req.params.departingDate),
+                        $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'departureDateTime': { $gte: parseInt(req.params.returningDate),
+                      $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
   }
   else {
-    queryOutgoing = { 'origin':req.params.origin,
-                      'destination':req.params.destination,
-                      'class':req.params.class,
-                      'departureDateTime':req.params.departingDate };
-    queryReturn = { 'destination':req.params.origin,
-                    'origin':req.params.destination,
-                    'class':req.params.class,
-                    'departureDateTime':req.params.returningDate };
-
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'class': req.params.class,
+                      'departureDateTime':  { $gte: parseInt(req.params.departingDate),
+                        $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'class': req.params.class,
+                    'departureDateTime': { $gte: parseInt(req.params.returningDate),
+                      $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
   }
 
   var outgoingFlights;
@@ -152,7 +156,5 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     });
   });
 });
-
-
 
 module.exports = app
