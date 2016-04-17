@@ -23,7 +23,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/data/airports', function(req, res) {
-  res.json( codes );
+
+  db.db().collection('airports').find({},{'iata':1}).toArray(function(error,airports){
+    console.log(airports);
+    res.send(airports);
+  });
 });
 
 app.get('/db/seed', function(req, res) {
