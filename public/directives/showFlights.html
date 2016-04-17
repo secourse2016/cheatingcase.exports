@@ -4,13 +4,11 @@
       <h4 class="panel-title">
         <button class="btn {{type}}" data-toggle="collapse"
         data-target="#collapse{{type}}{{index}}">
-          From: {{flight.origin}} --> To: {{flight.destination}}</button>
+          Flight Number: {{flight.flightNumber}} <--> Cost: {{flight.cost|currency}}</button>
         </h4>
       </div>
       <div id="collapse{{type}}{{index}}" class="panel-collapse collapse">
         <div class="panel-body">
-
-
           <div class="row">
             <div class="col-sm-6"><div class="alert alert-info">From: {{ flight.origin }}</div></div>
             <div class="col-sm-6"><div class="alert alert-info">To: {{ flight.destination }}</div></div>
@@ -18,14 +16,22 @@
 
           <div class="row">
             <div class="col-sm-6"><div class="alert alert-info">Flight Number: {{ flight.flightNumber }}</div></div>
-            <div class="col-sm-6"><div class="alert alert-info">Aircraft: {{ flight.aircraft }}</div></div>
+            <div class="col-sm-6"><div class="alert alert-info">Aircraft: {{ flight.aircraftType }}
+              {{ flight.aircraftModel}}</div></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6"><div class="alert alert-info">Departure Time: {{flight.departureDateTime|date:'medium'}} </div></div>
+            <div class="col-sm-6"><div class="alert alert-info">
+              Arrival Time: {{flight.arrivalDateTime|date:'medium'}}</div></div>
           </div>
 
           <div class="row">
-            <div class="col-sm-6"><div class="alert alert-info">Departure Time: 15</div></div>
-            <div class="col-sm-6"><div class="alert alert-info">Arrival Time: 20</div></div>
+            <div class="col-sm-6"><div class="alert alert-info">Airline: {{ flight.Airline }}</div></div>
+            <div class="col-sm-6"><div class="alert alert-info">Class: {{ flight.class }}</div>
+          </div>
           </div>
 
+<!-- needed in main>
 <div class="row">
   <div class="col-sm-9 col-md-9">
   <label for="classes">Select class: </label>
@@ -59,10 +65,11 @@
       <br>
     </div>
 </div>
+</!-->
           <div class="row">
             <div class="col-sm-12">
               <div class="alert alert-success">
-                <h2>Cost: 20 EGP.</h2>
+                <h2>Cost: {{flight.cost|currency}}</h2>
               </div>
             </div>
           </div>
