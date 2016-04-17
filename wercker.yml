@@ -11,6 +11,6 @@ deploy:
       - add-to-known_hosts:
          hostname: $HOST
    - script:
-         name: clone or pull then start
+         name: server update
          code: |
             ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $USER@$HOST APP=$APP REPO_URL=$REPO_URL ./update_server.sh
