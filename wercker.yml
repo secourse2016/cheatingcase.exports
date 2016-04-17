@@ -1,17 +1,17 @@
 box: node
 build:
-   steps:
-      - npm-install
-      - npm-test
+  steps:
+    - npm-install
+    - npm-test
 
 deploy:
-   aws:
-      - add-ssh-key:
-         keyname: $SSH_KEY
-         host: $HOST
-      - add-to-known_hosts:
-         hostname: $HOST
-   - script:
-         name: clone or pull then start
-         code: |
+  aws:
+    - add-ssh-key:
+        keyname: SSH_KEY
+        host: $HOST
+    - add-to-known_hosts:
+        hostname: $HOST
+  - script:
+        name: clone or pull then start
+        code: |
             ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $USER@$HOST APP=$APP REPO_URL=$REPO_URL ./update_server.sh
