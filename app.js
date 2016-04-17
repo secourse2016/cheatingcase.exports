@@ -6,7 +6,7 @@ var bodyParser  =   require('body-parser');
 var jwt         =   require('jsonwebtoken');
 var db          =   require('./db');
 var assert      =   require('assert');
-var codes       =   require('./airports.json');
+
 
 
 
@@ -23,7 +23,9 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/data/airports', function(req, res) {
-  res.json( codes );
+  db.db().collection('airports').find({}).toArray(function(err,airports){
+    res.send(airports);
+  });
 });
 
 app.get('/db/seed', function(req, res) {
