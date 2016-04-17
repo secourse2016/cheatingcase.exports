@@ -8,7 +8,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.returnTime="1";
   $scope.adultsCount = "1";
   $scope.childrenCount = "0";
-  $scope.infantsCount = "0";
+  $scope.class = "0";
   $scope.otherAirlines=false;
   $scope.searchBy="schedule";
 
@@ -87,8 +87,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
     $scope.SearchFlights = function() {
       if($scope.tripType == 2)
         $location.url('/flightsRoundTrip'); // edit to route to round trip or one way
+        //Append /:$scope.class to url flightsRoundTrip as query after you do the rout editing
       else
         $location.url('/flightsOneWay'); // Who implements the view must abide to this naming convention
+        //Append /:$scope.class to url flightsOneWay as query after you do the rout editing
     };
     /* Get Airports on page render  */
     AirportCodes();
