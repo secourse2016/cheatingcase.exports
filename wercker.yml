@@ -7,7 +7,7 @@ build:
 deploy:
    aws:
       - add-ssh-key:
-         keyname: SSH_KEY
+         keyname: $SSH_KEY
          host: $HOST
       - add-to-known_hosts:
          hostname: $HOST
