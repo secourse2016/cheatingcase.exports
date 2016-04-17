@@ -3,11 +3,11 @@ var app         =   express();
 var fs          =   require('fs');
 var path        =   require('path');
 var bodyParser  =   require('body-parser');
-var jwt         = require('jsonwebtoken');
-var db          = require('./db');
-var assert      = require('assert');
-var codes       =  require('./airports.json');
-var dayInMillis = 24*60*60*1000;
+var jwt         =   require('jsonwebtoken');
+var db          =   require('./db');
+var assert      =   require('assert');
+var codes       =   require('./airports.json');
+var dayInMillis =   24*60*60*1000;
 
 
 require('dotenv').load();
@@ -128,11 +128,11 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
     if(req.params.class == 'any')
       query = { origin:req.params.origin,
                 destination:req.params.destination,
-                departureDateTime: { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) } };
+                departureDateTime: { $gte: req.params.departingDate, $lt: (req.params.departingDate + dayInMillis) } };
     else
       query = { origin: req.params.origin,
                 destination: req.params.destination,
-                departureDateTime: { $gte: req.params.departingDate, $ls: (req.params.departingDate + dayInMillis) },
+                departureDateTime: { $gte: req.params.departingDate, $lt: (req.params.departingDate + dayInMillis) },
                 class: req.params.class };
   }
 
@@ -149,11 +149,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
 
   // return this exact format
 });
-
-
-
-
-
 
 
 module.exports = app
