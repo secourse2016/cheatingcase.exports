@@ -47,6 +47,72 @@ app.get('/db/delete', function(req, res) {
 });
 
 
+
+
+// Middleware Function for securing routes using JWT
+app.use(function(req, res, next) {
+
+  var jwtToken = req.headers['x-access-token'];
+  console.log("Token received !! ", jwtToken);
+
+  var jwtSecret = process.env.JWTSECRET;
+  try
+  {
+    var jwtPayload = jwt.verify(jwtToken, jwtSecret);
+    req.payload = jwtPayload;
+    next();
+  }
+  catch (err)
+  {
+    console.error('JWT Error : ', err);
+    fs.readFile(__dirname + '/public/Error403.html', 'utf8', function(err, text){
+      res.status(403).send(text);
+    });
+  }
+
+});
+
+
+
+
+app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
+  // retrieve params from req.params.{{origin | departingDate | ...}}
+  var dayInMillis =   24*60*60*1000;
+  var query;
+
+  if(req.params.departingDate == 'any'){
+    if(req.params.class == 'any')
+      query = { origin:req.params.origin,
+                destination:req.params.destination };
+    else
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                class:req.params.class };
+  } else {
+    if(req.params.class == 'any')
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+    else
+      query = { origin: req.params.origin,
+                destination: req.params.destination,
+                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
+                class: req.params.class };
+  }
+
+
+  db.db().collection('flights').find(query).toArray(function(error,flights) {
+    if(error) {
+      console.log(error);
+      process.exit(1);
+    }
+    var result = { 'outgoingFlights':flights };
+    res.send(result);
+  });
+
+  // return this exact format
+});
+
 app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
   // retrieve params from req.params.{{origin | departingDate | ...}}
   // return this exact format
@@ -90,70 +156,5 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     });
   });
 });
-
-// Middleware Function for securing routes using JWT
-app.use(function(req, res, next) {
-
-  var jwtToken = req.headers['x-access-token'];
-  console.log("Token received !! ", jwtToken);
-
-  var jwtSecret = process.env.JWTSECRET;
-  try
-  {
-    var jwtPayload = jwt.verify(jwtToken, jwtSecret);
-    req.payload = jwtPayload;
-    next();
-  }
-  catch (err)
-  {
-    console.error('JWT Error : ', err);
-    fs.readFile(__dirname + '/public/Error403.html', 'utf8', function(err, text){
-      res.status(403).send(text);
-    });
-  }
-
-});
-
-
-
-
-app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
-  // retrieve params from req.params.{{origin | departingDate | ...}}
-
-  var query;
-  if(req.params.departingDate == 'any'){
-    if(req.params.class == 'any')
-      query = { origin:req.params.origin,
-                destination:req.params.destination };
-    else
-      query = { origin:req.params.origin,
-                destination:req.params.destination,
-                class:req.params.class };
-  } else {
-    if(req.params.class == 'any')
-      query = { origin:req.params.origin,
-                destination:req.params.destination,
-                departureDateTime: { $gte: req.params.departingDate, $lt: (req.params.departingDate + dayInMillis) } };
-    else
-      query = { origin: req.params.origin,
-                destination: req.params.destination,
-                departureDateTime: { $gte: req.params.departingDate, $lt: (req.params.departingDate + dayInMillis) },
-                class: req.params.class };
-  }
-
-
-
-  db.db().collection('flights').find(query).toArray(function(error,flights) {
-    if(error) {
-      console.log(error);
-      process.exit(1);
-    }
-    var result = { 'outgoingFlights':flights };
-    res.send(result);
-  });
-
-  // return this exact format
-});
-
 
 module.exports = app

@@ -9,6 +9,9 @@ swissAir.config(function ($routeProvider) {
     .when('/flightsRoundTrip', {
       templateUrl: 'views/flightsRoundTrip.html',
       controller: 'flightsControllerRoundTrip'
+    }).when('/flightsOneWay', {
+      templateUrl: 'views/flightsOneWay.html',
+      controller: 'flightsOneWayController'
     })
     .when('/flights/pay', {
       templateUrl: 'views/payment.html',
