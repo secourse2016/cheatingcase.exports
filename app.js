@@ -101,7 +101,7 @@ app.use(function(req, res, next) {
   try
   {
     var jwtPayload = jwt.verify(jwtToken, jwtSecret);
-    req.payload = payload;
+    req.payload = jwtPayload;
     next();
   }
   catch (err)
