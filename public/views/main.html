@@ -93,6 +93,16 @@
                         <!-- Number of Passengers -->
 
                         <div class="row">
+
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                          <div class="form-group">
+                              <select class="form-control" id="flightClass" ng-model="class">
+                                <option value="0">Economy</option>
+                                <option value="1">Business</option>
+                              </select>
+                          </div>
+                        </div>
+
                             <div class="col-md-4 col-sm-4 col-xs-4 ">
                                 <div class="form-group">
                                     <select class="form-control" id="adults" ng-model="adultsCount">
@@ -118,16 +128,6 @@
                                         <option value="2">3 Children</option>
                                         <option value="3">4 Children</option>
                                         <option value="4">5 Children</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <div class="form-group">
-                                    <select class="form-control" id="infants" ng-model="infantsCount">
-                                        <option value="0">0 Infant</option>
-                                        <option value="1">1 Infants</option>
-                                        <option value="2">2 Infants</option>
                                     </select>
                                 </div>
                             </div>
