@@ -23,12 +23,12 @@
                             <!-- from and to -->
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="originAirports">Select Origin: </label>
-                                <input name="originAirports" id="originAirports" type="text" placeholder="Flying From*" required ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                                <input name="originAirports" id="originAirports" type="text" autocomplete="off" placeholder="Flying From*" required ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                                 <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="destinationAirports">Select Destination: </label>
-                                <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                                <input name="destinationAirports" id="destinationAirports" type="text" autocomplete="off" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                                 <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="depDate">Departure Date: </label>
                                 <p class="input-group" id="depDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="false" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="true" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" >
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()">
                                   <i class="glyphicon glyphicon-calendar"></i>
@@ -68,7 +68,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate">Return Date: </label>
                                 <p class="input-group" id="retDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="true" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptionsReturn" ng-required="true" close-text="Close" >
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open2()">
                                   <i class="glyphicon glyphicon-calendar"></i>

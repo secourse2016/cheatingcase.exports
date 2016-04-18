@@ -74,17 +74,20 @@ app.get('/db/seed', function(req, res) {
     try{
       assert.equal(null,err);
       assert.equal(true,seeded);
-      res.send("Seeded succesfully");
+      res.send("db is seeded succesfully");
     }
     catch(err){
-      res.send("Seeded Unsuccesfully ");
+      res.send("db seeding failed !! ");
     }
   });
 });
 
 app.get('/db/delete', function(req, res) {
   db.clearDB(function(){
-    res.send("deleted succesfully ");
+    db.seed(function(err,seeded){
+      res.send("db is deleted but do not worry reseeded again !!");
+    });
+
   });
 });
 
