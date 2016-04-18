@@ -55,6 +55,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
+});
+
 app.get('/', function(req, res) {
   fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text){
     res.send(text);
@@ -206,5 +212,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     });
   });
 });
+
 
 module.exports = app
