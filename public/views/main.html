@@ -1,4 +1,3 @@
-
 <div class="container" ng-controller="mainController">
     <!-- this is my partial page tokyo -->
     <div class="row">
@@ -8,67 +7,169 @@
         </div>
     </div>
     <div class="row text-center">
-        <div class="col-md-5 col-sm-12 col-xs-12">
-            <!-- <div class="panel panel-default wow fadeInDown" data-wow-offset="200">
-                            <h4 class="fly-heading">Feed your wanderlust</h4>
-                        </div> -->
-            <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
-                <div class="panel-body">
-                    <div class="row">
-                        <!-- from and to -->
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="originAirports" id="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form name="searchForm" novalidate ng-submit="searchForm.$valid && SearchFlights()">
+                <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
+                    <div class="panel-body">
+                        <div class="row">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li ng-class="{active: isTripType(2)}"> <a ng-click="selectTripType(2)" value="roundTrip" href>Round Trip</a>
+                                </li>
+                                <li ng-class="{active: isTripType(1)}"> <a ng-click="selectTripType(1)" value="oneWay" href>One Way</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To" ng-model="selectedDestination" uib-typeahead="airport.name for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:10px">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <p class="input-group">
-                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" placeholder="Outbound" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                <span class="input-group-btn">
-                      <button type="button"
-                              class="btn btn-default"
-                              ng-click="open1()">
-                              <i class="glyphicon glyphicon-calendar"></i>
-                     </button
-                    </span>
-                            </p>
+                        <div class="row searchFormInput">
+                            <!-- from and to -->
+                            <div class="col-md-6 col-sm-12 col-xs-12 ">
+                                <label for="originAirports">Select Origin: </label>
+                                <input name="originAirports" id="originAirports" type="text" placeholder="Flying From*" required ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
+                                <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 ">
+                                <label for="destinationAirports">Select Destination: </label>
+                                <input name="destinationAirports" id="destinationAirports" type="text" placeholder="Flying To*" required ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
+                                <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
+                            </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <p class="input-group">
-                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                                <span class="input-group-btn">
-                                  <button type="button" class="btn btn-default" ng-click="open2()">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                  </button>
-                                </span>
-                            </p>
+                        <!-- Departure -->
+
+                        <div class="row searchFormInput">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="depDate">Departure Date: </label>
+                                <p class="input-group" id="depDate">
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="false" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open1()">
+                                  <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                              </span>
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="depTime">Departure Time:</label>
+                                    <select class="form-control" id="depTime" ng-model="departureTime">
+                                        <option value="1">Any Time</option>
+                                        <option value="2">Morning</option>
+                                        <option value="3">Afternoon</option>
+                                        <option value="4">Evening</option>
+                                        <option value="5">Night</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Return  -->
+
+                        <div class="row" id="roundTripRow" ng-show="isTripType(2)">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="retDate">Return Date: </label>
+                                <p class="input-group" id="retDate">
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="false" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open2()">
+                                  <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                              </span>
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="retTime">Return Time:</label>
+                                    <select class="form-control" id="retTime" ng-model="returnTime">
+                                        <option value="1">Any Time</option>
+                                        <option value="2">Morning</option>
+                                        <option value="3">Afternoon</option>
+                                        <option value="4">Evening</option>
+                                        <option value="5">Night</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Number of Passengers -->
+
+                        <div class="row">
+
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                          <div class="form-group">
+                              <select class="form-control" id="flightClass" ng-model="class">
+                                <option value="0">Economy</option>
+                                <option value="1">Business</option>
+                              </select>
+                          </div>
+                        </div>
+
+                            <div class="col-md-4 col-sm-4 col-xs-4 ">
+                                <div class="form-group">
+                                    <select class="form-control" id="adults" ng-model="adultsCount">
+                                        <option value="1">1 Adult</option>
+                                        <option value="1">2 Adults</option>
+                                        <option value="3">3 Adults</option>
+                                        <option value="4">4 Adults</option>
+                                        <option value="5">5 Adults</option>
+                                        <option value="6">6 Adults</option>
+                                        <option value="7">7 Adults</option>
+                                        <option value="8">8 Adults</option>
+                                        <option value="9">9 Adults</option>
+                                        <option value="10">10 Adults</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="form-group">
+                                    <select class="form-control" id="children" ng-model="childrenCount">
+                                        <option value="0">0 Children</option>
+                                        <option value="1">1 Child</option>
+                                        <option value="2">3 Children</option>
+                                        <option value="3">4 Children</option>
+                                        <option value="4">5 Children</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Options -->
+
+                        <div class="row " id="searchOptionsRow">
+                            <div class="col-md-12 text-left ">
+                                <label for="searchOptions" style="margin-left: 10px">Search Options :</label>
+                                <div class="col-md-12" id="searchOptions">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" value="schedule" ng-model="searchBy">Schedule</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" value="price" ng-model="searchBy">Price</label>
+                                    <label class="checkbox-inline" id="otherAirlines">
+                                        <input type="checkbox" value="" ng-click="otherAirlines=!otherAirlines">Search Other Airlines</label>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
+
+                    <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
+                        <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
+                    </div>
                 </div>
-                <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-xl btn-md" id='btnSearch' ng-click='SearchFlights()'>Search Flights</button>
-                </div>
+        </form>
+        </div>
+
+    <!-- Animated Glymphs -->
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <i class="fa fa-plane fa-inverse wow slideInLeft" data-wow-offset="200" id="theGlobe"></i>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <i class="fa fa-globe fa-inverse wow slideInRight" data-wow-offset="200" id="thePlane"></i>
             </div>
         </div>
-        <div class="col-md-7 col-sm-12 col-xs-12">
-            <div class="row">
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <!-- <span class="fa-stack "> -->
-                    <i class="fa fa-plane fa-inverse wow slideInLeft" data-wow-offset="200" id="theGlobe"></i>
-                    <!-- </span> -->
-                </div>
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <!-- <span class="fa-stack "> -->
-                    <i class="fa fa-globe fa-inverse wow slideInRight" data-wow-offset="200" id="thePlane"></i>
-                    <!-- </span> -->
-                </div>
-            </div>
-        </div>
-
     </div>
+
+</div>
 </div>
