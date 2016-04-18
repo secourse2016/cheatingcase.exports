@@ -100,51 +100,7 @@ app.use(function(req, res, next) {
 });
 
 
-<<<<<<< HEAD
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 5369803a50c588341079d290dd857d5d7e29d4fc
 
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
