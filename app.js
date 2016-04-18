@@ -1,6 +1,7 @@
 var express     =   require('express');
 var app         =   express();
 var fs          =   require('fs');
+var b = 'CAI';
 var path        =   require('path');
 var bodyParser  =   require('body-parser');
 var jwt         =   require('jsonwebtoken');
@@ -49,6 +50,29 @@ app.get('/db/delete', function(req, res) {
   });
 });
 
+app.get('/api/flights/search/:origin', function(req, res) {
+        // retrieve params from req.params.{{origin | departingDate | ...}}
+        var query = {origin :req.params.origin
+      };
+      //var query = {origin: req.params.b};
+        db.db().collection('flights').find(query).toArray(function(error,f)
+          {
+            if(error)
+      
+  {
+    console.log(error);
+    process.exit(1);
+
+  }
+  var fr =f;
+  var result = { 'outgoingFlights': fr};
+          res.send( result);
+          });
+        // return this exact format
+
+
+});
+
 
 
 
@@ -76,6 +100,51 @@ app.use(function(req, res, next) {
 });
 
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+>>>>>>> 5369803a50c588341079d290dd857d5d7e29d4fc
 
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
