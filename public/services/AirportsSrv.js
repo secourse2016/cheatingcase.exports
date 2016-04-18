@@ -24,6 +24,12 @@ swissAir.factory('AirportsSrv', function ($http) {
          },
 
 
+         getOtherAirlines: function(){
+           return this.otherAirlines;
+         },
+         setOtherAirlines: function(value){
+            this.otherAirlines=value;
+         },
          getSelectedDepartureDate: function(){
            return this.selectedDepartureDate;
          },
