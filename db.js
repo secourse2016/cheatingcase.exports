@@ -13,13 +13,13 @@ var DB = {
       myDB = db;
       console.log("initiating DB connection");
 
-      /*db.createCollection( "flights", {
+      db.createCollection( "flights", {
          validator: { $and: [
         { flightNumber: { $type: 2 } },
         { aircraftType: { $type: 2 } },
         { aircraftModel: { $type: 'number' } },
-        { departureDateTime: { $type: 2 } }, //string for now change to 17 stamp or 9 date later
-        { arrivalDateTime: { $type: 2 } }, //string for now change to 17 stamp or 9 date later
+        { departureDateTime: { $type: 'number' } }, //string for now change to 17 stamp or 9 date later
+        { arrivalDateTime: { $type: 'number' } }, //string for now change to 17 stamp or 9 date later
         { origin: { $type: 2 } },
         { destination: { $type: 2 } },
         { cost: { $type: 'number' } },
@@ -28,21 +28,35 @@ var DB = {
         { Airline: { $type: 2 } }
       ]
     }
-  });*/
+  });
 
-  /*db.createCollection( "airports", {
+  db.createCollection( "airports", {
      validator: { $and: [
-       {iata: {$type: 2} },
-       {iso: {$type: 2} },
-       {status: {$type: 'number'} },
-       {name: {$type: 2} },
-       {continent: {$type: 2} },
-       {continent: {$type: 2} }
+       {iata: {$type: 'string'} },
+       {iso: {$type: 'string'} },
+       {status: {$type: 'number'}},
+       {continent: {$type: 'string'}} ,
+       {type : {$type:'string'}}
   ]
   //care to add smth? WARNING mentioning it here means it is required or val error thrown
   }
   });
-  */
+
+  db.createCollection( "bookings", {
+     validator: { $and: [
+       {firstName: {$type: 'string'} },
+       {lastName: {$type: 'string'} },
+       {passport: {$type: 'string'}},
+       {issueDate: {$type: 'number'}} ,
+       {expiryDate: {$type:'number'}},
+       {receipt_number: {$type: 'string'} },
+       {flightNumber: {$type: 'string'} },
+       {flightDate: {$type: 'number'}},
+       {bookingRefNumber: {$type:'string'}}
+  ]
+  //care to add smth? WARNING mentioning it here means it is required or val error thrown
+  }
+  });
 
 
   console.log("Terminating DB connection Process");
