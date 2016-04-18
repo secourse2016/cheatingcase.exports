@@ -49,33 +49,87 @@ app.get('/db/delete', function(req, res) {
   });
 });
 
+app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
+  // retrieve params from req.params.{{origin | departingDate | ...}}
+  var dayInMillis =   24*60*60*1000;
+  var query;
 
-
-
-// Middleware Function for securing routes using JWT
-app.use(function(req, res, next) {
-
-  var jwtToken = req.headers['x-access-token'];
-  console.log("Token received !! ", jwtToken);
-
-  var jwtSecret = process.env.JWTSECRET;
-  try
-  {
-    var jwtPayload = jwt.verify(jwtToken, jwtSecret);
-    req.payload = jwtPayload;
-    next();
+  if(req.params.departingDate == 'any'){
+    if(req.params.class == 'any')
+      query = { origin:req.params.origin,
+                destination:req.params.destination };
+    else
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                class:req.params.class };
+  } else {
+    if(req.params.class == 'any')
+      query = { origin:req.params.origin,
+                destination:req.params.destination,
+                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+    else
+      query = { origin: req.params.origin,
+                destination: req.params.destination,
+                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
+                class: req.params.class };
   }
-  catch (err)
-  {
-    console.error('JWT Error : ', err);
-    fs.readFile(__dirname + '/public/Error403.html', 'utf8', function(err, text){
-      res.status(403).send(text);
-    });
-  }
 
+
+  db.db().collection('flights').find(query).toArray(function(error,flights) {
+    if(error) {
+      console.log(error);
+      process.exit(1);
+    }
+    var result = { 'outgoingFlights':flights };
+    res.send(result);
+  });
+
+  // return this exact format
 });
 
+app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+  // retrieve params from req.params.{{origin | departingDate | ...}}
+  // return this exact format
+  var dayInMillis =   24*60*60*1000;
+  var queryOutgoing;
+  var queryReturn;
+  if(req.params.class == 'any') {
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'departureDateTime': { $gte: parseInt(req.params.departingDate),
+                        $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'departureDateTime': { $gte: parseInt(req.params.returningDate),
+                      $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
+  }
+  else {
+    queryOutgoing = { 'origin': req.params.origin,
+                      'destination': req.params.destination,
+                      'class': req.params.class,
+                      'departureDateTime':  { $gte: parseInt(req.params.departingDate),
+                        $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+    queryReturn = { 'destination': req.params.origin,
+                    'origin': req.params.destination,
+                    'class': req.params.class,
+                    'departureDateTime': { $gte: parseInt(req.params.returningDate),
+                      $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
+  }
 
+  var outgoingFlights;
+  var returnFlights;
+  var result;
+
+  db.db().collection('flights').find(queryOutgoing).toArray(function(err,data){
+    outgoingFlights = data;
+    db.db().collection('flights').find(queryReturn).toArray(function(err,data){
+      returnFlights = data;
+      result = { "outgoingFlights":  outgoingFlights ,
+                 "returnFlights": returnFlights }
+      res.send(result);
+    });
+  });
+});
 
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
@@ -159,5 +213,52 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     });
   });
 });
+// Middleware Function for securing routes using JWT
+app.use(function(req, res, next) {
+
+  var jwtToken = req.headers['x-access-token'];
+  console.log("Token received !! ", jwtToken);
+
+  var jwtSecret = process.env.JWTSECRET;
+  try
+  {
+    var jwtPayload = jwt.verify(jwtToken, jwtSecret);
+    req.payload = jwtPayload;
+    next();
+  }
+  catch (err)
+  {
+    console.error('JWT Error : ', err);
+    fs.readFile(__dirname + '/public/Error403.html', 'utf8', function(err, text){
+      res.status(403).send(text);
+    });
+  }
+
+});
+
+app.get('/db/bookings/:firstName/:lastName/:email/:passport/:issueDate/:expiryDate/:receipt_number/:flightNumber/:flightDate/:bookingRefNumber', function(req, res) {
+  var query = { firstName:req.params.firstName,
+                lastName:req.params.lastName,
+                email:req.params.email,
+                passport:req.params.passport,
+                issueDate:req.params.issueDate,
+                expiryDate:req.params.expiryDate,
+                receipt_number:req.params.receipt_number,
+                flightNumber:req.params.flightNumber,
+                flightDate:req.params.flightDate,
+                bookingRefNumber:req.params.bookingRefNumber };
+  db.db().collection('bookings').insert(query,function (err) {
+    if(err)
+    res.send("some data are mistyped or missing");
+    else {
+      res.send("booking made successfully");
+    }
+
+  });
+
+});
+
+
+
 
 module.exports = app

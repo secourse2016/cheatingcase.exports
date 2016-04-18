@@ -12,7 +12,13 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
     return "btn-info";
   };
 
+<<<<<<< HEAD
   $scope.pay = function() {
+=======
+  $scope.pay = function(index,type) {
+    AirportsSrv.setDisplayedFlightDate($scope.outgoingFlights[index].departureDateTime);
+    AirportsSrv.setDisplayedFlightNumber($scope.outgoingFlights[index].flightNumber);
+>>>>>>> scrumBranch
     $location.url('/flights/pay');
   };
 });

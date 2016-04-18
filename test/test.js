@@ -10,52 +10,19 @@ var http = require('http');
 
    var getdataFromDB = function getdataFromDB(cb) 
  {
- 	
- 	database.get('mydata').find({},{},function(err,flightsandairports)
- 	{
- 		if (err)
- 		{
- 			cb(err,null);
- 		}
- 		else
- 		{
- 			cb(null,flightsandairports);
- 		}
- 	});
+  
+  database.get('mydata').find({},{},function(err,flightsandairports)
+  {
+    if (err)
+    {
+      cb(err,null);
+    }
+    else
+    {
+      cb(null,flightsandairports);
+    }
+  });
  }
- var connectToServer = database.connect(function(err,db){
-assert.equal(null,err);
-console.log("connected to DB");
-database.clearDB(function(){
-  database.seed(function(err,seeded){
-    if(err) console.log("there is error after seed " + err);
-    console.log("after Seed");
-    app.listen(process.env.PORT, function(){
-      console.log("App listening on port 3000 for http connections");
-    });
-  });
-});
-
-});
- var options = {
-  host: 'www.swiss-air.me',
-  path: '/api/flights/search/CAI/JED/1460331360000/economy'
-};
-var result ={"outgoingFlights":[{"_id":"5714f42b5c96c70314f9485f","flightNumber":"SE9600","aircraftType":"Airbus ","aircraftModel":133,"departureDateTime":1460331360000,"arrivalDateTime":1460339160000,"origin":"CAI","destination":"JED","cost":539,"currency":"USD","class":"economy","Airline":"Singapore Airlines"}]};
- var callback = function(response) {
-  var str = '';
-
-  //another chunk of data has been recieved, so append it to `str`
-  response.on('data', function (chunk) {
-    str += chunk;
-    response.on('end', function () {
-    assert.equal(str,result);
-    done();
-  });
-  });
-}
-
-
 
 before(function(done) {
      // use this after you have completed the connect function
@@ -71,7 +38,7 @@ before(function(done) {
 
 
 
- 	it('should populate the db if db is empty returning true', function(done) {
+  it('should populate the db if db is empty returning true', function(done) {
       database.clearDB(function(){
          database.seed(function(err,seeded){
            assert.equal(seeded,true);
@@ -94,12 +61,26 @@ it('should not seed db again if db is not empty returning false in the callback'
 });
  // testing oneWaytrip
 describe("oneWayTrip",function(){
-	 it('should return oneWayTrip specific flight', function(done) {
+   it('should return oneWayTrip specific flight', function(done) {
      request(app).get('/api/flights/search/CAI/JED/1460331360000/economy').expect(200).end(function(err, res) {
         if (err) return done(err);
         var flight=JSON.parse(res.text).outgoingFlights[0];
         assert.deepEqual({"outgoingFlights":[{"flightNumber":flight.flightNumber,"aircraftType":flight.aircraftType,"aircraftModel":flight.aircraftModel,"departureDateTime":flight.departureDateTime,"arrivalDateTime":flight.arrivalDateTime,"origin":flight.origin,"destination":flight.destination,"cost":flight.cost,"currency":flight.currency,"class":flight.class,"Airline":flight.Airline}]}
-        	,{"outgoingFlights":[{"flightNumber":"SE9600","aircraftType":"Airbus ","aircraftModel":133,"departureDateTime":1460331360000,"arrivalDateTime":1460339160000,"origin":"CAI","destination":"JED","cost":539,"currency":"USD","class":"economy","Airline":"Singapore Airlines"}]});
+          ,{"outgoingFlights":[{"flightNumber":"SE9600","aircraftType":"Airbus ","aircraftModel":133,"departureDateTime":1460331360000,"arrivalDateTime":1460339160000,"origin":"CAI","destination":"JED","cost":539,"currency":"USD","class":"economy","Airline":"Singapore Airlines"}]});
+        done();
+      });
+  });
+});
+
+//testing twoWayTrip
+describe("oneWayTrip",function(){
+   it('should return twoWayTrip specific flights', function(done) {
+     request(app).get('/api/flights/search/CAI/JED/1460331360000/1460334960000').expect(200).end(function(err, res) {
+        if (err) return done(err);
+        var flight1=JSON.parse(res.text).outgoingFlights[0];
+        var flight2=JSON.parse(res.text).returningFlights[0];
+        assert.deepEqual({"outgoingFlights":[{"flightNumber":flight1.flightNumber,"aircraftType":flight1.aircraftType,"aircraftModel":flight1.aircraftModel,"departureDateTime":flight1.departureDateTime,"arrivalDateTime":flight1.arrivalDateTime,"origin":flight1.origin,"destination":flight1.destination,"cost":flight1.cost,"currency":flight1.currency,"class":flight1.class,"Airline":flight1.Airline}],"returningFlights":[{"flightNumber":flight2.flightNumber,"aircraftType":flight2.aircraftType,"aircraftModel":flight2.aircraftModel,"departureDateTime":flight2.departureDateTime,"arrivalDateTime":flight2.arrivalDateTime,"origin":flight2.origin,"destination":flight2.destination,"cost":flight2.cost,"currency":flight2.currency,"class":flight2.class,"Airline":flight2.Airline}]}
+          ,{"outgoingFlights":[{"flightNumber":"SE9600","aircraftType":"Airbus ","aircraftModel":133,"departureDateTime":1460331360000,"arrivalDateTime":1460339160000,"origin":"CAI","destination":"JED","cost":539,"currency":"USD","class":"economy","Airline":"Singapore Airlines"}],"returningFlights":[{"flightNumber": "GA5185","aircraftType": "Boeing ","aircraftModel": 438,"departureDateTime": 1460334960000,"arrivalDateTime": 1460342760000,"origin": "JED","destination": "CAI","cost": 837,"currency": "USD","class": "first class","Airline": "Etihad Airways"}]});
         done();
       });
   });

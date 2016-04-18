@@ -1,175 +1,161 @@
 <div ng-controller="paymentController" >
-    <div class="content-section-a" >
 
-        <div class="container">
-            <div class="row">
+    <div class="container">
+      <div class="row">
 
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <div class="col-lg-7 ">
-                    <img class="img-responsive" src="/img/payment/new.jpg" alt="">
-                </div>
-                <div class="col-lg-5 ">
-        <div class="row centered-form" style="margin-top:20px">
-        <div class="col-sm-11">
-            <div class="panel panel-default">
+        <hr class="section-heading-spacer">
+        <div class="clearfix"></div>
+
+        <div class="col-lg-6">
+          <div class="row centered-form" >
+            <div class="col-sm-11">
+              <div class="panel panel-default">
                 <div class="panel-heading">
-                        <h3 class="panel-title">Fill this form <small style="color: red">SwissAir</small></h3>
+                  <h3 class="panel-title">Fill this form <small style="color: red">SwissAir</small></h3>
+                </div>
+                <div class="panel-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                          <label>first name</label>
+                          <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel"  ng-model="firstName" >
                         </div>
-                        <div class="panel-body">
-                        <form role="form">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                    <label>first name</label>
-                            <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel"  ng-model="user.first" >
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                    <label>last name</label>
-                                        <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="user.last">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                            <label>Email</label>
-                                <input type="email" name="email" id="email" class="form-control input-sm" ng-model="user.email">
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                    <label for="sel1">Passport Country</label>
-                                 <select name="repeatSelect" id="repeatSelect" ng-model="user.passcountry">
-                         <option ng-repeat="country in user.countries" value="{{country}}">{{country}}</option>
-                                 </select>
-
-                                    </div>
-                                </div><br>
-                                <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top: 30px ;margin-left:-180px">
-                                    <div class="form-group">
-                                        <form>
-                              <label>issue month and year</label>
-                             <input type="month" name="year" ng-model="user.issueDate">
-                            </form>
-                            <form>
-                              <label>exp. month and year</label>
-                             <input type="month" name="year" ng-model="user.expDate">
-                            </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <input type="submit" value="Submit" class="btn btn-info btn-block">
-
-                        </form>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                          <label>last name</label>
+                          <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName">
+                        </div>
+                      </div>
                     </div>
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" name="email" id="email" class="form-control input-sm" ng-model="email">
+                    </div>
+
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                          <label for="sel1">Passport Country</label>
+                          <select name="repeatSelect" id="repeatSelect" ng-model="passCountry">
+                            <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
+                          </select>
+
+                        </div>
+                      </div><br>
+                      <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top: 30px ;margin-left:-180px">
+                        <div class="form-group">
+                          <form>
+                            <label>issue month and year</label>
+                            <input type="month" name="year" ng-model="issueDate">
+                          </form>
+                          <form>
+                            <label>exp. month and year</label>
+                            <input type="month" name="year" ng-model="expDate">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-                </div>
 
-            </div>
 
-        </div>
+
+
         <!-- /.container -->
 
-    </div>
-    <!-- /.content-section-a -->
 
-    <div class="content-section-b" >
+      <!-- /.content-section-a -->
 
-        <div class="container">
 
-            <div class="row">
 
-              <div class="col-lg-1"></div>
-                <div class="col-lg-4 ">
-                   <div class="row">
 
-         <!-- Credit card form -->
-         <div class="container" >
-          <div class="row">
-           <div class="col-xs-12 col-md-4">
-            <div class="panel panel-default">
-            <div class="panel-heading">
-            <h3 class="panel-title">
-            <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3> </div>
-            <div class="panel-body">
-             <form role="form" id="payment-form">
-             <div class="row">
-             <div class="col-xs-12">
-              <div class="form-group">
-              <label for="cardNumber">CARD NUMBER</label>
-              <div class="input-group">
-              <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="creditInfo.cardnumber" />
+              <div class="row">
 
-               <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                </div>
-                 </div>
-                  </div>
-                   </div>
-                   <div class="row">
-                   <div class="col-xs-7 col-md-7">
-                   <div class="form-group">
-                   <label for="expMonth">EXPIRATION DATE</label>
-                    <div class="col-xs-6 col-lg-6 pl-ziro">
-                    <input type="number" min="1" max="12" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="creditInfo.cardExpMonth" />
+                <!-- Credit card form -->
+                <div class="container" >
+                  <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">
+                            <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3> </div>
+                            <div class="panel-body">
+                              <form role="form" id="payment-form">
+                                <div class="row">
+                                  <div class="col-xs-12">
+                                    <div class="form-group">
+                                      <label for="cardNumber">CARD NUMBER</label>
+                                      <div class="input-group">
+                                        <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
 
-                    </div>
-                    <div class="col-xs-6 col-lg-6 pl-ziro">
-                    <input type="number" min="00" max="99" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="creditInfo.cardExpYear"/>
-                    </div>
-
-                     </div>
-                     </div>
-                      <div class="col-xs-5 col-md-5 pull-right">
-                       <div class="form-group">
-                        <label for="cvCode">CV CODE</label>
-                         <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="creditInfo.cvv"/>
-
-                         </div>
-                          </div>
-                           </div>
-                            <div class="row">
-                            <div class="col-xs-12">
-                             <div class="form-group">
-                             <label for="couponCode">COUPON CODE</label>
-                             <input type="text" class="form-control" name="couponCode" ng-model="creditInfo.COUPON"/>
-
-                             </div>
-                             </div>
-                             </div>
-                              <div class="row">
-                              <div class="col-xs-12">
-                              <button class="btn btn-success btn-lg btn-block" type="submit">Book</button>
-                              </div>
-                              </div>
-                              <div class="row" style="display:none;">
-                              <div class="col-xs-12"> <p class="payment-errors"></p>
-                              </div>
-                               </div>
-                                </form>
-                                 </div>
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                      </div>
+                                    </div>
                                   </div>
-                                   </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-7 col-md-7 ">
+                                    <div class="form-group">
+                                      <label for="expMonth">EXPIRATION DATE</label>
+                                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="number" min="1" max="12" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
+
+                                      </div>
+                                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="number" min="00" max="99" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear"/>
+                                      </div>
+
                                     </div>
-                                     </div>
+                                  </div>
+                                  <div class="col-xs-5 col-md-5 ">
+                                    <div class="form-group">
+                                      <label for="cvCode">CV CODE</label>
+                                      <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvv"/>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-12">
+                                    <div class="form-group">
+                                      <label for="couponCode">COUPON CODE</label>
+                                      <input type="text" class="form-control" name="couponCode" ng-model="Coupon"/>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-12">
+                                    <button class="btn btn-success btn-lg btn-block" type="submit" ng-click="book()">Book</button>
+                                  </div>
+                                  <div>
+                                    {{reply}}
+                                  </div>
+                                </div>
+                                <div class="row" style="display:none;">
+                                  <div class="col-xs-12"> <p class="payment-errors"></p>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
-            </div>
-                   <div class="col-lg-7 ">
-                    <img class="img-responsive" src="/img/payment/ll.jpg" alt="">
-                </div>
+                <div class="col-lg-6"></div>
+
+          </div>
         </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.content-section-b -->
-
-    </div>
-
- </div>
+      </div>
