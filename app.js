@@ -1,7 +1,6 @@
 var express     =   require('express');
 var app         =   express();
 var fs          =   require('fs');
-var b = 'CAI';
 var path        =   require('path');
 var bodyParser  =   require('body-parser');
 var jwt         =   require('jsonwebtoken');
@@ -50,31 +49,6 @@ app.get('/db/delete', function(req, res) {
   });
 });
 
-app.get('/api/flights/search/:origin', function(req, res) {
-        // retrieve params from req.params.{{origin | departingDate | ...}}
-        var query = {origin :req.params.origin
-      };
-      //var query = {origin: req.params.b};
-        db.db().collection('flights').find(query).toArray(function(error,f)
-          {
-            if(error)
-      
-  {
-    console.log(error);
-    process.exit(1);
-
-  }
-  var fr =f;
-  var result = { 'outgoingFlights': fr};
-          res.send( result);
-          });
-        // return this exact format
-
-
-});
-
-
-
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -99,8 +73,27 @@ app.use(function(req, res, next) {
 
 });
 
+app.get('/db/bookings/:firstName/:lastName/:email/:passport/:issueDate/:expiryDate/:receipt_number/:flightNumber/:flightDate/:bookingRefNumber', function(req, res) {
+  var query = { firstName:req.params.firstName,
+                lastName:req.params.lastName,
+                email:req.params.email,
+                passport:req.params.passport,
+                issueDate:req.params.issueDate,
+                expiryDate:req.params.expiryDate,
+                receipt_number:req.params.receipt_number,
+                flightNumber:req.params.flightNumber,
+                flightDate:req.params.flightDate,
+                bookingRefNumber:req.params.bookingRefNumber };
+  db.db().collection('bookings').insert(query,function (err) {
+    if(err)
+    res.send("some data are mistyped or missing");
+    else {
+      res.send("booking made successfully");
+    }
 
+  });
 
+});
 
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
