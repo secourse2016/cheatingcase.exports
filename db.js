@@ -100,10 +100,7 @@ clearDB: function clearDB(done) {
     assert.equal(null, err);
     myDB.collection("airports").remove({}, function(err) {
       assert.equal(null, err);
-      myDB.collection("bookings").remove({}, function(err) {
-        assert.equal(null, err);
         done();
-      });
     });
   });
 },
