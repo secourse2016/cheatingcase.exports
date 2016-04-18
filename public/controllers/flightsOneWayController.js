@@ -3,6 +3,8 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
   $scope.destination = AirportsSrv.getSelectedDestinationAirport();
   $scope.departureDate= new Date(AirportsSrv.getSelectedDepartureDate()).getTime();
   $scope.returnDate = new Date(AirportsSrv.getSelectedReturnDate()).getTime();
+  $scope.otherAirlines = AirportsSrv.getOtherAirlines();
+  
   AirportsSrv.searchFlightsOneWay($scope.origin,$scope.destination,$scope.departureDate,$scope.class,$scope.otherAirlines)
   .success(function(flights){
     $scope.outgoingFlights=flights.outgoingFlights;
