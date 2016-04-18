@@ -3,6 +3,11 @@
   "version"      : "0.2.0",
   "description"  : "SwissAir Company",
   "main"         : "server.js",
+   "scripts": {
+    
+   "test": "mocha test/test.js",
+     "coverage": "istanbul cover _mocha"
+  },
   "author"       : "cheatingCase.exports",
   "dependencies" : {
     "express"    : "~4.7.2",
@@ -14,7 +19,11 @@
      "jsonwebtoken": "*",
      "underscore"  : "*",
      "moment"      : "*",
-     "request"     : "*"    
+     "request"     : "*" ,
+     "mocha"       : "*",
+    "chai"   : "*",
+    "istanbul": "*",
+    "supertest": "*"   
   },
   "repository": {
      "type": "git",
