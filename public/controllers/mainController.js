@@ -11,7 +11,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.class = "0";
   $scope.otherAirlines=false;
   $scope.searchBy="schedule";
-  $scope.isDisabled = "false";
 
   $scope.selectTripType = function(setTrip){
     $scope.tripType = setTrip;
