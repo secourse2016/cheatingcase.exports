@@ -63,6 +63,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
       AirportsSrv.setSelectedDestinationAirport(destAirport);
     };
 
+    $scope.flipOtherAirlines = function() {
+      AirportsSrv.setOtherAirlines(!$scope.otherAirlines);
+    };
+
     /*
     $scope.setDepartureDate = function(value){
       Console.log(value +"hi")

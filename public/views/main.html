@@ -39,7 +39,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="depDate">Departure Date: </label>
                                 <p class="input-group" id="depDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="true" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" >
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="true" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions"  close-text="Close" >
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()">
                                   <i class="glyphicon glyphicon-calendar"></i>
@@ -68,7 +68,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate">Return Date: </label>
                                 <p class="input-group" id="retDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="true" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptionsReturn" ng-required="true" close-text="Close" >
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="isTripType(2)" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptionsReturn"  close-text="Close" >
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open2()">
                                   <i class="glyphicon glyphicon-calendar"></i>
@@ -144,7 +144,7 @@
                                     <label class="radio-inline">
                                         <input type="radio" name="optradio" value="price" ng-model="searchBy">Price</label>
                                     <label class="checkbox-inline" id="otherAirlines">
-                                        <input type="checkbox" value="" ng-click="otherAirlines=!otherAirlines">Search Other Airlines</label>
+                                        <input type="checkbox" value="" ng-click="flipOtherAirlines()">Search Other Airlines</label>
                                 </div>
                             </div>
                         </div>
