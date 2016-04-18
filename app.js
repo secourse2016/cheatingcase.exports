@@ -31,8 +31,16 @@ var airlinesIterate = function(index, route, result, res, cb){
        }
        if(data.outgoingFlights) newRes.outgoingFlights = data.outgoingFlights.concat(result.outgoingFlights);
        if(result.returnFlights && data.returnFlights) newRes.returnFlights = data.returnFlights.concat(result.returnFlights);
+
+       console.log('\nI have queried now '+airlines[index].name+
+                   '\n ==> At :: ' +airlines[index].url+
+                   '\n Having now data :: \n' +
+                   JSON.stringify(newRes, null, '\t'));
        cb(index+1, route, newRes, res, cb);
      } else {
+       console.log('\nI have queried now '+airlines[index].name+
+                   '\n ==> At :: ' +airlines[index].url+
+                   '\n But returned With error continuing with the same data as above \n');
        cb(index+1, route, result, res, cb);
      }
    });
@@ -165,7 +173,7 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
     if(oa!='true'){
       res.send(result);
     } else {
-      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'', result, res, airlinesIterate);
+      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'', result, res, airlinesIterate);
     }
   });
 
