@@ -95,7 +95,7 @@ app.get('/db/delete', function(req, res) {
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
 
-  var jwtToken = req.headers['x-access-token'];
+  var jwtToken = req.body.wt || req.query.wt || req.headers['x-access-token'];
   console.log("Token received !! ", jwtToken);
 
   var jwtSecret = process.env.JWTSECRET;
@@ -146,25 +146,10 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
   var query;
   var oa = req.query.oa;
 
-  if(req.params.departingDate == 'any'){
-    if(req.params.class == 'any')
-      query = { origin:req.params.origin,
-                destination:req.params.destination };
-    else
-      query = { origin:req.params.origin,
-                destination:req.params.destination,
-                class:req.params.class };
-  } else {
-    if(req.params.class == 'any')
-      query = { origin:req.params.origin,
-                destination:req.params.destination,
-                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
-    else
-      query = { origin: req.params.origin,
-                destination: req.params.destination,
-                departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-                class: req.params.class };
-  }
+  query = { origin: req.params.origin,
+            destination: req.params.destination,
+            departureDateTime: { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
+            class: req.params.class };
 
 
   db.db().collection('flights').find(query).toArray(function(error,flights) {
@@ -186,33 +171,21 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
 app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
   // retrieve params from req.params.{{origin | departingDate | ...}}
   // return this exact format
-  var dayInMillis =   24*60*60*1000;
+  var dayInMillis = 24*60*60*1000;
   var queryOutgoing;
   var queryReturn;
   var oa = req.query.oa;
 
-  if(req.params.class == 'any') {
-    queryOutgoing = { 'origin': req.params.origin,
-                      'destination': req.params.destination,
-                      'departureDateTime': { $gte: parseInt(req.params.departingDate),
-                        $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
-    queryReturn = { 'destination': req.params.origin,
-                    'origin': req.params.destination,
-                    'departureDateTime': { $gte: parseInt(req.params.returningDate),
-                      $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
-  }
-  else {
-    queryOutgoing = { 'origin': req.params.origin,
-                      'destination': req.params.destination,
-                      'class': req.params.class,
-                      'departureDateTime':  { $gte: parseInt(req.params.departingDate),
-                        $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
-    queryReturn = { 'destination': req.params.origin,
-                    'origin': req.params.destination,
+  queryOutgoing = { 'origin': req.params.origin,
+                    'destination': req.params.destination,
                     'class': req.params.class,
-                    'departureDateTime': { $gte: parseInt(req.params.returningDate),
-                      $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
-  }
+                    'departureDateTime':  { $gte: parseInt(req.params.departingDate),
+                      $lt: (parseInt(req.params.departingDate) + dayInMillis) } };
+  queryReturn = { 'destination': req.params.origin,
+                  'origin': req.params.destination,
+                  'class': req.params.class,
+                  'departureDateTime': { $gte: parseInt(req.params.returningDate),
+                    $lt: (parseInt(req.params.returningDate) + dayInMillis) } };
 
   var outgoingFlights;
   var returnFlights;
