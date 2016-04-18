@@ -1,98 +1,98 @@
 [
   {
     "name": "Austrian Airlines",
-    "url": "http://ec2-52-90-41-197.compute-1.amazonaws.com/"
+    "url": "http://ec2-52-90-41-197.compute-1.amazonaws.com"
   },
   {
     "name": "Turkish Airlines",
-    "url": "http://52.27.150.19/"
+    "url": "http://52.27.150.19"
   },
   {
     "name": "Northwest Airlines",
-    "url": "http://52.36.169.206/"
+    "url": "http://52.36.169.206"
   },
   {
     "name": "Malaysia Airlines",
-    "url": "http://52.32.109.147/"
+    "url": "http://52.32.109.147"
   },
   {
     "name": "British Airways",
-    "url": "http://52.36.195.124/"
+    "url": "http://52.36.195.124"
   },
   {
     "name": "Alaska Airlines",
-    "url": "http://52.207.211.179/"
+    "url": "http://52.207.211.179"
   },
   {
     "name": "Delta Airlines",
-    "url": "http://52.25.15.124/"
+    "url": "http://52.25.15.124"
   },
   {
     "name": "Airberlin Airlines",
-    "url": "http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com:8080/"
+    "url": "http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com:8080"
   },
   {
     "name": "Airline Canada",
-    "url": "http://52.36.250.55/"
+    "url": "http://52.36.250.55"
   },
   {
     "name": "Lufthansa Airlines",
-    "url": "http://ec2-54-152-123-100.compute-1.amazonaws.com/"
+    "url": "http://ec2-54-152-123-100.compute-1.amazonaws.com"
   },
   {
     "name": "IBERIA Airlines",
-    "url": "http://mynksh.com/"
+    "url": "http://mynksh.com"
   },
   {
     "name": "Japan Airlines",
-    "url": "http://54.187.208.145/"
+    "url": "http://54.187.208.145"
   },
   {
     "name": "Oceanic Airlines",
-    "url": "http://52.38.78.176/"
+    "url": "http://52.38.78.176"
   },
   {
     "name": "Emirates Airlines",
-    "url": "http://52.90.46.68/"
+    "url": "http://52.90.46.68"
   },
   {
     "name": "Air France",
-    "url": "http://52.34.160.140/"
+    "url": "http://52.34.160.140"
   },
   {
     "name": "South African Airways",
-    "url": "http://54.213.157.185/"
+    "url": "http://54.213.157.185"
   },
   {
     "name": "Virgin Australia Airlines",
-    "url": "http://54.93.116.90/"
+    "url": "http://54.93.116.90"
   },
   {
     "name": "New Zealand Airlines",
-    "url": "http://52.28.246.230/"
+    "url": "http://52.28.246.230"
   },
   {
     "name": "KLM Airlines",
-    "url": "http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/"
+    "url": "http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com"
   },
   {
     "name": "Air Madagascar Airlines",
-    "url": "http://54.191.202.17/"
+    "url": "http://54.191.202.17"
   },
   {
     "name": "Dragon Air Airlines",
-    "url": "http://52.58.46.74/"
+    "url": "http://52.58.46.74"
   },
   {
     "name": "Singapore Landing",
-    "url": "http://sebitsplease.com.s3-website-us-east-1.amazonaws.com/"
+    "url": "http://sebitsplease.com.s3-website-us-east-1.amazonaws.com"
   },
   {
     "name": "Cathay Pacific Airways",
-    "url": "http://ec2-52-91-94-227.compute-1.amazonaws.com/"
+    "url": "http://ec2-52-91-94-227.compute-1.amazonaws.com"
   },
   {
     "name": "Hawaiian Airlines",
-    "url": "http://54.93.36.94/"
+    "url": "http://54.93.36.94"
   }
 ]
