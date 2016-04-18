@@ -3,7 +3,9 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
   $scope.destination = AirportsSrv.getSelectedDestinationAirport();
   $scope.departureDate= new Date(AirportsSrv.getSelectedDepartureDate()).getTime();
   $scope.returnDate = new Date(AirportsSrv.getSelectedReturnDate()).getTime();
-  AirportsSrv.searchFlightsTwoWay($scope.origin,$scope.destination,$scope.departureDate,$scope.returnDate)
+  $scope.otherAirlines = AirportsSrv.getOtherAirlines();
+  
+  AirportsSrv.searchFlightsTwoWay($scope.origin,$scope.destination,$scope.departureDate,$scope.returnDate,$scope.class,$scope.otherAirlines)
   .success(function(flights){
     $scope.outgoingFlights=flights.outgoingFlights;
     $scope.returnFlights=flights.returnFlights;
@@ -21,7 +23,15 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
     return "btn-danger";
   };
 
-  $scope.pay = function() {
+  $scope.pay = function(index,type) {
+    if(type=='btn-info'){
+      AirportsSrv.setDisplayedFlightDate($scope.outgoingFlights[index].departureDateTime);
+      AirportsSrv.setDisplayedFlightNumber($scope.outgoingFlights[index].flightNumber);
+    }
+    else{
+      AirportsSrv.setDisplayedFlightDate($scope.returnFlights[index].departureDateTime);
+      AirportsSrv.setDisplayedFlightNumber($scope.returnFlights[index].flightNumber);
+    }
     $location.url('/flights/pay');
   };
 });

@@ -43,10 +43,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
       maxDate: new Date(2016, 4, 31),
       minDate: new Date()
     };
-//  $scope.fullDepartureDate= "$filter('date')($scope.departureDate,'fullDate')";
-//  $scope.fullReturnDate = $filter('date')($scope.returnDate,'fullDate');
-
-  /* Retrieve List of Airports Codes */
+  $scope.dateOptionsReturn = {
+        maxDate: new Date(2016, 4, 31),
+        minDate: new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
+    };
     function AirportCodes() {
       AirportsSrv.getAirportCodes().success(function(airports) {
            $scope.Airports = airports;
@@ -63,6 +63,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
       AirportsSrv.setSelectedDestinationAirport(destAirport);
     };
 
+    $scope.flipOtherAirlines = function() {
+      AirportsSrv.setOtherAirlines(!$scope.otherAirlines);
+    };
+
     /*
     $scope.setDepartureDate = function(value){
       Console.log(value +"hi")
@@ -76,10 +80,17 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
     };
       */
     $scope.$watch('departureDate', function() {
+      $scope.returnDate= null;
+      $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
+      new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
+      :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
       AirportsSrv.setSelectedDepartureDate($scope.departureDate);
+
     });
 
     $scope.$watch('returnDate', function() {
+      if($scope.returnDate!=null && $scope.returnDate.getTime()<=$scope.departureDate.getTime())
+       $scope.returnDate=null;
       AirportsSrv.setSelectedReturnDate($scope.returnDate);
     });
 
