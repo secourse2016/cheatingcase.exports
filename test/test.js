@@ -18,13 +18,29 @@ before(function(done) {
 //testing seed
  describe('seed', function() {
 
+
+
  	it('should populate the db if db is empty returning true', function(done) {
       database.clearDB(function(){
          database.seed(function(err,seeded){
            assert.equal(seeded,true);
+           });
            done();
          });
+});
 
-    });
+it('should not seed db again if db is not empty returning false in the callback', function(done) {
+       
+         database.seed(function(err,seeded)
+          {
+              assert.equal(seeded, false);
+          });
+          done();
+     });
+  
+   
+
       });
- 	  });
+  
+
+ 	  
