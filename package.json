@@ -4,8 +4,8 @@
   "description"  : "SwissAir Company",
   "main"         : "server.js",
    "scripts": {
-    
-   "test": "mocha test/test.js",
+     "start": "node server.js",
+     "test": "mocha test/test.js",
      "coverage": "istanbul cover _mocha"
   },
   "author"       : "cheatingCase.exports",
@@ -15,15 +15,15 @@
     "body-parser": "~1.5.2",
     "method-override": "~2.1.2",
     "dotenv"      : "*",
-     "mongodb"     : "*",
-     "jsonwebtoken": "*",
-     "underscore"  : "*",
-     "moment"      : "*",
-     "request"     : "*" ,
-     "mocha"       : "*",
+    "mongodb"     : "*",
+    "jsonwebtoken": "*",
+    "underscore"  : "*",
+    "moment"      : "*",
+    "request"     : "*" ,
+    "mocha"       : "*",
     "chai"   : "*",
     "istanbul": "*",
-    "supertest": "*"   
+    "supertest": "*"
   },
   "repository": {
      "type": "git",
