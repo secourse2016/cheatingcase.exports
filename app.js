@@ -7,6 +7,45 @@ var jwt         =   require('jsonwebtoken');
 var db          =   require('./db');
 var assert      =   require('assert');
 
+var airlines    =   require('./airlines.json');
+var request     =   require('request');
+
+
+var airlinesIterate = function(index, route, result, res, cb){
+  if(index==airlines.length) res.send(result);
+  else {
+    request({ url: airlines[index].url+''+route, headers: { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
+  }, function(error, response, body){
+      if(!error && response.statusCode == 200 && response.headers['content-type']=='application/json; charset=utf-8'){
+       var data = JSON.parse(body);
+       var newRes;
+       if(result.returnFlights){
+         newRes = {
+           "outgoingFlights"  : result.outgoingFlights,
+           "returnFlights"    : result.returnFlights
+         };
+       } else {
+         newRes = {
+           "outgoingFlights"  : result.outgoingFlights
+         };
+       }
+       if(data.outgoingFlights) newRes.outgoingFlights = data.outgoingFlights.concat(result.outgoingFlights);
+       if(result.returnFlights && data.returnFlights) newRes.returnFlights = data.returnFlights.concat(result.returnFlights);
+
+       console.log('\nI have queried now '+airlines[index].name+
+                   '\n ==> At :: ' +airlines[index].url+
+                   '\n Having now data :: \n' +
+                   JSON.stringify(newRes, null, '\t'));
+       cb(index+1, route, newRes, res, cb);
+     } else {
+       console.log('\nI have queried now '+airlines[index].name+
+                   '\n ==> At :: ' +airlines[index].url+
+                   '\n But returned With error continuing with the same data as above \n');
+       cb(index+1, route, result, res, cb);
+     }
+   });
+  }
+}
 
 
 
@@ -99,10 +138,13 @@ app.get('/db/bookings/:firstName/:lastName/:email/:passport/:issueDate/:expiryDa
 });
 
 
+
+
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
   // retrieve params from req.params.{{origin | departingDate | ...}}
   var dayInMillis =   24*60*60*1000;
   var query;
+  var oa = req.query.oa;
 
   if(req.params.departingDate == 'any'){
     if(req.params.class == 'any')
@@ -131,7 +173,11 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
       process.exit(1);
     }
     var result = { 'outgoingFlights':flights };
-    res.send(result);
+    if(oa!='true'){
+      res.send(result);
+    } else {
+      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'', result, res, airlinesIterate);
+    }
   });
 
   // return this exact format
@@ -143,6 +189,8 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
   var dayInMillis =   24*60*60*1000;
   var queryOutgoing;
   var queryReturn;
+  var oa = req.query.oa;
+
   if(req.params.class == 'any') {
     queryOutgoing = { 'origin': req.params.origin,
                       'destination': req.params.destination,
@@ -174,9 +222,14 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     outgoingFlights = data;
     db.db().collection('flights').find(queryReturn).toArray(function(err,data){
       returnFlights = data;
-      result = { "outgoingFlights":  outgoingFlights ,
+      result = { "outgoingFlights": outgoingFlights ,
                  "returnFlights": returnFlights }
-      res.send(result);
+      if(oa!='true'){
+        res.send(result);
+      } else {
+        airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'', result, res, airlinesIterate);
+      }
+
     });
   });
 });
