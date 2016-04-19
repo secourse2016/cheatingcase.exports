@@ -8,7 +8,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.returnTime="1";
   $scope.adultsCount = "1";
   $scope.childrenCount = "0";
-  $scope.class = "0";
+  $scope.class = "1";
   $scope.otherAirlines=false;
   $scope.searchBy="schedule";
 
