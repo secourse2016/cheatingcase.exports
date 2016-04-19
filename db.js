@@ -1,7 +1,7 @@
 var assert = require('assert');
 var mongodb = require('mongodb').MongoClient;
 var myDB = null;
-var dbUrl = 'mongodb://localhost:27017/swissair';
+var dbUrl = 'mongodb://'+process.env.DBHOST+':27017/swissair';
 var flightsData = require('./flights.json');
 var airportsData = require('./airports.json');
 
@@ -11,18 +11,18 @@ var DB = {
   connect: function connect(cb) {
     mongodb.connect(dbUrl, function(err, db) {
       myDB = db;
-      console.log("initiating DB connection");
+      console.log("initiating DB connection with " + dbUrl);
 
       db.createCollection( "flights", {
         validator: { $and: [
           { flightNumber: { $type: 'string' } },
           { aircraftType: { $type: 'string' } },
-          { aircraftModel: { $type: 'number' } },
+          { aircraftModel: { $type: 'string' } },
           { departureDateTime: { $type: 'number' } },
           { arrivalDateTime: { $type: 'number' } },
           { origin: { $type: 'string' } },
           { destination: { $type: 'string' } },
-          { cost: { $type: 'number' } },
+          { cost: { $type: 'string' } },
           { currency: { $type: 'string' } },
           { class: { $type: 'string' } },
           { Airline: { $type: 'string' } }
