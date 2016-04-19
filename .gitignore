@@ -14,6 +14,7 @@ node_modules
 data
 
 .env
+.log
 
 # Ignore .DS_Store Files For Mac Users
 .DS_Store
