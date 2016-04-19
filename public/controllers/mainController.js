@@ -64,8 +64,8 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
     };
 
     $scope.flipOtherAirlines = function() {
-      AirportsSrv.setOtherAirlines($scope.otherAirlines);
       $scope.otherAirlines = !$scope.otherAirlines;
+      AirportsSrv.setOtherAirlines($scope.otherAirlines);
     };
 
     /*
