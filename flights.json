@@ -87,7 +87,7 @@
 		"destination": "LHR",
 		"cost": 816,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -113,7 +113,7 @@
 		"destination": "FRA",
 		"cost": 721,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -126,7 +126,7 @@
 		"destination": "HJK",
 		"cost": 766,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -178,7 +178,7 @@
 		"destination": "JNP",
 		"cost": 379,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -191,7 +191,7 @@
 		"destination": "JED",
 		"cost": 709,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -243,7 +243,7 @@
 		"destination": "LAX",
 		"cost": 497,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -282,7 +282,7 @@
 		"destination": "TXL",
 		"cost": 983,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -360,7 +360,7 @@
 		"destination": "LIN",
 		"cost": 704,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -386,7 +386,7 @@
 		"destination": "FRA",
 		"cost": 132,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -438,7 +438,7 @@
 		"destination": "RUH",
 		"cost": 348,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -490,7 +490,7 @@
 		"destination": "CAI",
 		"cost": 197,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -542,7 +542,7 @@
 		"destination": "LIN",
 		"cost": 716,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -698,7 +698,7 @@
 		"destination": "JFK",
 		"cost": 636,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -724,7 +724,7 @@
 		"destination": "BOM",
 		"cost": 781,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -763,7 +763,7 @@
 		"destination": "JED",
 		"cost": 630,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -854,7 +854,7 @@
 		"destination": "DEL",
 		"cost": 871,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -880,7 +880,7 @@
 		"destination": "JED",
 		"cost": 197,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -893,7 +893,7 @@
 		"destination": "LAX",
 		"cost": 939,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -906,7 +906,7 @@
 		"destination": "JNP",
 		"cost": 174,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -919,7 +919,7 @@
 		"destination": "LHR",
 		"cost": 395,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -932,7 +932,7 @@
 		"destination": "CPT",
 		"cost": 649,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -945,7 +945,7 @@
 		"destination": "LIN",
 		"cost": 874,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -971,7 +971,7 @@
 		"destination": "SFO",
 		"cost": 243,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -984,7 +984,7 @@
 		"destination": "CAI",
 		"cost": 567,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -997,7 +997,7 @@
 		"destination": "RUH",
 		"cost": 374,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1023,7 +1023,7 @@
 		"destination": "LCF",
 		"cost": 465,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1062,7 +1062,7 @@
 		"destination": "JED",
 		"cost": 708,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1088,7 +1088,7 @@
 		"destination": "CPT",
 		"cost": 170,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1114,7 +1114,7 @@
 		"destination": "JNP",
 		"cost": 431,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1140,7 +1140,7 @@
 		"destination": "TPE",
 		"cost": 444,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1166,7 +1166,7 @@
 		"destination": "JFK",
 		"cost": 938,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1283,7 +1283,7 @@
 		"destination": "DEL",
 		"cost": 655,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1296,7 +1296,7 @@
 		"destination": "RUH",
 		"cost": 636,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1322,7 +1322,7 @@
 		"destination": "JED",
 		"cost": 967,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1452,7 +1452,7 @@
 		"destination": "TPE",
 		"cost": 392,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1465,7 +1465,7 @@
 		"destination": "DEL",
 		"cost": 468,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1478,7 +1478,7 @@
 		"destination": "JNP",
 		"cost": 938,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1530,7 +1530,7 @@
 		"destination": "LIN",
 		"cost": 789,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1556,7 +1556,7 @@
 		"destination": "FRA",
 		"cost": 629,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1582,7 +1582,7 @@
 		"destination": "JFK",
 		"cost": 331,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1595,7 +1595,7 @@
 		"destination": "DEL",
 		"cost": 252,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1621,7 +1621,7 @@
 		"destination": "HJK",
 		"cost": 412,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1660,7 +1660,7 @@
 		"destination": "SFO",
 		"cost": 171,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1712,7 +1712,7 @@
 		"destination": "LIN",
 		"cost": 204,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1764,7 +1764,7 @@
 		"destination": "CAI",
 		"cost": 920,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1790,7 +1790,7 @@
 		"destination": "RUH",
 		"cost": 808,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1803,7 +1803,7 @@
 		"destination": "FCO",
 		"cost": 900,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1920,7 +1920,7 @@
 		"destination": "RUH",
 		"cost": 257,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1946,7 +1946,7 @@
 		"destination": "TPE",
 		"cost": 467,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1959,7 +1959,7 @@
 		"destination": "CAI",
 		"cost": 508,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -1998,7 +1998,7 @@
 		"destination": "JED",
 		"cost": 240,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2063,7 +2063,7 @@
 		"destination": "JFK",
 		"cost": 131,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2076,7 +2076,7 @@
 		"destination": "LAX",
 		"cost": 493,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2089,7 +2089,7 @@
 		"destination": "TXL",
 		"cost": 120,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2193,7 +2193,7 @@
 		"destination": "JFK",
 		"cost": 363,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2258,7 +2258,7 @@
 		"destination": "DEL",
 		"cost": 562,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2271,7 +2271,7 @@
 		"destination": "LIN",
 		"cost": 623,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2323,7 +2323,7 @@
 		"destination": "JED",
 		"cost": 295,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2414,7 +2414,7 @@
 		"destination": "JED",
 		"cost": 288,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2440,7 +2440,7 @@
 		"destination": "LIN",
 		"cost": 281,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2453,7 +2453,7 @@
 		"destination": "LAX",
 		"cost": 219,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2505,7 +2505,7 @@
 		"destination": "FRA",
 		"cost": 207,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2544,7 +2544,7 @@
 		"destination": "SFO",
 		"cost": 557,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2635,7 +2635,7 @@
 		"destination": "DEL",
 		"cost": 596,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2648,7 +2648,7 @@
 		"destination": "TXL",
 		"cost": 651,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2674,7 +2674,7 @@
 		"destination": "CPT",
 		"cost": 111,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2687,7 +2687,7 @@
 		"destination": "RUH",
 		"cost": 130,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2700,7 +2700,7 @@
 		"destination": "LIN",
 		"cost": 200,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2739,7 +2739,7 @@
 		"destination": "JED",
 		"cost": 848,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2752,7 +2752,7 @@
 		"destination": "TPE",
 		"cost": 997,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2778,7 +2778,7 @@
 		"destination": "JFK",
 		"cost": 251,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2817,7 +2817,7 @@
 		"destination": "JNP",
 		"cost": 598,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -2921,7 +2921,7 @@
 		"destination": "HJK",
 		"cost": 988,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3025,7 +3025,7 @@
 		"destination": "TPE",
 		"cost": 106,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3038,7 +3038,7 @@
 		"destination": "LHR",
 		"cost": 574,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3116,7 +3116,7 @@
 		"destination": "RUH",
 		"cost": 935,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3155,7 +3155,7 @@
 		"destination": "CPT",
 		"cost": 779,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3168,7 +3168,7 @@
 		"destination": "LAX",
 		"cost": 621,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3272,7 +3272,7 @@
 		"destination": "CAI",
 		"cost": 536,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3376,7 +3376,7 @@
 		"destination": "LIN",
 		"cost": 454,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3493,7 +3493,7 @@
 		"destination": "JED",
 		"cost": 640,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3532,7 +3532,7 @@
 		"destination": "FCO",
 		"cost": 893,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3584,7 +3584,7 @@
 		"destination": "CPT",
 		"cost": 764,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3636,7 +3636,7 @@
 		"destination": "JNP",
 		"cost": 411,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3701,7 +3701,7 @@
 		"destination": "LHR",
 		"cost": 765,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3714,7 +3714,7 @@
 		"destination": "JED",
 		"cost": 697,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3727,7 +3727,7 @@
 		"destination": "BOM",
 		"cost": 179,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3753,7 +3753,7 @@
 		"destination": "FRA",
 		"cost": 739,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3779,7 +3779,7 @@
 		"destination": "SFO",
 		"cost": 819,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3792,7 +3792,7 @@
 		"destination": "HJK",
 		"cost": 971,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3805,7 +3805,7 @@
 		"destination": "JNP",
 		"cost": 427,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3818,7 +3818,7 @@
 		"destination": "JFK",
 		"cost": 332,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3883,7 +3883,7 @@
 		"destination": "TXL",
 		"cost": 952,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3896,7 +3896,7 @@
 		"destination": "LCF",
 		"cost": 169,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3922,7 +3922,7 @@
 		"destination": "LCF",
 		"cost": 483,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3935,7 +3935,7 @@
 		"destination": "CAI",
 		"cost": 571,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -3948,7 +3948,7 @@
 		"destination": "FCO",
 		"cost": 347,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4000,7 +4000,7 @@
 		"destination": "TXL",
 		"cost": 467,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4039,7 +4039,7 @@
 		"destination": "TPE",
 		"cost": 961,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4143,7 +4143,7 @@
 		"destination": "CPT",
 		"cost": 622,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4221,7 +4221,7 @@
 		"destination": "LHR",
 		"cost": 662,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4234,7 +4234,7 @@
 		"destination": "FRA",
 		"cost": 282,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4247,7 +4247,7 @@
 		"destination": "FCO",
 		"cost": 642,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4260,7 +4260,7 @@
 		"destination": "JFK",
 		"cost": 755,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4312,7 +4312,7 @@
 		"destination": "DEL",
 		"cost": 931,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4338,7 +4338,7 @@
 		"destination": "CPT",
 		"cost": 122,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4351,7 +4351,7 @@
 		"destination": "HJK",
 		"cost": 962,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4455,7 +4455,7 @@
 		"destination": "CPT",
 		"cost": 458,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4468,7 +4468,7 @@
 		"destination": "TXL",
 		"cost": 865,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4546,7 +4546,7 @@
 		"destination": "FCO",
 		"cost": 481,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4624,7 +4624,7 @@
 		"destination": "BOM",
 		"cost": 128,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4637,7 +4637,7 @@
 		"destination": "FRA",
 		"cost": 679,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4676,7 +4676,7 @@
 		"destination": "DEL",
 		"cost": 321,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4689,7 +4689,7 @@
 		"destination": "BOM",
 		"cost": 637,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4715,7 +4715,7 @@
 		"destination": "RUH",
 		"cost": 966,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4741,7 +4741,7 @@
 		"destination": "JED",
 		"cost": 598,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4754,7 +4754,7 @@
 		"destination": "FCO",
 		"cost": 609,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4780,7 +4780,7 @@
 		"destination": "LAX",
 		"cost": 481,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4845,7 +4845,7 @@
 		"destination": "JED",
 		"cost": 548,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4897,7 +4897,7 @@
 		"destination": "HJK",
 		"cost": 700,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4910,7 +4910,7 @@
 		"destination": "JNP",
 		"cost": 23,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4923,7 +4923,7 @@
 		"destination": "SFO",
 		"cost": 432,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4936,7 +4936,7 @@
 		"destination": "TPE",
 		"cost": 970,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4962,7 +4962,7 @@
 		"destination": "SFO",
 		"cost": 911,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4975,7 +4975,7 @@
 		"destination": "DEL",
 		"cost": 774,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -4988,7 +4988,7 @@
 		"destination": "FRA",
 		"cost": 724,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5001,7 +5001,7 @@
 		"destination": "RUH",
 		"cost": 882,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5014,7 +5014,7 @@
 		"destination": "JED",
 		"cost": 422,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5027,7 +5027,7 @@
 		"destination": "LCF",
 		"cost": 996,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5053,7 +5053,7 @@
 		"destination": "HJK",
 		"cost": 408,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5066,7 +5066,7 @@
 		"destination": "LHR",
 		"cost": 914,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5079,7 +5079,7 @@
 		"destination": "TXL",
 		"cost": 287,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5105,7 +5105,7 @@
 		"destination": "LIN",
 		"cost": 469,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5144,7 +5144,7 @@
 		"destination": "LAX",
 		"cost": 353,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5222,7 +5222,7 @@
 		"destination": "LHR",
 		"cost": 251,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5235,7 +5235,7 @@
 		"destination": "LAX",
 		"cost": 970,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5261,7 +5261,7 @@
 		"destination": "SFO",
 		"cost": 837,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5300,7 +5300,7 @@
 		"destination": "JFK",
 		"cost": 864,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5313,7 +5313,7 @@
 		"destination": "JED",
 		"cost": 832,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5443,7 +5443,7 @@
 		"destination": "DEL",
 		"cost": 524,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5456,7 +5456,7 @@
 		"destination": "RUH",
 		"cost": 182,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5495,7 +5495,7 @@
 		"destination": "TPE",
 		"cost": 584,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5508,7 +5508,7 @@
 		"destination": "LHR",
 		"cost": 266,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5534,7 +5534,7 @@
 		"destination": "LAX",
 		"cost": 750,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5560,7 +5560,7 @@
 		"destination": "JFK",
 		"cost": 253,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5573,7 +5573,7 @@
 		"destination": "SFO",
 		"cost": 517,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5612,7 +5612,7 @@
 		"destination": "JED",
 		"cost": 424,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5625,7 +5625,7 @@
 		"destination": "LCF",
 		"cost": 590,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5664,7 +5664,7 @@
 		"destination": "LAX",
 		"cost": 186,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5742,7 +5742,7 @@
 		"destination": "DEL",
 		"cost": 550,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5768,7 +5768,7 @@
 		"destination": "SFO",
 		"cost": 734,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5781,7 +5781,7 @@
 		"destination": "HJK",
 		"cost": 102,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5859,7 +5859,7 @@
 		"destination": "FCO",
 		"cost": 699,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5872,7 +5872,7 @@
 		"destination": "CPT",
 		"cost": 219,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5937,7 +5937,7 @@
 		"destination": "CAI",
 		"cost": 286,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -5950,7 +5950,7 @@
 		"destination": "TPE",
 		"cost": 242,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6015,7 +6015,7 @@
 		"destination": "FCO",
 		"cost": 470,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6028,7 +6028,7 @@
 		"destination": "JED",
 		"cost": 260,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6106,7 +6106,7 @@
 		"destination": "TPE",
 		"cost": 787,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6145,7 +6145,7 @@
 		"destination": "LCF",
 		"cost": 891,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6314,7 +6314,7 @@
 		"destination": "TPE",
 		"cost": 513,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6379,7 +6379,7 @@
 		"destination": "CAI",
 		"cost": 735,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6392,7 +6392,7 @@
 		"destination": "BOM",
 		"cost": 446,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6431,7 +6431,7 @@
 		"destination": "DEL",
 		"cost": 756,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6535,7 +6535,7 @@
 		"destination": "JED",
 		"cost": 790,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6561,7 +6561,7 @@
 		"destination": "DEL",
 		"cost": 406,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6587,7 +6587,7 @@
 		"destination": "CPT",
 		"cost": 679,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6613,7 +6613,7 @@
 		"destination": "LHR",
 		"cost": 538,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6665,7 +6665,7 @@
 		"destination": "LAX",
 		"cost": 599,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6678,7 +6678,7 @@
 		"destination": "JED",
 		"cost": 269,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6691,7 +6691,7 @@
 		"destination": "LAX",
 		"cost": 245,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6704,7 +6704,7 @@
 		"destination": "FCO",
 		"cost": 772,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6860,7 +6860,7 @@
 		"destination": "DEL",
 		"cost": 297,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6899,7 +6899,7 @@
 		"destination": "LHR",
 		"cost": 509,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6925,7 +6925,7 @@
 		"destination": "HJK",
 		"cost": 741,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6951,7 +6951,7 @@
 		"destination": "LCF",
 		"cost": 803,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -6964,7 +6964,7 @@
 		"destination": "CAI",
 		"cost": 925,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7029,7 +7029,7 @@
 		"destination": "CAI",
 		"cost": 270,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7042,7 +7042,7 @@
 		"destination": "BOM",
 		"cost": 568,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7094,7 +7094,7 @@
 		"destination": "JED",
 		"cost": 218,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7146,7 +7146,7 @@
 		"destination": "JED",
 		"cost": 215,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7198,7 +7198,7 @@
 		"destination": "TXL",
 		"cost": 253,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7211,7 +7211,7 @@
 		"destination": "LAX",
 		"cost": 407,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7289,7 +7289,7 @@
 		"destination": "JFK",
 		"cost": 340,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7302,7 +7302,7 @@
 		"destination": "CAI",
 		"cost": 391,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7315,7 +7315,7 @@
 		"destination": "TXL",
 		"cost": 683,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7419,7 +7419,7 @@
 		"destination": "JED",
 		"cost": 854,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7432,7 +7432,7 @@
 		"destination": "CPT",
 		"cost": 613,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7458,7 +7458,7 @@
 		"destination": "BOM",
 		"cost": 667,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7510,7 +7510,7 @@
 		"destination": "FCO",
 		"cost": 495,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7523,7 +7523,7 @@
 		"destination": "RUH",
 		"cost": 921,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7562,7 +7562,7 @@
 		"destination": "TXL",
 		"cost": 161,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7627,7 +7627,7 @@
 		"destination": "DEL",
 		"cost": 425,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7679,7 +7679,7 @@
 		"destination": "JED",
 		"cost": 593,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7692,7 +7692,7 @@
 		"destination": "JNP",
 		"cost": 128,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7744,7 +7744,7 @@
 		"destination": "FCO",
 		"cost": 132,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7822,7 +7822,7 @@
 		"destination": "JNP",
 		"cost": 416,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7848,7 +7848,7 @@
 		"destination": "RUH",
 		"cost": 166,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7887,7 +7887,7 @@
 		"destination": "FCO",
 		"cost": 836,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7900,7 +7900,7 @@
 		"destination": "LHR",
 		"cost": 198,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -7952,7 +7952,7 @@
 		"destination": "JED",
 		"cost": 112,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8030,7 +8030,7 @@
 		"destination": "LCF",
 		"cost": 865,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8082,7 +8082,7 @@
 		"destination": "TXL",
 		"cost": 218,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8095,7 +8095,7 @@
 		"destination": "LHR",
 		"cost": 721,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8121,7 +8121,7 @@
 		"destination": "LAX",
 		"cost": 498,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8147,7 +8147,7 @@
 		"destination": "LCF",
 		"cost": 963,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8160,7 +8160,7 @@
 		"destination": "HJK",
 		"cost": 502,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8212,7 +8212,7 @@
 		"destination": "CPT",
 		"cost": 889,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8251,7 +8251,7 @@
 		"destination": "TPE",
 		"cost": 730,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8277,7 +8277,7 @@
 		"destination": "JED",
 		"cost": 619,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8290,7 +8290,7 @@
 		"destination": "DEL",
 		"cost": 918,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8316,7 +8316,7 @@
 		"destination": "JNP",
 		"cost": 893,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8355,7 +8355,7 @@
 		"destination": "DEL",
 		"cost": 677,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8368,7 +8368,7 @@
 		"destination": "HJK",
 		"cost": 706,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8394,7 +8394,7 @@
 		"destination": "CAI",
 		"cost": 138,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8420,7 +8420,7 @@
 		"destination": "TXL",
 		"cost": 952,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8524,7 +8524,7 @@
 		"destination": "SFO",
 		"cost": 335,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8602,7 +8602,7 @@
 		"destination": "DEL",
 		"cost": 589,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8628,7 +8628,7 @@
 		"destination": "RUH",
 		"cost": 811,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8641,7 +8641,7 @@
 		"destination": "JNP",
 		"cost": 829,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8706,7 +8706,7 @@
 		"destination": "JFK",
 		"cost": 434,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8784,7 +8784,7 @@
 		"destination": "TPE",
 		"cost": 238,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8810,7 +8810,7 @@
 		"destination": "LCF",
 		"cost": 585,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8862,7 +8862,7 @@
 		"destination": "JED",
 		"cost": 292,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8888,7 +8888,7 @@
 		"destination": "RUH",
 		"cost": 623,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8940,7 +8940,7 @@
 		"destination": "JED",
 		"cost": 838,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -8992,7 +8992,7 @@
 		"destination": "FRA",
 		"cost": 100,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9083,7 +9083,7 @@
 		"destination": "CAI",
 		"cost": 947,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9135,7 +9135,7 @@
 		"destination": "SFO",
 		"cost": 837,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9148,7 +9148,7 @@
 		"destination": "LHR",
 		"cost": 661,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9187,7 +9187,7 @@
 		"destination": "JED",
 		"cost": 409,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9239,7 +9239,7 @@
 		"destination": "JED",
 		"cost": 649,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9252,7 +9252,7 @@
 		"destination": "LIN",
 		"cost": 174,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9265,7 +9265,7 @@
 		"destination": "LCF",
 		"cost": 849,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9317,7 +9317,7 @@
 		"destination": "TPE",
 		"cost": 713,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9382,7 +9382,7 @@
 		"destination": "JED",
 		"cost": 597,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9421,7 +9421,7 @@
 		"destination": "LAX",
 		"cost": 227,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9525,7 +9525,7 @@
 		"destination": "DEL",
 		"cost": 348,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9590,7 +9590,7 @@
 		"destination": "SFO",
 		"cost": 407,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9655,7 +9655,7 @@
 		"destination": "LAX",
 		"cost": 750,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9694,7 +9694,7 @@
 		"destination": "FRA",
 		"cost": 732,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9759,7 +9759,7 @@
 		"destination": "RUH",
 		"cost": 344,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9785,7 +9785,7 @@
 		"destination": "BOM",
 		"cost": 989,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9824,7 +9824,7 @@
 		"destination": "LCF",
 		"cost": 497,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9863,7 +9863,7 @@
 		"destination": "JFK",
 		"cost": 750,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9889,7 +9889,7 @@
 		"destination": "RUH",
 		"cost": 844,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9928,7 +9928,7 @@
 		"destination": "HJK",
 		"cost": 119,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -9941,7 +9941,7 @@
 		"destination": "SFO",
 		"cost": 513,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10045,7 +10045,7 @@
 		"destination": "DEL",
 		"cost": 532,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10084,7 +10084,7 @@
 		"destination": "CAI",
 		"cost": 843,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10110,7 +10110,7 @@
 		"destination": "FRA",
 		"cost": 481,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10136,7 +10136,7 @@
 		"destination": "LCF",
 		"cost": 314,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10214,7 +10214,7 @@
 		"destination": "HJK",
 		"cost": 992,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10344,7 +10344,7 @@
 		"destination": "SFO",
 		"cost": 603,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10370,7 +10370,7 @@
 		"destination": "JFK",
 		"cost": 216,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10435,7 +10435,7 @@
 		"destination": "CAI",
 		"cost": 588,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10461,7 +10461,7 @@
 		"destination": "TXL",
 		"cost": 520,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10513,7 +10513,7 @@
 		"destination": "DEL",
 		"cost": 117,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10539,7 +10539,7 @@
 		"destination": "FRA",
 		"cost": 887,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10565,7 +10565,7 @@
 		"destination": "LIN",
 		"cost": 692,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10669,7 +10669,7 @@
 		"destination": "JED",
 		"cost": 846,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10682,7 +10682,7 @@
 		"destination": "TPE",
 		"cost": 354,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10695,7 +10695,7 @@
 		"destination": "JED",
 		"cost": 908,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10721,7 +10721,7 @@
 		"destination": "FRA",
 		"cost": 785,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10773,7 +10773,7 @@
 		"destination": "LAX",
 		"cost": 239,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10786,7 +10786,7 @@
 		"destination": "CAI",
 		"cost": 407,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10812,7 +10812,7 @@
 		"destination": "CPT",
 		"cost": 965,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10864,7 +10864,7 @@
 		"destination": "RUH",
 		"cost": 537,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10903,7 +10903,7 @@
 		"destination": "BOM",
 		"cost": 523,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -10981,7 +10981,7 @@
 		"destination": "LAX",
 		"cost": 242,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11033,7 +11033,7 @@
 		"destination": "LIN",
 		"cost": 258,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11046,7 +11046,7 @@
 		"destination": "HJK",
 		"cost": 258,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11085,7 +11085,7 @@
 		"destination": "LCF",
 		"cost": 258,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11124,7 +11124,7 @@
 		"destination": "LHR",
 		"cost": 911,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11150,7 +11150,7 @@
 		"destination": "CAI",
 		"cost": 231,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11189,7 +11189,7 @@
 		"destination": "RUH",
 		"cost": 378,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11228,7 +11228,7 @@
 		"destination": "CPT",
 		"cost": 953,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11241,7 +11241,7 @@
 		"destination": "FRA",
 		"cost": 216,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11254,7 +11254,7 @@
 		"destination": "LIN",
 		"cost": 479,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11306,7 +11306,7 @@
 		"destination": "BOM",
 		"cost": 135,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11319,7 +11319,7 @@
 		"destination": "JFK",
 		"cost": 469,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11332,7 +11332,7 @@
 		"destination": "JED",
 		"cost": 367,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11384,7 +11384,7 @@
 		"destination": "DEL",
 		"cost": 474,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11410,7 +11410,7 @@
 		"destination": "CAI",
 		"cost": 413,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11449,7 +11449,7 @@
 		"destination": "LAX",
 		"cost": 639,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11462,7 +11462,7 @@
 		"destination": "TXL",
 		"cost": 461,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11514,7 +11514,7 @@
 		"destination": "LCF",
 		"cost": 207,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11553,7 +11553,7 @@
 		"destination": "HJK",
 		"cost": 424,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11566,7 +11566,7 @@
 		"destination": "LAX",
 		"cost": 738,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11618,7 +11618,7 @@
 		"destination": "TPE",
 		"cost": 298,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11644,7 +11644,7 @@
 		"destination": "CAI",
 		"cost": 476,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11657,7 +11657,7 @@
 		"destination": "CPT",
 		"cost": 242,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11683,7 +11683,7 @@
 		"destination": "JNP",
 		"cost": 199,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11696,7 +11696,7 @@
 		"destination": "BOM",
 		"cost": 182,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11722,7 +11722,7 @@
 		"destination": "LAX",
 		"cost": 335,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11748,7 +11748,7 @@
 		"destination": "LIN",
 		"cost": 431,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11761,7 +11761,7 @@
 		"destination": "SFO",
 		"cost": 679,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11774,7 +11774,7 @@
 		"destination": "BOM",
 		"cost": 626,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11826,7 +11826,7 @@
 		"destination": "TXL",
 		"cost": 796,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11839,7 +11839,7 @@
 		"destination": "JNP",
 		"cost": 130,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11865,7 +11865,7 @@
 		"destination": "LCF",
 		"cost": 863,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -11917,7 +11917,7 @@
 		"destination": "FCO",
 		"cost": 100,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12008,7 +12008,7 @@
 		"destination": "LAX",
 		"cost": 958,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12034,7 +12034,7 @@
 		"destination": "TXL",
 		"cost": 107,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12060,7 +12060,7 @@
 		"destination": "LCF",
 		"cost": 766,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12073,7 +12073,7 @@
 		"destination": "TPE",
 		"cost": 385,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12112,7 +12112,7 @@
 		"destination": "CAI",
 		"cost": 205,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12138,7 +12138,7 @@
 		"destination": "LAX",
 		"cost": 771,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12151,7 +12151,7 @@
 		"destination": "FCO",
 		"cost": 286,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12164,7 +12164,7 @@
 		"destination": "JED",
 		"cost": 612,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12203,7 +12203,7 @@
 		"destination": "RUH",
 		"cost": 653,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12229,7 +12229,7 @@
 		"destination": "LAX",
 		"cost": 475,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12255,7 +12255,7 @@
 		"destination": "JFK",
 		"cost": 650,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12281,7 +12281,7 @@
 		"destination": "FCO",
 		"cost": 609,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12294,7 +12294,7 @@
 		"destination": "SFO",
 		"cost": 396,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12333,7 +12333,7 @@
 		"destination": "TXL",
 		"cost": 779,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12359,7 +12359,7 @@
 		"destination": "JED",
 		"cost": 404,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12541,7 +12541,7 @@
 		"destination": "SFO",
 		"cost": 632,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12580,7 +12580,7 @@
 		"destination": "HJK",
 		"cost": 345,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12593,7 +12593,7 @@
 		"destination": "JED",
 		"cost": 785,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12697,7 +12697,7 @@
 		"destination": "CAI",
 		"cost": 447,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12723,7 +12723,7 @@
 		"destination": "TPE",
 		"cost": 202,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12749,7 +12749,7 @@
 		"destination": "DEL",
 		"cost": 149,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12788,7 +12788,7 @@
 		"destination": "CPT",
 		"cost": 399,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12814,7 +12814,7 @@
 		"destination": "TXL",
 		"cost": 931,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12840,7 +12840,7 @@
 		"destination": "JFK",
 		"cost": 211,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12853,7 +12853,7 @@
 		"destination": "HJK",
 		"cost": 900,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12866,7 +12866,7 @@
 		"destination": "LAX",
 		"cost": 195,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12905,7 +12905,7 @@
 		"destination": "LIN",
 		"cost": 758,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12918,7 +12918,7 @@
 		"destination": "LHR",
 		"cost": 978,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12944,7 +12944,7 @@
 		"destination": "FCO",
 		"cost": 733,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -12957,7 +12957,7 @@
 		"destination": "TPE",
 		"cost": 673,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13009,7 +13009,7 @@
 		"destination": "SFO",
 		"cost": 941,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13035,7 +13035,7 @@
 		"destination": "FCO",
 		"cost": 208,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13061,7 +13061,7 @@
 		"destination": "JED",
 		"cost": 353,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13087,7 +13087,7 @@
 		"destination": "HJK",
 		"cost": 383,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13126,7 +13126,7 @@
 		"destination": "CAI",
 		"cost": 930,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13178,7 +13178,7 @@
 		"destination": "LHR",
 		"cost": 737,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13191,7 +13191,7 @@
 		"destination": "RUH",
 		"cost": 105,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13204,7 +13204,7 @@
 		"destination": "TXL",
 		"cost": 472,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
@@ -13230,7 +13230,7 @@
 		"destination": "CPT",
 		"cost": 104,
 		"currency": "USD",
-		"class": "bussiness",
+		"class": "business",
 		"Airline": "Swiss Air"
 	},
 	{
