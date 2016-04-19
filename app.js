@@ -61,8 +61,8 @@ app.all('*', function(req, res, next) {
     'URL': req.url,
     'Host': req.headers['host'],
     'Connection': req.headers['connection'],
-    'User-Agent': req.headers['user-agent']
-
+    'User-Agent': req.headers['user-agent'],
+    'DateTime': new Date()
   }
   fs.appendFile('.log', JSON.stringify(dataLog, null, '\t'));
   next();
