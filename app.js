@@ -14,8 +14,7 @@ var request     =   require('request');
 var airlinesIterate = function(index, route, result, res, cb){
   if(index==airlines.length) res.send(result);
   else {
-  //  console.log("this is the index now : " + index);
-    request({ url: airlines[index].url+''+route, headers: { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
+    request({ url: airlines[index].url+''+route, timeout:process.env.TIMEOUT, headers: { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
   }, function(error, response, body){
       if(!error && response.statusCode == 200 && response.headers['content-type']=='application/json; charset=utf-8'){
        var data = JSON.parse(body);
@@ -41,7 +40,7 @@ var airlinesIterate = function(index, route, result, res, cb){
      } else {
        console.log('\nI have queried now '+airlines[index].name+
                    '\n ==> At :: ' +airlines[index].url+
-                   '\n But returned With error continuing with the same data as above \n');
+                   '\n But returned With error thus continuing with the same data as above \n');
        cb(index+1, route, result, res, cb);
      }
    });
@@ -50,8 +49,6 @@ var airlinesIterate = function(index, route, result, res, cb){
 
 
 
-require('dotenv').load();
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -59,6 +56,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  var dataLog = {
+    'ipAddress': req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress,
+    'URL': req.url,
+    'Host': req.headers['host'],
+    'Connection': req.headers['connection'],
+    'User-Agent': req.headers['user-agent']
+
+  }
+  fs.appendFile('.log', JSON.stringify(dataLog, null, '\t'));
   next();
 });
 
