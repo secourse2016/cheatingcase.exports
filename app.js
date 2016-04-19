@@ -15,7 +15,7 @@ var airlinesIterate = function(index, route, result, res, cb){
   if(index==airlines.length) res.send(result);
   else {
   //  console.log("this is the index now : " + index);
-    request({ url: airlines[index].url+''+route, headers: { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
+    request({ url: airlines[index].url+''+route, timeout:500, headers: { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
   }, function(error, response, body){
       if(!error && response.statusCode == 200 && response.headers['content-type']=='application/json; charset=utf-8'){
        var data = JSON.parse(body);
@@ -41,7 +41,8 @@ var airlinesIterate = function(index, route, result, res, cb){
      } else {
        console.log('\nI have queried now '+airlines[index].name+
                    '\n ==> At :: ' +airlines[index].url+
-                   '\n But returned With error continuing with the same data as above \n');
+                   '\n But returned With error thus continuing with the same data as above \n' +
+                   ' Where Error is :: ' +error.code);
        cb(index+1, route, result, res, cb);
      }
    });
