@@ -29,8 +29,8 @@ var airlinesIterate = function(index, route, result, res, cb){
            "outgoingFlights"  : result.outgoingFlights
          };
        }
-       if(data.outgoingFlights) newRes.outgoingFlights = data.outgoingFlights.concat(result.outgoingFlights);
-       if(result.returnFlights && data.returnFlights) newRes.returnFlights = data.returnFlights.concat(result.returnFlights);
+       if(data.outgoingFlights) newRes.outgoingFlights = result.outgoingFlights.concat(data.outgoingFlights);
+       if(result.returnFlights && data.returnFlights) newRes.returnFlights = result.returnFlights.concat(data.returnFlights);
 
        console.log('\nI have queried now '+airlines[index].name+
                    '\n ==> At :: ' +airlines[index].url+
