@@ -10,6 +10,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.childrenCount = "0";
   $scope.class = "1";
   $scope.otherAirlines=false;
+  AirportsSrv.setOtherAirlines("false");
   $scope.searchBy="schedule";
 
   $scope.selectTripType = function(setTrip){
@@ -68,18 +69,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
       AirportsSrv.setOtherAirlines($scope.otherAirlines);
     };
 
-    /*
-    $scope.setDepartureDate = function(value){
-      Console.log(value +"hi")
-      AirportsSrv.setSelectedDepartureDate($scope.departureDate);
-    };
-
-
-    $scope.setReturnDate = function(value){
-      Console.log(value + "hii");
-      AirportsSrv.setSelectedReturnDate($scope.returnDate);
-    };
-      */
     $scope.$watch('departureDate', function() {
       $scope.returnDate= null;
       $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
