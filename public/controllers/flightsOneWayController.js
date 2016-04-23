@@ -15,6 +15,10 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
     return "btn-info";
   };
 
+  $scope.findColor = function(flight){
+    return "color: rgb(0,139,139)";
+  };
+
   $scope.pay = function(index,type) {
     AirportsSrv.setDisplayedFlightDate($scope.outgoingFlights[index].departureDateTime);
     AirportsSrv.setDisplayedFlightNumber($scope.outgoingFlights[index].flightNumber);

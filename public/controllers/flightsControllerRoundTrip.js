@@ -24,6 +24,16 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
     return "btn-danger";
   };
 
+  $scope.findColor = function(flight){
+    var i = $scope.outgoingFlights.length;
+    while (i--) {
+      if ($scope.outgoingFlights[i] === flight) {
+        return "color: rgb(0,139,139)";
+      }
+    }
+    return "color: rgb(228,40,18)";
+  };
+
   $scope.pay = function(index,type) {
     if(type=='btn-info'){
       AirportsSrv.setDisplayedFlightDate($scope.outgoingFlights[index].departureDateTime);

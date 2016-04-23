@@ -1,9 +1,9 @@
-<div class="container">
-  <div class="row">
+<div class="container flightsInfoContainer">
+  <div class="row flightsInfoContainer">
     <div class="col-lg-10">
       <h1><span class="label label-info">Outgoing Flights <span class="badge">{{outgoingFlights.length}}</span></span></h1>
       <div ng-repeat="outgoingFlight in outgoingFlights">
-        <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" index="$index"> </show-flights>
+        <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" color="findColor(outgoingFlight)" index="$index"> </show-flights>
       </div>
     </div>
     <div class="col-lg-2">

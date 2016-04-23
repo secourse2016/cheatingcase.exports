@@ -4,6 +4,7 @@ swissAir.directive('showFlights', function() {
     scope: {
       flight:'=',
       type:'=',
+      color: '=',
       index:'='
     },
     templateUrl: 'directives/showFlights.html'
