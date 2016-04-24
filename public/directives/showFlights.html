@@ -2,9 +2,12 @@
   <div class="gig">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <button class="btn {{type}}" data-toggle="collapse"
+        <label><input type="checkbox" ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled()">
+        <button class="btn btn-{{type}}" data-toggle="collapse"
         data-target="#collapse{{type}}{{index}}">
           Flight Number: {{flight.flightNumber}} <--> Cost: {{flight.cost|currency}}</button>
+          </label>
+
         </h4>
       </div>
       <div id="collapse{{type}}{{index}}" class="panel-collapse collapse">
