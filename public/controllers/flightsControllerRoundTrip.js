@@ -1,17 +1,7 @@
 swissAir.controller('flightsControllerRoundTrip', function($scope,$location,AirportsSrv) {
-  $scope.origin = AirportsSrv.getSelectedOriginAirport();
-  $scope.destination = AirportsSrv.getSelectedDestinationAirport();
-  $scope.departureDate= new Date(AirportsSrv.getSelectedDepartureDate()).getTime();
-  $scope.returnDate = new Date(AirportsSrv.getSelectedReturnDate()).getTime();
-  $scope.class = AirportsSrv.getSelectedClass();
-  $scope.otherAirlines = AirportsSrv.getOtherAirlines();
   $scope.disabled = true;
-
-  AirportsSrv.getConcatFlightsTwoWay($scope.origin,$scope.destination,$scope.departureDate,
-    $scope.returnDate,$scope.class,$scope.otherAirlines,function(result){
-      $scope.outgoingFlights= result.outgoingFlights;
-      $scope.returnFlights = result.returnFlights;
-    });
+  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.returnFlights =AirportsSrv.getReturnFlights();
 
 
   $scope.findType = function(flight){

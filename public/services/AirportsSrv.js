@@ -7,6 +7,19 @@ swissAir.factory('AirportsSrv', function ($http) {
            return $http.get('/api/data/airports');
          },
 
+         setOutgoingFlights: function(value) {
+           this.outgoingFlights = value;
+         },
+         getOutgoingFlights: function() {
+           return this.outgoingFlights;
+         },
+
+         setReturnFlights: function(value) {
+           this.returnFlights = value;
+         },
+         getReturnFlights: function() {
+           return this.returnFlights;
+         },
 
          setSelectedOriginAirport: function(value) {
            this.selectedOriginAirport = value;
