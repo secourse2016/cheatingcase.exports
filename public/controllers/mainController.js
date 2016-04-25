@@ -13,6 +13,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   AirportsSrv.setOtherAirlines("false");
   $scope.searchBy="schedule";
   $scope.animation="";
+  $scope.disabled=false;
 
   $scope.selectTripType = function(setTrip){
     $scope.tripType = setTrip;
@@ -101,6 +102,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
 
     /* Find All Available Flights  */
     $scope.SearchFlights = function() {
+      $scope.disabled=true;
       $scope.animation ="glyphicon glyphicon-refresh glyphicon-refresh-animate";
       if($scope.tripType == 2){
         AirportsSrv.getConcatFlightsTwoWay(AirportsSrv.getSelectedOriginAirport(),
