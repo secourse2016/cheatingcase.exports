@@ -69,6 +69,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
   .state('tab.Team', {
     url: '/Team',
     views: {
@@ -79,11 +80,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('search', {
-    url: '/search',
-    abstract: true,
-    templateUrl: 'templates/main.html'
-  });
+  .state('main', {
+                url: '/main',
+                templateUrl: 'templates/main.html',
+                controller: 'DashCtrl'
+            });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/Home');

@@ -21,5 +21,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android",
+    "ios"
+  ]
 }
