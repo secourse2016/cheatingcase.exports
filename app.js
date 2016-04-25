@@ -165,7 +165,7 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
             class: req.params.class };
 
 
-  db.db().collection('flights').find(query).toArray(function(error,flights) {
+  db.db().collection('flights').find(query,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(error,flights) {
     if(error) {
       console.log(error);
       process.exit(1);
@@ -204,9 +204,9 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
   var returnFlights;
   var result;
 
-  db.db().collection('flights').find(queryOutgoing).toArray(function(err,data){
+  db.db().collection('flights').find(queryOutgoing,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(err,data){
     outgoingFlights = data;
-    db.db().collection('flights').find(queryReturn).toArray(function(err,data){
+    db.db().collection('flights').find(queryReturn,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(err,data){
       returnFlights = data;
       result = { "outgoingFlights": outgoingFlights ,
                  "returnFlights": returnFlights }

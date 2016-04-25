@@ -1,5 +1,10 @@
 <div class="container flightsInfoContainer">
   <div class="row flightsInfoContainer">
+    <div class="navbar navbar-default" set-class-when-at-top="fix-to-top" padding-when-at-top="55">
+      <div class="fluid-container" >
+        <button type="button" class="proceedToPaybtn btn btn-xl btn-sm" ng-disabled="disabled" ng-click="pay()" >Proceed To Pay</button>
+      </div>
+</div>
     <div class="col-lg-10">
       <h1><span class="label label-info">Outgoing Flights <span class="badge">{{outgoingFlights.length}}</span></span></h1>
       <div ng-repeat="outgoingFlight in outgoingFlights">
@@ -8,13 +13,5 @@
     </div>
     <div class="col-lg-2">
     </div>
-  </div>
-
-  <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-
-    <button type="button" class="btn btn-xl btn-sm" style="align: center" ng-disabled="disabled" ng-click="pay()"  >Proceed To Pay</button>
-    </div>
-  </nav>
-
+</div>
 </div>
