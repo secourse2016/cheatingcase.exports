@@ -80,11 +80,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('main', {
-                url: '/main',
-                templateUrl: 'templates/main.html',
+  .state('searchflights', {
+                url: '/searchflights',
+                templateUrl: 'templates/searchflights.html',
                 controller: 'DashCtrl'
-            });
+            })
+
+  .state('searchflights.OneWay', {
+    url: '/OneWay',
+    views: {
+      'searchflights-OneWay': {
+        templateUrl: 'templates/searchflights-OneWay.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })
+
+  .state('searchflights.TwoWay', {
+    url: '/TwoWay',
+    views: {
+      'searchflights-TwoWay': {
+        templateUrl: 'templates/searchflights-TwoWay.html',
+        controller: 'DashCtrl'
+      }
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/Home');
