@@ -6,6 +6,19 @@
         $scope.returnFlightNumber= AirportsSrv.getDisplayedReturnFlightNumber();
         $scope.receipt_number= 0;
         $scope.reply="";
+
+        // Passenger new vars
+        $scope.dob="03/12/1995";
+        $scope.issueDate;
+        $scope.expDate;
+        $scope.passportNumber;
+        // Payment vars
+        $scope.cardnumber=0;
+        $scope.cardExpMonth=12;
+        $scope.cardExpYear=20;
+        $scope.cvCode=0;
+        $scope.coupon=0;
+
         $scope.book = function(){
 
           AirportsSrv.createBooking($scope.firstName,$scope.lastName,$scope.email,$scope.passCountry,
@@ -14,7 +27,11 @@
           .success(function(reply){
             $scope.reply = reply;
           });
-        }
+        };
+        $scope.pay = function(){
+          // Call Payment here
+          return true;
+        };
         $scope.$watch('receipt_number', function() {
           $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
         });
