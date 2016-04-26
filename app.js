@@ -10,6 +10,8 @@ var assert      =   require('assert');
 var airlines    =   require('./airlines.json');
 var request     =   require('request');
 
+var stripe = require('stripe')(process.env.STRIPESECRETKEY);
+
 
 var airlinesIterate = function(index, route, result, res, cb){
   if(index==airlines.length) res.send(result);
@@ -219,6 +221,52 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     });
   });
 });
+
+app.post('/booking', function (req, res){
+
+  var stripeToken = req.body.paymentToken;
+  var cost  = req.body.cost;
+
+  stripe.charges.create({
+      amount: cost,
+      currency: "usd",
+      source: stripeToken,
+      description: "testPayment"
+    }, function(err, data) {
+    if (err) res.send({ refNum: null, errorMessage: err });
+    else
+      var bookingRefNum = "SA" + new Date().getTime();
+      var bookingsData = [];
+      var passengers = req.body.passengerDetails;
+
+      for(int i=0; i<passengers.length; i++){
+        bookingsData.push({
+          "firstName": passengers[i].firstName,
+          "lastName": passengers[i].lastName,
+          "passportNum": passengers[i].passportNum,
+          "passportExpiryDate": passengers[i].passportExpiryDate,
+          "dateOfBirth": passengers[i].dateOfBirth,
+          "nationality": passengers[i].nationality,
+          "email": passengers[i].email,
+          "bookingRefNumber": bookingRefNum,
+          "outgoingFlight": req.body.outgoingFlightId,
+          "returnFlight": req.body.returnFlightId,
+          "cost": cost
+        });
+      }
+
+      db.db().collection('bookings').insert(bookingsData, function (data, err){
+        if(err) res.send({ "refNum": null, "errorMessage": err });
+        else {
+          res.send({ "refNum": bookingRefNum, "errorMessage": null });
+        }
+      });
+
+    });
+});
+
+
+
 
 
 module.exports = app
