@@ -12,7 +12,7 @@
         $scope.issueDate;
         $scope.expDate;
         $scope.passportNumber;
-        // Pay vars
+        // Payment vars
         $scope.cardnumber=0;
         $scope.cardExpMonth=12;
         $scope.cardExpYear=20;
@@ -29,7 +29,7 @@
           });
         };
         $scope.pay = function(){
-          // Call payment here
+          // Call Payment here
         };
         $scope.$watch('receipt_number', function() {
           $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
