@@ -277,18 +277,18 @@ header .bigImg {
     text-align: center;
     color: #E42812
 }
-header .intro-text {
+ .intro-text {
     padding-top: 100px;
     padding-bottom: 50px
 }
-header .intro-text .intro-lead-in {
+ .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: italic;
     font-size: 22px;
     line-height: 22px;
     margin-bottom: 25px
 }
-header .intro-text .intro-heading {
+ .intro-text .intro-heading {
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: 700;
@@ -297,18 +297,18 @@ header .intro-text .intro-heading {
     margin-bottom: 25px
 }
 @media (min-width: 768px) {
-    header .intro-text {
+     .intro-text {
         padding-top: 300px;
         padding-bottom: 200px
     }
-    header .intro-text .intro-lead-in {
+     .intro-text .intro-lead-in {
         font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-style: italic;
         font-size: 40px;
         line-height: 40px;
         margin-bottom: 25px
     }
-    header .intro-text .intro-heading {
+     .intro-text .intro-heading {
         font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-transform: uppercase;
         font-weight: 700;
@@ -837,13 +837,23 @@ body {
 /*  PAYMENT INFO   */
 
 .slider-size {
-height: 300px; /* This is your slider height */
+height: 340px; /* This is your slider height */
 }
 .carousel {
 width:100%;
 margin:0 auto; /* center your carousel if other than 100% */
 }
 
+@media only screen and (max-width:768px) {
+.carouselContainer{
+  padding: 0px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.carousel{
+margin-right: -15px;
+}
+}
 
 
 .flex-start{
@@ -916,6 +926,30 @@ margin:0 auto; /* center your carousel if other than 100% */
 
 #issueAndExpDates .input-group input{
   max-width: 150px
+}
+
+.panel-info-swiss{
+  border-color: rgb(228,40,18);
+}
+.panel-info-swiss .panel-heading {
+    color: #fff;
+    background-color: rgb(228,40,18);
+    font-weight: bolder;
+    font-size: 20px;
+}
+.panel-info-swiss .panel-body {
+    color: black;
+    font-size: 12px;
+    font-weight: lighter;
+    padding-top: 15px;
+}
+
+.panel-info-swiss label{
+  color: rgb(228,40,18);
+}
+
+.paymentContainer .intro-text .intro-lead-in{
+  text-align: center;
 }
 
 
