@@ -254,7 +254,8 @@ app.post('/booking', function (req, res){
           "cost": cost
         });
       }
-
+      // NOTE: for reviewers the bookings schema needs to be updated to abide to the format I'm inserting
+       
       db.db().collection('bookings').insert(bookingsData, function (data, err){
         if(err) res.send({ "refNum": null, "errorMessage": err });
         else {
