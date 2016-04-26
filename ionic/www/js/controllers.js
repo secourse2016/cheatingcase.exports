@@ -1,7 +1,22 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $ionicLoading, $ionicPopover) {
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover) {
    // .fromTemplate() method
+
+   $ionicLoading.show({
+    content: 'Loading',
+    template:'please wait...',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 1000);
+  
    var template = '<ion-popover-view>' + 
                   '<ion-header-bar class="bar bar-assertive">' +
                   '<h1 class = "title" style="text-align:center"><strong>Join us on</strong></h1>' +
@@ -56,6 +71,7 @@ angular.module('starter.controllers', [])
   
    $ionicLoading.show({
     content: 'Loading',
+    template:'please wait...',
     animation: 'fade-in',
     showBackdrop: true,
     maxWidth: 200,
