@@ -1,13 +1,21 @@
-<div class="container">
+<div class="container mainViewContainer">
     <!-- this is my partial page tokyo -->
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h2 class="section-heading wow fadeInDown" data-wow-offset="250">Fly</h2>
+          <div style="max-width: 0px" id ="navFly"></div>
+            <h2 class="section-heading wow fadeInDown" data-wow-offset="250">FLY</h2>
             <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230">Life is short and the world is wide.</h3>
         </div>
     </div>
-    <div class="row text-center">
-        <div class="col-md-6 col-sm-12 col-xs-12">
+    <div class="row text-center mainFormRow">
+      <div class="col-md-3 col-sm-12 col-xs-12 animatedGlymph">
+          <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <i class="fa fa-plane fa-inverse wow slideInLeft" data-wow-offset="200" id="thePlane"></i>
+              </div>
+         </div>
+       </div>
+        <div class="col-md-6 col-sm-12 col-xs-12 mainFormContainer">
             <form name="searchForm" novalidate ng-submit="searchForm.$valid && SearchFlights()">
                 <div class="panel panel-default wow fadeInDown" data-wow-offset="180">
                     <div class="panel-body">
@@ -143,7 +151,7 @@
                                         <input type="radio" name="optradio" value="schedule" ng-model="searchBy">Schedule</label>
                                     <label class="radio-inline">
                                         <input type="radio" name="optradio" value="price" ng-model="searchBy">Price</label>
-                                    <label class="checkbox-inline" id="otherAirlines">
+                                    <label class="checkbox-inline" ng-model="otherAirlines">
                                         <input type="checkbox" value="" ng-click="flipOtherAirlines()">Search Other Airlines</label>
                                 </div>
                             </div>
@@ -152,21 +160,21 @@
                     </div>
 
                     <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
-                        <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
+                        <button type="submit" class="btn btn-xl btn-md" id='btnSearch' ng-disabled="disabled">
+                          <span class="{{animation}}"></span> Search Flights</button>
+
+
                     </div>
                 </div>
         </form>
         </div>
 
-    <!-- Animated Glymphs -->
 
-    <div class="col-md-6 col-sm-12 col-xs-12">
+
+    <div class="col-md-3 col-sm-12 col-xs-12 animatedGlymph">
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <i class="fa fa-plane fa-inverse wow slideInLeft" data-wow-offset="200" id="theGlobe"></i>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <i class="fa fa-globe fa-inverse wow slideInRight" data-wow-offset="200" id="thePlane"></i>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <i class="fa fa-globe fa-inverse wow slideInRight" data-wow-offset="200" id="theGlobe"></i>
             </div>
         </div>
     </div>

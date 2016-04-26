@@ -1,22 +1,27 @@
-<div class="container">
-  <div class="row">
+<div class="container flightsInfoContainer">
+
+  <div class="row flightsInfoContainer">
+    <div class="initial-position" set-class-when-at-top="fix-to-top" padding-when-at-top="55">
+      <div class="fluid-container" >
+        <button type="button" class="proceedToPaybtn btn btn-xl btn-sm" ng-disabled="disabled" ng-click="pay()" >Proceed To Pay</button>
+      </div>
+    </div>
 
     <div class="col-lg-5">
       <h1><span class="label label-info">Outgoing Flights <span class="badge">{{outgoingFlights.length}}</span></span></h1>
         <div ng-repeat="outgoingFlight in outgoingFlights">
-          <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" index="$index"> </show-flights>
+          <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" color="findColor(outgoingFlight)" index="$index"> </show-flights>
         </div>
   </div>
-
     <div class="col-lg-2">
     </div>
 
     <div class="col-lg-5">
    <h1><span class="label label-danger">Return Flights <span class="badge">{{returnFlights.length}}</span></span></h1>
      <div ng-repeat="returnFlight in returnFlights">
-       <show-flights flight="returnFlight" type="findType(returnFlight)" index="$index"> </show-flights>
+       <show-flights flight="returnFlight" type="findType(returnFlight)" color="findColor(returnFlight)" index="$index"> </show-flights>
   </div>
     </div>
-
   </div>
+
 </div>

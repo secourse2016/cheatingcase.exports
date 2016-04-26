@@ -1,46 +1,70 @@
 <div class="panel-group" id="accordion{{index}}">
-  <div>
+  <div class="gig">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <button class="btn {{type}}" data-toggle="collapse"
+        <label><input type="checkbox" ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled()">
+        <button class="btn btn-{{type}}" data-toggle="collapse"
         data-target="#collapse{{type}}{{index}}">
           Flight Number: {{flight.flightNumber}} <--> Cost: {{flight.cost|currency}}</button>
+          </label>
+
         </h4>
       </div>
       <div id="collapse{{type}}{{index}}" class="panel-collapse collapse">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-6"><div class="alert alert-info">From: {{ flight.origin }}</div></div>
-            <div class="col-sm-6"><div class="alert alert-info">To: {{ flight.destination }}</div></div>
-          </div>
+              <div class="col-sm-6 gig-left">
+                  <div class="row">
+                      <h6 style="{{color}}">From</h6>
+                      <p>{{flight.origin}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">To</h6>
+                      <p>{{flight.destination}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Departure Time</h6>
+                      <p>{{flight.departureDateTime|date:'medium'}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Arrival Time</h6>
+                      <p>{{flight.arrivalDateTime|date:'medium'}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Class</h6>
+                      <p>{{flight.class}}</p>
+                  </div>
 
-          <div class="row">
-            <div class="col-sm-6"><div class="alert alert-info">Flight Number: {{ flight.flightNumber }}</div></div>
-            <div class="col-sm-6"><div class="alert alert-info">Aircraft: {{ flight.aircraftType }}
-              {{ flight.aircraftModel}}</div></div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6"><div class="alert alert-info">Departure Time: {{flight.departureDateTime|date:'medium'}} </div></div>
-            <div class="col-sm-6"><div class="alert alert-info">
-              Arrival Time: {{flight.arrivalDateTime|date:'medium'}}</div></div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6"><div class="alert alert-info">Airline: {{ flight.Airline }}</div></div>
-            <div class="col-sm-6"><div class="alert alert-info">Class: {{ flight.class }}</div>
-          </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="alert alert-success">
-                <h2>Cost: {{flight.cost|currency}}</h2>
               </div>
-            </div>
-          </div>
+              <!-- End Panel-Gig Left -->
+              <div class="col-sm-6 gig-right">
+                <div class="row">
+                    <h6 style="{{color}}">Airline</h6>
+                    <p>{{flight.Airline}}</p>
+                </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Flight Number</h6>
+                      <p>{{flight.flightNumber}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Cost</h6>
+                      <p>{{flight.cost|currency}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Aircraft Type</h6>
+                      <p>{{ flight.aircraftType}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="{{color}}">Aircraft Model</h6>
+                      <p>{{ flight.aircraftModel}}</p>
+                  </div>
+                  <div class="row gig-navigateLink">
+                      <a href="#">Visit Airline</a>
+                  </div>
+              </div>
+              <!-- End Panel-Gig right -->
 
-          <div class="row">
-            <button type="button" class="btn btn-xl btn-sm" style="align: center" ng-click="$parent.pay(index,type)"  >Proceed To Pay</button>
+
           </div>
 
         </div>
