@@ -10,7 +10,8 @@ var assert      =   require('assert');
 var airlines    =   require('./airlines.json');
 var request     =   require('request');
 
-var stripe = require('stripe')(process.env.STRIPESECRETKEY);
+var stripe  = require('stripe')(process.env.STRIPESECRETKEY);
+var teams   = require('./teams.json');
 
 
 var airlinesIterate = function(index, route, result, res, cb){
@@ -239,7 +240,7 @@ app.post('/booking', function (req, res){
       var bookingsData = [];
       var passengers = req.body.passengerDetails;
 
-      for(int i=0; i<passengers.length; i++){
+      for(var i=0; i<passengers.length; i++){
         bookingsData.push({
           "firstName": passengers[i].firstName,
           "lastName": passengers[i].lastName,
@@ -255,7 +256,7 @@ app.post('/booking', function (req, res){
         });
       }
       // NOTE: for reviewers the bookings schema needs to be updated to abide to the format I'm inserting
-       
+
       db.db().collection('bookings').insert(bookingsData, function (data, err){
         if(err) res.send({ "refNum": null, "errorMessage": err });
         else {
@@ -267,7 +268,24 @@ app.post('/booking', function (req, res){
 });
 
 
+app.post('/bookingOthers', function (req, res){
+  var airLine = req.query.airline;
 
+  request({ 'url': teams[airLine]+'/booking',
+            'method': "POST",
+            'json': true,   // <--Very important!!!
+            'body': req.body,
+            'timeout': parseInt(process.env.TIMEOUT),
+            'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
+          }, function (error, response, body){
+            if(err) res.send({ "refNum": null, "errorMessage": err });
+            else {
+              res.send({ "response":response, "airlineURL": teams[airLine] });
+            }
+          });
+
+
+});
 
 
 module.exports = app
