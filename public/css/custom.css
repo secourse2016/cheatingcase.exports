@@ -831,3 +831,18 @@ body {
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
 }
+
+
+
+/*  PAYMENT INFO   */
+
+.slider-size {
+height: 500px; /* This is your slider height */
+}
+.carousel {
+width:100%;
+margin:0 auto; /* center your carousel if other than 100% */
+}
+
+
+/*./ PAYMENT INFO*/
