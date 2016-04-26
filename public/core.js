@@ -1,6 +1,9 @@
-var swissAir = angular.module('swissAir', ['ui.bootstrap', 'ngRoute']);
+var swissAir = angular.module('swissAir', ['ui.bootstrap','angular-stripe', 'ngRoute']);
 
-swissAir.config(function ($routeProvider) {
+swissAir.config(function ($routeProvider,stripeProvider) {
+
+   stripeProvider.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -20,4 +23,5 @@ swissAir.config(function ($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
+
 });
