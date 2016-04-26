@@ -1,4 +1,4 @@
-<div>
+<!--
 
   <div class="container">
     <div class="row">
@@ -12,7 +12,7 @@
 
         <div class="col-lg-6">
 
-          <!-- User Info opened -->
+
           <div class="row">
             <div class="container" >
               <div class="col-xs-12 col-md-6">
@@ -66,10 +66,9 @@
             </div>
           </div>
         </div>
-        <!-- User Info opened -->
 
 
-          <!-- Credit card opened -->
+
 
           <div class="row">
             <div class="container" >
@@ -124,7 +123,7 @@
                             </div>
                             <div class="row">
                               <div class="col-xs-12">
-                                <button class="btn btn-success btn-lg btn-block" type="submit" submit" id="submit" value="Submit" >Book</button>
+                                <button class="btn btn-success btn-lg btn-block" type="submit" id="submit" value="Submit"> Book</button>
                               </div>
                               <div>
                                 {{reply}}
@@ -139,11 +138,77 @@
                     </div>
                   </div>
                 </div>
-              <!-- Credit card closed -->
 
             </div>
             <div class="col-lg-6">  </div>
           </form>
         </div>
       </div>
+ -->
+
+<section class="container" id="paymentContainer">
+    <div class="row paymentInfoContainer">
+        <div class="col-xs-12 col-sm-12 col-md-7">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">PAYMENT INFORMATION</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CREDIT CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-7">
+                                <div class="form-group">
+                                    <label for="expDateInputGroup">EXPIRATION DATE</label>
+                                    <div class="input-group" id="expDateInputGroup">
+                                        <input type="number" min="1" max="12" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
+                                        <input type="number" min="00" max="99" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-5">
+                                <div class="form-group">
+                                    <label for="cvCode">CV CODE</label>
+                                    <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvv" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="form-group">
+                              <label for="couponCode">COUPON CODE</label>
+                              <input type="text" class="form-control" name="couponCode" ng-required="true " ng-model="Coupon"/>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5">
+            <!-- Carousal -->
+        </div>
     </div>
+    <!-- End Payment INFO CONTAINER -->
+
+    <div class="row passengerInfoContainer">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End PASSENGER INFO CONTAINER -->
+</section>
