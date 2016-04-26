@@ -40,28 +40,18 @@ angular.module('starter.controllers', [])
    });
 })
 
-.controller('MyCtrl', function($scope,$ionicSlideBoxDelegate,$ionicLoading) {
+.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$ionicLoading,$state) {
    
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
    };
-   $scope.showLoading = function() {
-      $ionicLoading.show({
-      	 //template: 'loading....',
-         delay:200,
-         duration: 1000,
-         hideOnStateChange: true,
-         noBackdrop: true,
-         templateUrl: '../templates/searchflights.html'
-      });
-   };
-
-   $scope.hideLoading = function(){
-      $ionicLoading.hide();
-   };
+  
+    $scope.gotoSearchFlights=function(){
+    $state.go("searchflights");
+   }
 })
 
-.controller('popupCtrl', function($scope, $ionicPopup) {
+.controller('AboutCtrl', function($scope, $ionicPopup, $state) {
 
    // When button is clicked, the popup will be shown...
    $scope.showPopup1 = function() {
@@ -129,7 +119,15 @@ angular.module('starter.controllers', [])
       myPopup3.then(function(res) {
          console.log('Tapped!', res);
       });    
+   },
+   
+   $scope.gotoContact=function(){
+    $state.go("Contact");
    }
+})
+
+.controller('ContactCtrl', function($scope, $ionicLoading, $ionicPopover){
+
 });
 
 

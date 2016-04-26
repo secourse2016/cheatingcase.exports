@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-about': {
         templateUrl: 'templates/tab-about.html',
-        controller: 'DashCtrl'
+        controller: 'AboutCtrl'
       }
     }
   })
@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-Home': {
         templateUrl: 'templates/tab-Home.html',
-        controller: 'MyCtrl'
+        controller: 'HomeCtrl'
       }
     }
   })
@@ -102,6 +102,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'searchflights-TwoWay': {
         templateUrl: 'templates/searchflights-TwoWay.html',
         controller: 'DashCtrl'
+      }
+    }
+  })
+
+  .state('Contact', {
+                url: '/Contact',
+                templateUrl: 'templates/Contact.html',
+                controller: 'DashCtrl'
+            })
+
+  .state('Contact.ContactBody', {
+    url: '/ContactBody',
+    views: {
+      'Contact-ContactBody': {
+        templateUrl: 'templates/Contact-ContactBody.html',
+        controller: 'ContactCtrl'
       }
     }
   });
