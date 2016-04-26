@@ -6,8 +6,7 @@ angular.module('starter.controllers', [])
                   '<ion-header-bar class="bar bar-assertive">' +
                   '<h1 class = "title" style="text-align:center"><strong>Join us on</strong></h1>' +
                   '</ion-header-bar>'+ '<ion-content>' +
-                  '<div class="list">'+
-                  '<div class="item item-icon-left">'+'<strong style="color:red"> facebook </strong>'+'<span class="badge badge-assertive">'+'<i class="ion-social-facebook"></i>'+'</span>'+'</div>'+
+                  '<div class="list">'+'<div class="item item-icon-left">'+'<strong style="color:red"> facebook </strong>'+'<span class="badge badge-assertive">'+'<i class="ion-social-facebook"></i>'+'</span>'+'</a>'+'</div>'+
                   '<div class="item item-icon-left">'+'<strong style="color:red"> twitter </strong>'+'<span class="badge badge-assertive">'+'<i class="ion-social-twitter"></i>'+'</span>'+'</div>'+
                   '<div class="item item-icon-left">'+'<strong style="color:red"> instagram </strong>'+'<span class="badge badge-assertive">'+'<i class="ion-social-instagram"></i>'+'</span>'+'</div>'+
                   '</div>' +
