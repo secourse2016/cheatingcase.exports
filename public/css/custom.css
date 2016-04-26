@@ -952,5 +952,10 @@ margin-right: -15px;
   text-align: center;
 }
 
+.paymentContainer .intro-text{
+  padding-top: 0px;
+  padding-bottom: 50px;
+}
+
 
 /*./ PAYMENT INFO*/

@@ -30,6 +30,7 @@
         };
         $scope.pay = function(){
           // Call Payment here
+          return true;
         };
         $scope.$watch('receipt_number', function() {
           $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
