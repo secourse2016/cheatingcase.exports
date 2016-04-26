@@ -13,6 +13,10 @@ swissAir.config(function ($routeProvider) {
       templateUrl: 'views/flightsOneWay.html',
       controller: 'flightsOneWayController'
     })
+    .when('/flights/confirm', {
+      templateUrl: 'views/confirmation.html',
+      controller: 'confirmationController'
+    })
     .when('/flights/pay', {
       templateUrl: 'views/payment.html',
       controller: 'paymentController'
