@@ -7,6 +7,13 @@ swissAir.factory('AirportsSrv', function ($http) {
            return $http.get('/api/data/airports');
          },
 
+         setPassengerArray: function(value) {
+           this.passengerArray = value;
+         },
+         getPassengerArray: function() {
+           return this.passengerArray;
+         },
+
          setOutgoingFlights: function(value) {
            this.outgoingFlights = value;
          },
@@ -43,6 +50,14 @@ swissAir.factory('AirportsSrv', function ($http) {
          setOtherAirlines: function(value){
             this.otherAirlines=value;
          },
+
+         getSelectedSeats: function(){
+           return this.selectedSeats;
+         },
+         setSelectedSeats: function(value){
+            this.selectedSeats=value;
+         },
+
          getSelectedDepartureDate: function(){
            return this.selectedDepartureDate;
          },
@@ -66,32 +81,41 @@ swissAir.factory('AirportsSrv', function ($http) {
          },
 
 
-         getDisplayedOutgoingFlightNumber: function(){
-           return this.displayedOutgoingFlightNumber;
+         getOutgoingFlightID: function(){
+           return this.outgoingFlightID;
          },
-         setDisplayedOutgoingFlightNumber: function(value){
-           this.displayedOutgoingFlightNumber=value;
-         },
-         getDisplayedOutgoingFlightDate: function(){
-           return this.displayedOutgoingFlightDate;
-         },
-         setDisplayedOutgoingFlightDate: function(value){
-           this.displayedOutgoingFlightDate=value;
+         setOutgoingFlightID: function(value){
+           this.outgoingFlightID=value;
          },
 
+         getOutgoingFlightAirline: function(){
+           return this.outgoingFlightAirline;
+         },
+         setOutgoingFlightAirline: function(value){
+           this.outgoingFlightAirline=value;
+         },
 
-         getDisplayedReturnFlightNumber: function(){
-           return this.displayedReturnFlightNumber;
+         getReturnFlightID: function(){
+           return this.returnFlightID;
          },
-         setDisplayedReturnFlightNumber: function(value){
-           this.displayedReturnFlightNumber=value;
+         setReturnFlightID: function(value){
+           this.returnFlightID=value;
          },
-         getDisplayedReturnFlightDate: function(){
-           return this.displayedReturnFlightDate;
+
+         getReturnFlightAirline: function(){
+           return this.returnFlightAirline;
          },
-         setDisplayedReturnFlightDate: function(value){
-           this.displayedReturnFlightDate=value;
+         setReturnFlightAirline: function(value){
+           this.returnFlightAirline=value;
          },
+
+         getCost: function(){
+           return this.cost;
+         },
+         setCost: function(value){
+           this.cost=value;
+         },
+
 
 
          searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines){
