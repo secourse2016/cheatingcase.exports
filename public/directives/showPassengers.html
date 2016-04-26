@@ -1,0 +1,57 @@
+<div class="panel panel-default panel-info-swiss">
+    <div class="panel-heading">PASSENGER INFORMATION</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="first_name">FIRST NAME</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel" ng-model="firstName" ng-required="true">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="last_name">LAST NAME</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName" ng-required="true">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="passport_number">PASSPORT NUMBER</label>
+                    <input type="text" name="passport_number" id="passport_number" class="form-control input-sm floatlabel" ng-model="passportNumber" ng-required="true">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="dob">DATE OF BIRTH</label>
+                    <input type="date" name="dob" id="dob" class="form-control input-sm floatlabel" ng-model="dob" ng-required="true">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 cols-sm-6 col-md-6 countryContainer">
+                <div class="form-group">
+                    <label for="repeatSelect">Nationality</label><br>
+                    <select name="repeatSelect" id="repeatSelect" ng-model="passCountry" ng-required="false">
+                        <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 cols-sm-6 col-md-6">
+                <div class="form-group">
+                    <div class="space-between" id="issueAndExpDates">
+                        <div class="input-group">
+                          <label for="issueDate">ISS DATE</label><br>
+                          <input type="month" name="year" ng-model="issueDate" id="issueDate" ng-required="false">
+                        </div>
+                        <div class="input-group">
+                          <label for="expDate">EXP DATE</label><br>
+                          <input type="month" name="year" ng-model="expDate" id="expDate" ng-required="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
