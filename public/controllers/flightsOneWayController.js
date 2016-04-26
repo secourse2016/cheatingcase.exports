@@ -53,7 +53,7 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
           break;
         }
     }
-    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightNumber);
+    AirportsSrv.setOutgoingFlightID(outgoingFlight._id);//return here if error
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
     AirportsSrv.setCost($scope.Total);
     $location.url('/flights/confirm');
