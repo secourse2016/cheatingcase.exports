@@ -21,9 +21,10 @@
     "moment"      : "*",
     "request"     : "*" ,
     "mocha"       : "*",
-    "chai"   : "*",
-    "istanbul": "*",
-    "supertest": "*"
+    "stripe"      : "*",
+    "chai"        : "*",
+    "istanbul"    : "*",
+    "supertest"   : "*"
   },
   "repository": {
      "type": "git",
