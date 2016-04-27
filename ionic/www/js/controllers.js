@@ -64,7 +64,7 @@ angular.module('starter.controllers', [])
   }, 1500);
 })
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover) {
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state) {
    // .fromTemplate() method
   
    var template = '<ion-popover-view>' + 
@@ -103,6 +103,10 @@ angular.module('starter.controllers', [])
    $scope.$on('popover.removed', function() {
       // Execute action
    });
+  $scope.gotohome= function(){
+   $state.go("tab.Home");
+  }
+   
 })
 
 .controller('AboutCtrl', function($scope, $ionicPopup, $state, $ionicLoading, $timeout) {
@@ -120,7 +124,7 @@ angular.module('starter.controllers', [])
   $timeout(function () {
     $ionicLoading.hide();
   }, 1500);
-
+   
    // When button is clicked, the popup will be shown...
    $scope.showPopup1 = function() {
       $scope.data = {}
