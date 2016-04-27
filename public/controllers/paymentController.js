@@ -13,21 +13,47 @@
         // retrieved Cost
         $scope.cost= AirportsSrv.getCost();
 
+        $scope.passengerDetails = AirportsSrv.getPassengerArray();
+
 
         $scope.receipt_number= 0;
 
         // Payment vars
 
-        $scope.book = function(){
-          /*
-          strip.card.createToken({
-            "number": number,
-            "cvc": cvc,
-            "exp_month": exp_month,
-            "exp_year": exp_year
-          }, stripeResponseHandler);
-          */
 
+
+        $scope.book = function(){
+        var paymentToken =  strip.card.createToken({
+            "number": $scope.cardnumber,
+            "cvc": $scope.cvCode,
+            "exp_month": $scope.cardExpMonth,
+            "exp_year": $scope.cardExpYear
+          }, stripeResponseHandler);
+
+           if(outgoingFlight.Airline == returnFlight.Airline){
+              if(outgoingFlight.Airline=="Swiss Air"){
+                AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,true,outgoingFlight.Airline);
+              }
+
+          else{
+            AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,false,$scope.outgoingFlightAirline);
+          }
+        }
+        else{
+          if(outgoingFlight.Airline!="Swiss Air" && returnFlight.Airline!= "Swiss Air"){
+            AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,false,$scope.outgoingFlightAirline);
+
+            AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,false,$scope.returnFlightAirline);
+          }
+          else{
+            if(outgoingFlight.Airline!="Swiss Air"){
+            AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,true,$scope.outgoingFlightAirline);
+            AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,false,$scope.returnFlightAirline);
+          }
+          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,false,$scope.outgoingFlightAirline);
+          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,true,$scope.returnFlightAirline);
+          }
+        }
         };
 
         $scope.$watch('receipt_number', function() {
