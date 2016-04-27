@@ -1,20 +1,21 @@
 <ion-view view-title="OneWay">
   <ion-content class= "padding" >
-  <div>
-  <div class="row">
+  <div class="card" >
+  <div class="item item-divider row">
+    
     <div class="col">
-  <h5 style="color:black"><span class="label label-danger" >Select Origin</span></h5>
+  <label style="color:black"><span class="label label-danger" >Select Origin</span></label>
 </div>
 <div class="col">
- <h5 style="color:black"><span class="label label-danger">Select Destination</span></h5>
+ <label style="color:black"><span class="label label-danger">Select Destination</span></label>
  </div>
   </div>
-<div class="row">
+<div class="row item item-text-wrap ">
 <div class="col">
-<label class="item item-input"  >
+<label class="item item-input" >
  
   <input type="search"  placeholder="Flight From*">
-  </label>
+  </label>  
   </div>
   <div class="col">
 <label class="item item-input" >
@@ -24,65 +25,89 @@
 </div>
 </div>
 </div>
-<div>
-	<div class="row">
+<div class="card">
+  <div class="row  item item-divider">
     <div class="col">
-  <h5 style="color:black"><span class="label label-danger" >Departure Date</span></h5>
+  <label style="color:black"><span class="label label-danger" >Departure Date</span></label>
 </div>
-<div class="col">
- <h5 style="color:black"><span class="label label-danger">Departure Time</span></h5>
- </div>
+
   </div>
-  <div class="row">
+  <div class=" row item item-text-wrap">
   <div class="col">
 <label class="item item-input" >
  
   <input type="date" placeholder="Departure">
 </label>
 </div>
- <div class="col">	
-      <select>
-         <option value="1">any time</option>
+</div>
+
+ <div class="row list item item-text-wrap " > 
+      
+
+
+
+  <label class="item item-input item-select" style="width:600px">
+    <div class="input-label">
+     Dept Time
+    </div>
+    <select>
+    <option value="1">any time</option>
          <option value="2">morning</option>
          <option value="3">afternoon</option>
          <option value="4">evening</option>
          <option value="5">night</option>
-      </select>
-   
+    </select>
+  </label>
+
+
 </div>
-  	
-  </div>
-  <div class="row">
+    </div>
+  <div class="card">
+  <div class="row  item item-divider">
     <div class="col">
-  <h5 style="color:black"><span class="label label-danger" >Return Date</span></h5>
+  <label style="color:black"><span class="label label-danger" >Return Date</span></label>
 </div>
-<div class="col">
- <h5 style="color:black"><span class="label label-danger">ReturnTime</span></h5>
- </div>
+
   </div>
-  <div class="row">
+  <div class=" row item item-text-wrap">
   <div class="col">
 <label class="item item-input" >
  
   <input type="date" placeholder="Return">
 </label>
 </div>
- <div class="col">  
-      <select>
-         <option value="1">any time</option>
+</div>
+
+ <div class="row list item item-text-wrap " > 
+      
+
+
+
+  <label class="item item-input item-select" style="width:600px">
+    <div class="input-label">
+     Return Time
+    </div>
+    <select>
+    <option value="1">any time</option>
          <option value="2">morning</option>
          <option value="3">afternoon</option>
          <option value="4">evening</option>
          <option value="5">night</option>
-      </select>
-   
+    </select>
+  </label>
+
+
 </div>
-    
-  </div>
-  <div class="row">
+    </div>
+ <div class="row card">
   <div class="col">
-  	<select>
-                                        <option value="1">1 Adult</option>
+  
+
+ 
+    
+     
+    <select  >
+                               <option selected="1" value="1">1 Adult</option>
                                         <option value="1">2 Adults</option>
                                         <option value="3">3 Adults</option>
                                         <option value="4">4 Adults</option>
@@ -92,10 +117,11 @@
                                         <option value="8">8 Adults</option>
                                         <option value="9">9 Adults</option>
                                         <option value="10">10 Adults</option>
-                                    </select>
-                                    </div>
-                                    <div class="col">
-  	<select>    <option value="0">0 Children</option>
+                                        </select>
+    
+  </div>
+                                    <div class=" col">
+    <select>    <option value="0">0 Children</option>
                                         <option value="1">1 Child</option>
                                         <option value="2">3 Children</option>
                                         <option value="3">4 Children</option>
@@ -103,47 +129,42 @@
                                     </select>
                                     </div>
                                     <div class="col">
-                                    	 <select 	>
+                                       <select  >
                                         <option value="0">0 Infant</option>
                                         <option value="1">1 Infants</option>
                                         <option value="2">2 Infants</option>
                                     </select>
                                     </div>
   </div>
-  <div class="row">
+  <div class="card">
+  <div class="row item item-divider ">
   <div class="col">
-   <h5 style="color:black"><span class="label label-danger" >Search Options</span></h5>	
+   <div style="color:black"><label class="label label-danger" >Search Options</label></div> 
   </div>
   </div>
-  <div class="row">
+  <div class="row" style="background-color:">
   <div class="col">
-  	<div class="row">
-  	<div class="item-content">
-         Shedule
-      </div>
-  	 <div class="col">
-      <input type="radio" name="group1">
-      
+    <div class="row">
+    
+    <div class="col">
+  <ion-radio ng-model="choice" ng-value="'A'">Shedule</ion-radio>
+  </div>
+  <div class="col">
+  <ion-radio ng-model="choice" ng-value="'B'">price</ion-radio>
+  </div>
+
+    
      
-   </div>
-   <div class="item-content">
-         Price
-      </div>
- <div class="col">
-  
-      <input type="radio" name="group1">
-      
-      
    </div>
      <div class="item-content">
          Search Other Airlines
       </div>
    <div class="col">
   
-      	
+        
       <input type="checkbox" >
      
-       	
+        
       
       
    </div>
@@ -155,12 +176,15 @@
     
    
    </div>
-   <div class="col"  style="margin-bottom: 10px">
-                        <button type="submit" class="btn btn-xl btn-md" id='btnSearch'>Search Flights</button>
+   <div class="col"  style="margin-bottom: 10px;text-align:center ">
+                       <button class="button   button-assertive" ng-click = "showflights()"  style=" width:200px; margin-top:30px" >
+  Search Flight
+</button>
                     </div>
   </div>
   
 </div>
+
 
   </ion-content>
   </ion-view>	
