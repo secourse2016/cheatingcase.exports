@@ -1,35 +1,5 @@
 angular.module('starter.controllers', [])
 
-
-.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$state) {
-   
-   
-    $scope.nextSlide = function() {
-      $ionicSlideBoxDelegate.next();
-   };
-  
-    $scope.gotoSearchFlights=function(){
-    $state.go("searchflights");
-   }
-})
-
-.controller('TeamCtrl', function($scope, $ionicLoading, $timeout) {
- 
- $ionicLoading.show({
-    content: 'Loading',
-    template:'please wait...',
-    animation: 'fade-in',
-    showBackdrop: true,
-    maxWidth: 200,
-    showDelay: 0
-  });
-  
-  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
-  $timeout(function () {
-    $ionicLoading.hide();
-  }, 500);
-})
-
 .controller('SearchflightCtrl', function($scope, $ionicLoading, $timeout) {
  
  $ionicLoading.show({
@@ -47,7 +17,7 @@ angular.module('starter.controllers', [])
   }, 500);
 })
 
-.controller('SearchCtrl', function($scope, $ionicLoading, $timeout) {
+.controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state) {
  
  $ionicLoading.show({
     content: 'Loading',
@@ -62,9 +32,13 @@ angular.module('starter.controllers', [])
   $timeout(function () {
     $ionicLoading.hide();
   }, 500);
+
+  $scope.search=function(){
+   $state.go('tab.search');
+  }
 })
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state) {
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state, $ionicHistory) {
    // .fromTemplate() method
   
    var template = '<ion-popover-view>' + 
@@ -103,8 +77,11 @@ angular.module('starter.controllers', [])
    $scope.$on('popover.removed', function() {
       // Execute action
    });
-  $scope.gotohome= function(){
-   $state.go("tab.Home");
+
+  $scope.gotohome= function() {
+    $ionicHistory.goBack();
+    window.history.back();
+    //alert('code to go back called. Did it work?'); 
   }
    
 })
@@ -191,15 +168,68 @@ angular.module('starter.controllers', [])
       myPopup3.then(function(res) {
          console.log('Tapped!', res);
       });    
-   },
+   };
    
    $scope.gotoContact=function(){
     $state.go("Contact");
    }
+
 })
 
-.controller('ContactCtrl', function($scope, $ionicLoading, $ionicPopover){
+.controller('ContactCtrl', function($scope, $ionicLoading, $ionicLoading,$timeout, $ionicScrollDelegate){
 
+$ionicLoading.show({
+    content: 'Loading',
+    template:'pleasewait...',
+    animation: 'fade-in',
+    showBackdrop: false,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 1000);
+  $scope.scrollBottom= function() {
+    $ionicScrollDelegate.scrollBottom();
+  };
+  
+  $scope.show= function(){
+    $scope.open=true
+  }
+$scope.name=null;
+$scope.email=null;
+$scope.telephone=null;
+$scope.msg=null;
+$scope.send=function(){
+   if($scope.name===null){
+   $ionicLoading.show({
+    content: 'Loading',
+    template:'sending...',
+    animation: 'fade-in',
+    showBackdrop: false,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 1000);
+}
+}
+})
+
+.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$state ) {
+   
+    $scope.nextSlide = function() {
+      $ionicSlideBoxDelegate.next();
+   };
+  
+    $scope.gotoSearchFlights=function(){
+    $state.go("searchflights");
+   };
 });
 
 
