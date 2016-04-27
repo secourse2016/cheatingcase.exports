@@ -1,7 +1,7 @@
 {
   "Lufthansa": "http://ec2-54-152-123-100.compute-1.amazonaws.com",
-  "KLM Airlines": "http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
-  "Emirates Airlines": "http://52.90.46.68",
+  "KLM": "http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
+  "Emirates": "http://52.90.46.68",
   "Air France": "http://52.34.160.140",
   "Delta Airlines": "http://52.25.15.124",
   "Japan Airlines": "http://54.187.208.145",
