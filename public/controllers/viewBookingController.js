@@ -28,4 +28,12 @@ $scope.booking =
   {"seatNum":"4A"}
 ]
 }
+
+$scope.checkNationality = function(index){
+  return ($scope.booking.passengerDetails[index-1].nationality == undefined);
+};
+
+$scope.checkEmail = function(index){
+  return ($scope.booking.passengerDetails[index-1].email == undefined);
+};
 });
