@@ -24,6 +24,10 @@ swissAir.config(function ($routeProvider,stripeProvider) {
       templateUrl: 'views/payment.html',
       controller: 'paymentController'
     })
+    .when('/viewBooking', {
+      templateUrl: 'views/viewBooking.html',
+      controller: 'viewBookingController'
+    })
     .otherwise({
       redirectTo: '/'
     });

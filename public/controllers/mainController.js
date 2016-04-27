@@ -137,6 +137,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
       }
 
     };
+
+    $scope.viewBooking = function(bookingRefNum) {
+      $location.url('/viewBooking');
+    }
     /* Get Airports on page render  */
     AirportCodes();
 

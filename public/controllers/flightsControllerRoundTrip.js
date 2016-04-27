@@ -12,8 +12,7 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
   $scope.$watch('seats', function() {
     $scope.passengerArray = [];
     for(var i=0; i<$scope.seats; i++){
-      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"passportExpiryDate":0,
-      "dateOfBirth":0,"nationality":"","email":""});
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
     }
     AirportsSrv.setPassengerArray($scope.passengerArray);
   });
