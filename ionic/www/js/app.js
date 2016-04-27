@@ -70,12 +70,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.Team', {
-    url: '/Team',
+  .state('tab.Contac', {
+    url: '/Contact',
     views: {
-      'tab-Team': {
-        templateUrl: 'templates/tab-Team.html',
-        controller: 'TeamCtrl'
+      'tab-Contact': {
+        templateUrl: 'templates/tab-Contact.html',
+        controller: 'ContactCtrl'
       }
     }
   })
@@ -102,22 +102,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'searchflights-TwoWay': {
         templateUrl: 'templates/searchflights-TwoWay.html',
         controller: 'SearchflightCtrl'
-      }
-    }
-  })
-
-  .state('Contact', {
-                url: '/Contact',
-                templateUrl: 'templates/Contact.html',
-                controller: 'DashCtrl'
-            })
-
-  .state('Contact.ContactBody', {
-    url: '/ContactBody',
-    views: {
-      'Contact-ContactBody': {
-        templateUrl: 'templates/Contact-ContactBody.html',
-        controller: 'ContactCtrl'
       }
     }
   });

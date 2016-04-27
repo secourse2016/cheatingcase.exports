@@ -1,0 +1,46 @@
+<ion-view view-title="Contact">
+  <ion-content class= "padding" >
+  <div class="card" >
+    <img src="../img/logo12.jpg"  style="max-width: 100%;height: auto" >
+  </div>
+  <div class="card" align="center">
+  <p style="color:red;font-size:20px;font-weight: bold;font-family: 'Poiret One', cursive;">messege</p>
+  <label class="toggle toggle-assertive">
+     <input ng-click="show(); scrollBottom()" type="checkbox">
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+ </label>
+</div>
+ <div ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen={{open}}" id="replyForm">
+  <div class="card" style="margin-top:10px" >
+  	<div class="contactus">
+  	<div class="item item-input ">
+  <span class="input-label" style="color:black;font-family: 'Pacifico', cursive"><strong>Name:</strong></span>
+  <input type="text" style="color:black;font-weight: bold;font-family: 'Poiret One', cursive;" ng-minlength="10" data-ng-model="name" placeholder="full name">
+</div>
+<label class="item item-input  ">
+  <span class="input-label" style="color:black;font-family: 'Pacifico', cursive"><strong>Email:</strong></span>
+  <input type="email" style="color:black;font-weight: bold;font-family: 'Poiret One', cursive;" ng-model="email" placeholder="your email">
+</label>
+<label class="item item-input ">
+  <span class="input-label" style="color:black;font-family: 'Pacifico', cursive"><strong>Telephone:</strong></span>
+  <input type="tel" style="color:black;font-weight: bold;font-family: 'Poiret One', cursive;" ng-model="telephone" placeholder="your telephone number">
+</label>
+</div>
+</div>
+
+   <div style="margin-top:30px" class="card" align="center">
+  <textarea  ng-model="msg" placeholder="Send a message..." height="100%" width="100%" required minlength="1" maxlength="1500" style="height:100px;width:340px;font-family: 'Poiret One', cursive;font-weight: bold" msd-elastic></textarea>
+</div>
+
+ <div style="text-align:center" > 
+      <button ng-model="contact" class="button icon-left ion-email  button-assertive" ng-click = "send()"  style=" width:130px; margin-top:10px" >
+  <strong>Send Msg</strong>
+  
+</button>
+</div>
+  </div>	
+  	
+  </ion-content>
+  </ion-view>
