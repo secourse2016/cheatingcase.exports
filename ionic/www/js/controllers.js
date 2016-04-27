@@ -194,6 +194,7 @@ $ionicLoading.show({
   $scope.scrollBottom= function() {
     $ionicScrollDelegate.scrollBottom();
   };
+  
   $scope.show= function(){
     $scope.open=true
   }

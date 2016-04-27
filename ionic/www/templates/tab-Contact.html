@@ -6,13 +6,13 @@
   <div class="card" align="center">
   <p style="color:red;font-size:20px;font-weight: bold;font-family: 'Poiret One', cursive;">messege</p>
   <label class="toggle toggle-assertive">
-     <input ng-click="show(); scrollBottom()" type="checkbox">
+     <input ng-click="isReplyFormOpen = !isReplyFormOpen" type="checkbox">
      <div class="track">
          <div class="handle"></div>
      </div>
  </label>
 </div>
- <div ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen={{open}}" id="replyForm">
+ <div ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen" id="replyForm">
   <div class="card" style="margin-top:10px" >
   	<div class="contactus">
   	<div class="item item-input ">
