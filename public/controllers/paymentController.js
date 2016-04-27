@@ -1,6 +1,6 @@
- swissAir.controller('paymentController',function($scope,AirportsSrv){
+ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
 
-        //This backend is the remaining to handle : Omran & Sedki
+        //This backend is the remaining to handle : Sedki & Omran not Omran & Sedki :)
 
         // retrieved Info About Outgoing Flight
         $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
@@ -13,17 +13,20 @@
         // retrieved Cost
         $scope.cost= AirportsSrv.getCost();
 
-        //azon keda kol elly m7tageno m3ako
-
 
         $scope.receipt_number= 0;
 
         // Payment vars
 
         $scope.book = function(){
-          //handle All the Cases here Guys , Diff Airlines have two seperate booking , Same Airline has just one
-          // wl klam da ... m3ako l variables foo2 .. el3abo
-          // btw .. l function de will be called lw das Book 
+          /*
+          strip.card.createToken({
+            "number": number,
+            "cvc": cvc,
+            "exp_month": exp_month,
+            "exp_year": exp_year
+          }, stripeResponseHandler);
+          */
 
         };
 
