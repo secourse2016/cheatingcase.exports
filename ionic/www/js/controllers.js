@@ -1,9 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover) {
-   // .fromTemplate() method
-
-   $ionicLoading.show({
+.controller('SearchflightCtrl', function($scope, $ionicLoading, $timeout) {
+ 
+ $ionicLoading.show({
     content: 'Loading',
     template:'please wait...',
     animation: 'fade-in',
@@ -15,7 +14,32 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1000);
+  }, 500);
+})
+
+.controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state) {
+ 
+ $ionicLoading.show({
+    content: 'Loading',
+    template:'please wait...',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 500);
+
+  $scope.search=function(){
+   $state.go('tab.search');
+  }
+})
+
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state, $ionicHistory) {
+   // .fromTemplate() method
   
    var template = '<ion-popover-view>' + 
                   '<ion-header-bar class="bar bar-assertive">' +
@@ -53,18 +77,13 @@ angular.module('starter.controllers', [])
    $scope.$on('popover.removed', function() {
       // Execute action
    });
-})
 
-.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$ionicLoading,$state,$timeout) {
+  $scope.gotohome= function() {
+    $ionicHistory.goBack();
+    window.history.back();
+    //alert('code to go back called. Did it work?'); 
+  }
    
-   
-    $scope.nextSlide = function() {
-      $ionicSlideBoxDelegate.next();
-   };
-  
-    $scope.gotoSearchFlights=function(){
-    $state.go("searchflights");
-   }
 })
 
 .controller('AboutCtrl', function($scope, $ionicPopup, $state, $ionicLoading, $timeout) {
@@ -81,8 +100,8 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1500);
-
+  }, 500);
+   
    // When button is clicked, the popup will be shown...
    $scope.showPopup1 = function() {
       $scope.data = {}
@@ -149,15 +168,68 @@ angular.module('starter.controllers', [])
       myPopup3.then(function(res) {
          console.log('Tapped!', res);
       });    
-   },
+   };
    
    $scope.gotoContact=function(){
     $state.go("Contact");
    }
+
 })
 
-.controller('ContactCtrl', function($scope, $ionicLoading, $ionicPopover){
+.controller('ContactCtrl', function($scope, $ionicLoading, $ionicLoading,$timeout, $ionicScrollDelegate){
 
+$ionicLoading.show({
+    content: 'Loading',
+    template:'pleasewait...',
+    animation: 'fade-in',
+    showBackdrop: false,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 1000);
+  $scope.scrollBottom= function() {
+    $ionicScrollDelegate.scrollBottom();
+  };
+  
+  $scope.show= function(){
+    $scope.open=true
+  }
+$scope.name=null;
+$scope.email=null;
+$scope.telephone=null;
+$scope.msg=null;
+$scope.send=function(){
+   if($scope.name===null){
+   $ionicLoading.show({
+    content: 'Loading',
+    template:'sending...',
+    animation: 'fade-in',
+    showBackdrop: false,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 1000);
+}
+}
+})
+
+.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$state ) {
+   
+    $scope.nextSlide = function() {
+      $ionicSlideBoxDelegate.next();
+   };
+  
+    $scope.gotoSearchFlights=function(){
+    $state.go("searchflights");
+   };
 });
 
 

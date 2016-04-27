@@ -7,7 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico|Poiret+One' rel='stylesheet' type='text/css'>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -27,11 +27,14 @@
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-header-bar align-title="center" class="bar-assertive" ng-controller="DashCtrl">
-  <button class="button icon ion-navicon" ng-click="openPopover($event)"></button>
-  <h1 class="title"></h1>
-  <button class="button icon ion-gear-b" ></button>
-</ion-header-bar>
+    <ion-nav-bar align-title="center" class="bar-assertive" ng-controller="DashCtrl" >
+    <ion-nav-buttons side="left">
+    <button ng-hide="'tab.Home' | isState" class="button icon ion-arrow-left-a" ng-click="gotohome()" ></button>
+    </ion-nav-buttons>   
+    <ion-nav-buttons side="right">
+    <button class="button icon ion-navicon" ng-click="openPopover($event)"></button>
+    </ion-nav-buttons>
+    </ion-nav-bar>
     <!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
