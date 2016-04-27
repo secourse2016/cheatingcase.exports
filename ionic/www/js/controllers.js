@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1500);
+  }, 500);
 })
 
 .controller('SearchflightCtrl', function($scope, $ionicLoading, $timeout) {
@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1500);
+  }, 500);
 })
 
 .controller('SearchCtrl', function($scope, $ionicLoading, $timeout) {
@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1500);
+  }, 500);
 })
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state) {
@@ -123,7 +123,7 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1500);
+  }, 500);
    
    // When button is clicked, the popup will be shown...
    $scope.showPopup1 = function() {
