@@ -7,7 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico|Poiret+One' rel='stylesheet' type='text/css'>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -28,9 +28,10 @@
       The nav bar that will be updated as we navigate between views.
     -->
     <ion-header-bar align-title="center" class="bar-assertive" ng-controller="DashCtrl">
-  <button class="button icon ion-navicon" ng-click="openPopover($event)"></button>
+    <button ng-hide="'tab.Home' | isState" class="button icon ion-home" ng-click="gotohome()" ></button>
+  
   <h1 class="title"></h1>
-  <button class="button icon ion-gear-b" ></button>
+  <button class="button icon ion-navicon" ng-click="openPopover($event)"></button>
 </ion-header-bar>
     <!--
       The views will be rendered in the <ion-nav-view> directive below

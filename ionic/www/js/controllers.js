@@ -1,9 +1,21 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover) {
-   // .fromTemplate() method
 
-   $ionicLoading.show({
+.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$state) {
+   
+   
+    $scope.nextSlide = function() {
+      $ionicSlideBoxDelegate.next();
+   };
+  
+    $scope.gotoSearchFlights=function(){
+    $state.go("searchflights");
+   }
+})
+
+.controller('TeamCtrl', function($scope, $ionicLoading, $timeout) {
+ 
+ $ionicLoading.show({
     content: 'Loading',
     template:'please wait...',
     animation: 'fade-in',
@@ -15,7 +27,45 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1000);
+  }, 500);
+})
+
+.controller('SearchflightCtrl', function($scope, $ionicLoading, $timeout) {
+ 
+ $ionicLoading.show({
+    content: 'Loading',
+    template:'please wait...',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 500);
+})
+
+.controller('SearchCtrl', function($scope, $ionicLoading, $timeout) {
+ 
+ $ionicLoading.show({
+    content: 'Loading',
+    template:'please wait...',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+  }, 500);
+})
+
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state) {
+   // .fromTemplate() method
   
    var template = '<ion-popover-view>' + 
                   '<ion-header-bar class="bar bar-assertive">' +
@@ -53,18 +103,10 @@ angular.module('starter.controllers', [])
    $scope.$on('popover.removed', function() {
       // Execute action
    });
-})
-
-.controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$ionicLoading,$state,$timeout) {
+  $scope.gotohome= function(){
+   $state.go("tab.Home");
+  }
    
-   
-    $scope.nextSlide = function() {
-      $ionicSlideBoxDelegate.next();
-   };
-  
-    $scope.gotoSearchFlights=function(){
-    $state.go("searchflights");
-   }
 })
 
 .controller('AboutCtrl', function($scope, $ionicPopup, $state, $ionicLoading, $timeout) {
@@ -81,8 +123,8 @@ angular.module('starter.controllers', [])
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
-  }, 1500);
-
+  }, 500);
+   
    // When button is clicked, the popup will be shown...
    $scope.showPopup1 = function() {
       $scope.data = {}
