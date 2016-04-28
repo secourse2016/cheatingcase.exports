@@ -1,33 +1,69 @@
- swissAir.controller('paymentController',function($scope,AirportsSrv){
+swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
 
-        //This backend is the remaining to handle : Omran & Sedki
+  // retrieved Info About Outgoing Flight
+  $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
+  $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
 
-        // retrieved Info About Outgoing Flight
-        $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
-        $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
+  // retrieved Info About Return Flight
+  $scope.returnFlightID= AirportsSrv.getReturnFlightID();
+  $scope.returnFlightAirline= AirportsSrv.getReturnFlightAirline();
 
-        // retrieved Info About Return Flight
-        $scope.returnFlightID= AirportsSrv.getReturnFlightID();
-        $scope.returnFlightAirline= AirportsSrv.getReturnFlightAirline();
+  // retrieved Cost
+  $scope.cost= AirportsSrv.getCost();
 
-        // retrieved Cost
-        $scope.cost= AirportsSrv.getCost();
-
-        //azon keda kol elly m7tageno m3ako
+  $scope.passengerDetails = AirportsSrv.getPassengerArray();
 
 
-        $scope.receipt_number= 0;
+  $scope.receipt_number= 0;
 
-        // Payment vars
-
-        $scope.book = function(){
-          //handle All the Cases here Guys , Diff Airlines have two seperate booking , Same Airline has just one
-          // wl klam da ... m3ako l variables foo2 .. el3abo
-          // btw .. l function de will be called lw das Book 
-
-        };
-
-        $scope.$watch('receipt_number', function() {
-          $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
+  $scope.book = function(){
+    stripe.card.createToken({
+      "number": $scope.cardnumber,
+      "cvc": $scope.cvCode,
+      "exp_month": $scope.cardExpMonth,
+      "exp_year": $scope.cardExpYear
+    }).then(function(paymentToken){
+      if($scope.outgoingFlightAirline == $scope.returnFlightAirline || $scope.returnFlightAirline==undefined){
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,$scope.outgoingFlightAirline).then(function(res){
+          console.log(res.errorMessage);
+          if(res.errorMessage==null){
+            console.log("same airline case true");
+            $scope.refNum = res.refNum;
+          }
+          else {
+            console.log("same airline case false");
+          }
         });
-     });
+
+      }
+      else{
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,$scope.outgoingFlightAirline).then(function(resOutgoing){
+          console.log(resOutgoing.errorMessage);
+          if(resOutgoing.errorMessage==null){
+            console.log("different airlines outgoingFlight case true");
+            $scope.refNum = resOutgoing.refNum;
+          }
+          else {
+            console.log("different airlines outgoingFlight case false");
+
+          }
+          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,$scope.returnFlightAirline).then(function(resReturn){
+            console.log(resReturn.errorMessage);
+            if(resReturn.errorMessage==null){
+              console.log("different airlines returnFlight case true");
+              $scope.refNum +="\n"+resReturn.refNum;
+            }
+            else {
+              console.log("different airlines returnFlight case false");
+            }
+          });
+        });
+
+      }
+    });
+  };
+
+  $scope.$watch('receipt_number', function() {
+    $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
+  });
+});
