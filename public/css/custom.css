@@ -754,6 +754,23 @@ body {
     font-weight: bolder;
     font-size: 20px;
 }
+
+.gig .panel-title .collapsed{
+    border-color: #fff;
+}
+
+/*Should I merge here? TODO*/
+.bookingPassenger .gig .panel-heading{
+  background-color: #E42812;
+  border-radius: 0px;
+}
+
+.bookingPassenger .gig{
+  background-color: #fff;
+  border: 2px solid;
+  border-color: #E42812;
+}
+
 .gig .panel-body {
     color: black;
     font-size: 12px;
@@ -1056,4 +1073,9 @@ h5.badge-header, h6.badge-header{
 .viewBookingPage .passengersInfo{
   margin-top: 20px;
   text-align: center;
+}
+
+.passengerCol{
+  padding-left: 40px;
+  padding-right: 40px;
 }

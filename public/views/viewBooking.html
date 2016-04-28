@@ -37,18 +37,18 @@
               <div class="col-md-4 col-sm-6 col-xs-12 badge-middle">
                   <h2 class="badge-header">CAI to JED<span class="pull-right badgeAirline">Date</span></h2>
                   <h5 class="badge-header">Outgoing FlightID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
-                  <p>Seats</p>
+                  <p>Class : {{booking.class}}</p>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12 badge-right">
                 <h2 class="badge-header">JED to CAI<span class="pull-right badgeAirline">Date</span></h2>
                 <h5 class="badge-header">Return FlightID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
-                <p>Seats</p>
+                <p>Class : {{booking.class}}</p>
               </div>
           </div>
       </div>
   </div>
-  <div class="row passengersInfo">
-    <div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="passenger in booking.passengerDetails">
+  <div class="row passengersInfo" style="text-align: center">
+    <div class="col-md-12 col-sm-12 col-xs-12 passengerCol" ng-repeat="passenger in booking.passengerDetails">
         <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
     </div>
   </div>
