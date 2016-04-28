@@ -10,6 +10,8 @@ var assert      =   require('assert');
 var airlines    =   require('./airlines.json');
 var request     =   require('request');
 
+var ObjectID = require('mongodb').ObjectID;
+
 var stripe  = require('stripe')(process.env.STRIPESECRETKEY);
 var teams   = require('./teams.json');
 var randomstring = require("randomstring");
@@ -334,15 +336,16 @@ app.post('/booking', function (req, res){
 });
 
 app.get('/viewbooking/:refNum', function (req, res){
-  var refNum = req.params.refNum;
+  var refNum = parseInt(req.params.refNum);
 
-  db.db().collection('booking').findOne({ 'refNum': refNum }, function (err, booking){
+  db.db().collection('bookings').findOne({ 'refNum': refNum }, function (err, booking){
     var bookingData = booking;
-    db.db().collection('flights').findOne({ '_id': bookingData.outgoingFlightId }, function (err, flight){
+    db.db().collection('flights').findOne({ '_id': new ObjectID(bookingData.outgoingFlightId) }, function (err, flight){
+
       var outgoingSeats = filterSeats(JSON.parse(flight.seats), refNum);
       bookingData.outgoingSeats = outgoingSeats;
       if(bookingData.returnFlightId && bookingData.returnFlightId != null){
-        db.db().collection('flights').findOne({ '_id': bookingData.returnFlightId}, function (err, flightRet){
+        db.db().collection('flights').findOne({ '_id': new ObjectID(bookingData.returnFlightId)}, function (err, flightRet){
           var returnSeats = filterSeats(JSON.parse(flightRet.seats), refNum);
           bookingData.returnSeats = returnSeats;
           res.send(bookingData);
