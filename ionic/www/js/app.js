@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-about': {
         templateUrl: 'templates/tab-about.html',
-        controller: 'DashCtrl'
+        controller: 'AboutCtrl'
       }
     }
   })
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-search': {
         templateUrl: 'templates/tab-search.html',
-        controller: 'DashCtrl'
+        controller: 'SearchCtrl'
       }
     }
   })
@@ -65,17 +65,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-Home': {
         templateUrl: 'templates/tab-Home.html',
-        controller: 'MyCtrl'
+        controller: 'HomeCtrl'
       }
     }
   })
 
-  .state('tab.Team', {
-    url: '/Team',
+  .state('tab.Contac', {
+    url: '/Contact',
     views: {
-      'tab-Team': {
-        templateUrl: 'templates/tab-Team.html',
-        controller: 'DashCtrl'
+      'tab-Contact': {
+        templateUrl: 'templates/tab-Contact.html',
+        controller: 'ContactCtrl'
       }
     }
   })
@@ -83,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('searchflights', {
                 url: '/searchflights',
                 templateUrl: 'templates/searchflights.html',
-                controller: 'DashCtrl'
+                controller: 'SearchflightCtrl'
             })
 
   .state('searchflights.OneWay', {
@@ -91,7 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-OneWay': {
         templateUrl: 'templates/searchflights-OneWay.html',
-        controller: 'DashCtrl'
+        controller: 'SearchflightCtrl'
       }
     }
   })
@@ -101,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-TwoWay': {
         templateUrl: 'templates/searchflights-TwoWay.html',
-        controller: 'DashCtrl'
+        controller: 'SearchflightCtrl'
       }
     }
   });

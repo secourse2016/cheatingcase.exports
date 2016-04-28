@@ -88,16 +88,22 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
 
     $scope.$watch('class', function() {
      if($scope.class=='1'){
-       console.log("economy")
        AirportsSrv.setSelectedClass("economy");
      }
      else{
        if($scope.class=='2'){
-         console.log("business");
          AirportsSrv.setSelectedClass("business");
        }
        else console.log("Fatal Error in the watch of the class");
      }
+    });
+
+    $scope.$watch('adultsCount', function() {
+      AirportsSrv.setSelectedSeats(parseInt($scope.adultsCount)+parseInt($scope.childrenCount));
+    });
+
+    $scope.$watch('childrenCount', function() {
+      AirportsSrv.setSelectedSeats(parseInt($scope.adultsCount)+parseInt($scope.childrenCount));
     });
 
     /* Find All Available Flights  */
@@ -131,6 +137,10 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
       }
 
     };
+
+    $scope.viewBooking = function(bookingRefNum) {
+      $location.url('/viewBooking');
+    }
     /* Get Airports on page render  */
     AirportCodes();
 

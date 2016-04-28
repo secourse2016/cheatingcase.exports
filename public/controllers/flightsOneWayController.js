@@ -1,6 +1,16 @@
 swissAir.controller('flightsOneWayController', function($scope,$location,AirportsSrv) {
   $scope.disabled=true;
   $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.Total = 0;
+  $scope.seats = AirportsSrv.getSelectedSeats();
+
+  $scope.$watch('seats', function() {
+    $scope.passengerArray = [];
+    for(var i=0; i<$scope.seats; i++){
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+    }
+    AirportsSrv.setPassengerArray($scope.passengerArray);
+  });
 
   $scope.findType = function(flight){
     return "info";
@@ -26,6 +36,7 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
   $scope.isDisabled = function(){
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
+          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
           $scope.disabled=false;
           return;
         }
@@ -41,18 +52,24 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
           break;
         }
     }
-    if(outgoingFlight.Airline == "Swiss Air"){
-      /* Easy Case :- My payment ! */
-      AirportsSrv.setDisplayedOutgoingFlightDate(outgoingFlight.departureDateTime);
-      AirportsSrv.setDisplayedOutgoingFlightNumber(outgoingFlight.flightNumber);
-      $location.url('/flights/pay');
-      console.log("One Way Case 1");
-    }
-    else {
-      /* Send a post request to the other Airline*/
-      console.log("One Way Case 2");
-    }
-
-
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightNumber);
+    AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+    AirportsSrv.setCost($scope.Total);
+    $location.url('/flights/confirm');
   };
+
+
+
+  // if(outgoingFlight.Airline == "Swiss Air"){
+  //   /* Easy Case :- My payment ! */
+  //   AirportsSrv.setDisplayedOutgoingFlightDate(outgoingFlight.departureDateTime);
+  //   AirportsSrv.setDisplayedOutgoingFlightNumber(outgoingFlight.flightNumber);
+  //   $location.url('/flights/pay');
+  //   console.log("One Way Case 1");
+  // }
+  // else {
+  //   /* Send a post request to the other Airline*/
+  //   console.log("One Way Case 2");
+  // }
+
 });

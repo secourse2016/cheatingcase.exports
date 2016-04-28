@@ -1,0 +1,51 @@
+<div class="panel-group" id="accordion{{index}}">
+  <div class="gig">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+<button class="btn btn-danger" data-toggle="collapse"data-target="#collapse{{index}}">Passenger {{index}} Details</button>
+        </h4>
+      </div>
+      <div id="collapse{{index}}" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-sm-6 gig-left">
+                  <div class="row">
+                      <h6 style="color: rgb(228,40,18)">First Name</h6>
+                      <p>{{passenger.firstName}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="color: rgb(228,40,18)">Date of Birth</h6>
+                      <p>{{passenger.dateOfBirth|date:'medium'}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="color: rgb(228,40,18)">Nationality</h6>
+                      <p>{{passenger.nationality}}</p>
+                  </div>
+
+
+              </div>
+              <!-- End Panel-Gig Left -->
+              <div class="col-sm-6 gig-right">
+                <div class="row">
+                    <h6 style="color: rgb(228,40,18)">Last Name</h6>
+                    <p>{{passenger.lastName}}</p>
+                </div>
+                  <div class="row">
+                      <h6 style="color: rgb(228,40,18)">Passport Number</h6>
+                      <p>{{passenger.passportNum}}</p>
+                  </div>
+                  <div class="row">
+                      <h6 style="color: rgb(228,40,18)">Email</h6>
+                      <p>{{passenger.email}}</p>
+                  </div>
+
+              </div>
+              <!-- End Panel-Gig right -->
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
