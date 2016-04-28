@@ -1052,3 +1052,8 @@ h5.badge-header, h6.badge-header{
 .badgeBigContainer .badge p{
   color: #333;
 }
+
+.viewBookingPage .passengersInfo{
+  margin-top: 20px;
+  text-align: center;
+}
