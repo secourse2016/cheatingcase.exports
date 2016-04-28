@@ -10,6 +10,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
 
   // retrieved Cost
   $scope.cost= AirportsSrv.getCost();
+  $scope.class = AirportsSrv.getSelectedClass();
 
   $scope.passengerDetails = AirportsSrv.getPassengerArray();
 
@@ -24,10 +25,10 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
       "exp_year": $scope.cardExpYear
     }).then(function(paymentToken){
       if($scope.outgoingFlightAirline == $scope.returnFlightAirline || $scope.returnFlightAirline==undefined){
-        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,$scope.outgoingFlightAirline).then(function(res){
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(res){
           console.log(res.errorMessage);
           if(res.errorMessage==null){
-            console.log("same airline case true");
+            console.log("same airline case true"+$scope.class+"  ---  "+$scope.outgoingFlightID);
             $scope.refNum = res.refNum;
           }
           else {
@@ -37,7 +38,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
 
       }
       else{
-        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,$scope.outgoingFlightAirline).then(function(resOutgoing){
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(resOutgoing){
           console.log(resOutgoing.errorMessage);
           if(resOutgoing.errorMessage==null){
             console.log("different airlines outgoingFlight case true");
@@ -47,7 +48,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
             console.log("different airlines outgoingFlight case false");
 
           }
-          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,$scope.returnFlightAirline).then(function(resReturn){
+          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,$scope.returnFlightAirline,$scope.class).then(function(resReturn){
             console.log(resReturn.errorMessage);
             if(resReturn.errorMessage==null){
               console.log("different airlines returnFlight case true");
