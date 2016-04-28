@@ -962,3 +962,80 @@ margin-right: -15px;
 
 
 /*./ PAYMENT INFO*/
+
+
+
+/*VIEW BOOKING*/
+
+.badgeBigContainer {
+    margin-top: 510px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+@media only screen and (max-width: 768px) {
+
+}
+.badgeContainer {
+    text-align: left;
+    z-index: 10;
+    background-color: white;
+    max-width: 80%;
+    border-radius: 3px;
+}
+
+.badge h2{
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.badge-middle,.badge-left,.badge-right{
+  display:block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.badge-middle .subtext-gig{
+  margin-top: 10px;
+}
+
+.badge-header{
+  color: #0FC1B9;
+}
+
+.badgeGenre{
+  color: #333;
+}
+
+@media only screen and (min-width: 768px){
+  .badge-right{
+    border-top: 2px solid;
+    border-color: #0FC1B9;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .badge {
+      display: flex;
+      align-items: stretch;
+      /* align items in Cross Axis */
+      align-content: stretch;
+      /* Extra space in Cross Axis */
+      padding-left: 40px;
+  }
+  .badge-middle {
+      border-right: 3px solid;
+      border-left: 3px solid;
+      border-color: #0FC1B9;
+  }
+  .badge-right{
+    border-top: 0px;
+  }
+}
+
+.subtext-gig {
+    font-size: 18px;
+    color: #333333;
+    margin: 0px;
+}
