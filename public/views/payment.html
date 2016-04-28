@@ -1,145 +1,147 @@
-<div>
+<section class="container paymentContainer" id="paymentContainer">
+  <div class="row intro-text">
+    <div class="intro-lead-in wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Thank you for choosing SWISS AIR</div>
+  </div>
 
-  <div class="container">
-    <div class="row">
-      <form ng-submit="book()">
-        <hr class="section-heading-spacer">
-        <div class="clearfix"></div>
-
-        <div class="col-lg-6">
-
-          <!-- User Info opened -->
-          <div class="row">
-            <div class="container" >
-              <div class="col-xs-12 col-md-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Fill this form <small style="color: red">SwissAir</small></h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label>first name</label>
-                        <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel"  ng-model="firstName" ng-required="true" >
-                      </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label>last name</label>
-                        <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName" ng-required="true">
-                      </div>
-                    </div>
-                  </div>
-
+  <div class="row paymentInfoContainer">
+    <div class="col-xs-12 col-sm-12 col-md-7">
+      <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
+        <div class="panel-group">
+          <div class="panel panel-default panel-info-swiss">
+            <div class="panel-heading">PAYMENT INFORMATION <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
                   <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" id="email" class="form-control input-sm" ng-required="true" ng-model="email">
+                    <label for="cardNumber">CREDIT CARD NUMBER</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
+                      <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                    </div>
+                    <p class="help-block text-danger"></p>
                   </div>
-
-                  <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label for="sel1">Passport Country</label>
-                        <select name="repeatSelect" id="repeatSelect" ng-model="passCountry" ng-required="true">
-                          <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
-                        </select>
-
-                      </div>
-                    </div><br>
-                    <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top: 30px ;margin-left:-180px">
-                      <div class="form-group">
-                          <label>issue month and year</label>
-                          <input type="month" name="year" ng-model="issueDate" ng-required="true">
-                          <label>exp. month and year</label>
-                          <input type="month" name="year" ng-model="expDate" ng-required="true">
-                      </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-7">
+                  <div class="form-group">
+                    <label for="expDateInputGroup">EXPIRATION DATE</label>
+                    <div class="" id="expDateInputGroup">
+                      <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
+                      <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
                     </div>
                   </div>
-
+                </div>
+                <div class="col-xs-12 col-md-5">
+                  <div class="form-group">
+                    <label for="cvCode">CV CODE</label>
+                    <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="form-group">
+                    <label for="couponCode">COUPON CODE</label>
+                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <hr width="80%" height="5px" style="color: black">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12" style="text-align: center">
+                  <button type="submit" class="btn btn-xl btn-md" id='paySubmit'>Verify Card Info & Pay</button>
+                  <p>your RefNum is ::{{refNum}}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- User Info opened -->
+      </form>
+      <!-- ./ payment info FORM -->
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5 carouselContainer">
+      <!-- Carousal -->
 
 
-          <!-- Credit card opened -->
 
-          <div class="row">
-            <div class="container" >
-                <div class="col-xs-12 col-md-6">
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">
-                        <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3> </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div class="col-xs-12">
-                                <div class="form-group">
-                                  <label for="cardNumber">CARD NUMBER</label>
-                                  <div class="input-group">
-                                    <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
 
-                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-7 col-md-7 ">
-                                <div class="form-group">
-                                  <label for="expMonth">EXPIRATION DATE</label>
-                                  <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="number" min="1" max="12" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
 
-                                  </div>
-                                  <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="number" min="00" max="99" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear"/>
-                                  </div>
 
-                                </div>
-                              </div>
-                              <div class="col-xs-5 col-md-5 ">
-                                <div class="form-group">
-                                  <label for="cvCode">CV CODE</label>
-                                  <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvv"/>
+      <div id="carousel-example" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example" data-slide-to="1"></li>
+          <li data-target="#carousel-example" data-slide-to="2"></li>
+        </ol>
 
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12">
-                                <div class="form-group">
-                                  <label for="couponCode">COUPON CODE</label>
-                                  <input type="text" class="form-control" name="couponCode" ng-required="true " ng-model="Coupon"/>
-
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12">
-                                <button class="btn btn-success btn-lg btn-block" type="submit" submit" id="submit" value="Submit" >Book</button>
-                              </div>
-                              <div>
-                                {{reply}}
-                              </div>
-                            </div>
-                            <div class="row" style="display:none;">
-                              <div class="col-xs-12"> <p class="payment-errors"></p>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <!-- Credit card closed -->
-
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div style="background:url(../img/payment/payment1.jpg) center center;
+            background-size:cover;" class="slider-size">
+            <div class="carousel-caption">
+              <h2>Welcome Aboard</h2>
+              <p>Content text to go here. </p>
             </div>
-            <div class="col-lg-6">  </div>
-          </form>
+          </div>
+        </div>
+
+        <div class="item">
+          <div style="background:url(../img/payment/payment2.jpg) center center;
+          background-size:cover;" class="slider-size">
+          <div class="carousel-caption">
+            <h2>Welcome Aboard</h2>
+            <p>Content text to go here. </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div style="background:url(../img/payment/payment3.jpg) center center;
+        background-size:cover;" class="slider-size">
+        <div class="carousel-caption">
+          <h2>Welcome Aboard</h2>
+          <p>Content text to go here. </p>
         </div>
       </div>
     </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="javascript:void(0)"
+    data-slide="prev" data-target="#carousel-example">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="javascript:void(0)"
+  data-slide="next" data-target="#carousel-example">
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+
+</div>
+<!-- ./ CAROUSAL INNER -->
+
+
+</div>
+<!-- Carousal ./././././ -->
+</div>
+</div>
+<!-- End Payment INFO CONTAINER -->
+
+
+
+<div class="row spaceBar">
+  <div class="col-lg-12">
+    <div class="row" style="display:none;">
+      <div class="col-xs-12"> <p class="payment-errors"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</section>

@@ -19,11 +19,13 @@
     "jsonwebtoken": "*",
     "underscore"  : "*",
     "moment"      : "*",
-    "request"     : "*" ,
+    "request"     : "*",
+    "randomstring": "*",
     "mocha"       : "*",
-    "chai"   : "*",
-    "istanbul": "*",
-    "supertest": "*"
+    "stripe"      : "*",
+    "chai"        : "*",
+    "istanbul"    : "*",
+    "supertest"   : "*"
   },
   "repository": {
      "type": "git",

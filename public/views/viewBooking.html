@@ -1,0 +1,45 @@
+<div class="jumbotron">
+<div class = "row">
+<div class = "col-xs-10 col-sm-5 col-md-5" align="center">
+<div ng-repeat="passenger in booking.passengerDetails">
+  <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
+</div>
+</div>
+
+<div class = "col-xs-12 col-sm-6 col-md-6" align="center" style="margin-bottom:40px; border: 1px #ed5249 solid; border-radius: 20px">
+<p style="color:#ed5249; font-size:18px"><strong> Cost : {{booking.cost|currency}} </strong></p>
+<p style="color:#ed5249; font-size:18px"><strong>Booking Number : {{booking.refNum}}</strong></p>
+<p style="color:#ed5249; font-size:18px"><strong>Outgoing Flight ID : {{booking.outgoingFlightId}}</strong></p>
+<p style="color:#ed5249; font-size:18px"><strong>Return Flight ID : {{booking.returnFlightId}}</strong></p>
+<p style="color:#ed5249; font-size:18px"><strong>Class : {{booking.class}}</strong></p>
+
+</div>
+<div class="row" align="center">
+<div class = " col-sm-6 "></div>
+<div class="col-sm-3">
+<button class="btn btn-danger" data-toggle="collapse" data-target="#outgoing"><strong>Outgoing Seat(s):</strong></button>
+
+<div id="outgoing" class="collapse">
+<div>
+<ul class="pagination">
+  <li ng-repeat="seat in booking.outgoingSeats" class="seats"><a href="">{{seat.seatNum}}</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="col-sm-3">
+<button class="btn btn-danger" data-toggle="collapse" data-target="#returned"><strong>Return Seat(s):</strong></button>
+
+<div id="returned" class="collapse">
+<div>
+<ul class="pagination">
+  <li ng-repeat="seat in booking.returnSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
