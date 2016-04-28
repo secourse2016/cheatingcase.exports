@@ -30,16 +30,19 @@
   <div class="row badgeBigContainer">
       <div class="col-lg-12 badgeContainer">
           <div class="row badge">
-              <div class="col-md-4 col-sm-6 col-xs-12 badge-left">
-                  <h2 class="badge-header">BOOKING NUMBER<span class="help-block subtext-gig">1234567</span></h2>
+              <div class="col-md-4 col-sm-12 col-xs-12 badge-left">
+                  <h2 class="badge-header">BOOKING NUMBER<span class="help-block subtext-gig">{{booking.refNum}}</span></h2>
+                  <h5 class="badge-header">COST<span class="help-block subtext-gig">{{booking.cost|currency}}</span></h5>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12 badge-middle">
-                  <h5 class="badge-header">JAN.23.16 <span class="pull-right badgeAirline">Airline</span></h5>
-                  <p>Outgoing FlightID: {{booking.outgoingFlightId}}</p>
-                  <p>Returning FlightID: {{booking.returnFlightId}}</p>
+                  <h2 class="badge-header">CAI to JED<span class="pull-right badgeAirline">Date</span></h2>
+                  <h5 class="badge-header">Outgoing FlightID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
+                  <p>Seats</p>
               </div>
-              <div class="col-md-4 col-sm-12 col-xs-12 badge-right">
-                  <h5 class="badge-header">COST: <span class="help-block subtext-gig">{{booking.cost|currency}}</span> <span class="pull-right badgeAirline">Class <span class="help-block subtext-gig">Economy</span></span></h5>
+              <div class="col-md-4 col-sm-6 col-xs-12 badge-right">
+                <h2 class="badge-header">JED to CAI<span class="pull-right badgeAirline">Date</span></h2>
+                <h5 class="badge-header">Return FlightID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
+                <p>Seats</p>
               </div>
           </div>
       </div>
