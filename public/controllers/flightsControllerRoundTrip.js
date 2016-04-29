@@ -107,9 +107,9 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
           break;
         }
     }
-    AirportsSrv.setOutgoingFlightID(outgoingFlight._id);//return here for error
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);//return here for error
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
-    AirportsSrv.setReturnFlightID(returnFlight._id);//return here for error
+    AirportsSrv.setReturnFlightID(returnFlight.flightId);//return here for error
     AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
     AirportsSrv.setCost($scope.Total);
     $location.url('/flights/confirm');
