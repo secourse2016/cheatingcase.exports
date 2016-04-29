@@ -716,17 +716,6 @@ body {
   border-color: #FA787E;
 }
 
-/*.input-group .ng-invalid.ng-dirty{
-  border: 1px solid;
-  border-color: #FA787E;
-  border-radius: 4px;
-}*/
-
-/*.ng-valid.ng-dirty{
-  border-color: #80aaff;
-}*/
-
-
 /*Other Airlines CheckBox*/
 #otherAirlines{
   margin-left: 20px;

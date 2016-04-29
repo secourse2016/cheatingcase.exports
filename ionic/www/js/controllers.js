@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('SearchflightCtrl', function($scope, $ionicLoading, $timeout) {
- 
+
  $ionicLoading.show({
     content: 'Loading',
     template:'please wait...',
@@ -10,7 +10,7 @@ angular.module('starter.controllers', [])
     maxWidth: 200,
     showDelay: 0
   });
-  
+
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state) {
- 
+
  $ionicLoading.show({
     content: 'Loading',
     template:'please wait...',
@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
     maxWidth: 200,
     showDelay: 0
   });
-  
+
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
@@ -40,8 +40,8 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicPopover, $state, $ionicHistory) {
    // .fromTemplate() method
-  
-   var template = '<ion-popover-view>' + 
+
+   var template = '<ion-popover-view>' +
                   '<ion-header-bar class="bar bar-assertive">' +
                   '<h1 class = "title" style="text-align:center"><strong>Join us on</strong></h1>' +
                   '</ion-header-bar>'+ '<ion-content>' +
@@ -81,13 +81,13 @@ angular.module('starter.controllers', [])
   $scope.gotohome= function() {
     $ionicHistory.goBack();
     window.history.back();
-    //alert('code to go back called. Did it work?'); 
+    //alert('code to go back called. Did it work?');
   }
-   
+
 })
 
 .controller('AboutCtrl', function($scope, $ionicPopup, $state, $ionicLoading, $timeout) {
-  
+
    $ionicLoading.show({
     content: 'Loading',
     template:'please wait...',
@@ -96,23 +96,23 @@ angular.module('starter.controllers', [])
     maxWidth: 200,
     showDelay: 0
   });
-  
+
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
   }, 500);
-   
+
    // When button is clicked, the popup will be shown...
    $scope.showPopup1 = function() {
       $scope.data = {}
-    
+
       // Custom popup
       var myPopup1 = $ionicPopup.show({
          template: '<p style="font-family:Times New Roman">It was formed from a merger between Balair and Ad Astra Aero (To the Stars). For most of its 85 years, Swissair was one of the major international airlines.</p>',
          title: 'Our Humble Beginnings',
          subTitle: '<img src="./img/about1.jpg">',
          scope: $scope,
-			
+
          buttons: [
              {
                text: '<b>ok</b>',
@@ -123,18 +123,18 @@ angular.module('starter.controllers', [])
 
       myPopup1.then(function(res) {
          console.log('Tapped!', res);
-      });    
+      });
    },
    $scope.showPopup2 = function() {
       $scope.data = {}
-    
+
       // Custom popup
       var myPopup2 = $ionicPopup.show({
          template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and service quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
          title: 'For the people in the company',
          subTitle: '<img src="./img/about2.jpg">',
          scope: $scope,
-			
+
          buttons: [
              {
                text: '<b>ok</b>',
@@ -145,18 +145,18 @@ angular.module('starter.controllers', [])
 
       myPopup2.then(function(res) {
          console.log('Tapped!', res);
-      });    
+      });
    },
    $scope.showPopup3 = function() {
       $scope.data = {}
-    
+
       // Custom popup
       var myPopup3 = $ionicPopup.show({
          template: '<p style="font-family:Times New Roman">From its hub in Zurich and the regional airport of Geneva, Swiss International Air Lines flies to 105 destinations in 49 countries: 79 in Europe and 26 overseas. There are 94 aircraft in the airline fleet. SWISS is part of the Lufthansa Group and a member of the Star Alliance.</p>',
          title: '16 million passengers,<br> 105 destinations.',
          subTitle: '<img src="./img/about3.jpg">',
          scope: $scope,
-			
+
          buttons: [
              {
                text: '<b>ok</b>',
@@ -167,9 +167,9 @@ angular.module('starter.controllers', [])
 
       myPopup3.then(function(res) {
          console.log('Tapped!', res);
-      });    
+      });
    };
-   
+
    $scope.gotoContact=function(){
     $state.go("Contact");
    }
@@ -186,7 +186,7 @@ $ionicLoading.show({
     maxWidth: 200,
     showDelay: 0
   });
-  
+
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
@@ -194,7 +194,7 @@ $ionicLoading.show({
   $scope.scrollBottom= function() {
     $ionicScrollDelegate.scrollBottom();
   };
-  
+
   $scope.show= function(){
     $scope.open=true
   }
@@ -212,7 +212,7 @@ $scope.send=function(){
     maxWidth: 200,
     showDelay: 0
   });
-  
+
   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
   $timeout(function () {
     $ionicLoading.hide();
@@ -222,16 +222,79 @@ $scope.send=function(){
 })
 
 .controller('HomeCtrl', function($scope,$ionicSlideBoxDelegate,$state ) {
-   
+
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
    };
-  
+
     $scope.gotoSearchFlights=function(){
     $state.go("searchflights");
    };
+})
+
+.controller('SearchflightCtrlOneWay', function($scope,$state ) {
+
+    $scope.booking = {
+  "_id": "5723a6172ed7677425a9f6d1",
+  "passengerDetails": [
+    {
+      "firstName": "Alaa",
+      "lastName": "Badran",
+      "passportNum": 6549865749865,
+      "dateOfBirth": 862434000000,
+      "nationality": "Egypt",
+      "email": "alaa.badran@hotmail.com",
+      "passportExpiryDate": 1580508000000
+    }
+  ],
+  "class": "business",
+  "cost": 1704,
+  "outgoingFlightId": "5723994361c4675922339d83",
+  "returnFlightId": null,
+  "refNum": "SA18652",
+  "outgoingSeats": [
+    {
+      "seatNum": "1K",
+      "refNum": "SA18652"
+    }
+  ]
+};
+})
+
+
+/* directives */
+
+.directive('showFlights',function(){
+  return {
+    restrict: 'E',
+    scope: {
+      flight:'=',
+      type:'=',
+      color: '=',
+      index:'='
+    },
+    templateUrl: 'templates/showFlights.html'
+  };
+})
+
+.directive('showPassengers',function(){
+  return {
+    restrict: 'E',
+    scope: {
+      countries: '=',
+      index:'='
+    },
+    templateUrl: 'templates/showPassengers.html'
+  };
+})
+
+.directive('bookingPassenger',function(){
+  return {
+    restrict: 'E',
+    scope: {
+      passenger:'=',
+      index:'='
+    },
+    templateUrl: 'templates/bookingPassenger.html'
+  };
 });
-
-
-
-
