@@ -337,9 +337,9 @@ app.post('/booking', function (req, res){
 
             if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
-            var newSeats = generateSeats(flight.seats, seatsNo, flight.class, flight.capacity, bookingRefNum);
-            var newEmptyEconomy = (parseInt(flight.emptyEconomy) - ((flight.class==="economy")?(seatsNo):(0)));
-            var newEmptyBusiness = (parseInt(flight.emptyBusiness) - ((flight.class==="business")?(seatsNo):(0)));
+            var newSeats = generateSeats(flight.seats, seatsNo, booking.class, flight.capacity, bookingRefNum);
+            var newEmptyEconomy = (parseInt(flight.emptyEconomy) - ((booking.class==="economy")?(seatsNo):(0)));
+            var newEmptyBusiness = (parseInt(flight.emptyBusiness) - ((booking.class==="business")?(seatsNo):(0)));
 
             db.db().collection('flights')
               .update({ '_id': ObjectId(booking.outgoingFlightId) }, { $set:{ 'seats': newSeats,
@@ -353,9 +353,9 @@ app.post('/booking', function (req, res){
 
                     if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
-                    var newSeatsRet = generateSeats(flightReturn.seats, seatsNo, flightReturn.class, flightReturn.capacity, bookingRefNum);
-                    var newEmptyEconomyRet = (parseInt(flightReturn.emptyEconomy) - ((flightReturn.class==="economy")?(seatsNo):(0)));
-                    var newEmptyBusinessRet = (parseInt(flightReturn.emptyBusiness) - ((flightReturn.class==="business")?(seatsNo):(0)));
+                    var newSeatsRet = generateSeats(flightReturn.seats, seatsNo, booking.class, flightReturn.capacity, bookingRefNum);
+                    var newEmptyEconomyRet = (parseInt(flightReturn.emptyEconomy) - ((booking.class==="economy")?(seatsNo):(0)));
+                    var newEmptyBusinessRet = (parseInt(flightReturn.emptyBusiness) - ((booking.class==="business")?(seatsNo):(0)));
 
                     db.db().collection('flights')
                       .update({ '_id': ObjectId(booking.returnFlightId) }, { $set:{ 'seats': newSeatsRet,
@@ -417,9 +417,9 @@ app.post('/bookingOthers', function (req, res){
             'timeout': parseInt(process.env.TIMEOUT),
             'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM' }
           }, function (error, response, body){
-            if(err) res.send({ "response": { "refNum": null, "errorMessage": err }, "airlineURL": null });
+            if(error || parseInt(response.statusCode) != 200) res.send({ "refNum": null, "errorMessage": res.statusCode });
             else {
-              res.send({ "response":response, "airlineURL": teams[airLine] });
+              res.send(response.body);
             }
           });
 });

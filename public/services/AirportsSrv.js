@@ -150,7 +150,7 @@ swissAir.factory('AirportsSrv', function ($http) {
         "returnFlightId":returnFlightId,
         "paymentToken" : paymentToken
       };
-      var path = '/bookingOthers' ;
+      var path = '/bookingOthers?airline='+otherAirline;
       if(otherAirline=="Swiss Air"){
          path = '/booking' ;
       }
