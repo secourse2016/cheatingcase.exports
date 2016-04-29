@@ -82,6 +82,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('searchflights', {
                 url: '/searchflights',
+                abstract :true,
                 templateUrl: 'templates/searchflights.html',
                 controller: 'SearchflightCtrl'
             })
