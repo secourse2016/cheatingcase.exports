@@ -27,9 +27,9 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
       if($scope.outgoingFlightAirline == $scope.returnFlightAirline || $scope.returnFlightAirline==undefined){
         AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(res){
           console.log(res.errorMessage);
-          if(res.errorMessage==null){
+          if(res.data.errorMessage==null){
             console.log("same airline case true"+$scope.class+"  ---  "+$scope.outgoingFlightID);
-            $scope.refNum = res.refNum;
+            $scope.refNum = res.data.refNum;
           }
           else {
             console.log("same airline case false");
@@ -39,20 +39,20 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
       }
       else{
         AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(resOutgoing){
-          console.log(resOutgoing.errorMessage);
-          if(resOutgoing.errorMessage==null){
+          console.log(resOutgoing.data.errorMessage);
+          if(resOutgoing.data.errorMessage==null){
             console.log("different airlines outgoingFlight case true");
-            $scope.refNum = resOutgoing.refNum;
+            $scope.refNum = resOutgoing.data.refNum;
           }
           else {
             console.log("different airlines outgoingFlight case false");
 
           }
           AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,$scope.returnFlightAirline,$scope.class).then(function(resReturn){
-            console.log(resReturn.errorMessage);
-            if(resReturn.errorMessage==null){
+            console.log(resReturn.data.errorMessage);
+            if(resReturn.data.errorMessage==null){
               console.log("different airlines returnFlight case true");
-              $scope.refNum +="\n"+resReturn.refNum;
+              $scope.refNum +="\n"+resReturn.data.refNum;
             }
             else {
               console.log("different airlines returnFlight case false");
