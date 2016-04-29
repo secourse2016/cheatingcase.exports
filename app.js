@@ -197,7 +197,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
   query = { 'origin': req.params.origin,
             'destination': req.params.destination,
             'departureDateTime': { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-            'class': req.params.class,
             'emptyEconomy': { $gte: economyComparator },
             'emptyBusiness': { $gte: businessComparator }
           };
@@ -213,7 +212,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class', functi
     "destination": 1,
     "cost": 1,
     "currency": 1,
-    "class": 1,
     "Airline": 1,
     "_id": 0
   };
@@ -252,7 +250,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
 
   queryOutgoing = { 'origin': req.params.origin,
                     'destination': req.params.destination,
-                    'class': req.params.class,
                     'departureDateTime':  { $gte: parseInt(req.params.departingDate),
                       $lt: (parseInt(req.params.departingDate) + dayInMillis) },
                     'emptyEconomy': { $gte: parseInt(economyComparator) },
@@ -262,7 +259,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
 
   queryReturn = { 'destination': req.params.origin,
                   'origin': req.params.destination,
-                  'class': req.params.class,
                   'departureDateTime': { $gte: parseInt(req.params.returningDate),
                     $lt: (parseInt(req.params.returningDate) + dayInMillis) },
                   'emptyEconomy': { $gte: parseInt(economyComparator) },
@@ -280,7 +276,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     "destination": 1,
     "cost": 1,
     "currency": 1,
-    "class": 1,
     "Airline": 1,
     "_id": 0
   };
@@ -359,8 +354,8 @@ app.post('/booking', function (req, res){
                     if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
                     var newSeatsRet = generateSeats(flightReturn.seats, seatsNo, flightReturn.class, flightReturn.capacity, bookingRefNum);
-                    var newEmptyEconomyRet = parseInt(flightReturn.emptyEconomy) - (flightReturn.class==="economy")?(seatsNo):(0);
-                    var newEmptyBusinessRet = parseInt(flightReturn.emptyBusiness) - (flightReturn.class==="business")?(seatsNo):(0);
+                    var newEmptyEconomyRet = (parseInt(flightReturn.emptyEconomy) - ((flightReturn.class==="economy")?(seatsNo):(0)));
+                    var newEmptyBusinessRet = (parseInt(flightReturn.emptyBusiness) - ((flightReturn.class==="business")?(seatsNo):(0)));
 
                     db.db().collection('flights')
                       .update({ '_id': ObjectId(booking.returnFlightId) }, { $set:{ 'seats': newSeatsRet,
@@ -444,7 +439,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',
   query = { 'origin': req.params.origin,
             'destination': req.params.destination,
             'departureDateTime': { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-            'class': req.params.class,
             'emptyEconomy': { $gte: economyComparator },
             'emptyBusiness': { $gte: businessComparator }
           };
@@ -460,7 +454,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',
     "destination": 1,
     "cost": 1,
     "currency": 1,
-    "class": 1,
     "Airline": 1,
     "_id": 0
   };
@@ -496,7 +489,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
 
   queryOutgoing = { 'origin': req.params.origin,
                     'destination': req.params.destination,
-                    'class': req.params.class,
                     'departureDateTime':  { $gte: parseInt(req.params.departingDate),
                       $lt: (parseInt(req.params.departingDate) + dayInMillis) },
                     'emptyEconomy': { $gte: economyComparator },
@@ -504,7 +496,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
                   };
   queryReturn = { 'destination': req.params.origin,
                   'origin': req.params.destination,
-                  'class': req.params.class,
                   'departureDateTime': { $gte: parseInt(req.params.returningDate),
                     $lt: (parseInt(req.params.returningDate) + dayInMillis) } ,
                   'emptyEconomy': { $gte: economyComparator },
@@ -522,7 +513,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     "destination": 1,
     "cost": 1,
     "currency": 1,
-    "class": 1,
     "Airline": 1,
     "_id": 0
   };
