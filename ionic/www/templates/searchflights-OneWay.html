@@ -18,6 +18,30 @@
             <label style="color:black"><span class="label label-danger ">Select Destination</span></label>
             <label class="item item-input form-group">
  
+  <ion-content class= "padding" >
+
+    <div ng-repeat="passenger in booking.passengerDetails">
+      <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
+    </div>
+
+  <form name="searchForm" novalidate ng-submit="searchForm.$valid" >
+  <div class="row">
+  <div class="card  form-group" >
+    <div class="col form-group item-divider">
+  <label style="color:black"><span class="label label-danger " >Select Origin</span></label>
+  <label class="item item-input form-group" >
+
+  <input type="text" id="originAirports"  placeholder="Flight From*">
+   <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
+  </label>
+</div>
+</div>
+
+<div class="card form-group" >
+<div class="col form-group item-divider">
+ <label style="color:black"><span class="label label-danger ">Select Destination</span></label>
+ <label class="item item-input form-group" >
+
   <input type="text" id="destinationAirports" placeholder="Flight To*">
    <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
 </label>
@@ -39,6 +63,8 @@
 
             <label class="item item-input">
   
+ <label class="item item-input" >
+
   <input type="date" placeholder="Dept Date">
 </label>
 
@@ -47,6 +73,9 @@
 
         <div class="row list item item-text-wrap ">
           <div class="row list item item-text-wrap form-group">
+
+ <div class="row list item item-text-wrap " >
+ <div class="row list item item-text-wrap form-group" >
 
 
 
@@ -70,17 +99,22 @@
         <div class="card ">
           <div class=" item item-divider">
             <div class="row form-group card">
+</div>
+  	</div>
+  <div class="card ">
+  <div class=" item item-divider">  <div class="row form-group card">
 
 
 
 
 
               <label class="item item-input item-select form-group " style="width:600px">
+     <label class="item item-input item-select form-group " style="width:600px">
       <div class="input-label form-group col">
      no of adults
     </div>
-     
-  
+
+
     <select  >
                                <option selected="1" value="1">1 Adult</option>
                                         <option value="1" >2 Adults</option>
@@ -99,6 +133,10 @@
             <div class=" row form-group card">
 
               <label class="item item-input item-select form-group" style="width:600px">
+  </div>
+                                    <div class=" row form-group card">
+
+                                     <label class="item item-input item-select form-group" style="width:600px">
                                         <div class="input-label form-group ">
      no of children
     </div>
@@ -116,16 +154,22 @@
             <div class="row form-group card">
               <label class="item item-input item-select form-group" style="width:600px">
                                    
+                                    </div>
+
+
+                                     <div class="row form-group card">
+                                     <label class="item item-input item-select form-group" style="width:600px">
+
                                     <div class="input-label form-group">
      class
     </div>
                                     	 <select 	>
                                         <option value="0">economy</option>
                                         <option value="1">business</option>
-                                    
+
                                     </select>
 
-                                   
+
                                     </label>
             </div>
 
@@ -139,6 +183,17 @@
 
                 <input type="checkbox">
               </div>
+                                    </div>
+
+
+
+   <div class="row form-group card " style="height: 50px" >
+  <label class="item-content form-group col col-75">
+         Search Other Airlines </label>     <div class="col form-group">
+
+
+      <input type="checkbox" >
+     </div>
 
 
 
@@ -162,3 +217,22 @@
     </form>
   </ion-content>
 </ion-view>
+</div>
+
+   </div>
+
+    </div>
+
+
+   <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
+                       <button class="button   button-assertive form-group" ng-click="showLoading2()"  style=" width:200px; margin-top:30px" >
+  Search Flight
+</button>
+                    </div>
+  </div>
+
+</div>
+</form>
+
+  </ion-content>
+  </ion-view>

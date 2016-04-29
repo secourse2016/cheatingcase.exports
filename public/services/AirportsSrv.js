@@ -123,7 +123,13 @@ swissAir.factory('AirportsSrv', function ($http) {
       this.bookingRefNum = value;
     },
 
+    setViewedBooking: function(value) {
+      this.viewedBooking = value;
+    },
 
+    getViewedBooking: function() {
+      return this.viewedBooking;
+    },
 
     searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines){
       return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+returningDate+'/'+Class+''+'?oa='+otherAirlines, {
@@ -135,15 +141,16 @@ swissAir.factory('AirportsSrv', function ($http) {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
       });
     },
-    createBooking: function(passengerDetails,cost,outgoingFlightId,returnFlightId,paymentToken,otherAirline){
+    createBooking: function(passengerDetails,cost,outgoingFlightId,returnFlightId,paymentToken,otherAirline,Class){
       var data = {
         "passengerDetails" :passengerDetails,
         "cost":cost,
+        "class": Class,
         "outgoingFlightId" :outgoingFlightId,
         "returnFlightId":returnFlightId,
         "paymentToken" : paymentToken
       };
-      var path = '/bookingOthers' ;
+      var path = '/bookingOthers?airline='+otherAirline;
       if(otherAirline=="Swiss Air"){
          path = '/booking' ;
       }

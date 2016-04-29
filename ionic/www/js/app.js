@@ -49,7 +49,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-    
+
   .state('tab.search', {
     url: '/search',
     views: {
@@ -92,7 +92,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-OneWay': {
         templateUrl: 'templates/searchflights-OneWay.html',
-        controller: 'SearchflightCtrl'
+        controller: 'SearchflightCtrlOneWay'
       }
     }
   })
@@ -102,7 +102,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-TwoWay': {
         templateUrl: 'templates/searchflights-TwoWay.html',
-        controller: 'SearchflightCtrl'
+        controller: 'SearchflightCtrlTwoWay'
       }
     }
   });
