@@ -26,7 +26,7 @@ var generateRefNum = function(cb){
 var generateSeats = function(seats, seatsNum, Class, n, refNum){
   if(seatsNum==0) return seats;
   else {
-    for(var i = (Class=="business")?(1):(n/8); i<(Class=="business")?(n/8):(n/4); i++){
+    for(var i = (Class=="business")?(1):((n/8)+1); i<(Class=="business")?((n/8)+1):(n/4); i++){
       if(!containsSeat(seats, (""+i+"A"))){
         seats.push({ "seatNum": (""+i+"A"), "refNum": refNum });
         break;
@@ -305,23 +305,17 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
   });
 });
 
-app.get('/testingroute', function(req, res){
-  db.db().collection('flights').find({_id: ObjectId('57226b96eb3a3ac66af46951')}).toArray(function(err, data){
-    res.send(data);
-  });
-});
-
 app.post('/booking', function (req, res){
 
   var stripeToken = req.body.paymentToken;
-  var cost  = req.body.cost;
+  var cost  = parseInt(req.body.cost);
 
   if(!(req.body.passengerDetails&&req.body.class&&req.body.cost&&req.body.outgoingFlightId&&req.body.paymentToken)){
     res.send({ refNum: null, errorMessage: "Corrupted Data !!" }); return;
   }
 
   stripe.charges.create({
-      amount: cost,
+      amount: (cost*100),
       currency: "usd",
       source: stripeToken.id,
       description: "testBookingPayment"
@@ -345,15 +339,17 @@ app.post('/booking', function (req, res){
 
       db.db().collection('bookings').insert(booking, function (errIns, doc){
 
-        if(errIns) res.send({ "refNum": null, "errorMessage": err });
+        if(errIns) res.send({ "refNum": null, "errorMessage": errIns });
         else {
-          db.db().collection('flights').findOne({ '_id': ObjectId(booking.outgoingFlightId) }, function (flight, err2){
-            console.log("Stage1 : Error : "+ err2);
+          db.db().collection('flights').findOne({ '_id': ObjectId(booking.outgoingFlightId) }, function (err2, flight){
+            console.log("Stage1 : Error : ");
             if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
+            console.log("emptyEconomy: "+flight.emptyEconomy+"\temptyBusiness: "+flight.emptyBusiness);
+
             var newSeats = generateSeats(flight.seats, seatsNo, flight.class, flight.capacity, bookingRefNum);
-            var newEmptyEconomy = parseInt(flight.emptyEconomy) - (flight.class==="economy")?(seatsNo):(0);
-            var newEmptyBusiness = parseInt(flight.emptyBusiness) - (flight.class==="business")?(seatsNo):(0);
+            var newEmptyEconomy = (parseInt(flight.emptyEconomy) - ((flight.class==="economy")?(seatsNo):(0)));
+            var newEmptyBusiness = (parseInt(flight.emptyBusiness) - ((flight.class==="business")?(seatsNo):(0)));
 
             console.log(" "+ newSeats + " \n" + newEmptyBusiness + "\n"+newEmptyEconomy);
 
@@ -365,7 +361,7 @@ app.post('/booking', function (req, res){
 
                 if(booking.returnFlightId && booking.returnFlightId != null){
 
-                  db.db().collection('flights').findOne({ '_id': ObjectId(booking.returnFlightId) }, function (flightReturn, err){
+                  db.db().collection('flights').findOne({ '_id': ObjectId(booking.returnFlightId) }, function (err, flightReturn){
 
                     if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
