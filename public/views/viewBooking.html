@@ -26,7 +26,15 @@
 
 </div> -->
 
+
 <div class="container viewBookingPage">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+              <div style="max-width: 0px" id="navFly"></div>
+                <h2 class="section-heading wow fadeInDown" data-wow-offset="250" style="visibility: visible; animation-name: fadeInDown;">Booking Information</h2>
+                <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230" style="visibility: visible; animation-name: fadeInDown;">Everything in one place.</h3>
+            </div>
+  </div>
   <div class="row swissBadgeBigContainer">
       <div class="col-lg-12 swissBadgeContainer">
           <div class="row swissBadge">
@@ -47,9 +55,18 @@
           </div>
       </div>
   </div>
-  <div class="row passengersInfo" style="text-align: center">
+  <!-- <div class="row passengersInfo" style="text-align: center">
     <div class="col-md-6 col-sm-12 col-xs-12 passengerCol" ng-repeat="passenger in booking.passengerDetails">
         <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
+    </div>
+  </div> -->
+  aknsjnjja
+  <div class="row passengerAndMap">
+    <div class="col-md-6 col-sm-12 col-xs-12 passengerCol">
+      
+        <div ng-repeat="passenger in booking.passengerDetails">
+        <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
+      </div>
     </div>
   </div>
 </div>
