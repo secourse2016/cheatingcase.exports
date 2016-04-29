@@ -393,7 +393,7 @@ app.get('/viewbooking/:refNum', function (req, res){
         if(bookingData.returnFlightId && bookingData.returnFlightId != null){
           db.db().collection('flights').findOne({ '_id': ObjectId(bookingData.returnFlightId) }, function (err, flightRet){
 
-            var returnSeats = filterSeats(JSON.parse(flightRet.seats), refNum);
+            var returnSeats = filterSeats(flightRet.seats, refNum);
             bookingData.returnSeats = returnSeats;
             res.send(bookingData);
 
