@@ -107,72 +107,13 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
           break;
         }
     }
-    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightNumber);
+    AirportsSrv.setOutgoingFlightID(outgoingFlight._id);//return here for error
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
-    AirportsSrv.setReturnFlightID(returnFlight.flightNumber);
+    AirportsSrv.setReturnFlightID(returnFlight._id);//return here for error
     AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
     AirportsSrv.setCost($scope.Total);
     $location.url('/flights/confirm');
   };
 
 
-
-  // //Now we Retrieved  One Outgoing Flight and One Return Flight , we have 4 cases to handle
-  // if(outgoingFlight.Airline == returnFlight.Airline){
-  //     if(outgoingFlight.Airline=="Swiss Air"){
-  //       /* Case 1 :- Both Flights Are From the same airline , This airline is me !
-  //        In this case, I set my variables and redirect my user to my front end to pay both flights*/
-  //       AirportsSrv.setOutgoingFlightID(outgoingFlight.flightNumber);
-  //       AirportsSrv.setReturnFlightID(returnFlight.flightNumber);
-  //       $location.url('/flights/pay');
-  //       console.log(" Two Way Case 1");
-  //     }
-  //     else{
-  //     /* Case 2 :- Both Flights are From the same airline , This airline is not me
-  //     In this Case we have to send one Post Request Containing the two flights number , the seats' count ,
-  //     MyAirlineName and wait for two bookingNumbers from this airline as a return gift ;)
-  //     Still Not Implemented */
-  //
-  //     console.log(" Two Way Case 2");
-  //
-  //     }
-  // }
-  // else{
-  //   if(outgoingFlight.Airline != "Swiss Air" && returnFlight.Airline!= "Swiss Air"){
-  //     /* Case 3 :- Both Flights are not from the same airline , and luckily , none of them belongs to me
-  //     In this case , two seperate post requests should be sent to the two airlines (one per each) , and each
-  //     request should contain again the flight Number , seats' count and myAirlineName and wait for a booking reference
-  //     from each Airline
-  //     Still Not Implemented*/
-  //
-  //
-  //
-  //     console.log(" Two Way Case 3");
-  //
-  //   }
-  //   else{
-  //     /* Case 4 :- Both Flights are not from the same airline , but this time , one of them belongs to me
-  //     This Case is the least systematic one , because you should send the other company a post request and
-  //     wait for a booking reference from it , and in the same time , you redirect the user to pay the other Flight
-  //     in your page   */
-  //     if(outgoingFlight.Airline == "Swiss Air"){
-  //       /*redirect user to pay the outgoing in my view and send a post request to the other airline with
-  //        the return flight details (flightNumber,seatCount,myAirlineName)
-  //        Partially Implemented*/
-  //        AirportsSrv.setOutgoingFlightDate(outgoingFlight.departureDateTime);
-  //        AirportsSrv.setOutgoingFlightNumber(outgoingFlight.flightNumber);
-  //        $location.url('/flights/pay');
-  //        console.log("Two Way Case 4 A");
-  //     }
-  //     else{
-  //       /* redirect user to pay the return flight in my view and send a post request to the other airline with
-  //       the outgoing flight details (flightNumber,seatCount,MyAirlineName)
-  //       Partially Implemented*/
-  //       AirportsSrv.setReturnFlightDate(returnFlight.departureDateTime);
-  //       AirportsSrv.setReturnFlightNumber(returnFlight.flightNumber);
-  //       $location.url('/flights/pay');
-  //       console.log("Two Way Case 4 B");
-  //     }
-  //   }
-  // }
 });
