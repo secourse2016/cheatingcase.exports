@@ -325,9 +325,6 @@ app.post('/booking', function (req, res){
       var bookingRefNum = random;
       var seatsNo = req.body.passengerDetails.length;
 
-      console.log(err);
-      console.log(bookingRefNum);
-
       var booking = {
         'passengerDetails': req.body.passengerDetails,
         'class'           : req.body.class,
@@ -342,21 +339,17 @@ app.post('/booking', function (req, res){
         if(errIns) res.send({ "refNum": null, "errorMessage": errIns });
         else {
           db.db().collection('flights').findOne({ '_id': ObjectId(booking.outgoingFlightId) }, function (err2, flight){
-            console.log("Stage1 : Error : ");
-            if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
-            console.log("emptyEconomy: "+flight.emptyEconomy+"\temptyBusiness: "+flight.emptyBusiness);
+            if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
             var newSeats = generateSeats(flight.seats, seatsNo, flight.class, flight.capacity, bookingRefNum);
             var newEmptyEconomy = (parseInt(flight.emptyEconomy) - ((flight.class==="economy")?(seatsNo):(0)));
             var newEmptyBusiness = (parseInt(flight.emptyBusiness) - ((flight.class==="business")?(seatsNo):(0)));
 
-            console.log(" "+ newSeats + " \n" + newEmptyBusiness + "\n"+newEmptyEconomy);
-
             db.db().collection('flights')
               .update({ '_id': ObjectId(booking.outgoingFlightId) }, { $set:{ 'seats': newSeats,
               'emptyEconomy': newEmptyEconomy, 'emptyBusiness': newEmptyBusiness }}, function (error, results){
-                console.log("Stage2 : Error : "+ error);
+
                 if(error) { res.send({ "refNum": null, "errorMessage": error }); return; }
 
                 if(booking.returnFlightId && booking.returnFlightId != null){
