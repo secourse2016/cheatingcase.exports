@@ -123,7 +123,13 @@ swissAir.factory('AirportsSrv', function ($http) {
       this.bookingRefNum = value;
     },
 
+    setViewedBooking: function(value) {
+      this.viewedBooking = value;
+    },
 
+    getViewedBooking: function() {
+      return this.viewedBooking;
+    },
 
     searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines){
       return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+returningDate+'/'+Class+''+'?oa='+otherAirlines, {

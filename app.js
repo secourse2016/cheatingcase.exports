@@ -323,8 +323,8 @@ app.post('/booking', function (req, res){
   stripe.charges.create({
       amount: cost,
       currency: "usd",
-      source: stripeToken,
-      description: "testPayment"
+      source: stripeToken.id,
+      description: "testBookingPayment"
     }, function(err, data) {
     if (err) res.send({ refNum: null, errorMessage: err });
     else generateRefNum(function (random){
@@ -348,18 +348,20 @@ app.post('/booking', function (req, res){
         if(errIns) res.send({ "refNum": null, "errorMessage": err });
         else {
           db.db().collection('flights').findOne({ '_id': ObjectId(booking.outgoingFlightId) }, function (flight, err2){
-
+            console.log("Stage1 : Error : "+ err2);
             if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
 
             var newSeats = generateSeats(flight.seats, seatsNo, flight.class, flight.capacity, bookingRefNum);
             var newEmptyEconomy = parseInt(flight.emptyEconomy) - (flight.class==="economy")?(seatsNo):(0);
             var newEmptyBusiness = parseInt(flight.emptyBusiness) - (flight.class==="business")?(seatsNo):(0);
 
+            console.log(" "+ newSeats + " \n" + newEmptyBusiness + "\n"+newEmptyEconomy);
+
             db.db().collection('flights')
               .update({ '_id': ObjectId(booking.outgoingFlightId) }, { $set:{ 'seats': newSeats,
               'emptyEconomy': newEmptyEconomy, 'emptyBusiness': newEmptyBusiness }}, function (error, results){
-
-                if(error) { res.send({ "refNum": null, "errorMessage": err }); return; }
+                console.log("Stage2 : Error : "+ error);
+                if(error) { res.send({ "refNum": null, "errorMessage": error }); return; }
 
                 if(booking.returnFlightId && booking.returnFlightId != null){
 
