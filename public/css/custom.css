@@ -984,7 +984,7 @@ margin-right: -15px;
 
 /*VIEW BOOKING*/
 
-.badgeBigContainer {
+.swissBadgeBigContainer {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: center;
@@ -993,56 +993,55 @@ margin-right: -15px;
 @media only screen and (max-width: 768px) {
 
 }
-.badgeContainer {
+.swissBadgeContainer {
     text-align: left;
     z-index: 10;
     background-color: white;
     border-radius: 3px;
 }
 
-.badge{
+.swissBadge{
+  border-radius: 3px;
   text-align: left;
 }
 
-.badge h2{
+.swissBadge h2{
   font-size: 20px;
   margin-top: 10px;
+  color: #FF2D14;
+}
+
+.swissBadge h5{
+  color: #7F3930;
 }
 
 
-
-.badge-middle,.badge-left, .badge-right{
+.swissBadge-middle,.swissBadge-left, .swissBadge-right{
   /*display:block;*/
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.badge-middle .subtext-gig, .badge-right .subtext-gig, .badge-left .subtext-gig{
+.swissBadge-middle .subtext-gig, .swissBadge-right .subtext-gig, .swissBadge-left .subtext-gig{
   margin-top: 10px;
 }
 
-h2.badge-header{
-  color: #0FC1B9;
-}
 
-h5.badge-header, h6.badge-header{
-  color: #0FC1B9;
-}
 
 @media only screen and (max-width: 992px) {
-  .badge-left{
+  .swissBadge-left{
     text-align: center;
   }
-  .badgeContainer{
+  .swissBadgeContainer{
     max-width: 90%;
   }
-  .badgeBigContainer{
+  .swissBadgeBigContainer{
     text-align: center;
   }
 }
 
 @media only screen and (min-width: 992px) {
-  .badge {
+  .swissBadge {
       display: flex;
       align-items: stretch;
       /* align items in Cross Axis */
@@ -1050,23 +1049,23 @@ h5.badge-header, h6.badge-header{
       /* Extra space in Cross Axis */
       padding-left: 40px;
   }
-  .badge-middle {
+  .swissBadge-middle {
       border-right: 3px solid;
       border-left: 3px solid;
       border-color: #0FC1B9;
   }
-  .badge-right{
+  .swissBadge-right{
     border-top: 0px;
   }
 }
 
 .subtext-gig {
     font-size: 18px;
-    color: #fff;
+    color: #333;
     margin: 0px;
 }
 
-.badgeBigContainer .badge p{
+.swissBadgeBigContainer .swissBadge p{
   color: #333;
 }
 
