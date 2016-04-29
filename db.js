@@ -1,7 +1,8 @@
 var assert = require('assert');
 var mongodb = require('mongodb').MongoClient;
 var myDB = null;
-var dbUrl = 'mongodb://'+process.env.DBHOST+':27017/swissair';
+var dbHost = (process.env.DBHOST+':27017') || (process.env.WERCKER_MONGODB_HOST);
+var dbUrl = 'mongodb://' + dbHost + '/swissair';
 var flightsData = require('./flights.json');
 var airportsData = require('./airports.json');
 

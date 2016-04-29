@@ -977,7 +977,10 @@ margin-right: -15px;
   padding-bottom: 50px;
 }
 
-
+.pagination li.seats a {
+    background: white;
+    color: #ed5249;
+}
 /*./ PAYMENT INFO*/
 
 

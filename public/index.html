@@ -17,8 +17,12 @@
     <script src="js/shared/jquery.min.js"></script>
 
     <!-- Angular Library -->
+
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
+    <!-- stripe JavaScript -->
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-stripe/4.2.12/angular-stripe.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/shared/bootstrap.min.js"></script>
@@ -38,6 +42,7 @@
     <script src="controllers/viewBookingController.js"></script>
 
     <script src="/services/AirportsSrv.js"></script>
+
 
 
     <link rel="shortcut icon" href="./img/logos/pageIcon.ico" />
@@ -83,7 +88,7 @@
                             <a href="#page-top"></a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="http://www.swiss-air.me">Home</a>
+                            <a class="page-scroll" href="#page-top">Home</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="#fly">Fly</a>
@@ -372,7 +377,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center wow fadeInUp" data-wow-offset="70">
-                                <div id="success"></div>
+                              <div id="success"></div>
                                 <button type="submit" class="btn btn-xl">Send Message</button>
                             </div>
                         </div>

@@ -13,7 +13,7 @@
                       <h6 style="color: rgb(228,40,18)">Date of Birth</h6>
                       <p>{{passenger.dateOfBirth|date:'medium'}}</p>
                   </div>
-                  <div class="row">
+                  <div class="row" ng-hide="$parent.checkNationality(index)">
                       <h6 style="color: rgb(228,40,18)">Nationality</h6>
                       <p>{{passenger.nationality}}</p>
                   </div>
@@ -30,7 +30,7 @@
                       <h6 style="color: rgb(228,40,18)">Passport Number</h6>
                       <p>{{passenger.passportNum}}</p>
                   </div>
-                  <div class="row">
+                  <div class="row" ng-hide="$parent.checkEmail(index)">
                       <h6 style="color: rgb(228,40,18)">Email</h6>
                       <p>{{passenger.email}}</p>
                   </div>
