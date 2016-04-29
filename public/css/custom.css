@@ -983,7 +983,6 @@ margin-right: -15px;
 
 
 /*VIEW BOOKING*/
-
 .swissBadgeBigContainer {
     display: -webkit-flex;
     display: flex;
@@ -1003,6 +1002,14 @@ margin-right: -15px;
 .swissBadge{
   border-radius: 3px;
   text-align: left;
+}
+
+.swissBadgeSeat{
+  border-radius: 3px;
+}
+
+.swissBadgeSeat .panel-body{
+  text-align: center;
 }
 
 .swissBadge h2{
@@ -1078,4 +1085,55 @@ margin-right: -15px;
 .passengerCol{
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.seatMapContainer{
+  display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    align-items: stretch;
+    /* align items in Cross Axis */
+    align-content: stretch;
+}
+
+.seatMapContainer .panel{
+  width: 80%
+}
+
+.seatMapContainer .row{
+  margin-bottom: 15px;
+}
+
+.seatsButtonsContainer{
+    display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;;
+}
+
+.seatsButtonsContainer button{
+  background-color: #B9DEA0;
+}
+
+.seatsButtonsContainer button:disabled,
+.seatsButtonsContainer button.disabled,
+.seatsButtonsContainer button.booked {
+background-color: #7F3930;
+}
+
+.seatsButtonsContainer button.business{
+background-color: #3a78c3
+}
+
+.seatsButtonsContainer button.economy {
+  background-color: #B9DEA0;
+}
+
+.seatsButtonsContainer button:hover,
+.seatsButtonsContainer button:focus,
+.seatsButtonsContainer button:active,
+.seatsButtonsContainer button.active,
+.seatsButtonsContainer button.selected {
+  background-color: #FF7161;
 }
