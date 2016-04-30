@@ -15,4 +15,16 @@ background-size:100%;
 }
 
 
+/*Payment Styling*/
 
+
+.swiss-center{
+margin-left: auto;
+margin-right: auto;
+display: block;
+}
+
+.credCardImgContainer img{
+  width: auto;
+  max-width: 150px;
+}
