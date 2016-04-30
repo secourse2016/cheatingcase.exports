@@ -11,7 +11,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.class = "1";
   $scope.otherAirlines=false;
   AirportsSrv.setOtherAirlines("false");
-  $scope.searchBy="schedule";
   $scope.animation="";
   $scope.disabled=false;
 
@@ -94,7 +93,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
        if($scope.class=='2'){
          AirportsSrv.setSelectedClass("business");
        }
-       else console.log("Fatal Error in the watch of the class");
      }
     });
 
