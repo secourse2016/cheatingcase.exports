@@ -176,7 +176,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ContactCtrl', function($scope, $ionicLoading, $ionicLoading,$timeout, $ionicScrollDelegate){
+.controller('ContactCtrl', function($scope, $ionicLoading,$timeout, $ionicScrollDelegate){
 
 $ionicLoading.show({
     content: 'Loading',
@@ -226,11 +226,9 @@ $scope.send=function(){
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
    };
-
-    $scope.gotoSearchFlights=function(){
-    $state.go("searchflights");
-   };
+  
 })
+
 
 .controller('SearchflightCtrlOneWay', function($scope,$state ) {
 
