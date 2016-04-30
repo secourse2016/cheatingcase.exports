@@ -131,13 +131,13 @@ swissAir.factory('AirportsSrv', function ($http) {
       return this.viewedBooking;
     },
 
-    searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines){
-      return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+returningDate+'/'+Class+''+'?oa='+otherAirlines, {
+    searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines,seats){
+      return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+returningDate+'/'+Class+'/'+seats+''+'?oa='+otherAirlines, {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
       });
     },
-    searchFlightsOneWay: function(origin, destination, departingDate, Class, otherAirlines){
-      return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+Class+'?oa='+otherAirlines, {
+    searchFlightsOneWay: function(origin, destination, departingDate, Class, otherAirlines,seats){
+      return $http.get('/api/flights/search/'+origin+'/'+destination+'/'+departingDate+'/'+Class+'/'+seats+'?oa='+otherAirlines, {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
       });
     },
@@ -163,8 +163,8 @@ swissAir.factory('AirportsSrv', function ($http) {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
       });
     },
-    getConcatFlightsTwoWay:function(origin, destination, departingDate, returningDate, Class, otherAirlines,cb){
-      this.searchFlightsTwoWay(origin, destination, departingDate, returningDate, Class, otherAirlines)
+    getConcatFlightsTwoWay:function(origin, destination, departingDate, returningDate, Class, otherAirlines,seats,cb){
+      this.searchFlightsTwoWay(origin, destination, departingDate, returningDate, Class, otherAirlines,seats)
       .success(function(flights){
         var outgoingFlights=flights.outgoingFlights;
         var returnFlights =flights.returnFlights;
@@ -183,8 +183,8 @@ swissAir.factory('AirportsSrv', function ($http) {
         cb(result);
       });
     },
-    getConcatFlightsOneWay:function(origin, destination, departingDate, Class, otherAirlines,cb){
-      this.searchFlightsOneWay(origin, destination, departingDate, Class, otherAirlines)
+    getConcatFlightsOneWay:function(origin, destination, departingDate, Class, otherAirlines,seats,cb){
+      this.searchFlightsOneWay(origin, destination, departingDate, Class, otherAirlines,seats)
       .success(function(flights){
         var outgoingFlights=flights.outgoingFlights;
         for(var i=0;i<outgoingFlights.length;i++){
