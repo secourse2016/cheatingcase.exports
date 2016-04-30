@@ -242,20 +242,11 @@ $scope.send=function(){
     "class":"1",
     "otherAirlines":false
   };
-  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-];
+  $scope.adultsCount="1";
+  $scope.ChangeInAdults = function(){
+    console.log("hello");
+  }
 
-  $scope.print = function(){
-    console.log("the selected state is ");
-  };
   $scope.SetOriginAirport = function(originAirport) {
     AirportsSrv.setSelectedOriginAirport(originAirport);
   };
