@@ -115,6 +115,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
           new Date(AirportsSrv.getSelectedReturnDate()).getTime(),
           AirportsSrv.getSelectedClass(),
           AirportsSrv.getOtherAirlines(),
+          AirportsSrv.getSelectedSeats(),
           function(result){
             AirportsSrv.setOutgoingFlights(result.outgoingFlights);
             AirportsSrv.setReturnFlights(result.returnFlights);
@@ -128,6 +129,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
         new Date(AirportsSrv.getSelectedDepartureDate()).getTime(),
           AirportsSrv.getSelectedClass(),
           AirportsSrv.getOtherAirlines(),
+          AirportsSrv.getSelectedSeats(),
           function(result){
             AirportsSrv.setOutgoingFlights(result.outgoingFlights);
             $location.path('/flightsOneWay');
