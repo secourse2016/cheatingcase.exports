@@ -55,7 +55,7 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
     AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);//return here if error
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
     AirportsSrv.setCost($scope.Total);
-    $location.url('/flights/confirm');
+    $location.path('/flights/confirm');
   };
 
 
@@ -64,7 +64,7 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
   //   /* Easy Case :- My payment ! */
   //   AirportsSrv.setDisplayedOutgoingFlightDate(outgoingFlight.departureDateTime);
   //   AirportsSrv.setDisplayedOutgoingFlightNumber(outgoingFlight.flightNumber);
-  //   $location.url('/flights/pay');
+  //   $location.path('/flights/pay');
   //   console.log("One Way Case 1");
   // }
   // else {
