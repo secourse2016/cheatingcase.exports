@@ -28,3 +28,23 @@ display: block;
   width: auto;
   max-width: 150px;
 }
+
+
+/*Form Validation*/
+label.item.has-error-lr,
+label.item.has-error {
+  border-bottom: 2px solid red;
+}
+
+
+label.item.valid-lr {
+  border-bottom: 2px solid green;
+}
+/** Styling for the error text and container **/
+.form-errors {
+  margin: 5px 0
+}
+.form-error {
+  padding: 2px 0 2px 16px;
+  color: red;
+}

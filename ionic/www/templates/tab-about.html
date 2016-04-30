@@ -31,6 +31,12 @@
   </ion-content>
 </ion-view> -->
 
+<script id="templates/form-errors.html" type="text/ng-template">
+  <div class="form-error" ng-message="required">This field is required.</div>
+  <div class="form-error" ng-message="minlength">This field is must be at least 5 characters.</div>
+  <div class="form-error" ng-message="maxlength">This field is must be less than 50 characters</div>
+</script>
+
 <ion-view view-title="about">
   <ion-content class="padding">
     <div class="row">
@@ -43,27 +49,31 @@
         <div class="col">
 
           <div class="list">
-            <label class="item item-input item-stacked-label">
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.cardNumber.$invalid}">
               <span class="input-label">Card Number</span>
               <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
             </label>
+
+            <div class="form-errors" ng-messages="signinForm.username.$error" ng-messages-include="templates/form-errors.html">
+            </div>
+
             <label class="item item-input item-stacked-label">
               <div class="row">
-                <div class="col col-50">
+                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.expMonth.$invalid}">
                   <span class="input-label">Expiary Month</span>
                   <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
                 </div>
-                <div class="col col-50">
+                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.expYear.$invalid}">
                   <span class="input-label">Expiary Year</span>
                   <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
                 </div>
               </div>
             </label>
-            <label class="item item-input item-stacked-label">
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.cvCode.$invalid}">
               <span class="input-label">CV Code</span>
-              <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
+              <input type="number" class="form-control" name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
             </label>
-            <label class="item item-input item-stacked-label">
+            <label class="item item-input item-stacked-label"  ng-class="{ 'has-error' : paymentInfoForm.couponCode.$invalid}">
               <span class="input-label">Coupon Code</span>
               <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Coupon Code"></input>
             </label>
@@ -73,8 +83,8 @@
       </div>
       <div class="row">
         <div class="col" style="text-align: center">
-          <button class="button icon-left ion-card  button-assertive" type="submit" style=" width:150px; margin-top:10px" id='paySubmit'>
-            <strong>Pay</strong>
+          <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
+            <strong>Checkout</strong>
           </button>
         </div>
       </div>
