@@ -232,37 +232,133 @@ $scope.send=function(){
    };
 })
 
-.controller('SearchflightCtrlOneWay', function($scope,$state ) {
+/* One-Way-Controller*/
+.controller('SearchflightCtrlOneWay', function($scope,$state,AirportsSrv) {
+  $scope.details = {
+    "departureTime": "1",
+    "returnTime":"1",
+    "adultsCount":"1",
+    "childrenCount":"0",
+    "class":"1",
+    "otherAirlines":false
+  };
+  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
 
-    $scope.booking = {
-  "_id": "5723a6172ed7677425a9f6d1",
-  "passengerDetails": [
-    {
-      "firstName": "Alaa",
-      "lastName": "Badran",
-      "passportNum": 6549865749865,
-      "dateOfBirth": 862434000000,
-      "nationality": "Egypt",
-      "email": "alaa.badran@hotmail.com",
-      "passportExpiryDate": 1580508000000
-    }
-  ],
-  "class": "business",
-  "cost": 1704,
-  "outgoingFlightId": "5723994361c4675922339d83",
-  "returnFlightId": null,
-  "refNum": "SA18652",
-  "outgoingSeats": [
-    {
-      "seatNum": "1K",
-      "refNum": "SA18652"
-    }
-  ]
-};
+  $scope.print = function(){
+    console.log("the selected state is ");
+  };
+  $scope.SetOriginAirport = function(originAirport) {
+    AirportsSrv.setSelectedOriginAirport(originAirport);
+  };
+
+  /* Record User's Selected Destination Airport  */
+  $scope.SetDestinationAirport = function(destAirport) {
+    AirportsSrv.setSelectedDestinationAirport(destAirport);
+  };
+
+  $scope.flipOtherAirlines = function() {
+   AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
+  };
+
+  $scope.$watch('details.departureDate', function() {
+    // $scope.returnDate= null;
+    // $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
+    // new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
+    // :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
+    // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
+
+  });
+
+  AirportsSrv.setOtherAirlines("false");
+
+  $scope.$watch('details.class', function() {
+   if($scope.details.class=='1'){
+     AirportsSrv.setSelectedClass("economy");
+   }
+   else{
+     if($scope.details.class=='2'){
+       AirportsSrv.setSelectedClass("business");
+     }
+   }
+  });
+
+  $scope.$watch('details.adultsCount', function() {
+    AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
+  });
+
+  $scope.$watch('details.childrenCount', function() {
+    AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
+  });
 
 })
 
-.controller('SearchflightCtrlTwoWay', function($scope,$state ) {
+ /* Two-Way-Controller*/
+.controller('SearchflightCtrlTwoWay', function($scope,$state,AirportsSrv) {
+  $scope.details = {
+    "departureTime": "1",
+    "returnTime":"1",
+    "adultsCount":"1",
+    "childrenCount":"0",
+    "class":"1",
+    "otherAirlines":false
+  };
+  AirportsSrv.setOtherAirlines("false");
+
+  $scope.SetOriginAirport = function(originAirport) {
+    AirportsSrv.setSelectedOriginAirport(originAirport);
+  };
+
+  /* Record User's Selected Destination Airport  */
+  $scope.SetDestinationAirport = function(destAirport) {
+    AirportsSrv.setSelectedDestinationAirport(destAirport);
+  };
+
+  $scope.flipOtherAirlines = function() {
+   AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
+  };
+
+  $scope.$watch('details.departureDate', function() {
+    // $scope.returnDate= null;
+    // $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
+    // new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
+    // :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
+    // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
+
+  });
+
+  $scope.$watch('details.returnDate', function() {
+    // if($scope.returnDate!=null && $scope.returnDate.getTime()<=$scope.departureDate.getTime())
+    //  $scope.returnDate=null;
+    // AirportsSrv.setSelectedReturnDate($scope.returnDate);
+  });
+
+  $scope.$watch('details.class', function() {
+   if($scope.details.class=='1'){
+     AirportsSrv.setSelectedClass("economy");
+   }
+   else{
+     if($scope.details.class=='2'){
+       AirportsSrv.setSelectedClass("business");
+     }
+   }
+  });
+
+  $scope.$watch('details.adultsCount', function() {
+    AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
+  });
+
+  $scope.$watch('details.childrenCount', function() {
+    AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
+  });
 
 })
 

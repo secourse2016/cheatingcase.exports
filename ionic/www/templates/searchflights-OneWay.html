@@ -1,139 +1,138 @@
 <ion-view view-title="One Way">
   <ion-content class= "padding" >
-  <form name="searchForm" novalidate ng-submit="searchForm.$valid " >
-  <div class="row">
-  <div class="card  form-group" >
-    <div class="col form-group item-divider">
-  <label style="color:black"><span class="label label-danger " >Select Origin</span></label>
-  <label class="item item-input form-group" >
+    <form name="searchForm" novalidate ng-submit="searchForm.$valid " >
+      <div class="row">
+        <div class="card  form-group" >
+          <div class="col form-group item-divider">
+            <label style="color:black"><span class="label label-danger " >Select Origin</span></label>
+            <label class="item item-input form-group" >
 
-  <input type="text" id="originAirports"  placeholder="Flight From*">
-   <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
-  </label>
-</div>
-</div>
+              <input type="text" ionic-autocomplete="{item: states , OnSelect:print}" placeholder="Origin" />
+              <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
+            </label>
+          </div>
+        </div>
 
-<div class="card form-group" >
-<div class="col form-group item-divider">
- <label style="color:black"><span class="label label-danger ">Select Destination</span></label>
- <label class="item item-input form-group" >
+        <div class="card form-group" >
+          <div class="col form-group item-divider">
+            <label style="color:black"><span class="label label-danger ">Select Destination</span></label>
+            <label class="item item-input form-group" >
 
-  <input type="text" id="destinationAirports" placeholder="Flight To*">
-   <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
-</label>
- </div></div>
-  </div>
-
-
-<div class="card ">
-	<div class="row  item item-divider">
-    <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-  <label style="color:black"><span class="label label-danger" >Departure Date</span></label>
-</div>
-
-  </div>
-  <div class=" row item item-text-wrap">
-  <div class="col">
+              <input type="text" id="destinationAirports" placeholder="Flight To*">
+              <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
+            </label>
+          </div></div>
+        </div>
 
 
- <label class="item item-input" >
+        <div class="card ">
+          <div class="row  item item-divider">
+            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+              <label style="color:black"><span class="label label-danger" >Departure Date</span></label>
+            </div>
 
-  <input type="date" placeholder="Dept Date">
-</label>
-
-</div>
-</div>
-
-  <div class="card ">
-  <div class=" item item-divider">  <div class="row form-group card">
-
+          </div>
+          <div class=" row item item-text-wrap">
+            <div class="col">
 
 
+              <label class="item item-input" >
 
+                <input type="date" placeholder="Dept Date" min="today()">
+              </label>
 
-     <label class="item item-input item-select form-group " style="width:600px">
-      <div class="input-label form-group col">
-     no of adults
-    </div>
+            </div>
+          </div>
 
-
-    <select  >
-                               <option selected="1" value="1">1 Adult</option>
-                                        <option value="1" >2 Adults</option>
-                                        <option value="3">3 Adults</option>
-                                        <option value="4">4 Adults</option>
-                                        <option value="5">5 Adults</option>
-                                        <option value="6">6 Adults</option>
-                                        <option value="7">7 Adults</option>
-                                        <option value="8">8 Adults</option>
-                                        <option value="9">9 Adults</option>
-                                        <option value="10">10 Adults</option>
-                                        </select>
-                                          </label>
-
-  </div>
-                                    <div class=" row form-group card">
-
-                                     <label class="item item-input item-select form-group" style="width:600px">
-                                        <div class="input-label form-group ">
-     no of children
-    </div>
-  	<select>
-        <option value="0">0 Children</option>
-                                        <option value="1">1 Child</option>
-                                        <option value="2">3 Children</option>
-                                        <option value="3">4 Children</option>
-                                        <option value="4">5 Children</option>
-                                    </select>
-                                      </label>
-                                    </div>
-
-
-                                     <div class="row form-group card">
-                                     <label class="item item-input item-select form-group" style="width:600px">
-
-                                    <div class="input-label form-group">
-     class
-    </div>
-                                    	 <select 	>
-                                        <option value="0">economy</option>
-                                        <option value="1">business</option>
-
-                                    </select>
-
-
-                                    </label>
-                                    </div>
-
-
-
-   <div class="row form-group card " style="height: 50px" >
-  <label class="item-content form-group col col-75">
-         Search Other Airlines </label>     <div class="col form-group">
-
-
-      <input type="checkbox" >
-     </div>
+          <div class="card ">
+            <div class=" item item-divider">  <div class="row form-group card">
 
 
 
 
 
-</div>
+              <label class="item item-input item-select form-group " style="width:600px">
+                <div class="input-label form-group col">
+                  no of adults
+                </div>
 
-   </div>
 
-    </div>
+                <select ng-model="details.adultsCount">
+                  <option value="1">1 Adult</option>
+                  <option value="2" >2 Adults</option>
+                  <option value="3">3 Adults</option>
+                  <option value="4">4 Adults</option>
+                  <option value="5">5 Adults</option>
+                  <option value="6">6 Adults</option>
+                  <option value="7">7 Adults</option>
+                  <option value="8">8 Adults</option>
+                  <option value="9">9 Adults</option>
+                  <option value="10">10 Adults</option>
+                </select>
+              </label>
+
+            </div>
+            <div class=" row form-group card">
+
+              <label class="item item-input item-select form-group" style="width:600px">
+                <div class="input-label form-group ">
+                  no of children
+                </div>
+                <select ng-model="details.childrenCount">
+                  <option value="0">No Children</option>
+                  <option value="1">1 Child</option>
+                  <option value="2">2 Children</option>
+                  <option value="3">3 Children</option>
+                  <option value="4">4 Children</option>
+                  <option value="5">5 Children</option>
+                </select>
+              </label>
+            </div>
 
 
-   <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
-                       <button class="button   button-assertive form-group" ng-click="showLoading2()"  style=" width:200px; margin-top:30px" >
-  Search Flight
-</button>
-                    </div>
-  </div>
+            <div class="row form-group card">
+              <label class="item item-input item-select form-group" style="width:600px">
 
-</div>
-</form>
+                <div class="input-label form-group">
+                  class
+                </div>
+                <select ng-model="details.class">
+                  <option value="1">economy</option>
+                  <option value="2">business</option>
+
+                </select>
+
+
+              </label>
+            </div>
+
+
+
+            <div class="row form-group card " style="height: 50px" >
+              <label class="item-content form-group col col-75">Search Other Airlines </label>
+                <div class="col form-group">
+                  <input type="checkbox" ng-model="details.otherAirlines" ng-click="flipOtherAirlines()" >
+                </div>
+
+
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
+            <button class="button   button-assertive form-group" ng-click="showLoading2()"  style=" width:200px; margin-top:30px" >
+              Search Flight
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </form>
   </ion-content>
-  </ion-view>
+</ion-view>
