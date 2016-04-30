@@ -1,10 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
@@ -82,7 +75,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('searchflights', {
                 url: '/searchflights',
-                abstract :true,
                 templateUrl: 'templates/searchflights.html',
                 controller: 'SearchflightCtrl'
             })
@@ -92,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-OneWay': {
         templateUrl: 'templates/searchflights-OneWay.html',
-        controller: 'SearchflightCtrlOneWay'
+        controller: 'SearchflightCtrl'
       }
     }
   })
@@ -102,7 +94,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-TwoWay': {
         templateUrl: 'templates/searchflights-TwoWay.html',
-        controller: 'SearchflightCtrlTwoWay'
+        controller: 'SearchflightCtrl'
       }
     }
   });
