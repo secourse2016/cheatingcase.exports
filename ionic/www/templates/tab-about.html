@@ -49,31 +49,33 @@
         <div class="col">
 
           <div class="list">
-            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.cardNumber.$invalid}">
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$invalid}">
               <span class="input-label">Card Number</span>
               <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
             </label>
-
-            <div class="form-errors" ng-messages="signinForm.username.$error" ng-messages-include="templates/form-errors.html">
-            </div>
+            <div class="form-errors"
+   ng-show="paymentInfoForm.cardNumber.$error && paymentInfoForm.$submitted"
+   ng-messages="paymentInfoForm.cardNumber.$error"
+   ng-messages-include="templates/form-errors.html">
+</div>
 
             <label class="item item-input item-stacked-label">
               <div class="row">
-                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.expMonth.$invalid}">
+                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.expMonth.$invalid}">
                   <span class="input-label">Expiary Month</span>
                   <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
                 </div>
-                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.expYear.$invalid}">
+                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.expYear.$invalid}">
                   <span class="input-label">Expiary Year</span>
                   <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
                 </div>
               </div>
             </label>
-            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.cvCode.$invalid}">
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.cvCode.$invalid}">
               <span class="input-label">CV Code</span>
               <input type="number" class="form-control" name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
             </label>
-            <label class="item item-input item-stacked-label"  ng-class="{ 'has-error' : paymentInfoForm.couponCode.$invalid}">
+            <label class="item item-input item-stacked-label">
               <span class="input-label">Coupon Code</span>
               <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Coupon Code"></input>
             </label>
