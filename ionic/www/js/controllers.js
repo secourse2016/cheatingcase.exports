@@ -259,8 +259,12 @@ $scope.send=function(){
     }
   ]
 };
+
 })
 
+.controller('SearchflightCtrlTwoWay', function($scope,$state ) {
+
+})
 
 /* directives */
 
