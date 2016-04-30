@@ -31,11 +31,20 @@
   </ion-content>
 </ion-view> -->
 
-<script id="templates/form-errors.html" type="text/ng-template">
-  <div class="form-error" ng-message="required">This field is required.</div>
-  <div class="form-error" ng-message="minlength">This field is must be at least 5 characters.</div>
-  <div class="form-error" ng-message="maxlength">This field is must be less than 50 characters</div>
-</script>
+<script id="error-list.html" type="text/ng-template">
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i>
+      This field is required!
+    </div>
+    <div class="error" ng-message="minlength">
+      <i class="ion-information-circled"></i>
+      Minimum length of this field is 16 characters!
+    </div>
+    <div class="error" ng-message="maxlength">
+      <i class="ion-information-circled"></i>
+      Maximum length of this field is 16 characters!
+    </div>
+  </script>
 
 <ion-view view-title="about">
   <ion-content class="padding">
@@ -49,32 +58,36 @@
         <div class="col">
 
           <div class="list">
-            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$invalid}">
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.cardNumber.$invalid && paymentInfoForm.$submitted}">
               <span class="input-label">Card Number</span>
               <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
             </label>
-            <div class="form-errors"
-   ng-show="paymentInfoForm.cardNumber.$error && paymentInfoForm.$submitted"
-   ng-messages="paymentInfoForm.cardNumber.$error"
-   ng-messages-include="templates/form-errors.html">
-</div>
+            <!-- <div class="form-errors" ng-show="paymentInfoForm.cardNumber.$error" ng-messages="paymentInfoForm.cardNumber.$error" ng-messages-include="error-list.html">
+                  <div class="form-error" ng-message="required">This field is required.</div>
+            </div> -->
 
-            <label class="item item-input item-stacked-label">
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' :paymentInfoForm.expMonth.$invalid && paymentInfoForm.$submitted}">
               <div class="row">
-                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.expMonth.$invalid}">
+                <div class="col col-50">
                   <span class="input-label">Expiary Month</span>
                   <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
                 </div>
-                <div class="col col-50" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.expYear.$invalid}">
+                <div class="col col-50">
                   <span class="input-label">Expiary Year</span>
                   <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
                 </div>
               </div>
             </label>
-            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.$submitted && paymentInfoForm.cvCode.$invalid}">
+            <!-- <div class="form-errors" ng-show="paymentInfoForm.expYear.$error " ng-messages="paymentInfoForm.expYear.$error" ng-messages-include="error-list.html">
+                  <div class="form-error" ng-message="required">This field is required.</div>
+            </div> -->
+            <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : paymentInfoForm.cvCode.$invalid && paymentInfoForm.$submitted}">
               <span class="input-label">CV Code</span>
               <input type="number" class="form-control" name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
             </label>
+            <!-- <div class="form-errors" ng-show="paymentInfoForm.cvCode.$error" ng-messages="paymentInfoForm.cvCode.$error" ng-messages-include="error-list.html">
+                  <div class="form-error" ng-message="required">This field is required.</div>
+            </div> -->
             <label class="item item-input item-stacked-label">
               <span class="input-label">Coupon Code</span>
               <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Coupon Code"></input>
