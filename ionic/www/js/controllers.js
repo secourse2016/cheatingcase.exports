@@ -365,12 +365,87 @@ $scope.send=function(){
 
 /* Flights-One-Way */
 .controller('flightsOneWay', function($scope,$state ) {
-
+  // $scope.clearOthers = function(index,type){
+  //     angular.forEach($scope.outgoingFlights, function(flight, position) {
+  //       if (position != index){
+  //         $scope.outgoingFlights[position].checked = false;
+  //       }
+  //
+  //       else{
+  //         $scope.outgoingFlights[position].checked = true;
+  //       }
+  //
+  //     });
+  // }
+  //
+  // $scope.isDisabled = function(){
+  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
+  //       if($scope.outgoingFlights[i].checked){
+  //         $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
+  //         $scope.disabled=false;
+  //         return;
+  //       }
+  //   }
+  //   $scope.disabled=true;
+  // };
 })
 
 /* Flights-Two-Way*/
 .controller('flightsTwoWay', function($scope,$state ) {
-
+  // $scope.clearOthers = function(index,type){
+  //   if(type=="info"){
+  //     angular.forEach($scope.outgoingFlights, function(flight, position) {
+  //       if (position != index){
+  //         $scope.outgoingFlights[position].checked = false;
+  //       }
+  //
+  //       else{
+  //         $scope.outgoingFlights[position].checked = true;
+  //       }
+  //
+  //     });
+  //   }
+  //
+  //   else{
+  //     angular.forEach($scope.returnFlights, function(flight, position) {
+  //       if (position != index){
+  //         $scope.returnFlights[position].checked = false;
+  //       }
+  //
+  //       else{
+  //         $scope.returnFlights[position].checked = true;
+  //       }
+  //
+  //     });
+  //   }
+  //
+  // };
+  //
+  // $scope.isDisabled = function(){
+  //   var broke = false;
+  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
+  //       if($scope.outgoingFlights[i].checked){
+  //         $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
+  //         $scope.outgoingDisabled = false;
+  //         broke=true;
+  //         break;
+  //       }
+  //   }
+  //
+  //   for(var j=0;j<$scope.returnFlights.length;j++){
+  //       if($scope.returnFlights[j].checked){
+  //         $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
+  //         $scope.returnDisabled = false;
+  //         if(broke){
+  //           $scope.Total = $scope.outgoingCost + $scope.returnCost
+  //           $scope.disabled=false;
+  //           return;
+  //         }
+  //       }
+  //   }
+  //
+  //   $scope.disabled=true;
+  // };
 })
 
 /* directives */

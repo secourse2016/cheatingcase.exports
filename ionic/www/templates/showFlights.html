@@ -2,12 +2,12 @@
      <div class="card" align="center">
      <div class="row">
      <div class="col-80">
-      
+
      <p style="color:red;font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Flight Number:  {{flight.flightNumber}}  <br>Cost:  {{flight.cost|currency}}</strong></p>
      </div>
      <div class="col-10">
     <label class="checkbox checkbox-assertive">
-     <input ng-click="isReplyFormOpen = !isReplyFormOpen" type="checkbox">
+     <input ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled();isReplyFormOpen = !isReplyFormOpen" type="checkbox">
      <div class="track">
          <div class="handle"></div>
      </div>
@@ -15,7 +15,7 @@
     </div>
     </div>
     </div>
-        
+
     <div id="collapse{{type}}{{index}}" ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen"  >
           <div class="card">
             <div class="row">
