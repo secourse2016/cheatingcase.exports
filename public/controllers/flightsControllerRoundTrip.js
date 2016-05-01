@@ -94,7 +94,7 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
     $scope.disabled=true;
   }
 
-  $scope.pay = function() {
+  $scope.proceed = function() {
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
           var outgoingFlight = $scope.outgoingFlights[i];
