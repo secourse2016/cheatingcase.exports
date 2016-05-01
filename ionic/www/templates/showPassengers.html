@@ -4,11 +4,11 @@
     <div class="list card">
       <a class="item item-icon-left" href>
         <i class="icon ion-ios-person" style="font-color: red"></i>
-        <h2>Passenger {{index}}</h2>
+        <h2>Passenger {{index+1}}</h2>
       </a>
 
       <div class="item item-body">
-        <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="passengerInfoForm.$valid && $parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
+        <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="$parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
           <div class="row">
             <div class="col">
               <div class="list">
@@ -40,12 +40,12 @@
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.dob.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
-                <!-- <label class="item item-input item-stacked-label">
+                <label class="item item-input item-stacked-label">
 <span class="input-label">Nationality</span>
 <select name="repeatSelect" id="repeatSelect" ng-model="passCountry" ng-required="false">
 <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
 </select>
-</label> -->
+</label>
                 <label class="item item-input item-stacked-label">
                   <span class="input-label">E-mail</span>
                   <input type="email" name="email" ng-model="email" id="email" ng-required="false" placeholder="E-mail">
@@ -66,7 +66,7 @@
           </div>
           <div class="row">
             <div class="col" style="text-align: center">
-              <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
+              <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="margin-top:10px" ng-click="$parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
                 <strong>Verifiy Information</strong>
               </button>
             </div>

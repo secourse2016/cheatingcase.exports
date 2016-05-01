@@ -410,13 +410,13 @@ $scope.send=function(){
     "seats":AirportsSrv.getSelectedSeats()
   }
 
-  // $scope.$watch('details.seats', function() {
-  //   $scope.passengerArray = [];
-  //   for(var i=0; i<$scope.details.seats; i++){
-  //     $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
-  //   }
-  //   AirportsSrv.setPassengerArray($scope.passengerArray);
-  // });
+  $scope.$watch('details.seats', function() {
+    $scope.passengerArray = [];
+    for(var i=0; i<$scope.details.seats; i++){
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+    }
+    AirportsSrv.setPassengerArray($scope.passengerArray);
+  });
 
   //hna lel outgoing Type OneWay
   $scope.findType = function(flight){
@@ -451,19 +451,19 @@ $scope.send=function(){
     $scope.disabled=true;
   };
 
-  // $scope.proceed = function() {
-  //
-  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
-  //       if($scope.outgoingFlights[i].checked){
-  //         var outgoingFlight = $scope.outgoingFlights[i];
-  //         break;
-  //       }
-  //   }
-  //   AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
-  //   AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
-  //   AirportsSrv.setCost($scope.Total);
-  //   $location.url('/flights/confirm'); //correct this
-  // };
+  $scope.proceed = function() {
+
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          var outgoingFlight = $scope.outgoingFlights[i];
+          break;
+        }
+    }
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+    AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+    AirportsSrv.setCost($scope.Total);
+    $state.go('confirm');
+  };
 })
 
 /* Flights-Two-Way*/
@@ -482,7 +482,7 @@ $scope.send=function(){
   		"arrivalDateTime": 1460339160000,
   		"origin": "CAI",
   		"destination": "JED",
-		"class":"economy",
+	    "class":"economy",
   		"cost": "539",
   		"Airline": "Swiss Air",
   		"checked":false
@@ -496,7 +496,7 @@ $scope.send=function(){
   		"arrivalDateTime": 1460339260000,
   		"origin": "CAI",
   		"destination": "JED",
-		"class":"economy",
+	  	"class":"economy",
   		"cost": "712",
   		"Airline": "Swiss Air",
   		"checked":false
@@ -512,7 +512,7 @@ $scope.send=function(){
   		"arrivalDateTime": 1460347160000,
   		"origin": "JED",
   		"destination": "CAI",
-		"class":"economy",
+		  "class":"economy",
   		"cost": "812",
   		"Airline": "Swiss Air",
   		"checked":false
@@ -526,7 +526,7 @@ $scope.send=function(){
   		"arrivalDateTime": 1460349160000,
   		"origin": "JED",
   		"destination": "CAI",
-		"class":"economy",
+		  "class":"economy",
   		"cost": "619",
   		"Airline": "Swiss Air",
   		"checked":false
@@ -538,13 +538,13 @@ $scope.send=function(){
     "seats":AirportsSrv.getSelectedSeats()
   }
 
-  // $scope.$watch('details.seats', function() {
-  //   $scope.passengerArray = [];
-  //   for(var i=0; i<$scope.detail.seats; i++){
-  //     $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
-  //   }
-  //   AirportsSrv.setPassengerArray($scope.passengerArray);
-  // });
+  $scope.$watch('details.seats', function() {
+    $scope.passengerArray = [];
+    for(var i=0; i<$scope.detail.seats; i++){
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+    }
+    AirportsSrv.setPassengerArray($scope.passengerArray);
+  });
 
   $scope.findType = function(flight){
     var i = $scope.outgoingFlights.length;
@@ -625,30 +625,71 @@ $scope.send=function(){
     $scope.disabled=true;
   };
 
-  // $scope.proceed = function() {
-  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
-  //       if($scope.outgoingFlights[i].checked){
-  //         var outgoingFlight = $scope.outgoingFlights[i];
-  //         break;
-  //       }
-  //   }
-  //   for(var j=0;j<$scope.returnFlights.length;j++){
-  //       if($scope.returnFlights[j].checked){
-  //         var returnFlight = $scope.returnFlights[j];
-  //         break;
-  //       }
-  //   }
-  //   AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
-  //   AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
-  //   AirportsSrv.setReturnFlightID(returnFlight.flightId);
-  //   AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
-  //   AirportsSrv.setCost($scope.Total);
-  //   $location.url('/flights/confirm'); //correct this
-  // };
+  $scope.proceed = function() {
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          var outgoingFlight = $scope.outgoingFlights[i];
+          break;
+        }
+    }
+    for(var j=0;j<$scope.returnFlights.length;j++){
+        if($scope.returnFlights[j].checked){
+          var returnFlight = $scope.returnFlights[j];
+          break;
+        }
+    }
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+    AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+    AirportsSrv.setReturnFlightID(returnFlight.flightId);
+    AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
+    AirportsSrv.setCost($scope.Total);
+    $state.go('confirm');
+  };
 })
 
 
+.controller('ConfirmationController', function($scope,$state,AirportsSrv) {
+  $scope.countries = ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, The Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"];
+  $scope.passengerArray = AirportsSrv.getPassengerArray();
+  $scope.disabled = true;
 
+  function showAllInitially (){
+    $scope.showArray = [];
+    for(var i=0; i<$scope.passengerArray.length;i++){
+      $scope.showArray.push("true");
+    }
+    console.log($scope.passengerArray);
+  }
+
+
+  showAllInitially();
+
+  $scope.passData = function(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate){
+    $scope.passengerArray[index].firstName= firstName;
+    $scope.passengerArray[index].lastName= lastName;
+    $scope.passengerArray[index].passportNum= parseInt(passportNumber);
+    $scope.passengerArray[index].dateOfBirth= (new Date(dob).getTime());
+    $scope.passengerArray[index].nationality= passCountry;
+    $scope.passengerArray[index].email= email;
+    $scope.passengerArray[index].passportExpiryDate= (new Date(expDate).getTime());
+
+    $scope.showArray[index]="false";
+    console.log($scope.passengerArray);
+    AirportsSrv.setPassengerArray($scope.passengerArray);
+    for(var i=0; i<$scope.showArray.length;i++){
+      if($scope.showArray[i]=="true") return;
+    }
+    $scope.disabled=false;
+  };
+
+  $scope.isHidden = function(index){
+    return ($scope.showArray[index]=="false") ;
+  };
+
+  $scope.goToPayment = function(){
+    $state.go('pay');
+  };
+})
 //paymentController start
 .controller('paymentController',function($scope,AirportsSrv,stripe){
 
