@@ -1,27 +1,30 @@
 swissAir.controller('flightsControllerRoundTrip', function($scope,$location,AirportsSrv) {
-  $scope.origin = AirportsSrv.getSelectedOriginAirport();
-  $scope.destination = AirportsSrv.getSelectedDestinationAirport();
-  $scope.departureDate= new Date(AirportsSrv.getSelectedDepartureDate()).getTime();
-  $scope.returnDate = new Date(AirportsSrv.getSelectedReturnDate()).getTime();
-  $scope.class = AirportsSrv.getSelectedClass();
-  $scope.otherAirlines = AirportsSrv.getOtherAirlines();
+  $scope.disabled = true;
+  $scope.outgoingDisabled = true;
+  $scope.returnDisabled = true;
+  $scope.outgoingCost = 0;
+  $scope.returnCost = 0;
+  $scope.Total = 0;
+  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.returnFlights =AirportsSrv.getReturnFlights();
+  $scope.seats = AirportsSrv.getSelectedSeats();
 
-  AirportsSrv.searchFlightsTwoWay($scope.origin,$scope.destination,$scope.departureDate,$scope.returnDate,$scope.class,$scope.otherAirlines)
-  .success(function(flights){
-    $scope.outgoingFlights=flights.outgoingFlights;
-    $scope.returnFlights=flights.returnFlights;
-
+  $scope.$watch('seats', function() {
+    $scope.passengerArray = [];
+    for(var i=0; i<$scope.seats; i++){
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+    }
+    AirportsSrv.setPassengerArray($scope.passengerArray);
   });
-
 
   $scope.findType = function(flight){
     var i = $scope.outgoingFlights.length;
     while (i--) {
       if ($scope.outgoingFlights[i] === flight) {
-        return "btn-info";
+        return "info";
       }
     }
-    return "btn-danger";
+    return "danger";
   };
 
   $scope.findColor = function(flight){
@@ -34,15 +37,83 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
     return "color: rgb(228,40,18)";
   };
 
-  $scope.pay = function(index,type) {
-    if(type=='btn-info'){
-      AirportsSrv.setDisplayedFlightDate($scope.outgoingFlights[index].departureDateTime);
-      AirportsSrv.setDisplayedFlightNumber($scope.outgoingFlights[index].flightNumber);
+
+
+  $scope.clearOthers = function(index,type){
+    if(type=="info"){
+      angular.forEach($scope.outgoingFlights, function(flight, position) {
+        if (position != index){
+          $scope.outgoingFlights[position].checked = false;
+        }
+
+        else{
+          $scope.outgoingFlights[position].checked = true;
+        }
+
+      });
     }
+
     else{
-      AirportsSrv.setDisplayedFlightDate($scope.returnFlights[index].departureDateTime);
-      AirportsSrv.setDisplayedFlightNumber($scope.returnFlights[index].flightNumber);
+      angular.forEach($scope.returnFlights, function(flight, position) {
+        if (position != index){
+          $scope.returnFlights[position].checked = false;
+        }
+
+        else{
+          $scope.returnFlights[position].checked = true;
+        }
+
+      });
     }
-    $location.url('/flights/pay');
+
   };
+
+  $scope.isDisabled = function(){
+    var broke = false;
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
+          $scope.outgoingDisabled = false;
+          broke=true;
+          break;
+        }
+    }
+
+    for(var j=0;j<$scope.returnFlights.length;j++){
+        if($scope.returnFlights[j].checked){
+          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
+          $scope.returnDisabled = false;
+          if(broke){
+            $scope.Total = $scope.outgoingCost + $scope.returnCost
+            $scope.disabled=false;
+            return;
+          }
+        }
+    }
+
+    $scope.disabled=true;
+  }
+
+  $scope.proceed = function() {
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          var outgoingFlight = $scope.outgoingFlights[i];
+          break;
+        }
+    }
+    for(var j=0;j<$scope.returnFlights.length;j++){
+        if($scope.returnFlights[j].checked){
+          var returnFlight = $scope.returnFlights[j];
+          break;
+        }
+    }
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+    AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+    AirportsSrv.setReturnFlightID(returnFlight.flightId);
+    AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
+    AirportsSrv.setCost($scope.Total);
+    $location.path('/flights/confirm');
+  };
+
+
 });

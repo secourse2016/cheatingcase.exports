@@ -1,6 +1,9 @@
-var swissAir = angular.module('swissAir', ['ui.bootstrap', 'ngRoute']);
+var swissAir = angular.module('swissAir', ['ui.bootstrap','angular-stripe', 'ngRoute']);
 
-swissAir.config(function ($routeProvider) {
+swissAir.config(function ($routeProvider, $locationProvider, stripeProvider) {
+
+  stripeProvider.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -9,15 +12,27 @@ swissAir.config(function ($routeProvider) {
     .when('/flightsRoundTrip', {
       templateUrl: 'views/flightsRoundTrip.html',
       controller: 'flightsControllerRoundTrip'
-    }).when('/flightsOneWay', {
+    })
+    .when('/flightsOneWay', {
       templateUrl: 'views/flightsOneWay.html',
       controller: 'flightsOneWayController'
+    })
+    .when('/flights/confirm', {
+      templateUrl: 'views/confirmation.html',
+      controller: 'confirmationController'
     })
     .when('/flights/pay', {
       templateUrl: 'views/payment.html',
       controller: 'paymentController'
     })
+    .when('/viewBooking', {
+      templateUrl: 'views/viewBooking.html',
+      controller: 'viewBookingController'
+    })
     .otherwise({
       redirectTo: '/'
     });
+
+  $locationProvider.html5Mode(true);
+
 });

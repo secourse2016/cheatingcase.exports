@@ -3,6 +3,7 @@ coverage
 
 # Dependency directory
 node_modules
+npm-debug.log
 
 # Optional npm cache directory
 .npm
@@ -18,3 +19,9 @@ data
 
 # Ignore .DS_Store Files For Mac Users
 .DS_Store
+
+#ionic files
+ionic/node_modules/
+ionic/platforms/
+ionic/plugins/
+ionic/npm-debug.log

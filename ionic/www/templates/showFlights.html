@@ -1,0 +1,68 @@
+  <div>
+     <div class="card" align="center">
+     <div class="row">
+     <div class="col-80">
+
+<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Flight Number:  {{flight.flightNumber}}  <br>Cost:  {{flight.cost|currency}}</strong></p>
+<!-- <button class="button button-{{type}}" ng-click = "isReplyFormOpen = !isReplyFormOpen" style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif">
+<strong>Flight Number:  {{flight.flightNumber}}  <br>Cost:  {{flight.cost|currency}}</strong>
+</button> -->
+     </div>
+     <div class="col-10">
+    <label class="checkbox checkbox-assertive">
+     <input ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled();" type="checkbox">
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+    </label>
+    </div>
+    </div>
+    </div>
+
+    <div id="collapse{{type}}{{index}}" ng-init="flight.checked" ng-show="flight.checked"  >
+          <div class="card">
+            <div class="row">
+            <div class="col-10"></div>
+                <div class="col-50">
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">From: <br>{{flight.origin}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">To: <br>{{flight.destination}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Dept Time: <br>{{flight.departureDateTime|date:'medium'}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Arrival Time:<br> {{flight.arrivalDateTime|date:'medium'}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>{{flight.class}}</p>
+                    </div>
+
+                </div>
+                <!-- End Panel-Gig Left -->
+                <div class="col-40">
+                  <div class="row">
+                      <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Airline: <br>{{flight.Airline}}</p>
+                  </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Flight Number: <br>{{flight.flightNumber}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Cost: <br>{{flight.cost|currency}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Aircraft Type: <br>{{ flight.aircraftType}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Aircraft Model: <br>{{ flight.aircraftModel}}</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+          </div>
+       </div>
+  </div>
