@@ -365,6 +365,21 @@ $scope.send=function(){
 
 /* Flights-One-Way */
 .controller('flightsOneWay', function($scope,$state ) {
+  $scope.disabled=true;
+  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.Total = 0;
+  $scope.details ={
+    "seats":AirportsSrv.getSelectedSeats()
+  }
+
+  $scope.$watch('details.seats', function() {
+    $scope.passengerArray = [];
+    for(var i=0; i<$scope.details.seats; i++){
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+    }
+    AirportsSrv.setPassengerArray($scope.passengerArray);
+  });
+
   $scope.findType = function(flight){
     return "info";
   };
@@ -399,6 +414,24 @@ $scope.send=function(){
 
 /* Flights-Two-Way*/
 .controller('flightsTwoWay', function($scope,$state ) {
+  $scope.disabled = true;
+  $scope.outgoingCost = 0;
+  $scope.returnCost = 0;
+  $scope.Total = 0;
+  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.returnFlights =AirportsSrv.getReturnFlights();
+  $scope.details ={
+    "seats":AirportsSrv.getSelectedSeats()
+  }
+
+  $scope.$watch('details.seats', function() {
+    $scope.passengerArray = [];
+    for(var i=0; i<$scope.detail.seats; i++){
+      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+    }
+    AirportsSrv.setPassengerArray($scope.passengerArray);
+  });
+
   $scope.findType = function(flight){
     var i = $scope.outgoingFlights.length;
     while (i--) {
