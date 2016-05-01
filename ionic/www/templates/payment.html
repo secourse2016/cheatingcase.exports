@@ -16,9 +16,10 @@
         <div class="col">
 
           <div class="list">
-            <label class="item item-input item-stacked-label">
+            <label class="item item-input item-stacked-label item-icon-right">
               <span class="input-label">Card Number</span>
               <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
+              <i class="icon ion-card"></i>
             </label>
             <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$error">
               <div ng-message="required">Please enter a value for this field.</div>
