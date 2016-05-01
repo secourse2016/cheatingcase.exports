@@ -7,7 +7,8 @@
             <label style="color:black"><span class="label label-danger " >Select Origin</span></label>
             <label class="item item-input form-group" >
 
-              <input type="text" ionic-autocomplete="{item: states , OnSelect:print}" placeholder="Origin" />
+              <input ionic-autocomplete="{items:codes}" type="text" ng-model="origin"   placeholder="Origin" />
+
               <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
             </label>
           </div>
@@ -18,7 +19,7 @@
             <label style="color:black"><span class="label label-danger ">Select Destination</span></label>
             <label class="item item-input form-group" >
 
-              <input type="text" id="destinationAirports" placeholder="Flight To*">
+              <input ionic-autocomplete="{items:codes}" type="text" ng-model="destination" id="destinationAirports" placeholder="Flight To*">
               <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
             </label>
           </div></div>
