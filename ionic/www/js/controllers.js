@@ -364,148 +364,238 @@ $scope.send=function(){
 })
 
 /* Flights-One-Way */
-.controller('flightsOneWay', function($scope,$state ) {
+.controller('flightsOneWay', function($scope,$state,AirportsSrv) {
   $scope.disabled=true;
-  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.outgoingFlights=  [
+    {
+  		"flightNumber": "SE9600",
+  		"aircraftType": "Airbus ",
+  		"aircraftModel": "133",
+  		"departureDateTime": 1460331360000,
+  		"arrivalDateTime": 1460339160000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "539",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	},
+  	{
+  		"flightNumber": "GA1400",
+  		"aircraftType": "AirBag ",
+  		"aircraftModel": "S233",
+  		"departureDateTime": 1460331490000,
+  		"arrivalDateTime": 1460339260000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "712",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	}
+  ];
+//  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
   $scope.Total = 0;
   $scope.details ={
     "seats":AirportsSrv.getSelectedSeats()
   }
 
-  $scope.$watch('details.seats', function() {
-    $scope.passengerArray = [];
-    for(var i=0; i<$scope.details.seats; i++){
-      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
-    }
-    AirportsSrv.setPassengerArray($scope.passengerArray);
-  });
+  // $scope.$watch('details.seats', function() {
+  //   $scope.passengerArray = [];
+  //   for(var i=0; i<$scope.details.seats; i++){
+  //     $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+  //   }
+  //   AirportsSrv.setPassengerArray($scope.passengerArray);
+  // });
 
+  //hna lel outgoing Type OneWay
   $scope.findType = function(flight){
     return "info";
   };
 
+  //hna lel Color fl OneWay
   $scope.findColor = function(flight){
     return "color: rgb(0,139,139)";
   };
-  // $scope.clearOthers = function(index,type){
-  //     angular.forEach($scope.outgoingFlights, function(flight, position) {
-  //       if (position != index){
-  //         $scope.outgoingFlights[position].checked = false;
-  //       }
-  //
-  //       else{
-  //         $scope.outgoingFlights[position].checked = true;
-  //       }
-  //
-  //     });
-  // }
-  //
-  // $scope.isDisabled = function(){
-  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
-  //       if($scope.outgoingFlights[i].checked){
-  //         $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
-  //         $scope.disabled=false;
-  //         return;
-  //       }
-  //   }
-  //   $scope.disabled=true;
-  // };
+  $scope.clearOthers = function(index,type){
+      angular.forEach($scope.outgoingFlights, function(flight, position) {
+        if (position != index){
+          $scope.outgoingFlights[position].checked = false;
+        }
+
+        else{
+          $scope.outgoingFlights[position].checked = true;
+        }
+
+      });
+  }
+
+  $scope.isDisabled = function(){
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
+          $scope.disabled=false;
+          return;
+        }
+    }
+    $scope.disabled=true;
+  };
 })
 
 /* Flights-Two-Way*/
-.controller('flightsTwoWay', function($scope,$state ) {
+.controller('flightsTwoWay', function($scope,$state,AirportsSrv) {
   $scope.disabled = true;
   $scope.outgoingCost = 0;
   $scope.returnCost = 0;
   $scope.Total = 0;
-  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
-  $scope.returnFlights =AirportsSrv.getReturnFlights();
+  $scope.outgoingFlights= [
+    {
+  		"flightNumber": "SE9600",
+  		"aircraftType": "Airbus ",
+  		"aircraftModel": "133",
+  		"departureDateTime": 1460331360000,
+  		"arrivalDateTime": 1460339160000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "539",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	},
+  	{
+  		"flightNumber": "GA1400",
+  		"aircraftType": "AirBag ",
+  		"aircraftModel": "S233",
+  		"departureDateTime": 1460331490000,
+  		"arrivalDateTime": 1460339260000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "712",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	}
+  ];
+  $scope.returnFlights= [
+    {
+  		"flightNumber": "JW102",
+  		"aircraftType": "Airbus ",
+  		"aircraftModel": "GH12",
+  		"departureDateTime": 1460341360000,
+  		"arrivalDateTime": 1460347160000,
+  		"origin": "JED",
+  		"destination": "CAI",
+		"class":"economy",
+  		"cost": "812",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	},
+  	{
+  		"flightNumber": "JRO102",
+  		"aircraftType": "AirBag ",
+  		"aircraftModel": "QP12",
+  		"departureDateTime": 1460341360000,
+  		"arrivalDateTime": 1460349160000,
+  		"origin": "JED",
+  		"destination": "CAI",
+		"class":"economy",
+  		"cost": "619",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	}
+  ];
+  //$scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  //$scope.returnFlights =AirportsSrv.getReturnFlights();
   $scope.details ={
     "seats":AirportsSrv.getSelectedSeats()
   }
 
-  $scope.$watch('details.seats', function() {
-    $scope.passengerArray = [];
-    for(var i=0; i<$scope.detail.seats; i++){
-      $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
-    }
-    AirportsSrv.setPassengerArray($scope.passengerArray);
-  });
+  // $scope.$watch('details.seats', function() {
+  //   $scope.passengerArray = [];
+  //   for(var i=0; i<$scope.detail.seats; i++){
+  //     $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+  //   }
+  //   AirportsSrv.setPassengerArray($scope.passengerArray);
+  // });
 
   $scope.findType = function(flight){
     var i = $scope.outgoingFlights.length;
     while (i--) {
       if ($scope.outgoingFlights[i] === flight) {
+        //hna lel outgoing fl twoWay
         return "info";
       }
     }
-    return "danger";
+    //hna lel return fl twoWay
+    return "assertive";
   };
 
   $scope.findColor = function(flight){
     var i = $scope.outgoingFlights.length;
     while (i--) {
       if ($scope.outgoingFlights[i] === flight) {
+        //hna lel Outgoing Color fl TwoWay
         return "color: rgb(0,139,139)";
       }
     }
+    //hna lel Return Color fl TwoWay
     return "color: rgb(228,40,18)";
   };
 
-  // $scope.clearOthers = function(index,type){
-  //   if(type=="info"){
-  //     angular.forEach($scope.outgoingFlights, function(flight, position) {
-  //       if (position != index){
-  //         $scope.outgoingFlights[position].checked = false;
-  //       }
-  //
-  //       else{
-  //         $scope.outgoingFlights[position].checked = true;
-  //       }
-  //
-  //     });
-  //   }
-  //
-  //   else{
-  //     angular.forEach($scope.returnFlights, function(flight, position) {
-  //       if (position != index){
-  //         $scope.returnFlights[position].checked = false;
-  //       }
-  //
-  //       else{
-  //         $scope.returnFlights[position].checked = true;
-  //       }
-  //
-  //     });
-  //   }
-  //
-  // };
-  //
-  // $scope.isDisabled = function(){
-  //   var broke = false;
-  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
-  //       if($scope.outgoingFlights[i].checked){
-  //         $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
-  //         $scope.outgoingDisabled = false;
-  //         broke=true;
-  //         break;
-  //       }
-  //   }
-  //
-  //   for(var j=0;j<$scope.returnFlights.length;j++){
-  //       if($scope.returnFlights[j].checked){
-  //         $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
-  //         $scope.returnDisabled = false;
-  //         if(broke){
-  //           $scope.Total = $scope.outgoingCost + $scope.returnCost
-  //           $scope.disabled=false;
-  //           return;
-  //         }
-  //       }
-  //   }
-  //
-  //   $scope.disabled=true;
-  // };
+  $scope.clearOthers = function(index,type){
+    if(type=="info"){
+      angular.forEach($scope.outgoingFlights, function(flight, position) {
+        if (position != index){
+          $scope.outgoingFlights[position].checked = false;
+        }
+
+        else{
+          $scope.outgoingFlights[position].checked = true;
+        }
+
+      });
+    }
+
+    else{
+      angular.forEach($scope.returnFlights, function(flight, position) {
+        if (position != index){
+          $scope.returnFlights[position].checked = false;
+        }
+
+        else{
+          $scope.returnFlights[position].checked = true;
+        }
+
+      });
+    }
+
+  };
+
+  $scope.isDisabled = function(){
+    var broke = false;
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
+          $scope.outgoingDisabled = false;
+          broke=true;
+          break;
+        }
+    }
+
+    for(var j=0;j<$scope.returnFlights.length;j++){
+        if($scope.returnFlights[j].checked){
+          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
+          $scope.returnDisabled = false;
+          if(broke){
+            $scope.Total = $scope.outgoingCost + $scope.returnCost
+            $scope.disabled=false;
+            return;
+          }
+        }
+    }
+
+    $scope.disabled=true;
+  };
 })
 
 /* directives */
