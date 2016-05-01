@@ -101,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('flightsOneWay', {
                 url: '/flightsOneWay',
-                templateUrl: 'templates/searchflights.html',
+                templateUrl: 'templates/OneWay.html',
                 controller: 'flightsOneWay'
   })
 

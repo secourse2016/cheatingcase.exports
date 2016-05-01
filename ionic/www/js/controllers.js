@@ -295,9 +295,7 @@ $scope.send=function(){
   });
 
   $scope.searchflights = function(){
-    console.log("hello One Way");
     $state.go('flightsOneWay');
-    console.log("Done");
   };
 
 })
@@ -360,7 +358,6 @@ $scope.send=function(){
   });
 
   $scope.searchflights = function(){
-    console.log("hello Two Way");
     $state.go('flightsTwoWay');
   };
 
