@@ -97,6 +97,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'SearchflightCtrlTwoWay'
       }
     }
+  })
+
+  .state('flightsOneWay', {
+                url: '/flightsOneWay',
+                templateUrl: 'templates/OneWay.html',
+                controller: 'flightsOneWay'
+  })
+
+  .state('flightsTwoWay', {
+                url: '/flightsTwoWay',
+                templateUrl: 'templates/TwoWay.html',
+                controller: 'flightsTwoWay'
   });
 
   // if none of the above states are matched, use this as the fallback
