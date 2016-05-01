@@ -743,6 +743,23 @@ body {
     font-weight: bolder;
     font-size: 20px;
 }
+
+.gig .panel-title .collapsed{
+    border-color: #fff;
+}
+
+/*Should I merge here? TODO*/
+.bookingPassenger .gig .panel-heading{
+  background-color: #E42812;
+  border-radius: 0px;
+}
+
+.bookingPassenger .gig{
+  background-color: #fff;
+  border: 2px solid;
+  border-color: #E42812;
+}
+
 .gig .panel-body {
     color: black;
     font-size: 12px;
@@ -954,3 +971,161 @@ margin-right: -15px;
     color: #ed5249;
 }
 /*./ PAYMENT INFO*/
+
+
+
+/*VIEW BOOKING*/
+.swissBadgeBigContainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+@media only screen and (max-width: 768px) {
+
+}
+.swissBadgeContainer {
+    text-align: left;
+    z-index: 10;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.swissBadge{
+  border-radius: 3px;
+  text-align: left;
+}
+
+.swissBadgeSeat{
+  border-radius: 3px;
+}
+
+.swissBadgeSeat .panel-body{
+  text-align: center;
+}
+
+.swissBadge h2{
+  font-size: 20px;
+  margin-top: 10px;
+  color: #FF2D14;
+}
+
+.swissBadge h5{
+  color: #7F3930;
+}
+
+
+.swissBadge-middle,.swissBadge-left, .swissBadge-right{
+  /*display:block;*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.swissBadge-middle .subtext-gig, .swissBadge-right .subtext-gig, .swissBadge-left .subtext-gig{
+  margin-top: 10px;
+}
+
+
+
+@media only screen and (max-width: 992px) {
+  .swissBadge-left{
+    text-align: center;
+  }
+  .swissBadgeContainer{
+    max-width: 90%;
+  }
+  .swissBadgeBigContainer{
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .swissBadge {
+      display: flex;
+      align-items: stretch;
+      /* align items in Cross Axis */
+      align-content: stretch;
+      /* Extra space in Cross Axis */
+      padding-left: 40px;
+  }
+  .swissBadge-middle {
+      border-right: 3px solid;
+      border-left: 3px solid;
+      border-color: #FF2D14;
+  }
+  .swissBadge-right{
+    border-top: 0px;
+  }
+}
+
+.subtext-gig {
+    font-size: 18px;
+    color: #333;
+    margin: 0px;
+
+}
+
+.swissBadgeBigContainer .swissBadge p{
+  color: #333;
+}
+
+.viewBookingPage .passengersInfo{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.passengerCol{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.seatMapContainer{
+  display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    align-items: stretch;
+    /* align items in Cross Axis */
+    align-content: stretch;
+}
+
+.seatMapContainer .panel{
+  width: 80%
+}
+
+.seatMapContainer .row{
+  margin-bottom: 15px;
+}
+
+.seatsButtonsContainer{
+    display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;;
+}
+
+.seatsButtonsContainer button{
+  background-color: #B9DEA0;
+}
+
+.seatsButtonsContainer button:disabled,
+.seatsButtonsContainer button.disabled,
+.seatsButtonsContainer button.booked {
+background-color: #7F3930;
+}
+
+.seatsButtonsContainer button.business{
+background-color: #3a78c3
+}
+
+.seatsButtonsContainer button.economy {
+  background-color: #B9DEA0;
+}
+
+.seatsButtonsContainer button:hover,
+.seatsButtonsContainer button:focus,
+.seatsButtonsContainer button:active,
+.seatsButtonsContainer button.active,
+.seatsButtonsContainer button.selected {
+  background-color: #FF7161;
+}
