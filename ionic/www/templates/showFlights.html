@@ -1,73 +1,65 @@
-<ion-view view-title="Showing Details of a flight">
-  <div class="panel-group" id="accordion{{index}}">
-    <div class="gig">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <label><input type="checkbox" ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled()">
-          <button class="btn btn-{{type}}" data-toggle="collapse"
-          data-target="#collapse{{type}}{{index}}">
-            Flight Number: {{flight.flightNumber}} <--> Cost: {{flight.cost|currency}}</button>
-            </label>
-
-          </h4>
-        </div>
-        <div id="collapse{{type}}{{index}}" class="panel-collapse collapse">
-          <div class="panel-body">
+  <div>
+     <div class="card" align="center">
+     <div class="row">
+     <div class="col-80">
+      
+     <p style="color:red;font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Flight Number:  {{flight.flightNumber}}  <br>Cost:  {{flight.cost|currency}}</strong></p>
+     </div>
+     <div class="col-10">
+    <label class="checkbox checkbox-assertive">
+     <input ng-click="isReplyFormOpen = !isReplyFormOpen" type="checkbox">
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+    </label>
+    </div>
+    </div>
+    </div>
+        
+    <div id="collapse{{type}}{{index}}" ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen"  >
+          <div class="card">
             <div class="row">
-                <div class="col-sm-6 gig-left">
+            <div class="col-10"></div>
+                <div class="col-50">
                     <div class="row">
-                        <h6 style="{{color}}">From</h6>
-                        <p>{{flight.origin}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">From: <br>{{flight.origin}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">To</h6>
-                        <p>{{flight.destination}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">To: <br>{{flight.destination}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">Departure Time</h6>
-                        <p>{{flight.departureDateTime|date:'medium'}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Dept Time: <br>{{flight.departureDateTime|date:'medium'}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">Arrival Time</h6>
-                        <p>{{flight.arrivalDateTime|date:'medium'}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Arrival Time:<br> {{flight.arrivalDateTime|date:'medium'}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">Class</h6>
-                        <p>{{flight.class}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>{{flight.class}}</p>
                     </div>
 
                 </div>
                 <!-- End Panel-Gig Left -->
-                <div class="col-sm-6 gig-right">
+                <div class="col-40">
                   <div class="row">
-                      <h6 style="{{color}}">Airline</h6>
-                      <p>{{flight.Airline}}</p>
+                      <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Airline: <br>{{flight.Airline}}</p>
                   </div>
                     <div class="row">
-                        <h6 style="{{color}}">Flight Number</h6>
-                        <p>{{flight.flightNumber}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Flight Number: <br>{{flight.flightNumber}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">Cost</h6>
-                        <p>{{flight.cost|currency}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Cost: <br>{{flight.cost|currency}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">Aircraft Type</h6>
-                        <p>{{ flight.aircraftType}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Aircraft Type: <br>{{ flight.aircraftType}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="{{color}}">Aircraft Model</h6>
-                        <p>{{ flight.aircraftModel}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Aircraft Model: <br>{{ flight.aircraftModel}}</p>
                     </div>
                 </div>
-                <!-- End Panel-Gig right -->
 
 
             </div>
 
           </div>
-        </div>
-      </div>
-    </div>
-
-</ion-view>
+       </div>
+  </div>
