@@ -736,55 +736,6 @@ $scope.send=function(){
 
 
 /* directives */
-.directive('ionicAutocomplete',
-    function ($ionicPopover,AirportsSrv) {
-        var popoverTemplate =
-         '<ion-popover-view style="margin-top:5px">' +
-             '<ion-content>' +
-                 '<div class="list">' +
-                    '<a class="item" ng-repeat="item in items"  ng-click="selectItem(item)">{{item}}</a>' +
-                 '</div>' +
-             '</ion-content>' +
-         '</ion-popover-view>';
-        return {
-            restrict: 'A',
-            scope: {
-                params: '=ionicAutocomplete',
-                inputSearch: '=ngModel'
-            },
-            link: function ($scope, $element, $attrs) {
-              var popoverShown = false;
-              var popover = null;
-              if ($scope.params.items == undefined) {
-                AirportsSrv.getAirportCodes().then(function (codes) {
-                  $parent.codes = codes;
-                  $scope.items = $scope.params.items;
-                  //Add autocorrect="off" so the 'change' event is detected when user tap the keyboard
-                  $element.attr('autocorrect', 'off');
-
-
-                  popover = $ionicPopover.fromTemplate(popoverTemplate, {
-                    scope: $scope
-                  });
-                  $element.on('click', function (e) {
-                    if (!popoverShown) {
-                      popover.show(e);
-                    }
-
-                  });
-
-                  $scope.selectItem = function (item) {
-                    $element.val(item);
-                    popover.hide();
-                  };
-                });
-              }
-
-
-            }
-        };
-    }
-)
 .directive('showFlights',function(){
   return {
     restrict: 'E',
