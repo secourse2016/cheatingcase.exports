@@ -235,13 +235,13 @@ $scope.send=function(){
 /* One-Way-Controller*/
 .controller('SearchflightCtrlOneWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
-    "departureTime": "1",
-    "returnTime":"1",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
     "otherAirlines":false
   };
+  AirportsSrv.setOtherAirlines("false");
+
   $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
   'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
   'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
@@ -253,9 +253,6 @@ $scope.send=function(){
   'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
-  $scope.print = function(){
-    console.log("the selected state is ");
-  };
   $scope.SetOriginAirport = function(originAirport) {
     AirportsSrv.setSelectedOriginAirport(originAirport);
   };
@@ -277,8 +274,6 @@ $scope.send=function(){
     // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
 
   });
-
-  AirportsSrv.setOtherAirlines("false");
 
   $scope.$watch('details.class', function() {
    if($scope.details.class=='1'){
@@ -304,8 +299,6 @@ $scope.send=function(){
  /* Two-Way-Controller*/
 .controller('SearchflightCtrlTwoWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
-    "departureTime": "1",
-    "returnTime":"1",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
