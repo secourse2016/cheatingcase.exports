@@ -232,7 +232,7 @@ $scope.send=function(){
    };
 })
 
-/* One-Way-Controller*/
+/* Search-One-Way*/
 .controller('SearchflightCtrlOneWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
     "adultsCount":"1",
@@ -294,9 +294,15 @@ $scope.send=function(){
     AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
   });
 
+  $scope.searchflights = function(){
+    console.log("hello One Way");
+    $state.go('flightsOneWay');
+    console.log("Done");
+  };
+
 })
 
- /* Two-Way-Controller*/
+ /* Search-Two-Way */
 .controller('SearchflightCtrlTwoWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
     "adultsCount":"1",
@@ -352,6 +358,21 @@ $scope.send=function(){
   $scope.$watch('details.childrenCount', function() {
     AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
   });
+
+  $scope.searchflights = function(){
+    console.log("hello Two Way");
+    $state.go('flightsTwoWay');
+  };
+
+})
+
+/* Flights-One-Way */
+.controller('flightsOneWay', function($scope,$state ) {
+
+})
+
+/* Flights-Two-Way*/
+.controller('flightsTwoWay', function($scope,$state ) {
 
 })
 

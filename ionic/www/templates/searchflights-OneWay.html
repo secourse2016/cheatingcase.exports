@@ -1,47 +1,47 @@
 <ion-view view-title="One Way">
   <ion-content class= "padding" >
 
-  <form name="searchForm" novalidate ng-submit="searchForm.$valid" >
+    <form name="searchForm" novalidate ng-submit="searchForm.$valid" >
 
-  <div class="row">
-  <div class="card  form-group" >
-  <div class="col form-group item-divider" align="center">
-  <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger " ><strong>Select Origin</strong></span></label>
-  <label class="item item-input form-group" >
-  <input type="text" id="originAirports" style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight From*">
-  </label>
-  </div>
-  </div>
+      <div class="row">
+        <div class="card  form-group" >
+          <div class="col form-group item-divider" align="center">
+            <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger " ><strong>Select Origin</strong></span></label>
+            <label class="item item-input form-group" >
+              <input type="text" id="originAirports" style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight From*">
+            </label>
+          </div>
+        </div>
 
-  <div class="card form-group" >
-  <div class="col form-group item-divider" align="center">
-  <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger "><strong>Select Destination</strong></span></label>
-  <label class="item item-input form-group" >
-  <input type="text" id="destinationAirports" style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight To*">
-  </label>
-  </div>
-  </div>
-  </div>
+        <div class="card form-group" >
+          <div class="col form-group item-divider" align="center">
+            <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger "><strong>Select Destination</strong></span></label>
+            <label class="item item-input form-group" >
+              <input type="text" id="destinationAirports" style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight To*">
+            </label>
+          </div>
+        </div>
+      </div>
 
-  <div class="card  form-group" align="center" >
-  <div class="col form-group item-divider" align="center">
-  <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
-  <label class="item item-input form-group" >
-  <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
-  </label>
-  </div>
-  </div>
+      <div class="card  form-group" align="center" >
+        <div class="col form-group item-divider" align="center">
+          <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
+          <label class="item item-input form-group" >
+            <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
+          </label>
+        </div>
+      </div>
 
 
-  <div class="card ">
-  <div class=" item item-divider">
-  <div class="row form-group card">
-  <label class="item item-input item-select form-group " style="width:600px">
-  <div class="input-label form-group col">
-    Adults Count
-  </div>
-      <select ng-model="details.adultsCount">
-               <option  value="1" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" >1 Adult</option>
+      <div class="card ">
+        <div class=" item item-divider">
+          <div class="row form-group card">
+            <label class="item item-input item-select form-group " style="width:600px">
+              <div class="input-label form-group col">
+                Adults Count
+              </div>
+              <select ng-model="details.adultsCount">
+                <option  value="1" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" >1 Adult</option>
                 <option value="2" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" >2 Adults</option>
                 <option value="3" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold">3 Adults</option>
                 <option value="4" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold">4 Adults</option>
@@ -51,67 +51,67 @@
                 <option value="8" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold">8 Adults</option>
                 <option value="9" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold">9 Adults</option>
                 <option value="10" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold">10 Adults</option>
-      </select>
-  </label>
- </div>
+              </select>
+            </label>
+          </div>
 
-  <div class=" row form-group card">
-  <label class="item item-input item-select form-group" style="width:600px">
-  <div class="input-label form-group ">
-    Children Count
-  </div>
-    <select ng-model="details.childrenCount">
-        <option value="0">No Children</option>
-        <option value="1">1 Child</option>
-        <option value="2">2 Child</option>
-        <option value="3">3 Children</option>
-        <option value="4">4 Children</option>
-        <option value="5">5 Children</option>
-    </select>
-  </label>
+          <div class=" row form-group card">
+            <label class="item item-input item-select form-group" style="width:600px">
+              <div class="input-label form-group ">
+                Children Count
+              </div>
+              <select ng-model="details.childrenCount">
+                <option value="0">No Children</option>
+                <option value="1">1 Child</option>
+                <option value="2">2 Child</option>
+                <option value="3">3 Children</option>
+                <option value="4">4 Children</option>
+                <option value="5">5 Children</option>
+              </select>
+            </label>
+          </div>
+
+
+          <div class="row form-group card">
+            <label class="item item-input item-select form-group" style="width:600px">
+              <div class="input-label form-group">
+                class
+              </div>
+              <select ng-model="details.class">
+                <option value="1">economy</option>
+                <option value="2">business</option>
+              </select>
+            </label>
+          </div>
+
+
+
+          <div class="row form-group card " style="height: 50px" >
+            <label class="item-content form-group col col-75">Search Other Airlines </label>
+            <div class="col form-group">
+              <input type="checkbox" ng-model="details.otherAirlines" ng-click="flipOtherAirlines()">
+            </div>
+
+
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
+        <button class="button   button-assertive form-group" ng-click="searchflights()"  style=" width:200px; margin-top:30px" >
+          Search Flight
+        </button>
+      </div>
     </div>
 
 
-   <div class="row form-group card">
-    <label class="item item-input item-select form-group" style="width:600px">
-    <div class="input-label form-group">
-     class
-    </div>
-     <select ng-model="details.class">
-     <option value="1">economy</option>
-     <option value="2">business</option>
-     </select>
-     </label>
-     </div>
+  </form>
 
-
-
-   <div class="row form-group card " style="height: 50px" >
-  <label class="item-content form-group col col-75">Search Other Airlines </label>
-      <div class="col form-group">
-        <input type="checkbox" ng-model="details.otherAirlines" ng-click="flipOtherAirlines()">
-     </div>
-
-
-
-
-
-</div>
-
-   </div>
-
-    </div>
-
-
-   <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
-                       <button class="button   button-assertive form-group" ng-click="showLoading2()"  style=" width:200px; margin-top:30px" >
-  Search Flight
-</button>
-                    </div>
-  </div>
-
-
-</form>
-
-  </ion-content>
-  </ion-view>
+</ion-content>
+</ion-view>
