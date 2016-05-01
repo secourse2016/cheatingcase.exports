@@ -12,7 +12,8 @@ swissAir.config(function ($routeProvider, $locationProvider, stripeProvider) {
     .when('/flightsRoundTrip', {
       templateUrl: 'views/flightsRoundTrip.html',
       controller: 'flightsControllerRoundTrip'
-    }).when('/flightsOneWay', {
+    })
+    .when('/flightsOneWay', {
       templateUrl: 'views/flightsOneWay.html',
       controller: 'flightsOneWayController'
     })

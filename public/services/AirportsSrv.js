@@ -141,14 +141,19 @@ swissAir.factory('AirportsSrv', function ($http) {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
       });
     },
+    getAirlineDetails: function(airline){
+      return $http.get('/airlinedetails?airline='+airline, {
+        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
+      });
+    },
     createBooking: function(passengerDetails,cost,outgoingFlightId,returnFlightId,paymentToken,otherAirline,Class){
       var data = {
-        "passengerDetails" :passengerDetails,
-        "cost":cost,
+        "passengerDetails": passengerDetails,
+        "cost": cost,
         "class": Class,
-        "outgoingFlightId" :outgoingFlightId,
-        "returnFlightId":returnFlightId,
-        "paymentToken" : paymentToken
+        "outgoingFlightId": outgoingFlightId,
+        "returnFlightId": returnFlightId,
+        "paymentToken" : paymentToken.id
       };
       var path = '/bookingOthers?airline='+otherAirline;
       if(otherAirline=="Swiss Air"){
