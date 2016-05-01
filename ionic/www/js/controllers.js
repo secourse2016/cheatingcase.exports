@@ -130,7 +130,7 @@ angular.module('starter.controllers', [])
 
       // Custom popup
       var myPopup2 = $ionicPopup.show({
-         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and service quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
+         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and AirportsSrv quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
          title: 'For the people in the company',
          subTitle: '<img src="./img/about2.jpg">',
          scope: $scope,
@@ -232,24 +232,30 @@ $scope.send=function(){
    };
 })
 
-/* One-Way-Controller*/
+/* Search-One-Way*/
 .controller('SearchflightCtrlOneWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
-    "departureTime": "1",
-    "returnTime":"1",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
     "otherAirlines":false
   };
-  $scope.adultsCount="1";
-  $scope.ChangeInAdults = function(){
-    console.log("hello");
-  }
+  AirportsSrv.setOtherAirlines("false");
+
+  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
 
   $scope.SetOriginAirport = function(originAirport) {
     AirportsSrv.setSelectedOriginAirport(originAirport);
-  };
+  };  
 
   /* Record User's Selected Destination Airport  */
   $scope.SetDestinationAirport = function(destAirport) {
@@ -268,8 +274,6 @@ $scope.send=function(){
     // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
 
   });
-
-  AirportsSrv.setOtherAirlines("false");
 
   $scope.$watch('details.class', function() {
    if($scope.details.class=='1'){
@@ -290,13 +294,15 @@ $scope.send=function(){
     AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
   });
 
+  $scope.searchflights = function(){
+    $state.go('flightsOneWay');
+  };
+
 })
 
- /* Two-Way-Controller*/
+ /* Search-Two-Way */
 .controller('SearchflightCtrlTwoWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
-    "departureTime": "1",
-    "returnTime":"1",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
@@ -351,10 +357,413 @@ $scope.send=function(){
     AirportsSrv.setSelectedSeats(parseInt($scope.details.adultsCount)+parseInt($scope.details.childrenCount));
   });
 
+  $scope.searchflights = function(){
+    $state.go('flightsTwoWay');
+  };
+
 })
 
-/* directives */
+/* Flights-One-Way */
+.controller('flightsOneWay', function($scope,$state,AirportsSrv) {
+  $scope.disabled=true;
+  $scope.outgoingFlights=  [
+    {
+      "flightId":"945sd718jfhk7132",
+  		"flightNumber": "SE9600",
+  		"aircraftType": "Airbus ",
+  		"aircraftModel": "133",
+  		"departureDateTime": 1460331360000,
+  		"arrivalDateTime": 1460339160000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "539",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	},
+  	{
+      "flightId":"12847182947132",
+  		"flightNumber": "GA1400",
+  		"aircraftType": "AirBag ",
+  		"aircraftModel": "S233",
+  		"departureDateTime": 1460331490000,
+  		"arrivalDateTime": 1460339260000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "712",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	}
+  ];
+//  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.Total = 0;
+  $scope.details ={
+    "seats":AirportsSrv.getSelectedSeats()
+  }
 
+  // $scope.$watch('details.seats', function() {
+  //   $scope.passengerArray = [];
+  //   for(var i=0; i<$scope.details.seats; i++){
+  //     $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+  //   }
+  //   AirportsSrv.setPassengerArray($scope.passengerArray);
+  // });
+
+  //hna lel outgoing Type OneWay
+  $scope.findType = function(flight){
+    return "info";
+  };
+
+  //hna lel Color fl OneWay
+  $scope.findColor = function(flight){
+    return "color: rgb(0,139,139)";
+  };
+  $scope.clearOthers = function(index,type){
+      angular.forEach($scope.outgoingFlights, function(flight, position) {
+        if (position != index){
+          $scope.outgoingFlights[position].checked = false;
+        }
+
+        else{
+          $scope.outgoingFlights[position].checked = true;
+        }
+
+      });
+  }
+
+  $scope.isDisabled = function(){
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
+          $scope.disabled=false;
+          return;
+        }
+    }
+    $scope.disabled=true;
+  };
+
+  // $scope.proceed = function() {
+  //
+  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
+  //       if($scope.outgoingFlights[i].checked){
+  //         var outgoingFlight = $scope.outgoingFlights[i];
+  //         break;
+  //       }
+  //   }
+  //   AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+  //   AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+  //   AirportsSrv.setCost($scope.Total);
+  //   $location.url('/flights/confirm'); //correct this
+  // };
+})
+
+/* Flights-Two-Way*/
+.controller('flightsTwoWay', function($scope,$state,AirportsSrv) {
+  $scope.disabled = true;
+  $scope.outgoingCost = 0;
+  $scope.returnCost = 0;
+  $scope.Total = 0;
+  $scope.outgoingFlights= [
+    {
+      "flightId":"9218hsbsw",
+  		"flightNumber": "SE9600",
+  		"aircraftType": "Airbus ",
+  		"aircraftModel": "133",
+  		"departureDateTime": 1460331360000,
+  		"arrivalDateTime": 1460339160000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "539",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	},
+  	{
+      "flightId":"sjdbqjwbdhj2",
+  		"flightNumber": "GA1400",
+  		"aircraftType": "AirBag ",
+  		"aircraftModel": "S233",
+  		"departureDateTime": 1460331490000,
+  		"arrivalDateTime": 1460339260000,
+  		"origin": "CAI",
+  		"destination": "JED",
+		"class":"economy",
+  		"cost": "712",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	}
+  ];
+  $scope.returnFlights= [
+    {
+      "flightId":"2udh1o2hdu",
+  		"flightNumber": "JW102",
+  		"aircraftType": "Airbus ",
+  		"aircraftModel": "GH12",
+  		"departureDateTime": 1460341360000,
+  		"arrivalDateTime": 1460347160000,
+  		"origin": "JED",
+  		"destination": "CAI",
+		"class":"economy",
+  		"cost": "812",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	},
+  	{
+      "flightId":"023jdwdq",
+  		"flightNumber": "JRO102",
+  		"aircraftType": "AirBag ",
+  		"aircraftModel": "QP12",
+  		"departureDateTime": 1460341360000,
+  		"arrivalDateTime": 1460349160000,
+  		"origin": "JED",
+  		"destination": "CAI",
+		"class":"economy",
+  		"cost": "619",
+  		"Airline": "Swiss Air",
+  		"checked":false
+  	}
+  ];
+  //$scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  //$scope.returnFlights =AirportsSrv.getReturnFlights();
+  $scope.details ={
+    "seats":AirportsSrv.getSelectedSeats()
+  }
+
+  // $scope.$watch('details.seats', function() {
+  //   $scope.passengerArray = [];
+  //   for(var i=0; i<$scope.detail.seats; i++){
+  //     $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
+  //   }
+  //   AirportsSrv.setPassengerArray($scope.passengerArray);
+  // });
+
+  $scope.findType = function(flight){
+    var i = $scope.outgoingFlights.length;
+    while (i--) {
+      if ($scope.outgoingFlights[i] === flight) {
+        //hna lel outgoing fl twoWay
+        return "info";
+      }
+    }
+    //hna lel return fl twoWay
+    return "assertive";
+  };
+
+  $scope.findColor = function(flight){
+    var i = $scope.outgoingFlights.length;
+    while (i--) {
+      if ($scope.outgoingFlights[i] === flight) {
+        //hna lel Outgoing Color fl TwoWay
+        return "color: rgb(0,139,139)";
+      }
+    }
+    //hna lel Return Color fl TwoWay
+    return "color: rgb(228,40,18)";
+  };
+
+  $scope.clearOthers = function(index,type){
+    if(type=="info"){
+      angular.forEach($scope.outgoingFlights, function(flight, position) {
+        if (position != index){
+          $scope.outgoingFlights[position].checked = false;
+        }
+
+        else{
+          $scope.outgoingFlights[position].checked = true;
+        }
+
+      });
+    }
+
+    else{
+      angular.forEach($scope.returnFlights, function(flight, position) {
+        if (position != index){
+          $scope.returnFlights[position].checked = false;
+        }
+
+        else{
+          $scope.returnFlights[position].checked = true;
+        }
+
+      });
+    }
+
+  };
+
+  $scope.isDisabled = function(){
+    var broke = false;
+    for(var i=0;i<$scope.outgoingFlights.length;i++){
+        if($scope.outgoingFlights[i].checked){
+          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
+          $scope.outgoingDisabled = false;
+          broke=true;
+          break;
+        }
+    }
+
+    for(var j=0;j<$scope.returnFlights.length;j++){
+        if($scope.returnFlights[j].checked){
+          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
+          $scope.returnDisabled = false;
+          if(broke){
+            $scope.Total = $scope.outgoingCost + $scope.returnCost
+            $scope.disabled=false;
+            return;
+          }
+        }
+    }
+
+    $scope.disabled=true;
+  };
+
+  // $scope.proceed = function() {
+  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
+  //       if($scope.outgoingFlights[i].checked){
+  //         var outgoingFlight = $scope.outgoingFlights[i];
+  //         break;
+  //       }
+  //   }
+  //   for(var j=0;j<$scope.returnFlights.length;j++){
+  //       if($scope.returnFlights[j].checked){
+  //         var returnFlight = $scope.returnFlights[j];
+  //         break;
+  //       }
+  //   }
+  //   AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+  //   AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+  //   AirportsSrv.setReturnFlightID(returnFlight.flightId);
+  //   AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
+  //   AirportsSrv.setCost($scope.Total);
+  //   $location.url('/flights/confirm'); //correct this
+  // };
+})
+
+
+//paymentController start
+.controller('paymentController',function($scope,AirportsSrv,stripe){
+
+  // retrieved Info About Outgoing Flight
+  $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
+  $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
+
+  // retrieved Info About Return Flight
+  $scope.returnFlightID= AirportsSrv.getReturnFlightID();
+  $scope.returnFlightAirline= AirportsSrv.getReturnFlightAirline();
+
+  // retrieved Cost
+  $scope.cost= AirportsSrv.getCost();
+  $scope.class = AirportsSrv.getSelectedClass();
+
+  $scope.passengerDetails = AirportsSrv.getPassengerArray();
+
+
+  $scope.receipt_number= 0;
+
+  $scope.book = function(){
+    stripe.card.createToken({
+      "number": $scope.cardnumber,
+      "cvc": $scope.cvCode,
+      "exp_month": $scope.cardExpMonth,
+      "exp_year": $scope.cardExpYear
+    }).then(function(paymentToken){
+      if($scope.outgoingFlightAirline == $scope.returnFlightAirline || $scope.returnFlightAirline==undefined){
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(res){
+          console.log(res.errorMessage);
+          if(res.data.errorMessage==null){
+            console.log("same airline case true"+$scope.class+"  ---  "+$scope.outgoingFlightID);
+            $scope.refNum = res.data.refNum;
+          }
+          else {
+            console.log("same airline case false");
+          }
+        });
+
+      }
+      else{
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(resOutgoing){
+          console.log(resOutgoing.data.errorMessage);
+          if(resOutgoing.data.errorMessage==null){
+            console.log("different airlines outgoingFlight case true");
+            $scope.refNum = resOutgoing.data.refNum;
+          }
+          else {
+            console.log("different airlines outgoingFlight case false");
+
+          }
+          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,$scope.returnFlightAirline,$scope.class).then(function(resReturn){
+            console.log(resReturn.data.errorMessage);
+            if(resReturn.data.errorMessage==null){
+              console.log("different airlines returnFlight case true");
+              $scope.refNum +="\n"+resReturn.data.refNum;
+            }
+            else {
+              console.log("different airlines returnFlight case false");
+            }
+          });
+        });
+
+      }
+    });
+  };
+
+  $scope.$watch('receipt_number', function() {
+    $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
+  });
+})
+//paymentController end
+
+
+/* directives */
+.directive('ionicAutocomplete',
+    function ($ionicPopover,AirportsSrv) {
+        var popoverTemplate = 
+         '<ion-popover-view style="margin-top:5px">' + 
+             '<ion-content>' +
+                 '<div class="list">' +
+                    '<a class="item" ng-repeat="item in items"  ng-click="selectItem(item)">{{item}}</a>' +
+                 '</div>' +
+             '</ion-content>' +
+         '</ion-popover-view>';
+        return {
+            restrict: 'A',
+            scope: {
+                params: '=ionicAutocomplete',
+                inputSearch: '=ngModel'
+            },
+            link: function ($scope, $element, $attrs) {
+              var popoverShown = false;
+              var popover = null;
+              if ($scope.params.items == undefined) {
+                AirportsSrv.getAirportCodes().then(function (codes) {
+                  $parent.codes = codes;
+                  $scope.items = $scope.params.items;
+                  //Add autocorrect="off" so the 'change' event is detected when user tap the keyboard
+                  $element.attr('autocorrect', 'off');
+
+
+                  popover = $ionicPopover.fromTemplate(popoverTemplate, {
+                    scope: $scope
+                  });
+                  $element.on('click', function (e) {
+                    if (!popoverShown) {
+                      popover.show(e);
+                    }
+
+                  });
+
+                  $scope.selectItem = function (item) {
+                    $element.val(item);
+                    popover.hide();
+                  };
+                });
+              }
+               
+               
+            }
+        };
+    }
+)
 .directive('showFlights',function(){
   return {
     restrict: 'E',
