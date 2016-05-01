@@ -11,7 +11,8 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.class = "1";
   $scope.otherAirlines=false;
   AirportsSrv.setOtherAirlines("false");
-  $scope.searchBy="schedule";
+  $scope.animation="";
+  $scope.disabled=false;
 
   $scope.selectTripType = function(setTrip){
     $scope.tripType = setTrip;
@@ -86,27 +87,70 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
 
     $scope.$watch('class', function() {
      if($scope.class=='1'){
-       console.log("economy")
        AirportsSrv.setSelectedClass("economy");
      }
      else{
        if($scope.class=='2'){
-         console.log("business");
          AirportsSrv.setSelectedClass("business");
        }
-       else console.log("Fatal Error in the watch of the class");
      }
+    });
+
+    $scope.$watch('adultsCount', function() {
+      AirportsSrv.setSelectedSeats(parseInt($scope.adultsCount)+parseInt($scope.childrenCount));
+    });
+
+    $scope.$watch('childrenCount', function() {
+      AirportsSrv.setSelectedSeats(parseInt($scope.adultsCount)+parseInt($scope.childrenCount));
     });
 
     /* Find All Available Flights  */
     $scope.SearchFlights = function() {
-      if($scope.tripType == 2)
-        $location.url('/flightsRoundTrip'); // edit to route to round trip or one way
-        //Append /:$scope.class to url flightsRoundTrip as query after you do the rout editing
-      else
-        $location.url('/flightsOneWay'); // Who implements the view must abide to this naming convention
-        //Append /:$scope.class to url flightsOneWay as query after you do the rout editing
+      $scope.disabled=true;
+      $scope.animation ="glyphicon glyphicon-refresh glyphicon-refresh-animate";
+      if($scope.tripType == 2){
+        AirportsSrv.getConcatFlightsTwoWay(AirportsSrv.getSelectedOriginAirport(),
+        AirportsSrv.getSelectedDestinationAirport(),
+        new Date(AirportsSrv.getSelectedDepartureDate()).getTime(),
+          new Date(AirportsSrv.getSelectedReturnDate()).getTime(),
+          AirportsSrv.getSelectedClass(),
+          AirportsSrv.getOtherAirlines(),
+          AirportsSrv.getSelectedSeats(),
+          function(result){
+            AirportsSrv.setOutgoingFlights(result.outgoingFlights);
+            AirportsSrv.setReturnFlights(result.returnFlights);
+            $location.url('/flightsRoundTrip');
+          });
+      }
+
+      else{
+        AirportsSrv.getConcatFlightsOneWay(AirportsSrv.getSelectedOriginAirport(),
+        AirportsSrv.getSelectedDestinationAirport(),
+        new Date(AirportsSrv.getSelectedDepartureDate()).getTime(),
+          AirportsSrv.getSelectedClass(),
+          AirportsSrv.getOtherAirlines(),
+          AirportsSrv.getSelectedSeats(),
+          function(result){
+            AirportsSrv.setOutgoingFlights(result.outgoingFlights);
+            $location.url('/flightsOneWay');
+          });
+      }
+
     };
+
+    $scope.viewBooking = function(bookingRefNum) {
+      //AirportsSrv.setbookingRefNum(bookingRefNum);
+      AirportsSrv.viewBooking(bookingRefNum).success(function (data){
+        if(data.error){
+
+        } else {
+          AirportsSrv.setViewedBooking(data);
+          $location.url('/viewBooking');
+        }
+
+      });
+
+    }
     /* Get Airports on page render  */
     AirportCodes();
 
