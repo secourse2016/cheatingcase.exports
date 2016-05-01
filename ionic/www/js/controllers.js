@@ -130,7 +130,7 @@ angular.module('starter.controllers', [])
 
       // Custom popup
       var myPopup2 = $ionicPopup.show({
-         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and AirportsSrv quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
+         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and AirportsSrv quality.</p>',
          title: 'For the people in the company',
          subTitle: '<img src="./img/about2.jpg">',
          scope: $scope,
@@ -152,7 +152,7 @@ angular.module('starter.controllers', [])
 
       // Custom popup
       var myPopup3 = $ionicPopup.show({
-         template: '<p style="font-family:Times New Roman">From its hub in Zurich and the regional airport of Geneva, Swiss International Air Lines flies to 105 destinations in 49 countries: 79 in Europe and 26 overseas. There are 94 aircraft in the airline fleet. SWISS is part of the Lufthansa Group and a member of the Star Alliance.</p>',
+         template: '<p style="font-family:Times New Roman">From its hub in Zurich and the regional airport of Geneva, Swiss International Air Lines flies to 105 destinations in 49 countries: 79 in Europe and 26 overseas.</p>',
          title: '16 million passengers,<br> 105 destinations.',
          subTitle: '<img src="./img/about3.jpg">',
          scope: $scope,
