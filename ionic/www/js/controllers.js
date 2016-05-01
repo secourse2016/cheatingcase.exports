@@ -365,6 +365,13 @@ $scope.send=function(){
 
 /* Flights-One-Way */
 .controller('flightsOneWay', function($scope,$state ) {
+  $scope.findType = function(flight){
+    return "info";
+  };
+
+  $scope.findColor = function(flight){
+    return "color: rgb(0,139,139)";
+  };
   // $scope.clearOthers = function(index,type){
   //     angular.forEach($scope.outgoingFlights, function(flight, position) {
   //       if (position != index){
@@ -392,6 +399,26 @@ $scope.send=function(){
 
 /* Flights-Two-Way*/
 .controller('flightsTwoWay', function($scope,$state ) {
+  $scope.findType = function(flight){
+    var i = $scope.outgoingFlights.length;
+    while (i--) {
+      if ($scope.outgoingFlights[i] === flight) {
+        return "info";
+      }
+    }
+    return "danger";
+  };
+
+  $scope.findColor = function(flight){
+    var i = $scope.outgoingFlights.length;
+    while (i--) {
+      if ($scope.outgoingFlights[i] === flight) {
+        return "color: rgb(0,139,139)";
+      }
+    }
+    return "color: rgb(228,40,18)";
+  };
+
   // $scope.clearOthers = function(index,type){
   //   if(type=="info"){
   //     angular.forEach($scope.outgoingFlights, function(flight, position) {
