@@ -1,67 +1,67 @@
 <script id="error-list.html" type="text/ng-template">
-    <div class="error" ng-message="required">
-      <i class="ion-information-circled"></i> This field is required!
-    </div>
-  </script>
+  <div class="error" ng-message="required">
+    <i class="ion-information-circled"></i> This field is required!
+  </div>
+</script>
 
-  <ion-view view-title="Payment">
-    <ion-content class="padding">
-      <div class="row">
-        <div class="col credCardImgContainer">
-          <img class="img-responsive swiss-center" style="max-height: 150px;height: auto" src="../img/card-in-use.png">
-        </div>
+<ion-view view-title="payment">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col credCardImgContainer">
+        <img class="img-responsive swiss-center" style="max-height: 150px;height: auto" src="../img/card-in-use.png">
       </div>
-      <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
-        <div class="row">
-          <div class="col">
+    </div>
+    <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
+      <div class="row">
+        <div class="col">
 
-            <div class="list">
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">Card Number</span>
-                <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
-              </label>
-              <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$error">
-                <div ng-message="required">Please enter a value for this field.</div>
-              </div>
-
-              <label class="item item-input item-stacked-label">
-                <div class="row">
-                  <div class="col col-50">
-                    <span class="input-label">Expiary Month</span>
-                    <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
-                  </div>
-                  <div class="col col-50">
-                    <span class="input-label">Expiary Year</span>
-                    <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
-                  </div>
-                </div>
-              </label>
-              <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.expYear.$error || paymentInfoForm.$submitted && paymentInfoForm.expMonth.$error">
-                <div ng-message="required">Please enter a value for this field.</div>
-                <div ng-message="number">Please enter a numerical value for this field.</div>
-              </div>
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">CV Code</span>
-                <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
-              </label>
-              <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
-                <div ng-message="required">Please enter a value for this field.</div>
-              </div>
-              <label class="item item-input item-stacked-label">
-                <span class="input-label">Coupon Code</span>
-                <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Coupon Code"></input>
-              </label>
+          <div class="list">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Card Number</span>
+              <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
+            </label>
+            <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$error">
+              <div ng-message="required">Please enter a value for this field.</div>
             </div>
 
+            <label class="item item-input item-stacked-label">
+              <div class="row">
+                <div class="col col-50">
+                  <span class="input-label">Expiary Month</span>
+                  <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
+                </div>
+                <div class="col col-50">
+                  <span class="input-label">Expiary Year</span>
+                  <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
+                </div>
+              </div>
+            </label>
+            <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.expYear.$error || paymentInfoForm.$submitted && paymentInfoForm.expMonth.$error">
+              <div ng-message="required">Please enter a value for this field.</div>
+              <div ng-message="number">Please enter a numerical value for this field.</div>
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">CV Code</span>
+              <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
+            </label>
+            <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
+              <div ng-message="required">Please enter a value for this field.</div>
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Coupon Code</span>
+              <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Coupon Code"></input>
+            </label>
           </div>
+
         </div>
-        <div class="row">
-          <div class="col" style="text-align: center">
-            <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
-              <strong>Checkout</strong>
-            </button>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col" style="text-align: center">
+          <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
+            <strong>Checkout</strong>
+          </button>
         </div>
-      </form>
-    </ion-content>
-  </ion-view>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
