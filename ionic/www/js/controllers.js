@@ -246,16 +246,16 @@ $scope.send=function(){
 
   AirportsSrv.setOtherAirlines("false");
 
-  $scope.$watch('details.origin',function() {
-    console.log($scope.details.origin);
-    AirportsSrv.setSelectedOriginAirport($scope.details.origin);
-  });
+  $scope.setOriginAirport= function(airport) {
+    console.log(airport);
+    AirportsSrv.setSelectedOriginAirport(airport);
+  };
 
   /* Record User's Selected Destination Airport  */
-  $scope.$watch('details.destination', function() {
-    console.log($scope.details.destination);
-    AirportsSrv.setSelectedOriginAirport($scope.details.destination);
-  });
+  $scope.setDestinationAirport= function(airport) {
+    console.log(airport);
+    AirportsSrv.setSelectedDestinationAirport(airport);
+  };
 
   $scope.flipOtherAirlines = function() {
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
@@ -294,13 +294,7 @@ $scope.send=function(){
   $scope.searchflights = function(){
     $state.go('flightsOneWay');
   };
-  $scope.airports=[{"_id":"571f87b8a6b8b246645e7ceb","iata":"UTK"},{"_id":"571f87b8a6b8b246645e7cec","iata":"FIV"},{"_id":"571f87b8a6b8b246645e7ced","iata":"FAK"},{"_id":"571f87b8a6b8b246645e7cee","iata":"BWS"},{"_id":"571f87b8a6b8b246645e7cef","iata":"WKK"},{"_id":"571f87b8a6b8b246645e7cf0","iata":"TSS"},{"_id":"571f87b8a6b8b246645e7cf1","iata":"FOB"},{"_id":"571f87b8a6b8b246645e7cf2","iata":"ABP"},{"_id":"571f87b8a6b8b246645e7cf3","iata":"ALV"},{"_id":"571f87b8a6b8b246645e7cf4","iata":"ADC"},{"_id":"571f87b8a6b8b246645e7cf5","iata":"TJP"},{"_id":"571f87b8a6b8b246645e7cf6","iata":"AEE"},{"_id":"571f87b8a6b8b246645e7cf7","iata":"AEI"},{"_id":"571f87b8a6b8b246645e7cf8","iata":"AEK"},{"_id":"571f87b8a6b8b246645e7cf9","iata":"OLR"},{"_id":"571f87b8a6b8b246645e7cfa","iata":"AFR"},{"_id":"571f87b8a6b8b246645e7cfb","iata":"AFT"},{"_id":"571f87b8a6b8b246645e7cfc","iata":"ATD"},{"_id":"571f87b8a6b8b246645e7cfd","iata":"VEV"},{"_id":"571f87b8a6b8b246645e7cfe","iata":"GEF"},{"_id":"571f87b8a6b8b246645e7cff","iata":"AGG"},{"_id":"571f87b8a6b8b246645e7d00","iata":"AKS"},{"_id":"571f87b8a6b8b246645e7d01","iata":"BAS"},{"_id":"571f87b8a6b8b246645e7d02","iata":"FRE"},{"_id":"571f87b8a6b8b246645e7d03","iata":"HIR"},{"_id":"571f87b8a6b8b246645e7d04","iata":"MBU"},{"_id":"571f87b8a6b8b246645e7d05","iata":"IRA"},{"_id":"571f87b8a6b8b246645e7d06","iata":"SCZ"},{"_id":"571f87b8a6b8b246645e7d07","iata":"MUA"},{"_id":"571f87b8a6b8b246645e7d08","iata":"GZO"},{"_id":"571f87b8a6b8b246645e7d09","iata":"MNY"},{"_id":"571f87b8a6b8b246645e7d0a","iata":"PRS"},{"_id":"571f87b8a6b8b246645e7d0b","iata":"OTV"},{"_id":"571f87b8a6b8b246645e7d0c","iata":"RNL"},{"_id":"571f87b8a6b8b246645e7d0d","iata":"EGM"},{"_id":"571f87b8a6b8b246645e7d0e","iata":"RUS"},{"_id":"571f87b8a6b8b246645e7d0f","iata":"VAO"},{"_id":"571f87b8a6b8b246645e7d10","iata":"AGK"},{"_id":"571f87b8a6b8b246645e7d11","iata":"KGE"},{"_id":"571f87b8a6b8b246645e7d12","iata":"AGL"},{"_id":"571f87b8a6b8b246645e7d13","iata":"RIN"},{"_id":"571f87b8a6b8b246645e7d14","iata":"RBV"},{"_id":"571f87b8a6b8b246645e7d15","iata":"AHT"},{"_id":"571f87b8a6b8b246645e7d16","iata":"AHY"},{"_id":"571f87b8a6b8b246645e7d17","iata":"AIE"},{"_id":"571f87b8a6b8b246645e7d18","iata":"AIH"},{"_id":"571f87b8a6b8b246645e7d19","iata":"AIP"},{"_id":"571f87b8a6b8b246645e7d1a","iata":"AOS"},{"_id":"571f87b8a6b8b246645e7d1b","iata":"AKM"},{"_id":"571f87b8a6b8b246645e7d1c","iata":"ALZ"},{"_id":"571f87b8a6b8b246645e7d1d","iata":"AMC"},{"_id":"571f87b8a6b8b246645e7d1e","iata":"AME"},{"_id":"571f87b8a6b8b246645e7d1f","iata":"AMF"},{"_id":"571f87b8a6b8b246645e7d20","iata":"AMU"},{"_id":"571f87b8a6b8b246645e7d21","iata":"AMY"},{"_id":"571f87b8a6b8b246645e7d22","iata":"ANH"},{"_id":"571f87b8a6b8b246645e7d23","iata":"INU"},{"_id":"571f87b8a6b8b246645e7d24","iata":"ANL"}];
-  function AirportCodes() {
-    AirportsSrv.getAirportCodes().success(function(airports) {
-         $scope.Airports = airports;
-     });
-  };
-  AirportCodes();
+  $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 })
 
  /* Search-Two-Way */
@@ -318,19 +312,16 @@ $scope.send=function(){
   AirportsSrv.setOtherAirlines("false");
 
 
-  $scope.$watch('details.origin', function() {
-    console.log($scope.details.origin);
-    AirportsSrv.setSelectedOriginAirport($scope.details.origin);
-  });
-
+  $scope.setOriginAirport= function(airport) {
+    console.log(airport);
+    AirportsSrv.setSelectedOriginAirport(airport);
+  };
 
   /* Record User's Selected Destination Airport  */
-
-
-  $scope.$watch('details.destination', function() {
-    console.log($scope.details.destination);
-    AirportsSrv.setSelectedOriginAirport($scope.details.destination);
-  });
+  $scope.setDestinationAirport= function(airport) {
+    console.log(airport);
+    AirportsSrv.setSelectedDestinationAirport(airport);
+  };
 
   $scope.flipOtherAirlines = function() {
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
@@ -377,13 +368,7 @@ $scope.send=function(){
   $scope.searchflights = function(){
     $state.go('flightsTwoWay');
   };
-  function AirportCodes() {
-    AirportsSrv.getAirportCodes().success(function(airports) {
-         $scope.Airports = airports;
-     });
-  };
-
-  AirportCodes();
+  $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 })
 
 /* Flights-One-Way */
@@ -808,6 +793,7 @@ $scope.send=function(){
       $scope.selectItem = function (item) {
         $element.val(item.iata);
         popover.hide();
+        $scope.params.onSelect(item.iata);
       };
     }
   };
