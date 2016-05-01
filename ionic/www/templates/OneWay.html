@@ -6,7 +6,11 @@
       <div ng-repeat="outgoingFlight in outgoingFlights">
         <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" color="findColor(outgoingFlight)" index="$index"> </show-flights>
       </div>
-      
+
+      <button class="button button-assertive" ng-disabled="disabled" ng-click = "proceed()" >
+       <strong>PROCEED</strong>
+     </button>
+     
       </div>
   </ion-content>
 </ion-view>

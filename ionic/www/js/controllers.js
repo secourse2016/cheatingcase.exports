@@ -368,6 +368,7 @@ $scope.send=function(){
   $scope.disabled=true;
   $scope.outgoingFlights=  [
     {
+      "flightId":"945sd718jfhk7132",
   		"flightNumber": "SE9600",
   		"aircraftType": "Airbus ",
   		"aircraftModel": "133",
@@ -381,6 +382,7 @@ $scope.send=function(){
   		"checked":false
   	},
   	{
+      "flightId":"12847182947132",
   		"flightNumber": "GA1400",
   		"aircraftType": "AirBag ",
   		"aircraftModel": "S233",
@@ -440,6 +442,20 @@ $scope.send=function(){
     }
     $scope.disabled=true;
   };
+
+  // $scope.proceed = function() {
+  //
+  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
+  //       if($scope.outgoingFlights[i].checked){
+  //         var outgoingFlight = $scope.outgoingFlights[i];
+  //         break;
+  //       }
+  //   }
+  //   AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+  //   AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+  //   AirportsSrv.setCost($scope.Total);
+  //   $location.url('/flights/confirm'); //correct this
+  // };
 })
 
 /* Flights-Two-Way*/
@@ -450,6 +466,7 @@ $scope.send=function(){
   $scope.Total = 0;
   $scope.outgoingFlights= [
     {
+      "flightId":"9218hsbsw",
   		"flightNumber": "SE9600",
   		"aircraftType": "Airbus ",
   		"aircraftModel": "133",
@@ -463,6 +480,7 @@ $scope.send=function(){
   		"checked":false
   	},
   	{
+      "flightId":"sjdbqjwbdhj2",
   		"flightNumber": "GA1400",
   		"aircraftType": "AirBag ",
   		"aircraftModel": "S233",
@@ -478,6 +496,7 @@ $scope.send=function(){
   ];
   $scope.returnFlights= [
     {
+      "flightId":"2udh1o2hdu",
   		"flightNumber": "JW102",
   		"aircraftType": "Airbus ",
   		"aircraftModel": "GH12",
@@ -491,6 +510,7 @@ $scope.send=function(){
   		"checked":false
   	},
   	{
+      "flightId":"023jdwdq",
   		"flightNumber": "JRO102",
   		"aircraftType": "AirBag ",
   		"aircraftModel": "QP12",
@@ -596,6 +616,27 @@ $scope.send=function(){
 
     $scope.disabled=true;
   };
+
+  // $scope.proceed = function() {
+  //   for(var i=0;i<$scope.outgoingFlights.length;i++){
+  //       if($scope.outgoingFlights[i].checked){
+  //         var outgoingFlight = $scope.outgoingFlights[i];
+  //         break;
+  //       }
+  //   }
+  //   for(var j=0;j<$scope.returnFlights.length;j++){
+  //       if($scope.returnFlights[j].checked){
+  //         var returnFlight = $scope.returnFlights[j];
+  //         break;
+  //       }
+  //   }
+  //   AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
+  //   AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
+  //   AirportsSrv.setReturnFlightID(returnFlight.flightId);
+  //   AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
+  //   AirportsSrv.setCost($scope.Total);
+  //   $location.url('/flights/confirm'); //correct this
+  // };
 })
 
 /* directives */
