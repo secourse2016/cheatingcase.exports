@@ -130,7 +130,7 @@ angular.module('starter.controllers', [])
 
       // Custom popup
       var myPopup2 = $ionicPopup.show({
-         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and service quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
+         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and AirportsSrv quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
          title: 'For the people in the company',
          subTitle: '<img src="./img/about2.jpg">',
          scope: $scope,
@@ -242,6 +242,7 @@ $scope.send=function(){
     "class":"1",
     "otherAirlines":false
   };
+<<<<<<< HEAD
   function AirportCodes() {
     AirportsSrv.getAirportCodes().success(function(airports) {
          $scope.Airports = airports;
@@ -252,6 +253,24 @@ $scope.send=function(){
     console.log($scope.details.origin);
     AirportsSrv.setSelectedOriginAirport($scope.details.origin);
   });
+=======
+  AirportsSrv.setOtherAirlines("false");
+
+  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
+
+  $scope.SetOriginAirport = function(originAirport) {
+    AirportsSrv.setSelectedOriginAirport(originAirport);
+  };
+>>>>>>> 749e4f08e9aaeab3c02ef85857256f56db7b4369
 
   /* Record User's Selected Destination Airport  */
   $scope.$watch('details.destination',function() {
@@ -660,55 +679,129 @@ $scope.send=function(){
   // };
 })
 
-/* directives */
-// .directive('ionicAutocomplete',function ($ionicPopover,AirportsSrv) {
-//   var popoverTemplate =
-//   '<ion-popover-view style="margin-top:5px">' +
-//   '<ion-content>' +
-//   '<div class="list">' +
-//   '<a class="item" ng-repeat="item in items"  ng-click="selectItem(item)">{{item}}</a>' +
-//   '</div>' +
-//   '</ion-content>' +
-//   '</ion-popover-view>';
-//   return {
-//     restrict: 'A',
-//     scope: {
-//       params: '=ionicAutocomplete',
-//       inputSearch: '=ngModel'
-//     },
-//     link: function ($scope, $element, $attrs) {
-//       var popoverShown = false;
-//       var popover = null;
-//       if ($scope.params.items == undefined) {
-//         AirportsSrv.getAirportCodes().then(function (codes) {
-//           $parent.codes = codes;
-//           $scope.items = $scope.params.items;
-//           //Add autocorrect="off" so the 'change' event is detected when user tap the keyboard
-//           $element.attr('autocorrect', 'off');
-//
-//
-//           popover = $ionicPopover.fromTemplate(popoverTemplate, {
-//             scope: $scope
-//           });
-//           $element.on('click', function (e) {
-//             if (!popoverShown) {
-//               popover.show(e);
-//             }
-//
-//           });
-//
-//           $scope.selectItem = function (item) {
-//             $element.val(item);
-//             popover.hide();
-//           };
-//         });
-//       }
-//
-//
-//     }
-//   };
-// })
 
+
+//paymentController start
+.controller('paymentController',function($scope,AirportsSrv,stripe){
+
+  // retrieved Info About Outgoing Flight
+  $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
+  $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
+
+  // retrieved Info About Return Flight
+  $scope.returnFlightID= AirportsSrv.getReturnFlightID();
+  $scope.returnFlightAirline= AirportsSrv.getReturnFlightAirline();
+
+  // retrieved Cost
+  $scope.cost= AirportsSrv.getCost();
+  $scope.class = AirportsSrv.getSelectedClass();
+
+  $scope.passengerDetails = AirportsSrv.getPassengerArray();
+
+
+  $scope.receipt_number= 0;
+
+  $scope.book = function(){
+    stripe.card.createToken({
+      "number": $scope.cardnumber,
+      "cvc": $scope.cvCode,
+      "exp_month": $scope.cardExpMonth,
+      "exp_year": $scope.cardExpYear
+    }).then(function(paymentToken){
+      if($scope.outgoingFlightAirline == $scope.returnFlightAirline || $scope.returnFlightAirline==undefined){
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,$scope.returnFlightID,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(res){
+          console.log(res.errorMessage);
+          if(res.data.errorMessage==null){
+            console.log("same airline case true"+$scope.class+"  ---  "+$scope.outgoingFlightID);
+            $scope.refNum = res.data.refNum;
+          }
+          else {
+            console.log("same airline case false");
+          }
+        });
+
+      }
+      else{
+        AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.outgoingFlightID,null,paymentToken,$scope.outgoingFlightAirline,$scope.class).then(function(resOutgoing){
+          console.log(resOutgoing.data.errorMessage);
+          if(resOutgoing.data.errorMessage==null){
+            console.log("different airlines outgoingFlight case true");
+            $scope.refNum = resOutgoing.data.refNum;
+          }
+          else {
+            console.log("different airlines outgoingFlight case false");
+
+          }
+          AirportsSrv.createBooking($scope.passengerDetails,$scope.cost,$scope.returnFlightID,null,paymentToken,$scope.returnFlightAirline,$scope.class).then(function(resReturn){
+            console.log(resReturn.data.errorMessage);
+            if(resReturn.data.errorMessage==null){
+              console.log("different airlines returnFlight case true");
+              $scope.refNum +="\n"+resReturn.data.refNum;
+            }
+            else {
+              console.log("different airlines returnFlight case false");
+            }
+          });
+        });
+
+      }
+    });
+  };
+
+})
+//paymentController end
+
+
+/* directives */
+.directive('ionicAutocomplete',
+    function ($ionicPopover,AirportsSrv) {
+        var popoverTemplate =
+         '<ion-popover-view style="margin-top:5px">' +
+             '<ion-content>' +
+                 '<div class="list">' +
+                    '<a class="item" ng-repeat="item in items"  ng-click="selectItem(item)">{{item}}</a>' +
+                 '</div>' +
+             '</ion-content>' +
+         '</ion-popover-view>';
+        return {
+            restrict: 'A',
+            scope: {
+                params: '=ionicAutocomplete',
+                inputSearch: '=ngModel'
+            },
+            link: function ($scope, $element, $attrs) {
+              var popoverShown = false;
+              var popover = null;
+              if ($scope.params.items == undefined) {
+                AirportsSrv.getAirportCodes().then(function (codes) {
+                  $parent.codes = codes;
+                  $scope.items = $scope.params.items;
+                  //Add autocorrect="off" so the 'change' event is detected when user tap the keyboard
+                  $element.attr('autocorrect', 'off');
+
+
+                  popover = $ionicPopover.fromTemplate(popoverTemplate, {
+                    scope: $scope
+                  });
+                  $element.on('click', function (e) {
+                    if (!popoverShown) {
+                      popover.show(e);
+                    }
+
+                  });
+
+                  $scope.selectItem = function (item) {
+                    $element.val(item);
+                    popover.hide();
+                  };
+                });
+              }
+
+
+            }
+        };
+    }
+)
 .directive('showFlights',function(){
   return {
     restrict: 'E',

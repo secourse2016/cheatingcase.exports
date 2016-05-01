@@ -10,6 +10,7 @@
             <label class="item item-input form-group" >
               <input type="text" id="originAirports" ng-model="details.origin"style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight From*">
               <!-- <input ionic-autocomplete="{items:codes}" type="text" ng-model="origin"   placeholder="Flight From*" > -->
+              <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
             </label>
           </div>
         </div>
@@ -20,6 +21,7 @@
             <label class="item item-input form-group" >
               <input type="text" id="destinationAirports" ng-model="details.destination" style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight To*">
                <!-- <input ionic-autocomplete="{items:codes}" type="text" ng-model="destination" id="destinationAirports" placeholder="Flight To*"> -->
+              <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
             </label>
           </div>
         </div>

@@ -35,6 +35,6 @@ swissAir.controller('confirmationController',function($scope,$location,AirportsS
   };
 
   $scope.goToPayment = function(){
-    $location.url('/flights/pay');
+    $location.path('/flights/pay');
   };
 });

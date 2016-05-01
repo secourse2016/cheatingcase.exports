@@ -173,131 +173,10 @@ app.use(function(req, res, next) {
   }
   catch (err)
   {
-    console.error('JWT Error : ', err);
-    fs.readFile(__dirname + '/public/Error403.html', 'utf8', function(err, text){
-      res.status(403).send(text);
-    });
+    console.error('JWT Error : Token must be Provided !');
+    res.status(403).send({ "message": "Unauthorized to view this page; either you have no access or you've accessed a false route. To view our website just enter http://www.swiss-air.me. Thank You."});
   }
 
-});
-
-// NOTE: non-seat version of oneway search route
-app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
-  // retrieve params from req.params.{{origin | departingDate | ...}}
-  var dayInMillis =   24*60*60*1000;
-  var query;
-  var filter;
-  var oa = req.query.oa;
-  var seats = 1;
-  var Class = req.params.class;
-
-  var economyComparator = (Class==="economy")?(seats):(0);
-  var businessComparator = (Class==="business")?(seats):(0);
-
-  query = { 'origin': req.params.origin,
-            'destination': req.params.destination,
-            'departureDateTime': { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-            'emptyEconomy': { $gte: economyComparator },
-            'emptyBusiness': { $gte: businessComparator }
-          };
-
-  filter = {
-    "flightId": "$_id",
-    "flightNumber": 1,
-    "aircraftType": 1,
-    "aircraftModel": 1,
-    "departureDateTime": 1,
-    "arrivalDateTime": 1,
-    "origin": 1,
-    "destination": 1,
-    "cost": 1,
-    "currency": 1,
-    "Airline": 1,
-    "_id": 0
-  };
-
-  db.db().collection('flights').aggregate([{ $match:query }, { $project:filter }]).toArray(function(error,flights) {
-    if(error) {
-      console.log(error);
-      process.exit(1);
-    }
-    var result = { 'outgoingFlights':flights };
-    if(oa!='true'){
-      res.send(result);
-    } else {
-      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'', result, res, airlinesIterate);
-    }
-  });
-
-});
-
-
-// NOTE: non-seated roundtrip version of search route
-app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
-  // retrieve params from req.params.{{origin | departingDate | ...}}
-  // return this exact format
-  var dayInMillis = 24*60*60*1000;
-  var queryOutgoing;
-  var queryReturn;
-  var filter;
-  var oa = req.query.oa;
-
-  var seats = 1;
-  var Class = req.params.class;
-
-  var economyComparator = (Class==="economy")?(seats):(0);
-  var businessComparator = (Class==="business")?(seats):(0);
-
-  queryOutgoing = { 'origin': req.params.origin,
-                    'destination': req.params.destination,
-                    'departureDateTime':  { $gte: parseInt(req.params.departingDate),
-                      $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-                    'emptyEconomy': { $gte: parseInt(economyComparator) },
-                    'emptyBusiness': { $gte: parseInt(businessComparator) }
-                  };
-
-
-  queryReturn = { 'destination': req.params.origin,
-                  'origin': req.params.destination,
-                  'departureDateTime': { $gte: parseInt(req.params.returningDate),
-                    $lt: (parseInt(req.params.returningDate) + dayInMillis) },
-                  'emptyEconomy': { $gte: parseInt(economyComparator) },
-                  'emptyBusiness': { $gte: parseInt(businessComparator) }
-                };
-
-  filter = {
-    "flightId": "$_id",
-    "flightNumber": 1,
-    "aircraftType": 1,
-    "aircraftModel": 1,
-    "departureDateTime": 1,
-    "arrivalDateTime": 1,
-    "origin": 1,
-    "destination": 1,
-    "cost": 1,
-    "currency": 1,
-    "Airline": 1,
-    "_id": 0
-  };
-
-  var outgoingFlights;
-  var returnFlights;
-  var result;
-
-  db.db().collection('flights').aggregate([{ $match:queryOutgoing }, { $project:filter }]).toArray(function(err,data){
-    outgoingFlights = data;
-    db.db().collection('flights').aggregate([{ $match:queryReturn }, { $project:filter }]).toArray(function(err,data){
-      returnFlights = data;
-      result = { "outgoingFlights": outgoingFlights ,
-                 "returnFlights": returnFlights }
-      if(oa!='true'){
-        res.send(result);
-      } else {
-        airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'', result, res, airlinesIterate);
-      }
-
-    });
-  });
 });
 
 app.post('/booking', function (req, res){
@@ -312,7 +191,7 @@ app.post('/booking', function (req, res){
   stripe.charges.create({
       amount: (cost*100),
       currency: "usd",
-      source: stripeToken.id,
+      source: stripeToken,
       description: "testBookingPayment"
     }, function(err, data) {
     if (err) res.send({ refNum: null, errorMessage: err });
@@ -417,9 +296,28 @@ app.post('/bookingOthers', function (req, res){
             'timeout': parseInt(process.env.TIMEOUT),
             'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM' }
           }, function (error, response, body){
-            if(error || parseInt(response.statusCode) != 200) res.send({ "refNum": null, "errorMessage": res.statusCode });
+            if(error || response.statusCode != 200) res.send({ 'refNum': null, 'errorMessage': (error || response.statusCode) });
             else {
-              res.send(response.body);
+              res.send(body);
+            }
+          });
+});
+
+app.get('/stripe/pubkey', function (req, res){
+  res.send('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+});
+
+app.get('/airlinedetails', function (req, res){
+  var airLine = req.query.airline;
+
+  request({ 'url': teams[airLine]+'/stripe/pubkey',
+            'method': "GET",
+            'timeout': parseInt(process.env.TIMEOUT),
+            'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM' }
+          }, function (error, response, body){
+            if(error || response.statusCode != 200) res.send({ 'pubKey': null, 'url': teams[airLine], 'errorMessage': (error || response.statusCode) });
+            else {
+              res.send({ 'pubKey': body, 'url': teams[airLine], 'errorMessage': null });
             }
           });
 });

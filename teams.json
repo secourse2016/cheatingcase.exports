@@ -7,15 +7,16 @@
   "Japan Airlines": "http://54.187.208.145",
   "Singapore Airlines": "http://sebitsplease.com.s3-website-us-east-1.amazonaws.com",
   "Dragonair": "http://52.58.46.74",
-  "Hawaiian Airlines": "http://54.93.36.94",
-  "Austrian Airlines": "http://ec2-52-90-41-197.compute-1.amazonaws.com",
+  "Hawaiian": "http://54.93.36.94",
+  "Austrian": "http://ec2-52-90-41-197.compute-1.amazonaws.com",
   "South African Airways": "http://54.213.157.185",
-  "Iberia": "http://mynksh.com",
+  "IBERIA": "http://mynksh.com",
   "Malaysia Airlines": "http://52.32.109.147",
   "Northwest Airlines": "http://52.36.169.206",
   "Cathay Pacific Airlines": "http://ec2-52-91-94-227.compute-1.amazonaws.com",
   "Air Madagascar": "http://54.191.202.17",
   "Alaska":"http://52.207.211.179",
   "Turkish Airlines": "http://52.27.150.19",
-  "Virgin australia": "http://54.93.116.90"
+  "Virgin australia": "http://54.93.116.90",
+  "AirNewZealand": "http://52.28.246.230"
 }

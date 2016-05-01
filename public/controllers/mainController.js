@@ -119,7 +119,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
           function(result){
             AirportsSrv.setOutgoingFlights(result.outgoingFlights);
             AirportsSrv.setReturnFlights(result.returnFlights);
-            $location.url('/flightsRoundTrip');
+            $location.path('/flightsRoundTrip');
           });
       }
 
@@ -132,7 +132,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
           AirportsSrv.getSelectedSeats(),
           function(result){
             AirportsSrv.setOutgoingFlights(result.outgoingFlights);
-            $location.url('/flightsOneWay');
+            $location.path('/flightsOneWay');
           });
       }
 
@@ -145,7 +145,7 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
 
         } else {
           AirportsSrv.setViewedBooking(data);
-          $location.url('/viewBooking');
+          $location.path('/viewBooking');
         }
 
       });
