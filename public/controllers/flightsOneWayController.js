@@ -52,11 +52,10 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
           break;
         }
     }
-    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);//return here if error
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId); //return here if error
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
     AirportsSrv.setCost($scope.Total);
-    $location.url('/flights/confirm');
-  };
-
+    $location.path('/flights/confirm');
+  }
 
 });
