@@ -1129,3 +1129,13 @@ background-color: #3a78c3
 .seatsButtonsContainer button.selected {
   background-color: #FF7161;
 }
+
+
+
+/*Tokyo confirm bugFix*/
+.confirmContainer .proceedBtnContainer{
+    display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+}
