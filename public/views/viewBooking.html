@@ -67,11 +67,21 @@
                     <h2 class="swissBadge-header">CAI to JED<span class="pull-right swissBadgeAirline">Date</span></h2>
                     <h5 class="swissBadge-header">Outgoing FlightID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
                     <p>Class : {{booking.class}}</p>
+                    <p>
+                      Seats: <ul class="pagination">
+                        <li ng-repeat="seat in booking.outgoingSeats" class="seats"><a href="">{{seat.seatNum}}</a></li>
+                      </ul>
+                    </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-right">
                     <h2 class="swissBadge-header">JED to CAI<span class="pull-right swissBadgeAirline">Date</span></h2>
                     <h5 class="swissBadge-header">Return FlightID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
                     <p>Class : {{booking.class}}</p>
+                    <p>Seats: 
+                      <ul class="pagination">
+                        <li ng-repeat="seat in booking.returnSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
+                      </ul>
+                    </p>
                 </div>
             </div>
         </div>
@@ -96,7 +106,8 @@
             </div>
         </div>
     </div>
-    <div class="row swissBadgeBigContainer">
+    <!-- SEAT MAP -->
+    <!-- <div class="row swissBadgeBigContainer">
         <div class="col-lg-12 swissBadgeContainer">
             <div class="row swissBadgeSeat">
                 <div class="col-md-6 col-sm-12 col-xs-12">
@@ -175,5 +186,6 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
+    <!-- ./SEAT MAP -->
 </div>
