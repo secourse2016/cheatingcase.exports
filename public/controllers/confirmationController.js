@@ -25,7 +25,6 @@ swissAir.controller('confirmationController',function($scope,$location,AirportsS
     $scope.showArray[index]="false";
     AirportsSrv.setPassengerArray($scope.passengerArray);
     for(var i=0; i<$scope.showArray.length;i++){
-      console.log($scope.showArray + "is My Array");
       if($scope.showArray[i]=="true") return;
     }
     $scope.disabled=false;
@@ -36,6 +35,6 @@ swissAir.controller('confirmationController',function($scope,$location,AirportsS
   };
 
   $scope.goToPayment = function(){
-    $location.url('/flights/pay');
+    $location.path('/flights/pay');
   };
 });

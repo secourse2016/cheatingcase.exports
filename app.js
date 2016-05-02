@@ -5,29 +5,28 @@ var path        =   require('path');
 var bodyParser  =   require('body-parser');
 var jwt         =   require('jsonwebtoken');
 var db          =   require('./db');
+var ObjectId    =   db.ObjectID();
 var assert      =   require('assert');
 
 var airlines    =   require('./airlines.json');
 var request     =   require('request');
 
-var ObjectID = require('mongodb').ObjectID;
-
 var stripe  = require('stripe')(process.env.STRIPESECRETKEY);
 var teams   = require('./teams.json');
 var randomstring = require("randomstring");
 
-var generateRefNum = function(){
+var generateRefNum = function(cb){
   var r = "SA" + randomstring.generate({ length:5, charset: 'alphanumeric', readable: true, capitalization: 'uppercase'});
   db.db().collection('bookings').find({'refNum': r}).toArray(function (err, data){
-    if(data.length==0) return r;
-    else return generateRefNum();
+    if(data.length==0) cb(r);
+    else generateRefNum(cb);
   });
 }
 
 var generateSeats = function(seats, seatsNum, Class, n, refNum){
   if(seatsNum==0) return seats;
   else {
-    for(var i = (Class=="business")?(1):(n/8); i<(Class=="business")?(n/8):(n/4); i++){
+    for(var i = (Class=="business")?(1):((n/8)+1); i<(Class=="business")?((n/8)+1):(n/4); i++){
       if(!containsSeat(seats, (""+i+"A"))){
         seats.push({ "seatNum": (""+i+"A"), "refNum": refNum });
         break;
@@ -79,8 +78,8 @@ var airlinesIterate = function(index, route, result, res, cb){
            "outgoingFlights"  : result.outgoingFlights
          };
        }
-       if(data.outgoingFlights  && data.outgoingFlights.length>0 && data.outgoingFlights[0]._id) newRes.outgoingFlights = result.outgoingFlights.concat(data.outgoingFlights);
-       if(result.returnFlights && data.returnFlights && data.returnFlights.length>0 && data.returnFlights[0]._id) newRes.returnFlights = result.returnFlights.concat(data.returnFlights);
+       if(data.outgoingFlights  && data.outgoingFlights.length>0 && (data.outgoingFlights[0]._id || data.outgoingFlights[0].flightId)) newRes.outgoingFlights = result.outgoingFlights.concat(data.outgoingFlights);
+       if(result.returnFlights && data.returnFlights && data.returnFlights.length>0 && (data.returnFlights[0]._id || data.outgoingFlights[0].flightId)) newRes.returnFlights = result.returnFlights.concat(data.returnFlights);
 
        console.log('\nI have queried now '+airlines[index].name+
                    '\n ==> At :: ' +airlines[index].url+
@@ -174,121 +173,30 @@ app.use(function(req, res, next) {
   }
   catch (err)
   {
-    console.error('JWT Error : ', err);
-    fs.readFile(__dirname + '/public/Error403.html', 'utf8', function(err, text){
-      res.status(403).send(text);
-    });
+    console.error('JWT Error : Token must be Provided !');
+    res.status(403).send({ "message": "Unauthorized to view this page; either you have no access or you've accessed a false route. To view our website just enter http://www.swiss-air.me. Thank You."});
   }
 
-});
-
-// NOTE: non-seat version of oneway search route
-app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
-  // retrieve params from req.params.{{origin | departingDate | ...}}
-  var dayInMillis =   24*60*60*1000;
-  var query;
-  var oa = req.query.oa;
-  var seats = 1;
-  var Class = req.params.class;
-
-  var economyComparator = (Class==="economy")?(seats):(0);
-  var businessComparator = (Class==="business")?(seats):(0);
-
-  query = { 'origin': req.params.origin,
-            'destination': req.params.destination,
-            'departureDateTime': { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-            'class': req.params.class,
-            'emptyEconomy': { $gte: economyComparator },
-            'emptyBusiness': { $gte: businessComparator }
-          };
-
-
-  console.log(JSON.stringify(query));
-
-  db.db().collection('flights').find(query,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(error,flights) {
-    if(error) {
-      console.log(error);
-      process.exit(1);
-    }
-    var result = { 'outgoingFlights':flights };
-    if(oa!='true'){
-      res.send(result);
-    } else {
-      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'', result, res, airlinesIterate);
-    }
-  });
-
-});
-
-
-// NOTE: non-seated roundtrip version of search route
-app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
-  // retrieve params from req.params.{{origin | departingDate | ...}}
-  // return this exact format
-  var dayInMillis = 24*60*60*1000;
-  var queryOutgoing;
-  var queryReturn;
-  var oa = req.query.oa;
-
-  var seats = 1;
-  var Class = req.params.class;
-
-  var economyComparator = (Class==="economy")?(seats):(0);
-  var businessComparator = (Class==="business")?(seats):(0);
-
-  queryOutgoing = { 'origin': req.params.origin,
-                    'destination': req.params.destination,
-                    'class': req.params.class,
-                    'departureDateTime':  { $gte: parseInt(req.params.departingDate),
-                      $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-                    'emptyEconomy': { $gte: parseInt(economyComparator) },
-                    'emptyBusiness': { $gte: parseInt(businessComparator) }
-                  };
-
-
-  queryReturn = { 'destination': req.params.origin,
-                  'origin': req.params.destination,
-                  'class': req.params.class,
-                  'departureDateTime': { $gte: parseInt(req.params.returningDate),
-                    $lt: (parseInt(req.params.returningDate) + dayInMillis) },
-                  'emptyEconomy': { $gte: parseInt(economyComparator) },
-                  'emptyBusiness': { $gte: parseInt(businessComparator) }
-                };
-
-  var outgoingFlights;
-  var returnFlights;
-  var result;
-
-  db.db().collection('flights').find(queryOutgoing,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(err,data){
-    outgoingFlights = data;
-    db.db().collection('flights').find(queryReturn,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(err,data){
-      returnFlights = data;
-      result = { "outgoingFlights": outgoingFlights ,
-                 "returnFlights": returnFlights }
-      if(oa!='true'){
-        res.send(result);
-      } else {
-        airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'', result, res, airlinesIterate);
-      }
-
-    });
-  });
 });
 
 app.post('/booking', function (req, res){
 
   var stripeToken = req.body.paymentToken;
-  var cost  = req.body.cost;
+  var cost  = parseInt(req.body.cost);
+
+  if(!(req.body.passengerDetails&&req.body.class&&req.body.cost&&req.body.outgoingFlightId&&req.body.paymentToken)){
+    res.send({ refNum: null, errorMessage: "Corrupted Data !!" }); return;
+  }
 
   stripe.charges.create({
-      amount: cost,
+      amount: (cost*100),
       currency: "usd",
       source: stripeToken,
-      description: "testPayment"
+      description: "testBookingPayment"
     }, function(err, data) {
     if (err) res.send({ refNum: null, errorMessage: err });
-    else
-      var bookingRefNum = generateRefNum();
+    else generateRefNum(function (random){
+      var bookingRefNum = random;
       var seatsNo = req.body.passengerDetails.length;
 
       var booking = {
@@ -300,29 +208,41 @@ app.post('/booking', function (req, res){
         'refNum'          : bookingRefNum
       };
 
-      db.db().collection('bookings').insert(booking, function (err, doc){
-        if(err) res.send({ "refNum": null, "errorMessage": err });
+      db.db().collection('bookings').insert(booking, function (errIns, doc){
+
+        if(errIns) res.send({ "refNum": null, "errorMessage": errIns });
         else {
-          db.db().collection('flights').findOne({'_id': booking.outgoingFlightId}, function (flight, err){
-            if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
-            var newSeats = generateSeats(flight.seats, seatsNo, flight.class, flight.capacity, bookingRefNum);
-            var newEmptyEconomy = parseInt(flight.emptyEconomy) - (flight.class==="economy")?(seatsNo):(0);
-            var newEmptyBusiness = parseInt(flight.emptyBusiness) - (flight.class==="business")?(seatsNo):(0);
+          db.db().collection('flights').findOne({ '_id': ObjectId(booking.outgoingFlightId) }, function (err2, flight){
+
+            if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
+
+            var newSeats = generateSeats(flight.seats, seatsNo, booking.class, flight.capacity, bookingRefNum);
+            var newEmptyEconomy = (parseInt(flight.emptyEconomy) - ((booking.class==="economy")?(seatsNo):(0)));
+            var newEmptyBusiness = (parseInt(flight.emptyBusiness) - ((booking.class==="business")?(seatsNo):(0)));
+
             db.db().collection('flights')
-              .update({'_id': booking.outgoingFlightId}, { $set:{ 'seats': newSeats,
+              .update({ '_id': ObjectId(booking.outgoingFlightId) }, { $set:{ 'seats': newSeats,
               'emptyEconomy': newEmptyEconomy, 'emptyBusiness': newEmptyBusiness }}, function (error, results){
-                if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
+
+                if(error) { res.send({ "refNum": null, "errorMessage": error }); return; }
+
                 if(booking.returnFlightId && booking.returnFlightId != null){
-                  db.db().collection('flights').findOne({'_id': booking.returnFlightId }, function (flightReturn, err){
+
+                  db.db().collection('flights').findOne({ '_id': ObjectId(booking.returnFlightId) }, function (err, flightReturn){
+
                     if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
-                    var newSeatsRet = generateSeats(flightReturn.seats, seatsNo, flightReturn.class, flightReturn.capacity, bookingRefNum);
-                    var newEmptyEconomyRet = parseInt(flightReturn.emptyEconomy) - (flightReturn.class==="economy")?(seatsNo):(0);
-                    var newEmptyBusinessRet = parseInt(flightReturn.emptyBusiness) - (flightReturn.class==="business")?(seatsNo):(0);
+
+                    var newSeatsRet = generateSeats(flightReturn.seats, seatsNo, booking.class, flightReturn.capacity, bookingRefNum);
+                    var newEmptyEconomyRet = (parseInt(flightReturn.emptyEconomy) - ((booking.class==="economy")?(seatsNo):(0)));
+                    var newEmptyBusinessRet = (parseInt(flightReturn.emptyBusiness) - ((booking.class==="business")?(seatsNo):(0)));
+
                     db.db().collection('flights')
-                      .update({'_id': booking.returnFlightId}, { $set:{ 'seats': newSeatsRet,
+                      .update({ '_id': ObjectId(booking.returnFlightId) }, { $set:{ 'seats': newSeatsRet,
                       'emptyEconomy': newEmptyEconomyRet, 'emptyBusiness': newEmptyBusinessRet }}, function (errorRet, resultsRet){
-                        if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
+
+                        if(errorRet) { res.send({ "refNum": null, "errorMessage": err }); return; }
                         else res.send({ "refNum": bookingRefNum, "errorMessage": null });
+
                       });
                   });
                 } else {
@@ -333,27 +253,35 @@ app.post('/booking', function (req, res){
         }
       });
     });
+  });
 });
 
 app.get('/viewbooking/:refNum', function (req, res){
-  var refNum = parseInt(req.params.refNum);
+  var refNum = req.params.refNum;
 
   db.db().collection('bookings').findOne({ 'refNum': refNum }, function (err, booking){
     var bookingData = booking;
-    db.db().collection('flights').findOne({ '_id': new ObjectID(bookingData.outgoingFlightId) }, function (err, flight){
 
-      var outgoingSeats = filterSeats(JSON.parse(flight.seats), refNum);
-      bookingData.outgoingSeats = outgoingSeats;
-      if(bookingData.returnFlightId && bookingData.returnFlightId != null){
-        db.db().collection('flights').findOne({ '_id': new ObjectID(bookingData.returnFlightId)}, function (err, flightRet){
-          var returnSeats = filterSeats(JSON.parse(flightRet.seats), refNum);
-          bookingData.returnSeats = returnSeats;
+    if(err || booking==null) { res.send({ "error":"No Booking Exists for that refNum" }); }
+    else {
+      db.db().collection('flights').findOne({ '_id': ObjectId(bookingData.outgoingFlightId) }, function (err, flight){
+
+        var outgoingSeats = filterSeats(flight.seats, refNum);
+        bookingData.outgoingSeats = outgoingSeats;
+
+        if(bookingData.returnFlightId && bookingData.returnFlightId != null){
+          db.db().collection('flights').findOne({ '_id': ObjectId(bookingData.returnFlightId) }, function (err, flightRet){
+
+            var returnSeats = filterSeats(flightRet.seats, refNum);
+            bookingData.returnSeats = returnSeats;
+            res.send(bookingData);
+
+          });
+        } else {
           res.send(bookingData);
-        });
-      } else {
-        res.send(bookingData);
-      }
-    });
+        }
+      });
+    }
   });
 
 });
@@ -366,11 +294,30 @@ app.post('/bookingOthers', function (req, res){
             'json': true,   // <--Very important!!!
             'body': req.body,
             'timeout': parseInt(process.env.TIMEOUT),
-            'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM'}
+            'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM' }
           }, function (error, response, body){
-            if(err) res.send({ "response": { "refNum": null, "errorMessage": err }, "airlineURL": null });
+            if(error || response.statusCode != 200) res.send({ 'refNum': null, 'errorMessage': (error || response.statusCode) });
             else {
-              res.send({ "response":response, "airlineURL": teams[airLine] });
+              res.send(body);
+            }
+          });
+});
+
+app.get('/stripe/pubkey', function (req, res){
+  res.send('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+});
+
+app.get('/airlinedetails', function (req, res){
+  var airLine = req.query.airline;
+
+  request({ 'url': teams[airLine]+'/stripe/pubkey',
+            'method': "GET",
+            'timeout': parseInt(process.env.TIMEOUT),
+            'headers': { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzd2lzc0FpciIsImlhdCI6MTQ2MDYzMDIxMSwiZXhwIjoxNDkyMTY2MjE0LCJhdWQiOiJ3d3cuc3dpc3MtYWlyLm1lIiwic3ViIjoic3dpc3NBaXIgQ2xpZW50Iiwic3dpc3NBaXJVc2VyIjoic3dpc3NBaXJBbmd1bGFyIn0.GxAzq5SdDt8wB-2eqKBhaLAAHoCQ8Lw51yL2qRYbJvM' }
+          }, function (error, response, body){
+            if(error || response.statusCode != 200) res.send({ 'pubKey': null, 'url': teams[airLine], 'errorMessage': (error || response.statusCode) });
+            else {
+              res.send({ 'pubKey': body, 'url': teams[airLine], 'errorMessage': null });
             }
           });
 });
@@ -390,13 +337,26 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',
   query = { 'origin': req.params.origin,
             'destination': req.params.destination,
             'departureDateTime': { $gte: parseInt(req.params.departingDate), $lt: (parseInt(req.params.departingDate) + dayInMillis) },
-            'class': req.params.class,
             'emptyEconomy': { $gte: economyComparator },
             'emptyBusiness': { $gte: businessComparator }
           };
 
+  filter = {
+    "flightId": "$_id",
+    "flightNumber": 1,
+    "aircraftType": 1,
+    "aircraftModel": 1,
+    "departureDateTime": 1,
+    "arrivalDateTime": 1,
+    "origin": 1,
+    "destination": 1,
+    "cost": 1,
+    "currency": 1,
+    "Airline": 1,
+    "_id": 0
+  };
 
-  db.db().collection('flights').find(query,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(error,flights) {
+  db.db().collection('flights').aggregate([{ $match:query }, { $project:filter }]).toArray(function(error,flights) {
     if(error) {
       console.log(error);
       process.exit(1);
@@ -427,7 +387,6 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
 
   queryOutgoing = { 'origin': req.params.origin,
                     'destination': req.params.destination,
-                    'class': req.params.class,
                     'departureDateTime':  { $gte: parseInt(req.params.departingDate),
                       $lt: (parseInt(req.params.departingDate) + dayInMillis) },
                     'emptyEconomy': { $gte: economyComparator },
@@ -435,20 +394,34 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
                   };
   queryReturn = { 'destination': req.params.origin,
                   'origin': req.params.destination,
-                  'class': req.params.class,
                   'departureDateTime': { $gte: parseInt(req.params.returningDate),
                     $lt: (parseInt(req.params.returningDate) + dayInMillis) } ,
                   'emptyEconomy': { $gte: economyComparator },
                   'emptyBusiness': { $gte: businessComparator }
                 };
 
+  filter = {
+    "flightId": "$_id",
+    "flightNumber": 1,
+    "aircraftType": 1,
+    "aircraftModel": 1,
+    "departureDateTime": 1,
+    "arrivalDateTime": 1,
+    "origin": 1,
+    "destination": 1,
+    "cost": 1,
+    "currency": 1,
+    "Airline": 1,
+    "_id": 0
+  };
+
   var outgoingFlights;
   var returnFlights;
   var result;
 
-  db.db().collection('flights').find(queryOutgoing,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(err,data){
+  db.db().collection('flights').aggregate([{ $match:queryOutgoing }, { $project:filter }]).toArray(function(err,data){
     outgoingFlights = data;
-    db.db().collection('flights').find(queryReturn,{ capacity:0 , emptyEconomy:0 ,emptyBusiness:0,seats:0 }).toArray(function(err,data){
+    db.db().collection('flights').aggregate([{ $match:queryReturn }, { $project:filter }]).toArray(function(err,data){
       returnFlights = data;
       result = { "outgoingFlights": outgoingFlights ,
                  "returnFlights": returnFlights }

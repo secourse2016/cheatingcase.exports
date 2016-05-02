@@ -11,7 +11,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
   $scope.class = "1";
   $scope.otherAirlines=false;
   AirportsSrv.setOtherAirlines("false");
-  $scope.searchBy="schedule";
   $scope.animation="";
   $scope.disabled=false;
 
@@ -94,7 +93,6 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
        if($scope.class=='2'){
          AirportsSrv.setSelectedClass("business");
        }
-       else console.log("Fatal Error in the watch of the class");
      }
     });
 
@@ -117,10 +115,11 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
           new Date(AirportsSrv.getSelectedReturnDate()).getTime(),
           AirportsSrv.getSelectedClass(),
           AirportsSrv.getOtherAirlines(),
+          AirportsSrv.getSelectedSeats(),
           function(result){
             AirportsSrv.setOutgoingFlights(result.outgoingFlights);
             AirportsSrv.setReturnFlights(result.returnFlights);
-            $location.url('/flightsRoundTrip');
+            $location.path('/flightsRoundTrip');
           });
       }
 
@@ -130,17 +129,27 @@ swissAir.controller('mainController', function($scope,AirportsSrv,$location) {
         new Date(AirportsSrv.getSelectedDepartureDate()).getTime(),
           AirportsSrv.getSelectedClass(),
           AirportsSrv.getOtherAirlines(),
+          AirportsSrv.getSelectedSeats(),
           function(result){
             AirportsSrv.setOutgoingFlights(result.outgoingFlights);
-            $location.url('/flightsOneWay');
+            $location.path('/flightsOneWay');
           });
       }
 
     };
 
     $scope.viewBooking = function(bookingRefNum) {
-      AirportsSrv.setbookingRefNum(bookingRefNum);
-      $location.url('/viewBooking');
+      //AirportsSrv.setbookingRefNum(bookingRefNum);
+      AirportsSrv.viewBooking(bookingRefNum).success(function (data){
+        if(data.error){
+
+        } else {
+          AirportsSrv.setViewedBooking(data);
+          $location.path('/viewBooking');
+        }
+
+      });
+
     }
     /* Get Airports on page render  */
     AirportCodes();

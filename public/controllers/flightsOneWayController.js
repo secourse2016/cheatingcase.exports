@@ -44,7 +44,7 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
     $scope.disabled=true;
   }
 
-  $scope.pay = function() {
+  $scope.proceed = function() {
 
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
@@ -52,24 +52,10 @@ swissAir.controller('flightsOneWayController', function($scope,$location,Airport
           break;
         }
     }
-    AirportsSrv.setOutgoingFlightID(outgoingFlight._id);//return here if error
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId); //return here if error
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
     AirportsSrv.setCost($scope.Total);
-    $location.url('/flights/confirm');
-  };
-
-
-
-  // if(outgoingFlight.Airline == "Swiss Air"){
-  //   /* Easy Case :- My payment ! */
-  //   AirportsSrv.setDisplayedOutgoingFlightDate(outgoingFlight.departureDateTime);
-  //   AirportsSrv.setDisplayedOutgoingFlightNumber(outgoingFlight.flightNumber);
-  //   $location.url('/flights/pay');
-  //   console.log("One Way Case 1");
-  // }
-  // else {
-  //   /* Send a post request to the other Airline*/
-  //   console.log("One Way Case 2");
-  // }
+    $location.path('/flights/confirm');
+  }
 
 });

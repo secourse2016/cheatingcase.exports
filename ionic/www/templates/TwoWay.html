@@ -1,0 +1,22 @@
+     <ion-view view-title="Flights Two Way">
+  <ion-content class="padding">
+     <div class="padding">
+      <p style="text-align:center;font-size:15px; color:black;font-family: 'Poiret One', cursive"><strong>Outgoing Flights</strong></p>
+
+      <div ng-repeat="outgoingFlight in outgoingFlights">
+        <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" color="findColor(outgoingFlight)" index="$index"> </show-flights>
+      </div>
+
+       <p style="text-align:center;font-size:15px; color:black;font-family: 'Poiret One', cursive"><strong>Returning Flights</strong></p>
+
+       <div ng-repeat="returnFlight in returnFlights">
+         <show-flights flight="returnFlight" type="findType(returnFlight)" color="findColor(returnFlight)" index="$index"> </show-flights>
+       </div>
+
+  <button class="button button-assertive" ng-disabled="disabled" ng-click = "proceed()" style="width:100%">
+   <strong>PROCEED</strong>
+ </button>
+
+     </div>
+     </ion-content>
+     </ion-view>

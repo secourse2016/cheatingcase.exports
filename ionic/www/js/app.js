@@ -1,11 +1,4 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngMessages'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -49,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-    
+
   .state('tab.search', {
     url: '/search',
     views: {
@@ -70,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.Contac', {
+  .state('tab.Contact', {
     url: '/Contact',
     views: {
       'tab-Contact': {
@@ -91,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-OneWay': {
         templateUrl: 'templates/searchflights-OneWay.html',
-        controller: 'SearchflightCtrl'
+        controller: 'SearchflightCtrlOneWay'
       }
     }
   })
@@ -101,9 +94,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'searchflights-TwoWay': {
         templateUrl: 'templates/searchflights-TwoWay.html',
-        controller: 'SearchflightCtrl'
+        controller: 'SearchflightCtrlTwoWay'
       }
     }
+  })
+
+  .state('flightsOneWay', {
+                url: '/flightsOneWay',
+                templateUrl: 'templates/OneWay.html',
+                controller: 'flightsOneWay'
+  })
+
+  .state('flightsTwoWay', {
+                url: '/flightsTwoWay',
+                templateUrl: 'templates/TwoWay.html',
+                controller: 'flightsTwoWay'
+  })
+
+  .state('confirm', {
+                url: '/confirm',
+                templateUrl: 'templates/confirmation.html',
+                controller: 'ConfirmationController'
+  })
+
+  .state('pay', {
+                url: '/pay',
+                templateUrl: 'templates/payment.html',
+                controller: 'paymentController'
   });
 
   // if none of the above states are matched, use this as the fallback

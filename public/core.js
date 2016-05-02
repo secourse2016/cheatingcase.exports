@@ -1,8 +1,8 @@
 var swissAir = angular.module('swissAir', ['ui.bootstrap','angular-stripe', 'ngRoute']);
 
-swissAir.config(function ($routeProvider,stripeProvider) {
+swissAir.config(function ($routeProvider, $locationProvider, stripeProvider) {
 
-   stripeProvider.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+  stripeProvider.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
 
   $routeProvider
     .when('/', {
@@ -12,7 +12,8 @@ swissAir.config(function ($routeProvider,stripeProvider) {
     .when('/flightsRoundTrip', {
       templateUrl: 'views/flightsRoundTrip.html',
       controller: 'flightsControllerRoundTrip'
-    }).when('/flightsOneWay', {
+    })
+    .when('/flightsOneWay', {
       templateUrl: 'views/flightsOneWay.html',
       controller: 'flightsOneWayController'
     })
@@ -31,5 +32,7 @@ swissAir.config(function ($routeProvider,stripeProvider) {
     .otherwise({
       redirectTo: '/'
     });
+
+  $locationProvider.html5Mode(true);
 
 });

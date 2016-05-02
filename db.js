@@ -1,5 +1,6 @@
 var assert = require('assert');
 var mongodb = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 var myDB = null;
 var dbHost = (process.env.DBHOST+':27017') || (process.env.WERCKER_MONGODB_HOST);
 var dbUrl = 'mongodb://' + dbHost + '/swissair';
@@ -61,6 +62,10 @@ var DB = {
 console.log("Terminating DB connection Process");
 cb(err, db);
 });
+},
+
+ObjectID: function ObjectID(){
+  return ObjectId;
 },
 
 seed: function seed(cb) {

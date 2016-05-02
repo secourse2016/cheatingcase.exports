@@ -1,0 +1,16 @@
+<ion-view view-title="Confirmation">
+<ion-content class="padding">
+<div class="padding">
+
+  <div ng-repeat="passenger in passengerArray">
+    <show-passengers countries="countries" index="$index"></show-passengers>
+  </div>
+
+
+<button class="button button-assertive" ng-disabled="disabled" ng-click = "goToPayment()" style="width:100%" >
+<strong>PROCEED TO PAYMENT</strong>
+</button>
+
+</div>
+</ion-content>
+</ion-view>

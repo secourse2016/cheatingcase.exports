@@ -94,7 +94,7 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
     $scope.disabled=true;
   }
 
-  $scope.pay = function() {
+  $scope.proceed = function() {
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
           var outgoingFlight = $scope.outgoingFlights[i];
@@ -107,12 +107,12 @@ swissAir.controller('flightsControllerRoundTrip', function($scope,$location,Airp
           break;
         }
     }
-    AirportsSrv.setOutgoingFlightID(outgoingFlight._id);//return here for error
+    AirportsSrv.setOutgoingFlightID(outgoingFlight.flightId);
     AirportsSrv.setOutgoingFlightAirline(outgoingFlight.Airline);
-    AirportsSrv.setReturnFlightID(returnFlight._id);//return here for error
+    AirportsSrv.setReturnFlightID(returnFlight.flightId);
     AirportsSrv.setReturnFlightAirline(returnFlight.Airline);
     AirportsSrv.setCost($scope.Total);
-    $location.url('/flights/confirm');
+    $location.path('/flights/confirm');
   };
 
 
