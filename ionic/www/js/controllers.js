@@ -236,7 +236,6 @@ $scope.send=function(){
   $scope.details = {
     "origin":"",
     "destination":"",
-    "departureDate":"",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
@@ -263,10 +262,9 @@ $scope.send=function(){
   var date = new Date();
   $scope.depMinDate = AirportsSrv.formatDate(date);
 
-  $scope.$watch('details.departureDate', function() {
-    console.log($scope.details.departureDate);
-    AirportsSrv.setSelectedDepartureDate($scope.details.departureDate);
-  });
+  $scope.departureDate =  function(departureDate) {
+    AirportsSrv.setSelectedDepartureDate(departureDate.getTime());
+  };
 
   $scope.$watch('details.class', function() {
    if($scope.details.class=='1'){
@@ -288,8 +286,21 @@ $scope.send=function(){
   });
 
   $scope.searchflights = function(){
-    $state.go('flightsOneWay');
+    AirportsSrv.getConcatFlightsOneWay(
+      AirportsSrv.getSelectedOriginAirport(),
+      AirportsSrv.getSelectedDestinationAirport(),
+      AirportsSrv.getSelectedDepartureDate(),
+      AirportsSrv.getSelectedClass(),
+      AirportsSrv.getOtherAirlines(),
+      AirportsSrv.getSelectedSeats(),
+      function(result){
+        AirportsSrv.setOutgoingFlights(result.outgoingFlights);
+        $state.go('flightsOneWay');
+      });
+
+
   };
+
   $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 })
 
@@ -360,46 +371,58 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
   });
 
   $scope.searchflights = function(){
-    console.log(AirportsSrv.getSelectedDepartureDate());
-    console.log(AirportsSrv.getSelectedReturnDate());
-    $state.go('flightsTwoWay');
+      AirportsSrv.getConcatFlightsTwoWay(
+      AirportsSrv.getSelectedOriginAirport(),
+      AirportsSrv.getSelectedDestinationAirport(),
+      AirportsSrv.getSelectedDepartureDate(),
+      AirportsSrv.getSelectedReturnDate(),
+      AirportsSrv.getSelectedClass(),
+      AirportsSrv.getOtherAirlines(),
+      AirportsSrv.getSelectedSeats(),
+      function(result){
+        AirportsSrv.setOutgoingFlights(result.outgoingFlights);
+        AirportsSrv.setReturnFlights(result.returnFlights);
+        $state.go('flightsTwoWay');
+      });
+
   };
   $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
+
 })
 
 .controller('flightsOneWay', function($scope,$state,AirportsSrv) {
   $scope.disabled=true;
-  $scope.outgoingFlights=  [
-    {
-      "flightId":"945sd718jfhk7132",
-      "flightNumber": "SE9600",
-      "aircraftType": "Airbus ",
-      "aircraftModel": "133",
-      "departureDateTime": 1460331360000,
-      "arrivalDateTime": 1460339160000,
-      "origin": "CAI",
-      "destination": "JED",
-      "class":"economy",
-      "cost": "539",
-      "Airline": "Swiss Air",
-      "checked":false
-    },
-    {
-      "flightId":"12847182947132",
-      "flightNumber": "GA1400",
-      "aircraftType": "AirBag ",
-      "aircraftModel": "S233",
-      "departureDateTime": 1460331490000,
-      "arrivalDateTime": 1460339260000,
-      "origin": "CAI",
-      "destination": "JED",
-    "class":"economy",
-      "cost": "712",
-      "Airline": "Swiss Air",
-      "checked":false
-    }
-  ];
-//  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  // $scope.outgoingFlights=  [
+  //   {
+  //     "flightId":"945sd718jfhk7132",
+  //     "flightNumber": "SE9600",
+  //     "aircraftType": "Airbus ",
+  //     "aircraftModel": "133",
+  //     "departureDateTime": 1460331360000,
+  //     "arrivalDateTime": 1460339160000,
+  //     "origin": "CAI",
+  //     "destination": "JED",
+  //     "class":"economy",
+  //     "cost": "539",
+  //     "Airline": "Swiss Air",
+  //     "checked":false
+  //   },
+  //   {
+  //     "flightId":"12847182947132",
+  //     "flightNumber": "GA1400",
+  //     "aircraftType": "AirBag ",
+  //     "aircraftModel": "S233",
+  //     "departureDateTime": 1460331490000,
+  //     "arrivalDateTime": 1460339260000,
+  //     "origin": "CAI",
+  //     "destination": "JED",
+  //   "class":"economy",
+  //     "cost": "712",
+  //     "Airline": "Swiss Air",
+  //     "checked":false
+  //   }
+  // ];
+  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
   $scope.Total = 0;
   $scope.details ={
     "seats":AirportsSrv.getSelectedSeats()
@@ -467,68 +490,68 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
   $scope.outgoingCost = 0;
   $scope.returnCost = 0;
   $scope.Total = 0;
-  $scope.outgoingFlights= [
-    {
-      "flightId":"9218hsbsw",
-      "flightNumber": "SE9600",
-      "aircraftType": "Airbus ",
-      "aircraftModel": "133",
-      "departureDateTime": 1460331360000,
-      "arrivalDateTime": 1460339160000,
-      "origin": "CAI",
-      "destination": "JED",
-      "class":"economy",
-      "cost": "539",
-      "Airline": "Swiss Air",
-      "checked":false
-    },
-    {
-      "flightId":"sjdbqjwbdhj2",
-      "flightNumber": "GA1400",
-      "aircraftType": "AirBag ",
-      "aircraftModel": "S233",
-      "departureDateTime": 1460331490000,
-      "arrivalDateTime": 1460339260000,
-      "origin": "CAI",
-      "destination": "JED",
-      "class":"economy",
-      "cost": "712",
-      "Airline": "Swiss Air",
-      "checked":false
-    }
-  ];
-  $scope.returnFlights= [
-    {
-      "flightId":"2udh1o2hdu",
-      "flightNumber": "JW102",
-      "aircraftType": "Airbus ",
-      "aircraftModel": "GH12",
-      "departureDateTime": 1460341360000,
-      "arrivalDateTime": 1460347160000,
-      "origin": "JED",
-      "destination": "CAI",
-      "class":"economy",
-      "cost": "812",
-      "Airline": "Swiss Air",
-      "checked":false
-    },
-    {
-      "flightId":"023jdwdq",
-      "flightNumber": "JRO102",
-      "aircraftType": "AirBag ",
-      "aircraftModel": "QP12",
-      "departureDateTime": 1460341360000,
-      "arrivalDateTime": 1460349160000,
-      "origin": "JED",
-      "destination": "CAI",
-      "class":"economy",
-      "cost": "619",
-      "Airline": "Swiss Air",
-      "checked":false
-    }
-  ];
-  //$scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
-  //$scope.returnFlights =AirportsSrv.getReturnFlights();
+  // $scope.outgoingFlights= [
+  //   {
+  //     "flightId":"9218hsbsw",
+  //     "flightNumber": "SE9600",
+  //     "aircraftType": "Airbus ",
+  //     "aircraftModel": "133",
+  //     "departureDateTime": 1460331360000,
+  //     "arrivalDateTime": 1460339160000,
+  //     "origin": "CAI",
+  //     "destination": "JED",
+  //     "class":"economy",
+  //     "cost": "539",
+  //     "Airline": "Swiss Air",
+  //     "checked":false
+  //   },
+  //   {
+  //     "flightId":"sjdbqjwbdhj2",
+  //     "flightNumber": "GA1400",
+  //     "aircraftType": "AirBag ",
+  //     "aircraftModel": "S233",
+  //     "departureDateTime": 1460331490000,
+  //     "arrivalDateTime": 1460339260000,
+  //     "origin": "CAI",
+  //     "destination": "JED",
+  //     "class":"economy",
+  //     "cost": "712",
+  //     "Airline": "Swiss Air",
+  //     "checked":false
+  //   }
+  // ];
+  // $scope.returnFlights= [
+  //   {
+  //     "flightId":"2udh1o2hdu",
+  //     "flightNumber": "JW102",
+  //     "aircraftType": "Airbus ",
+  //     "aircraftModel": "GH12",
+  //     "departureDateTime": 1460341360000,
+  //     "arrivalDateTime": 1460347160000,
+  //     "origin": "JED",
+  //     "destination": "CAI",
+  //     "class":"economy",
+  //     "cost": "812",
+  //     "Airline": "Swiss Air",
+  //     "checked":false
+  //   },
+  //   {
+  //     "flightId":"023jdwdq",
+  //     "flightNumber": "JRO102",
+  //     "aircraftType": "AirBag ",
+  //     "aircraftModel": "QP12",
+  //     "departureDateTime": 1460341360000,
+  //     "arrivalDateTime": 1460349160000,
+  //     "origin": "JED",
+  //     "destination": "CAI",
+  //     "class":"economy",
+  //     "cost": "619",
+  //     "Airline": "Swiss Air",
+  //     "checked":false
+  //   }
+  // ];
+  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
+  $scope.returnFlights =AirportsSrv.getReturnFlights();
   $scope.details ={
     "seats":AirportsSrv.getSelectedSeats()
   }
