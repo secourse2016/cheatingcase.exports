@@ -260,9 +260,8 @@ $scope.send=function(){
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
   };
 
- var date = new Date();
-$scope.depMinDate = AirportsSrv.formatDate(date);
-
+  var date = new Date();
+  $scope.depMinDate = AirportsSrv.formatDate(date);
 
   $scope.$watch('details.departureDate', function() {
     console.log($scope.details.departureDate);
@@ -299,8 +298,6 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
   $scope.details = {
     "origin":"",
     "destination":"",
-    "departureDate":"",
-    "returnDate":"",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
@@ -310,18 +307,21 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
 
 
   $scope.setOriginAirport= function(airport) {
-    console.log(airport);
+    $scope.origin=airport;
     AirportsSrv.setSelectedOriginAirport(airport);
   };
 
   var date = new Date();
 $scope.depMinDate = AirportsSrv.formatDate(date);
+var nextDay = new Date(date.getTime()+24*60*60*1000);
+$scope.retMinDate = AirportsSrv.formatDate(nextDay);
+
 
 
 
   /* Record User's Selected Destination Airport  */
   $scope.setDestinationAirport= function(airport) {
-    console.log(airport);
+    $scope.destination=airport;
     AirportsSrv.setSelectedDestinationAirport(airport);
   };
 
@@ -330,27 +330,15 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
   };
 
   $scope.departureDate =  function(departureDate) {
-    console.log(departureDate.getTime());
-    console.log(departureDate);
-    var nextDay = new Date();
-    nextDay.setDate((departureDate.getDate()+1));
-    console.log(nextDay);
-    console.log(nextDay.getTime());
-    AirportsSrv.setSelectedDepartureDate(departureDate);
-    // var minReturndate = new Date(departureDate);
-    // console.log(minReturndate);
-    // $scope.retMinDate = AirportsSrv.formatDate(minReturndate);
-
+    var nextDay = new Date((departureDate.getTime()+(24*60*60*1000)));
+    AirportsSrv.setSelectedDepartureDate(departureDate.getTime());
+     $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
   };
 
-  $scope.$watch('details.returnDate', function() {
-    console.log($scope.details.returnDate);
-    AirportsSrv.setSelectedDepartureDate($scope.details.returnDate);
-    // if($scope.returnDate!=null && $scope.returnDate.getTime()<=$scope.departureDate.getTime())
-    //  $scope.returnDate=null;
-    // AirportsSrv.setSelectedReturnDate($scope.returnDate);
-  });
+  $scope.returnDate = function(returnDate) {
+    AirportsSrv.setSelectedReturnDate(returnDate.getTime());
+  };
 
   $scope.$watch('details.class', function() {
    if($scope.details.class=='1'){
@@ -372,6 +360,8 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
   });
 
   $scope.searchflights = function(){
+    console.log(AirportsSrv.getSelectedDepartureDate());
+    console.log(AirportsSrv.getSelectedReturnDate());
     $state.go('flightsTwoWay');
   };
   $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
