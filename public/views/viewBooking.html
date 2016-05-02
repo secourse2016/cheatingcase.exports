@@ -1,6 +1,11 @@
+
+<!-- <div class = "row">
+<div class = "col-xs-12 col-sm-6 col-md-6">
+
 <div class="jumbotron">
 <div class = "row">
 <div class = "col-xs-10 col-sm-5 col-md-5" align="center">
+
 <div ng-repeat="passenger in booking.passengerDetails">
   <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
 </div>
@@ -40,6 +45,135 @@
 </div>
 </div>
 
-</div>
-</div>
+</div> -->
+
+
+<div class="container viewBookingPage">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div style="max-width: 0px" id="navFly"></div>
+            <h2 class="section-heading wow fadeInDown" data-wow-offset="250" style="visibility: visible; animation-name: fadeInDown;">Booking Information</h2>
+            <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230" style="visibility: visible; animation-name: fadeInDown;">Everything in one place.</h3>
+        </div>
+    </div>
+    <div class="row swissBadgeBigContainer">
+        <div class="col-lg-12 swissBadgeContainer">
+            <div class="row swissBadge">
+                <div class="col-md-4 col-sm-12 col-xs-12 swissBadge-left">
+                    <h2 class="swissBadge-header">BOOKING NUMBER<span class="help-block subtext-gig">{{booking.refNum}}</span></h2>
+                    <h5 class="swissBadge-header">COST<span class="help-block subtext-gig">{{booking.cost|currency}}</span></h5>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-middle">
+                    <h2 class="swissBadge-header">CAI to JED<span class="pull-right swissBadgeAirline">Date</span></h2>
+                    <h5 class="swissBadge-header">Outgoing FlightID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
+                    <p>Class : {{booking.class}}</p>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-right">
+                    <h2 class="swissBadge-header">JED to CAI<span class="pull-right swissBadgeAirline">Date</span></h2>
+                    <h5 class="swissBadge-header">Return FlightID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
+                    <p>Class : {{booking.class}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row passengersInfo" style="text-align: center">
+    <div class="col-md-6 col-sm-12 col-xs-12 passengerCol" ng-repeat="passenger in booking.passengerDetails">
+        <booking-passenger  passenger="passenger" index="$index+1"></booking-passenger>
+    </div>
+  </div> -->
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+        </div>
+    </div>
+    <div class="row passengerAndMap">
+        <div class="col-md-12 col-sm-12 col-xs-12 passengerCol">
+            <h2>PASSENGER INFORMATION</h2>
+            <div class="panel-group bookingPassenger" id="accordion">
+                <div class="panel gig" ng-repeat="passenger in booking.passengerDetails">
+                    <booking-passenger passenger="passenger" index="$index+1"></booking-passenger>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row swissBadgeBigContainer">
+        <div class="col-lg-12 swissBadgeContainer">
+            <div class="row swissBadgeSeat">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <h2 class="swissBadge-header">Outgoing Seats</h2>
+
+                    <div class="panel-group bookingPassenger" id="accordion">
+                        <div class="panel gig">
+                            <div class="panel-body">
+                                <div class="row">
+                                  <div class="col-lg-12 seatMapContainer">
+                                    <div class="panel panel-title-default">
+                                      <div class="panel-body">
+                                        bjj
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <h2 class="swissBadge-header">Return Seats</h2>
+                    <div class="panel-group bookingPassenger" id="accordion">
+                        <div class="panel gig">
+                            <div class="panel-body">
+                                <div class="row">
+                                  <div class="col-lg-12 seatMapContainer">
+                                    <div class="panel panel-default">
+                                      <div class="panel-body">
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" name="button" class="btn btn-default business">1A</button>
+                                            <button type="button" name="button" class="btn btn-default booked">1B</button>
+                                            <button type="button" name="button" class="btn btn-default business">1J</button>
+                                            <button type="button" name="button" class="btn btn-default business">1K</button>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" name="button" class="btn btn-default business">2A</button>
+                                            <button type="button" name="button" class="btn btn-default business">2B</button>
+                                            <button type="button" name="button" class="btn btn-default booked">2J</button>
+                                            <button type="button" name="button" class="btn btn-default business">2K</button>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" class="btn btn-default economy" name="button">6A</button>
+                                            <button type="button" class="btn btn-default economy"name="button">6B</button>
+                                            <button type="button" class="btn btn-default booked" name="button">6J</button>
+                                            <button type="button" class="btn btn-default economy" name="button">6K</button>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" class="btn btn-default economy" name="button">6A</button>
+                                            <button type="button" class="btn btn-default economy"name="button">6B</button>
+                                            <button type="button" class="btn btn-default economy" name="button">6J</button>
+                                            <button type="button" class="btn btn-default selected" name="button">6K</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
 </div>

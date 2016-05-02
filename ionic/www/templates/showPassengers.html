@@ -1,61 +1,62 @@
-<ion-view view-title="Listing a Single Panel Info for user to fill">
-  <ion-content class="padding">
-
-    <div class="list card">
+      <div class="padding">
+        <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="passengerInfoForm.$valid && $parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
+         <div class="card" >
       <a class="item item-icon-left" href>
         <i class="icon ion-ios-person" style="font-color: red"></i>
-        <h2>Passenger {{index+1}}</h2>
+        <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Passenger {{index+1}}</p>
       </a>
-
-      <div class="item item-body">
-        <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="$parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
+     </div>
           <div class="row">
             <div class="col">
               <div class="list">
                 <label class="item item-input item-stacked-label">
-                  <span class="input-label">First Name</span>
-                  <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel" ng-model="firstName" ng-required="true" placeholder="First Name">
+                  <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">First Name</p>
+                  <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel" ng-model="firstName" ng-required="true" placeholder="First Name" style="width:100%;color:red;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.first_name.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
                 <label class="item item-input item-stacked-label">
-                  <span class="input-label">Last Name</span>
-                  <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName" ng-required="true" placeholder="Last Name">
+                  <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Last Name</p>
+                  <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName" ng-required="true" placeholder="Last Name" style="color:black;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.last_name.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
                 <label class="item item-input item-stacked-label">
-                  <span class="input-label">Passport Number</span>
-                  <input type="text" name="passport_number" id="passport_number" class="form-control input-sm floatlabel" ng-model="passportNumber" ng-required="true" placeholder="Passport Number">
+                  <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Passport Number</p>
+                  <input type="text" name="passport_number" id="passport_number" class="form-control input-sm floatlabel" ng-model="passportNumber" ng-required="true" placeholder="Passport Number" style="color:black;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.passport_number.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
                 <label class="item item-input item-stacked-label">
-                  <span class="input-label">Date Of Birth</span>
-                  <input type="date" name="dob" id="dob" class="form-control input-sm floatlabel" ng-model="dob" ng-required="true" placeholder="MM/DD/YYYY">
+                  <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Date Of Birth</p>
+                  <input type="date" name="dob" id="dob" class="form-control input-sm floatlabel" ng-model="dob" ng-required="true" placeholder="MM/DD/YYYY" style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.dob.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
+             <label class="item item-input item-select" style="width:100%">
+              <div class="input-label form-group ">
+              <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Nationality</p>
+              </div>
+              <select name="repeatSelect" id="repeatSelect" ng-model="passCountry" ng-required="false" style="width:50%">
+             <option ng-repeat="country in countries" value="{{country}}" style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">{{country}}</option>
+             </select>
+            </label>
+
                 <label class="item item-input item-stacked-label">
-<span class="input-label">Nationality</span>
-<select name="repeatSelect" id="repeatSelect" ng-model="passCountry" ng-required="false">
-<option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
-</select>
-</label>
-                <label class="item item-input item-stacked-label">
-                  <span class="input-label">E-mail</span>
-                  <input type="email" name="email" ng-model="email" id="email" ng-required="false" placeholder="E-mail">
+                 <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">E-mail</p>
+                  <input type="email" name="email" ng-model="email" id="email" ng-required="false" placeholder="E-mail"
+                  style="color:black;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.email.$error">
                   <div ng-message="email">Please enter a valid email.</div>
                 </div>
                 <label class="item item-input item-stacked-label">
-                  <span class="input-label">Passport Exp Date</span>
-                  <input type="month" name="year" ng-model="expDate" id="expDate" ng-required="false" placeholder="MM/YY">
+                  <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Passport Exp Date</p>
+                  <input type="month" name="year" ng-model="expDate" id="expDate" ng-required="false" placeholder="MM/YY" style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.email.$error">
                   <div ng-message="date">Please enter a valid Expiary Date.</div>
@@ -66,12 +67,10 @@
           </div>
           <div class="row">
             <div class="col" style="text-align: center">
-              <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="margin-top:10px" ng-click="$parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
+              <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="margin-top:10px">
                 <strong>Verifiy Information</strong>
               </button>
             </div>
           </div>
         </form>
       </div>
-  </ion-content>
-</ion-view>
