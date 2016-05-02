@@ -692,10 +692,10 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
 
 })
 //paymentController start
-.controller('paymentController',function($scope,AirportsSrv){
+.controller('paymentController',function($scope,AirportsSrv,stripe){
 
-  // retrieved Info About Outgoing Flight
- /* $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
+ // retrieved Info About Outgoing Flight
+  $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
   $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
 
   // retrieved Info About Return Flight
@@ -756,7 +756,7 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
 
       }
     });
-  };*/
+  };
 
 })
 //paymentController end
