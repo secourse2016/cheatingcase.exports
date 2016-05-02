@@ -820,7 +820,7 @@ $scope.send=function(){
       popover = $ionicPopover.fromTemplate(popoverTemplate, {
         scope: $scope
       });
-      $element.on('focus', function (e) {
+      $element.on('click', function (e) {
         if (!popoverShown) {
           popover.show(e);
         }
