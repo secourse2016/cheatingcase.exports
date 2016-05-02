@@ -689,7 +689,7 @@ $scope.send=function(){
   };
 })
 //paymentController start
-.controller('paymentController',function($scope,AirportsSrv,stripe){
+.controller('paymentController',function($scope,AirportsSrv){
 
   // retrieved Info About Outgoing Flight
  /* $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
