@@ -29,7 +29,7 @@
         <div class="col form-group item-divider" align="center">
           <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
           <label class="item item-input form-group" >
-            <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date" name="depDate" id="depDate" min="{{depMinDate}}">
+            <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date" name="depDate" id="depDate" min={{depMinDate}}>
           </label>
           <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.depDate.$error">
             <div ng-message="required">Please enter a valid value for this field.</div>
