@@ -1,12 +1,12 @@
 <ion-view view-title="Two Way">
   <ion-content class= "padding" >
-    <form name="searchForm" novalidate ng-submit="searchForm.$valid " >
+    <form name="searchForm" novalidate ng-submit="searchForm.$valid && searchflights()">
       <div class="row">
       <div class="card  form-group" >
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger " ><strong>Select Origin</strong></span></label>
       <label class="item item-input form-group" >
-        <input type="text" ionic-autocomplete="{items: airports,onSelect:setOriginAirport}"placeholder="Flight From*" ng-model="details.origin">
+        <input type="text" ionic-autocomplete="{items: airports,onSelect:setOriginAirport}"placeholder="Flight From*" ng-model="details.origin" ng-required="true">
       </label>
       </div>
       </div>
@@ -15,7 +15,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger "><strong>Select Destination</strong></span></label>
       <label class="item item-input form-group" >
-  <input type="text" ionic-autocomplete="{items: airports,onSelect:setDestinationAirport}"placeholder="Flight To*" ng-model="details.destination">
+  <input type="text" ionic-autocomplete="{items: airports,onSelect:setDestinationAirport}"placeholder="Flight To*" ng-model="details.destination" ng-required="true">
       </label>
       </div>
       </div>
@@ -24,7 +24,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
+      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Deptarture Date"ng-model="depDate" ng-change="departureDate(depDate)" min={{depMinDate}} ng-required="true">
       </label>
       </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Return Date</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
+      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Return Date"ng-model="retDate" ng-change="returnDate(retDate)" ng-required="true">
       </label>
       </div>
       </div>
@@ -113,7 +113,7 @@
 
         </div>
         <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
-          <button class="button   button-assertive form-group" ng-click="searchflights()"  style=" width:100%; margin-top:30px" >
+          <button class="button   button-assertive form-group" style=" width:100%; margin-top:30px" >
             Search Flight
           </button>
         </div>

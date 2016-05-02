@@ -2,9 +2,6 @@ angular.module('starter.services', [])
 
 .factory('AirportsSrv', function($http) {
   return {
-    getAirportCodes : function() {
-      return $http.get('http://www.swiss-air.me/api/data/airports');
-    },
     setPassengerArray: function(value) {
       this.passengerArray = value;
     },
@@ -120,9 +117,20 @@ angular.module('starter.services', [])
     setbookingRefNum: function(value) {
       this.bookingRefNum = value;
     },
+    
+    formatDate: function (date) {
+      month = '' + (date.getMonth() + 1),
+        day = '' + date.getDate(),
+        year = date.getFullYear();
 
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      return [year, month, day].join('-');
+    },
+    
     getAirportCodes : function() {
-      return $http.get('http://www.swiss-air.me'+'/api/data/airports');
+      return $http.get('http://www.swiss-air.me/api/data/airports');
     },
 
     searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines){
