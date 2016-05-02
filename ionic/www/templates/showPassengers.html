@@ -1,5 +1,5 @@
       <div class="padding">
-        <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="$parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
+        <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="passengerInfoForm.$valid && $parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
          <div class="card" >
       <a class="item item-icon-left" href>
         <i class="icon ion-ios-person" style="font-color: red"></i>
@@ -67,11 +67,10 @@
           </div>
           <div class="row">
             <div class="col" style="text-align: center">
-              <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="margin-top:10px" ng-click="$parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
+              <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="margin-top:10px">
                 <strong>Verifiy Information</strong>
               </button>
             </div>
           </div>
         </form>
       </div>
-    
