@@ -267,12 +267,6 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
   $scope.$watch('details.departureDate', function() {
     console.log($scope.details.departureDate);
     AirportsSrv.setSelectedDepartureDate($scope.details.departureDate);
-    // $scope.returnDate= null;
-    // $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
-    // new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
-    // :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
-    // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
-
   });
 
   $scope.$watch('details.class', function() {
