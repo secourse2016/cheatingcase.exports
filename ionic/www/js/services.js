@@ -2,9 +2,6 @@ angular.module('starter.services', [])
 
 .factory('AirportsSrv', function($http) {
   return {
-    getAirportCodes : function() {
-      return $http.get('http://www.swiss-air.me/api/data/airports');
-    },
     setPassengerArray: function(value) {
       this.passengerArray = value;
     },
@@ -122,7 +119,7 @@ angular.module('starter.services', [])
     },
 
     getAirportCodes : function() {
-      return $http.get('http://www.swiss-air.me'+'/api/data/airports');
+      return $http.get('http://www.swiss-air.me/api/data/airports');
     },
 
     searchFlightsTwoWay: function(origin, destination, departingDate, returningDate, Class, otherAirlines){
