@@ -24,7 +24,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
+      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date"ng-model="depDate" ng-change="departureDate(depDate)" min={{depMinDate}}>
       </label>
       </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Return Date</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
+      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date" min={{retMinDate}}>
       </label>
       </div>
       </div>
