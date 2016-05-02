@@ -260,6 +260,10 @@ $scope.send=function(){
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
   };
 
+ var date = new Date(); 
+$scope.depMinDate = AirportsSrv.formatDate(date);
+
+
   $scope.$watch('details.departureDate', function() {
     console.log($scope.details.departureDate);
     AirportsSrv.setSelectedDepartureDate($scope.details.departureDate);
