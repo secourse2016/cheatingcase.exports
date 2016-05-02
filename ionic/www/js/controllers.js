@@ -130,7 +130,7 @@ angular.module('starter.controllers', [])
 
       // Custom popup
       var myPopup2 = $ionicPopup.show({
-         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and AirportsSrv quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
+         template: '<p style="font-family:Times New Roman">As Switzerland national airline, SWISS is committed to the highest standards of product and service quality. The airline flies some 16 million passengers every year to over 105 destinations all over the world.</p>',
          title: 'For the people in the company',
          subTitle: '<img src="./img/about2.jpg">',
          scope: $scope,
@@ -176,7 +176,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ContactCtrl', function($scope,$ionicLoading,$timeout, $ionicScrollDelegate){
+.controller('ContactCtrl', function($scope, $ionicLoading, $ionicLoading,$timeout, $ionicScrollDelegate){
 
 $ionicLoading.show({
     content: 'Loading',
@@ -232,7 +232,6 @@ $scope.send=function(){
    };
 })
 
-/* Search-One-Way*/
 .controller('SearchflightCtrlOneWay', function($scope,$state,AirportsSrv) {
   $scope.details = {
     "origin":"",
@@ -371,7 +370,6 @@ $scope.send=function(){
   $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 })
 
-/* Flights-One-Way */
 .controller('flightsOneWay', function($scope,$state,AirportsSrv) {
   $scope.disabled=true;
   $scope.outgoingFlights=  [
@@ -540,7 +538,7 @@ $scope.send=function(){
 
   $scope.$watch('details.seats', function() {
     $scope.passengerArray = [];
-    for(var i=0; i<$scope.detail.seats; i++){
+    for(var i=0; i<$scope.details.seats; i++){
       $scope.passengerArray.push({"firstName":"","lastName":"","passportNum":0,"dateOfBirth":0});
     }
     AirportsSrv.setPassengerArray($scope.passengerArray);
