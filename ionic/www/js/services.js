@@ -2,6 +2,9 @@ angular.module('starter.services', [])
 
 .factory('AirportsSrv', function($http) {
   return {
+    getAirportCodes : function() {
+      return $http.get('http://www.swiss-air.me/api/data/airports');
+    },
     setPassengerArray: function(value) {
       this.passengerArray = value;
     },
