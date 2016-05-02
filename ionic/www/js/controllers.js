@@ -260,7 +260,7 @@ $scope.send=function(){
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
   };
 
- var date = new Date(); 
+ var date = new Date();
 $scope.depMinDate = AirportsSrv.formatDate(date);
 
 
@@ -313,8 +313,8 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
     console.log(airport);
     AirportsSrv.setSelectedOriginAirport(airport);
   };
-  
-  var date = new Date(); 
+
+  var date = new Date();
 $scope.depMinDate = AirportsSrv.formatDate(date);
 
 
@@ -330,16 +330,17 @@ $scope.depMinDate = AirportsSrv.formatDate(date);
   };
 
   $scope.departureDate =  function(departureDate) {
+    console.log(departureDate.getTime());
     console.log(departureDate);
+    var nextDay = new Date();
+    nextDay.setDate((departureDate.getDate()+1));
+    console.log(nextDay);
+    console.log(nextDay.getTime());
     AirportsSrv.setSelectedDepartureDate(departureDate);
-    var date = new Date(departureDate); 
-    $scope.retMinDate = AirportsSrv.formatDate(date);
+    // var minReturndate = new Date(departureDate);
+    // console.log(minReturndate);
+    // $scope.retMinDate = AirportsSrv.formatDate(minReturndate);
 
-    // $scope.returnDate= null;
-    // $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
-    // new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
-    // :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
-    // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
 
   };
 

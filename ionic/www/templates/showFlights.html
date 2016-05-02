@@ -6,13 +6,12 @@
 <p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Flight Number:  {{flight.flightNumber}}  <br>Cost:  {{flight.cost|currency}}</strong></p>
      </div>
      <div class="col-10">
-    <button class="button button-large button-positive">
-  Large Button
-     <input ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled();" type="checkbox">
-     <div class="track">
-         <div class="handle"></div>
-     </div>
-   </button>
+       <label class="checkbox checkbox-assertive">
+        <input ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled();" type="checkbox">
+        <div class="track">
+            <div class="handle"></div>
+        </div>
+       </label>
     </div>
     </div>
     </div>
