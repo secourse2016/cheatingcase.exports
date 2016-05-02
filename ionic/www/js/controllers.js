@@ -176,7 +176,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ContactCtrl', function($scope, $ionicLoading, $ionicLoading,$timeout, $ionicScrollDelegate){
+.controller('ContactCtrl', function($scope, $ionicLoading,$timeout, $ionicScrollDelegate){
 
 $ionicLoading.show({
     content: 'Loading',
