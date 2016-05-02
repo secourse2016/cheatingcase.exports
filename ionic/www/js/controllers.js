@@ -176,7 +176,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ContactCtrl', function($scope, $ionicLoading, $ionicLoading,$timeout, $ionicScrollDelegate){
+.controller('ContactCtrl', function($scope, $ionicLoading,$timeout, $ionicScrollDelegate){
 
 $ionicLoading.show({
     content: 'Loading',
@@ -260,15 +260,12 @@ $scope.send=function(){
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
   };
 
+  var date = new Date();
+  $scope.depMinDate = AirportsSrv.formatDate(date);
+
   $scope.$watch('details.departureDate', function() {
     console.log($scope.details.departureDate);
     AirportsSrv.setSelectedDepartureDate($scope.details.departureDate);
-    // $scope.returnDate= null;
-    // $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
-    // new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
-    // :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
-    // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
-
   });
 
   $scope.$watch('details.class', function() {
@@ -301,8 +298,6 @@ $scope.send=function(){
   $scope.details = {
     "origin":"",
     "destination":"",
-    "departureDate":"",
-    "returnDate":"",
     "adultsCount":"1",
     "childrenCount":"0",
     "class":"1",
@@ -312,13 +307,21 @@ $scope.send=function(){
 
 
   $scope.setOriginAirport= function(airport) {
-    console.log(airport);
+    $scope.origin=airport;
     AirportsSrv.setSelectedOriginAirport(airport);
   };
 
+  var date = new Date();
+$scope.depMinDate = AirportsSrv.formatDate(date);
+var nextDay = new Date(date.getTime()+24*60*60*1000);
+$scope.retMinDate = AirportsSrv.formatDate(nextDay);
+
+
+
+
   /* Record User's Selected Destination Airport  */
   $scope.setDestinationAirport= function(airport) {
-    console.log(airport);
+    $scope.destination=airport;
     AirportsSrv.setSelectedDestinationAirport(airport);
   };
 
@@ -326,24 +329,16 @@ $scope.send=function(){
    AirportsSrv.setOtherAirlines($scope.details.otherAirlines);
   };
 
-  $scope.$watch('details.departureDate', function() {
-    console.log($scope.details.departureDate);
-    AirportsSrv.setSelectedDepartureDate($scope.details.departureDate);
-    // $scope.returnDate= null;
-    // $scope.dateOptionsReturn.minDate = ($scope.departureDate==null)?
-    // new Date(($scope.dateOptions.minDate.getTime())+(24*60*60*1000))
-    // :new Date(($scope.departureDate.getTime())+(24*60*60*1000));
-    // AirportsSrv.setSelectedDepartureDate($scope.departureDate);
+  $scope.departureDate =  function(departureDate) {
+    var nextDay = new Date((departureDate.getTime()+(24*60*60*1000)));
+    AirportsSrv.setSelectedDepartureDate(departureDate.getTime());
+     $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
-  });
+  };
 
-  $scope.$watch('details.returnDate', function() {
-    console.log($scope.details.returnDate);
-    AirportsSrv.setSelectedDepartureDate($scope.details.returnDate);
-    // if($scope.returnDate!=null && $scope.returnDate.getTime()<=$scope.departureDate.getTime())
-    //  $scope.returnDate=null;
-    // AirportsSrv.setSelectedReturnDate($scope.returnDate);
-  });
+  $scope.returnDate = function(returnDate) {
+    AirportsSrv.setSelectedReturnDate(returnDate.getTime());
+  };
 
   $scope.$watch('details.class', function() {
    if($scope.details.class=='1'){
@@ -365,6 +360,8 @@ $scope.send=function(){
   });
 
   $scope.searchflights = function(){
+    console.log(AirportsSrv.getSelectedDepartureDate());
+    console.log(AirportsSrv.getSelectedReturnDate());
     $state.go('flightsTwoWay');
   };
   $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
@@ -820,7 +817,7 @@ $scope.send=function(){
       popover = $ionicPopover.fromTemplate(popoverTemplate, {
         scope: $scope
       });
-      $element.on('focus', function (e) {
+      $element.on('click', function (e) {
         if (!popoverShown) {
           popover.show(e);
         }
