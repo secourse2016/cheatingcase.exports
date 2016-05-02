@@ -6,7 +6,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger " ><strong>Select Origin</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="text"  style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight From*" ng-model="details.origin">
+        <input type="text" ionic-autocomplete="{items: airports,onSelect:setOriginAirport}"placeholder="Flight From*" ng-model="details.origin">
       </label>
       </div>
       </div>
@@ -15,7 +15,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger "><strong>Select Destination</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="text"  style="font-family: 'Poiret One', cursive;font-weight:bold" placeholder="Flight To*" ng-model="details.destination">
+  <input type="text" ionic-autocomplete="{items: airports,onSelect:setDestinationAirport}"placeholder="Flight To*" ng-model="details.destination">
       </label>
       </div>
       </div>
