@@ -1,53 +1,56 @@
-<ion-view view-title="Booking Information of a Single Passenger">
-  <div class="panel-group" id="accordion{{index}}">
-      <div class="panel-heading">
-        <h4 class="panel-title">
+<div>
+     <div class="card" align="center">
+     <div class="row">
+     <div class="col-80">
 
-          </h4>
-        </div> 
-        <div id="collapse{{index}}" class="panel-collapse collapse">
-          <div class="panel-body">
+<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Passenger {{index}} Details</strong></p>
+     </div>
+     <div class="col-10">
+    <label class="checkbox checkbox-assertive">
+     <input ng-model="passenger.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled();" type="checkbox">
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+    </label>
+    </div>
+    </div>
+    </div>
+ 
+    <div id="collapse{{type}}{{index}}" ng-init="passenger.checked" ng-show="passenger.checked" >
+          <div class="card">
             <div class="row">
-                <div>
+            <div class="col-10"></div>
+                <div class="col-50">
                     <div class="row">
-                        <h6 style="color: rgb(228,40,18)">First Name</h6>
-                        <p>{{passenger.firstName}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">First Name : <br>{{passenger.firstName}}</p>
                     </div>
                     <div class="row">
-                        <h6 style="color: rgb(228,40,18)">Date of Birth</h6>
-                        <p>{{passenger.dateOfBirth|date:'medium'}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Date of Birth : <br>{{passenger.dateOfBirth|date:'medium'}}</p>
                     </div>
-                    <div class="row" ng-hide="$parent.checkNationality(index)">
-                        <h6 style="color: rgb(228,40,18)">Nationality</h6>
-                        <p>{{passenger.nationality}}</p>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Nationality : <br>{{passenger.nationality}}</p>
                     </div>
-
+                 
 
                 </div>
-
-                <div >
+                <!-- End Panel-Gig Left -->
+                <div class="col-40">
                   <div class="row">
-                      <h6 style="color: rgb(228,40,18)">Last Name</h6>
-                      <p>{{passenger.lastName}}</p>
+                      <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Last Name : <br>{{passenger.lastName}}</p>
                   </div>
                     <div class="row">
-                        <h6 style="color: rgb(228,40,18)">Passport Number</h6>
-                        <p>{{passenger.passportNum}}</p>
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Passport Number : <br>{{passenger.passportNum}}</p>
                     </div>
-                    <div class="row" ng-hide="$parent.checkEmail(index)">
-                        <h6 style="color: rgb(228,40,18)">Email</h6>
-                        <p>{{passenger.email}}</p>
+              
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Email : <br>{{passenger.email}}</p>
                     </div>
-
+                  
                 </div>
-
 
 
             </div>
 
           </div>
-        </div>
-    </div>
-
-
-</ion-view>
+       </div>
+ </div>
