@@ -375,32 +375,32 @@ $scope.send=function(){
   $scope.outgoingFlights=  [
     {
       "flightId":"945sd718jfhk7132",
-  		"flightNumber": "SE9600",
-  		"aircraftType": "Airbus ",
-  		"aircraftModel": "133",
-  		"departureDateTime": 1460331360000,
-  		"arrivalDateTime": 1460339160000,
-  		"origin": "CAI",
-  		"destination": "JED",
-		  "class":"economy",
-  		"cost": "539",
-  		"Airline": "Swiss Air",
-  		"checked":false
-  	},
-  	{
+      "flightNumber": "SE9600",
+      "aircraftType": "Airbus ",
+      "aircraftModel": "133",
+      "departureDateTime": 1460331360000,
+      "arrivalDateTime": 1460339160000,
+      "origin": "CAI",
+      "destination": "JED",
+      "class":"economy",
+      "cost": "539",
+      "Airline": "Swiss Air",
+      "checked":false
+    },
+    {
       "flightId":"12847182947132",
-  		"flightNumber": "GA1400",
-  		"aircraftType": "AirBag ",
-  		"aircraftModel": "S233",
-  		"departureDateTime": 1460331490000,
-  		"arrivalDateTime": 1460339260000,
-  		"origin": "CAI",
-  		"destination": "JED",
-		"class":"economy",
-  		"cost": "712",
-  		"Airline": "Swiss Air",
-  		"checked":false
-  	}
+      "flightNumber": "GA1400",
+      "aircraftType": "AirBag ",
+      "aircraftModel": "S233",
+      "departureDateTime": 1460331490000,
+      "arrivalDateTime": 1460339260000,
+      "origin": "CAI",
+      "destination": "JED",
+    "class":"economy",
+      "cost": "712",
+      "Airline": "Swiss Air",
+      "checked":false
+    }
   ];
 //  $scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
   $scope.Total = 0;
@@ -473,62 +473,62 @@ $scope.send=function(){
   $scope.outgoingFlights= [
     {
       "flightId":"9218hsbsw",
-  		"flightNumber": "SE9600",
-  		"aircraftType": "Airbus ",
-  		"aircraftModel": "133",
-  		"departureDateTime": 1460331360000,
-  		"arrivalDateTime": 1460339160000,
-  		"origin": "CAI",
-  		"destination": "JED",
-	    "class":"economy",
-  		"cost": "539",
-  		"Airline": "Swiss Air",
-  		"checked":false
-  	},
-  	{
+      "flightNumber": "SE9600",
+      "aircraftType": "Airbus ",
+      "aircraftModel": "133",
+      "departureDateTime": 1460331360000,
+      "arrivalDateTime": 1460339160000,
+      "origin": "CAI",
+      "destination": "JED",
+      "class":"economy",
+      "cost": "539",
+      "Airline": "Swiss Air",
+      "checked":false
+    },
+    {
       "flightId":"sjdbqjwbdhj2",
-  		"flightNumber": "GA1400",
-  		"aircraftType": "AirBag ",
-  		"aircraftModel": "S233",
-  		"departureDateTime": 1460331490000,
-  		"arrivalDateTime": 1460339260000,
-  		"origin": "CAI",
-  		"destination": "JED",
-	  	"class":"economy",
-  		"cost": "712",
-  		"Airline": "Swiss Air",
-  		"checked":false
-  	}
+      "flightNumber": "GA1400",
+      "aircraftType": "AirBag ",
+      "aircraftModel": "S233",
+      "departureDateTime": 1460331490000,
+      "arrivalDateTime": 1460339260000,
+      "origin": "CAI",
+      "destination": "JED",
+      "class":"economy",
+      "cost": "712",
+      "Airline": "Swiss Air",
+      "checked":false
+    }
   ];
   $scope.returnFlights= [
     {
       "flightId":"2udh1o2hdu",
-  		"flightNumber": "JW102",
-  		"aircraftType": "Airbus ",
-  		"aircraftModel": "GH12",
-  		"departureDateTime": 1460341360000,
-  		"arrivalDateTime": 1460347160000,
-  		"origin": "JED",
-  		"destination": "CAI",
-		  "class":"economy",
-  		"cost": "812",
-  		"Airline": "Swiss Air",
-  		"checked":false
-  	},
-  	{
+      "flightNumber": "JW102",
+      "aircraftType": "Airbus ",
+      "aircraftModel": "GH12",
+      "departureDateTime": 1460341360000,
+      "arrivalDateTime": 1460347160000,
+      "origin": "JED",
+      "destination": "CAI",
+      "class":"economy",
+      "cost": "812",
+      "Airline": "Swiss Air",
+      "checked":false
+    },
+    {
       "flightId":"023jdwdq",
-  		"flightNumber": "JRO102",
-  		"aircraftType": "AirBag ",
-  		"aircraftModel": "QP12",
-  		"departureDateTime": 1460341360000,
-  		"arrivalDateTime": 1460349160000,
-  		"origin": "JED",
-  		"destination": "CAI",
-		  "class":"economy",
-  		"cost": "619",
-  		"Airline": "Swiss Air",
-  		"checked":false
-  	}
+      "flightNumber": "JRO102",
+      "aircraftType": "AirBag ",
+      "aircraftModel": "QP12",
+      "departureDateTime": 1460341360000,
+      "arrivalDateTime": 1460349160000,
+      "origin": "JED",
+      "destination": "CAI",
+      "class":"economy",
+      "cost": "619",
+      "Airline": "Swiss Air",
+      "checked":false
+    }
   ];
   //$scope.outgoingFlights= AirportsSrv.getOutgoingFlights();
   //$scope.returnFlights =AirportsSrv.getReturnFlights();
@@ -692,7 +692,7 @@ $scope.send=function(){
 .controller('paymentController',function($scope,AirportsSrv,stripe){
 
   // retrieved Info About Outgoing Flight
-  $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
+ /* $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
   $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
 
   // retrieved Info About Return Flight
@@ -753,7 +753,7 @@ $scope.send=function(){
 
       }
     });
-  };
+  };*/
 
 })
 //paymentController end
