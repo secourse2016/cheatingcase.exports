@@ -111,6 +111,7 @@ app.all('*', function(req, res, next) {
     'Host': req.headers['host'],
     'Connection': req.headers['connection'],
     'User-Agent': req.headers['user-agent'],
+    'Body': req.body,
     'DateTime': new Date()
   }
   fs.appendFile('.log', JSON.stringify(dataLog, null, '\t'));
@@ -353,7 +354,8 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',
     "cost": 1,
     "currency": 1,
     "Airline": 1,
-    "_id": 0
+    "_id": 0,
+    "class": { $literal: req.params.class }
   };
 
   db.db().collection('flights').aggregate([{ $match:query }, { $project:filter }]).toArray(function(error,flights) {
@@ -365,7 +367,7 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',
     if(oa!='true'){
       res.send(result);
     } else {
-      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'', result, res, airlinesIterate);
+      airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'/'+req.params.seats+'', result, res, airlinesIterate);
     }
   });
 
@@ -412,7 +414,8 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
     "cost": 1,
     "currency": 1,
     "Airline": 1,
-    "_id": 0
+    "_id": 0,
+    "class": { $literal: req.params.class }
   };
 
   var outgoingFlights;
@@ -428,7 +431,7 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
       if(oa!='true'){
         res.send(result);
       } else {
-        airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'', result, res, airlinesIterate);
+        airlinesIterate(0, '/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'/'+req.params.seats+'', result, res, airlinesIterate);
       }
 
     });
