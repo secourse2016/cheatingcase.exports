@@ -705,6 +705,69 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
   };
 
 })
+
+.controller('viewBookingController',function($scope,AirportsSrv){
+  $scope.booking = {
+  "_id": "5723a6172ed7677425a9f6d1",
+  "passengerDetails": [
+    {
+      "firstName": "Alaa",
+      "lastName": "Badran",
+      "passportNum": 6549865749865,
+      "dateOfBirth": 862434000000,
+      "nationality": "Egypt",
+      "email": "alaa.badran@hotmail.com",
+      "passportExpiryDate": 1580508000000
+    },
+    {
+      "firstName": "Mark",
+      "lastName": "Nader",
+      "passportNum": 132871283712,
+      "dateOfBirth": 862434000000,
+      "nationality": "Egypt",
+      "email": "alaa.badran@hotmail.com",
+      "passportExpiryDate": 1580508000000
+    }
+  ],
+  "class": "business",
+  "cost": 1704,
+  "outgoingFlightId": "5723994361c4675922339d83",
+  "returnFlightId": "123721362163739d83",
+  "refNum": "SA18652",
+  "outgoingSeats": [
+    {
+      "seatNum": "1K",
+      "refNum": "SA18652"
+    },
+    {
+      "seatNum": "1H",
+      "refNum": "SA18652"
+
+    }
+  ],
+   "returnSeats": [
+    {
+      "seatNum": "2K",
+      "refNum": "SA18652"
+    },
+    {
+      "seatNum": "1A",
+      "refNum": "SA18652"
+
+    }
+  ]
+};
+  // $scope.booking = AirportsSrv.getViewedBooking();
+
+  $scope.checkNationality = function(index){
+    return ($scope.booking.passengerDetails[index-1].nationality == undefined);
+  };
+
+  $scope.checkEmail = function(index){
+    return ($scope.booking.passengerDetails[index-1].email == undefined);
+  };
+})
+
 //paymentController start
 .controller('paymentController',function($scope,AirportsSrv){
 
