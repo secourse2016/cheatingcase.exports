@@ -32,12 +32,12 @@
                         <div class="row searchFormInput" ng-show="!isTripType(3)">
                             <!-- from and to -->
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
-                                <label for="originAirports">Select Origin: </label>
+                                <label for="originAirports"><i class="glyphicon glyphicon-globe"></i>Select Origin: </label>
                                 <input name="originAirports" id="originAirports" type="text" autocomplete="off" placeholder="Flying From*" ng-required="!isTripType(3)" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
                                 <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
-                                <label for="destinationAirports">Select Destination: </label>
+                                <label for="destinationAirports"><i class="glyphicon glyphicon-globe"></i>Select Destination: </label>
                                 <input name="destinationAirports" id="destinationAirports" type="text" autocomplete="off" placeholder="Flying To*" ng-required="!isTripType(3)" ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
                                 <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
                             </div>
@@ -55,7 +55,7 @@
 
                         <div class="row searchFormInput" ng-show="!isTripType(3)">
                             <div class="col-md-6 col-sm-12 col-xs-12">
-                                <label for="depDate">Departure Date: </label>
+                                <label for="depDate"><i class="fa fa-calendar-plus-o"></i>Departure Date: </label>
                                 <p class="input-group" id="depDate">
                                     <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="!isTripType(3)" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions"  close-text="Close" >
                                     <span class="input-group-btn">
@@ -68,7 +68,7 @@
 
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="depTime">Departure Time:</label>
+                                    <label for="depTime"><i class="fa fa-clock-o"></i>Departure Time:</label>
                                     <select class="form-control" id="depTime" ng-model="departureTime">
                                         <option value="1">Any Time</option>
                                         <option value="2">Morning</option>
@@ -84,7 +84,7 @@
 
                         <div class="row" id="roundTripRow" ng-show="isTripType(2)">
                             <div class="col-md-6 col-sm-12 col-xs-12">
-                                <label for="retDate">Return Date: </label>
+                                <label for="retDate"><i class="fa fa-calendar-plus-o"></i>Return Date: </label>
                                 <p class="input-group" id="retDate">
                                     <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="isTripType(2)" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptionsReturn"  close-text="Close" >
                                     <span class="input-group-btn">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="retTime">Return Time:</label>
+                                    <label for="retTime"><i class="fa fa-clock-o"></i>Return Time:</label>
                                     <select class="form-control" id="retTime" ng-model="returnTime">
                                         <option value="1">Any Time</option>
                                         <option value="2">Morning</option>

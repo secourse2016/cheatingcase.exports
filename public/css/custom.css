@@ -846,7 +846,7 @@ body {
 /*  PAYMENT INFO   */
 
 .slider-size {
-height: 340px; /* This is your slider height */
+height: 415px; /* This is your slider height */
 }
 .carousel {
 width:100%;
@@ -970,6 +970,13 @@ margin-right: -15px;
     background: white;
     color: #ed5249;
 }
+
+
+.passengerInfoContainer i,
+.paymentContainer i{
+  padding-right: 10px;
+}
+
 /*./ PAYMENT INFO*/
 
 
