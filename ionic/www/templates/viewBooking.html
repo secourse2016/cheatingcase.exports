@@ -24,19 +24,59 @@
                         <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Return Flight ID : <br>{{booking.returnFlightId}} </p>
                     </div>
                     <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>:{{booking.class}}</p>
+                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>{{booking.class}}</p>
                     </div>
 
                 </div>
                 </div>
                 </div>
                 </div>
-                <div>
+                
+                     <div class="card" align="center">
+     <div class="row">
+     <div class="col-80">
+
+<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>outgoing seats :</strong></p>
+     </div>
+     <div class="col-10">
+    <label class="checkbox checkbox-assertive">
+    <input ng-model="outgoing.checked" type="checkbox">
+
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+    </label>
+    </div>
+    </div>
+    </div>
+
+                     <div class="card" align="center">
+     <div class="row">
+     <div class="col-80">
+
+<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>return  seats :</strong></p>
+     </div>
+     <div class="col-10">
+    <label class="checkbox checkbox-assertive">
+    <input ng-model="return.checked" type="checkbox">
+
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+    </label>
+    </div>
+    </div>
+    </div>
+
+
+                <div class="row" id="collapse{{type}}{{index}}" ng-init="outgoing.checked" ng-show="outgoing.checked">
+<p style="font-weight: bold;font-family: 'Oswald', sans-serif"> outgoing Seats :
 <ul class="pagination">
   <li ng-repeat="seat in booking.outgoingSeats" class="seats"><a href="">{{seat.seatNum}}</a></li>
 </ul>
 </div>
-<div>
+<div class="row" id="collapse{{type}}{{index}}" ng-init="return.checked" ng-show="return.checked">
+<p style="font-weight: bold;font-family: 'Oswald', sans-serif"> return Seats :
 <ul class="pagination">
   <li ng-repeat="seat in booking.returnSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
 </ul>
