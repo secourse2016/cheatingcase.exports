@@ -15,6 +15,8 @@
                     <h5 class="swissBadge-header">CLASS<span class="help-block subtext-gig">{{booking.class}}</span></h5>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-middle">
+                    <h5 class="swissBadge-header">Outgoing: <span class="help-block subtext-gig">{{booking.origin}} --> {{booking.destination}}</span></h5>
+                    <h5 class="swissBadge-header">Outgoing Flight Date: <span class="help-block subtext-gig">{{booking.outgoingFlightDate|date:'medium'}}</span></h5>
                     <h5 class="swissBadge-header">Outgoing Flight ID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
                     <h5 class="swissBadge-header">Seats:
                       <span class="help-block subtext-gig">
@@ -25,6 +27,8 @@
                     </h5>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-right" ng-hide="checkReturn()">
+                  <h5 class="swissBadge-header">Return: <span class="help-block subtext-gig">{{booking.destination}} --> {{booking.origin}}</span></h5>
+                    <h5 class="swissBadge-header">Return Flight Date: <span class="help-block subtext-gig">{{booking.returnFlightDate|date:'medium'}}</span></h5>
                     <h5 class="swissBadge-header">Return Flight ID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
                     <h5 class="swissBadge-header">Seats:
                       <span class="help-block subtext-gig">
