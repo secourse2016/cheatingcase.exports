@@ -16,7 +16,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
   $scope.outgoingFlightAirlineURL = "";
   $scope.returnFlightAirlineURL = "";
 
-
+  $scope.refNum = "";
   $scope.receipt_number= 0;
 
   $scope.book = function(){
@@ -35,13 +35,20 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
             }).then(function(paymentToken){
               AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
                 ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
-                  if(resOutgoing.data.errorMessage == null) $scope.refNum += "\n " + resOutgoing.data.refNum + " Please refer to \""+$scope.outgoingFlightAirlineURL+"\" to view your booking details";
-                  else $scope.refNum += " " + resOutgoing.data.errorMessage;
+                  if(resOutgoing.data.errorMessage == null) {
+                    console.log('SUCCESS: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+                    $scope.refNum += "Booking: " + resOutgoing.data.refNum + " Please refer to \""+$scope.outgoingFlightAirlineURL+"\" to view your booking details.";
+                  }
+                  else {
+                    console.log('FAILURE: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+                    $scope.refNum += "Booking: " + resOutgoing.data.errorMessage + ".";
+                  }
                   stripe.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
               });
             });
         } else {
-          $scope.refNum += "\n Could Not Retrieve Airline's \""+$scope.outgoingFlightAirline+"\" Public Key.";
+          console.log('FAILURE: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+          $scope.refNum += "Booking: Could Not Retrieve Airline's \""+$scope.outgoingFlightAirline+"\" Public Key.";
         }
       });
     } else {
@@ -53,8 +60,14 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
       }).then(function (paymentToken){
         AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
           ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
-            if(resOutgoing.data.errorMessage == null) $scope.refNum += resOutgoing.data.refNum;
-            else $scope.refNum += resOutgoing.data.errorMessage;
+            if(resOutgoing.data.errorMessage == null) {
+              console.log('SUCCESS: case outgoing IS swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+              $scope.refNum += "Booking: " + resOutgoing.data.refNum + " Please go to \"View Booking\" to view your booking details.";
+            }
+            else {
+              console.log('FAILURE: case outgoing IS not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+              $scope.refNum += "Booking: " + resOutgoing.data.errorMessage + ".";
+            }
         });
       });
     }
@@ -74,13 +87,20 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
               }).then(function(paymentToken){
                 AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
                   null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
-                    if(resReturn.data.errorMessage == null) $scope.refNum += "\n " +resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details";
-                    else $scope.refNum += " " + resReturn.data.errorMessage;
+                    if(resReturn.data.errorMessage == null) {
+                      console.log('SUCCESS: case return is NOT swissAir and is different than outgoing');
+                      $scope.refNum += "Booking: " + resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details.";
+                    }
+                    else {
+                      console.log('FAILURE: case return is NOT swissAir and is different than outgoing');
+                      $scope.refNum += "Booking: " + resReturn.data.errorMessage + ".";
+                    }
                     stripe.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
                 });
               });
           } else {
-            $scope.refNum += "Could Not Retrieve Airline's \""+$scope.returnFlightAirline+"\" Public Key.";
+            console.log('FAILURE: case return is NOT swissAir and is different than outgoing');
+            $scope.refNum += "Booking: Could Not Retrieve Airline's \""+$scope.returnFlightAirline+"\" Public Key.";
           }
         });
       } else {
@@ -92,8 +112,14 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
         }).then(function (paymentToken){
           AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
             null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
-              if(resReturn.data.errorMessage == null) $scope.refNum += " " +resReturn.data.refNum;
-              else $scope.refNum += " " + resReturn.data.errorMessage;
+              if(resReturn.data.errorMessage == null) {
+                console.log('SUCCESS: case return IS swissAir and it is different than outgoing');
+                $scope.refNum += "Booking: " + resReturn.data.refNum + " Please go to \"View Booking\" to view your booking details.";
+              }
+              else {
+                console.log('FAILURE: case return IS not swissAir and it is different than outgoing');
+                $scope.refNum += "Booking: " + resReturn.data.errorMessage + ".";
+              }
           });
         });
 
