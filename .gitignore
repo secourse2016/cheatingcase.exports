@@ -16,6 +16,7 @@ data
 
 .env
 .log
+config.json
 
 # Ignore .DS_Store Files For Mac Users
 .DS_Store

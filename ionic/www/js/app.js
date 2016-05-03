@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngMessages'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngMessages','angular-stripe'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -16,12 +16,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,stripeProvider) {
+  
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+    stripeProvider.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+
   $stateProvider
 
   // setup an abstract state for the tabs directive

@@ -29,7 +29,7 @@
       <div class="col form-group item-divider" align="center">
       <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
       <label class="item item-input form-group" >
-      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date"ng-model="depDate" ng-change="departureDate(depDate)" min={{depMinDate}} ng-required="true">
+      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date" ng-model="depDate" ng-change="departureDate(depDate)" min={{depMinDate}} ng-required="true">
       </label>
       </div>
       </div>
@@ -109,7 +109,8 @@
             </div>
 
         <div class="col form-group"  style="margin-bottom: 30px;text-align:center ">
-        <button class="button   button-assertive form-group" style=" width:100%; margin-top:30px" >
+        <button class="button button-assertive form-group" style=" width:100%; margin-top:30px" ng-disabled="shown">
+           <ion-spinner icon="spiral" ng-hide="!shown"></ion-spinner>
           Search Flight
         </button>
         </div>

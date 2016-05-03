@@ -7,7 +7,8 @@
      </div>
      <div class="col-10">
     <label class="checkbox checkbox-assertive">
-     <input ng-model="passenger.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled();" type="checkbox">
+    <input ng-model="passenger.checked" type="checkbox">
+
      <div class="track">
          <div class="handle"></div>
      </div>
@@ -15,7 +16,7 @@
     </div>
     </div>
     </div>
- 
+
     <div id="collapse{{type}}{{index}}" ng-init="passenger.checked" ng-show="passenger.checked" >
           <div class="card">
             <div class="row">
@@ -30,7 +31,7 @@
                     <div class="row">
                         <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Nationality : <br>{{passenger.nationality}}</p>
                     </div>
-                 
+
 
                 </div>
                 <!-- End Panel-Gig Left -->
@@ -41,11 +42,11 @@
                     <div class="row">
                         <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Passport Number : <br>{{passenger.passportNum}}</p>
                     </div>
-              
+
                     <div class="row">
                         <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Email : <br>{{passenger.email}}</p>
                     </div>
-                  
+
                 </div>
 
 
