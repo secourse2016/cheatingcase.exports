@@ -241,7 +241,7 @@ $scope.send=function(){
     "class":"1",
     "otherAirlines":false
   };
-  // $scope.shown=false;
+   $scope.shown=false;
 
   AirportsSrv.setOtherAirlines("false");
 
@@ -303,7 +303,7 @@ $scope.send=function(){
 
   };
 
-  $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
+  $scope.airports=[{"iata":"UTK"},{"iata":"FIV"},{"iata":"FAK"},{"iata":"BWS"},{"iata":"WKK"},{"iata":"TSS"},{"iata":"FOB"},{"iata":"ABP"},{"iata":"ALV"},{"iata":"ADC"},{"iata":"TJP"},{"iata":"AEE"},{"iata":"AEI"},{"iata":"AEK"},{"iata":"OLR"},{"iata":"AFR"},{"iata":"AFT"},{"iata":"ATD"},{"iata":"VEV"},{"iata":"GEF"},{"iata":"AGG"},{"iata":"AKS"},{"iata":"BAS"},{"iata":"FRE"},{"iata":"HIR"},{"iata":"MBU"},{"iata":"IRA"},{"iata":"SCZ"},{"iata":"MUA"},{"iata":"GZO"},{"iata":"MNY"},{"iata":"PRS"},{"iata":"OTV"},{"iata":"RNL"},{"iata":"EGM"},{"iata":"RUS"},{"iata":"VAO"},{"iata":"AGK"},{"iata":"KGE"},{"iata":"AGL"},{"iata":"RIN"},{"iata":"RBV"},{"iata":"AHT"},{"iata":"AHY"},{"iata":"AIE"},{"iata":"AIH"},{"iata":"AIP"},{"iata":"AOS"},{"iata":"AKM"},{"iata":"ALZ"},{"iata":"AMC"},{"iata":"AME"},{"iata":"AMF"},{"iata":"AMU"},{"iata":"AMY"},{"iata":"ANH"},{"iata":"INU"},{"iata":"ANL"},{"iata":"CNZ"},{"iata":"DRC"},{"iata":"GGC"},{"iata":"JMB"},{"iata":"KNP"},{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 })
 
  /* Search-Two-Way */
@@ -316,6 +316,7 @@ $scope.send=function(){
     "class":"1",
     "otherAirlines":false
   };
+  $scope.shown = false;
   AirportsSrv.setOtherAirlines("false");
 
 
@@ -388,7 +389,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
       });
 
   };
-  $scope.airports=[{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
+  $scope.airports=[{"iata":"UTK"},{"iata":"FIV"},{"iata":"FAK"},{"iata":"BWS"},{"iata":"WKK"},{"iata":"TSS"},{"iata":"FOB"},{"iata":"ABP"},{"iata":"ALV"},{"iata":"ADC"},{"iata":"TJP"},{"iata":"AEE"},{"iata":"AEI"},{"iata":"AEK"},{"iata":"OLR"},{"iata":"AFR"},{"iata":"AFT"},{"iata":"ATD"},{"iata":"VEV"},{"iata":"GEF"},{"iata":"AGG"},{"iata":"AKS"},{"iata":"BAS"},{"iata":"FRE"},{"iata":"HIR"},{"iata":"MBU"},{"iata":"IRA"},{"iata":"SCZ"},{"iata":"MUA"},{"iata":"GZO"},{"iata":"MNY"},{"iata":"PRS"},{"iata":"OTV"},{"iata":"RNL"},{"iata":"EGM"},{"iata":"RUS"},{"iata":"VAO"},{"iata":"AGK"},{"iata":"KGE"},{"iata":"AGL"},{"iata":"RIN"},{"iata":"RBV"},{"iata":"AHT"},{"iata":"AHY"},{"iata":"AIE"},{"iata":"AIH"},{"iata":"AIP"},{"iata":"AOS"},{"iata":"AKM"},{"iata":"ALZ"},{"iata":"AMC"},{"iata":"AME"},{"iata":"AMF"},{"iata":"AMU"},{"iata":"AMY"},{"iata":"ANH"},{"iata":"INU"},{"iata":"ANL"},{"iata":"CNZ"},{"iata":"DRC"},{"iata":"GGC"},{"iata":"JMB"},{"iata":"KNP"},{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 
 })
 
