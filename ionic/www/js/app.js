@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngMessages'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.Contac', {
+  .state('tab.Contact', {
     url: '/Contact',
     views: {
       'tab-Contact': {
@@ -109,6 +109,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 url: '/flightsTwoWay',
                 templateUrl: 'templates/TwoWay.html',
                 controller: 'flightsTwoWay'
+  })
+
+  .state('confirm', {
+                url: '/confirm',
+                templateUrl: 'templates/confirmation.html',
+                controller: 'ConfirmationController'
+  })
+
+  .state('pay', {
+                url: '/pay',
+                templateUrl: 'templates/payment.html',
+                controller: 'paymentController'
   });
 
   // if none of the above states are matched, use this as the fallback

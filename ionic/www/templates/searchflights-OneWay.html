@@ -1,16 +1,15 @@
 <ion-view view-title="One Way">
   <ion-content class= "padding" >
 
-    <form name="searchForm" novalidate ng-submit="searchForm.$valid" >
+    <form name="searchForm" novalidate ng-submit="searchForm.$valid && searchflights()">
 
       <div class="row">
         <div class="card  form-group" >
           <div class="col form-group item-divider" align="center">
             <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger " ><strong>Select Origin</strong></span></label>
             <label class="item item-input form-group" >
-
               <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
-              <input ionic-autocomplete="{items:codes}" type="text" ng-model="origin">
+              <input type="text" ionic-autocomplete="{items: airports,onSelect:setOriginAirport}" placeholder="Flight From*" ng-model="details.origin" ng-required="true">
             </label>
           </div>
         </div>
@@ -19,30 +18,27 @@
           <div class="col form-group item-divider" align="center">
             <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger "><strong>Select Destination</strong></span></label>
             <label class="item item-input form-group" >
-
               <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
-              <input ionic-autocomplete="{items:codes}" type="text" ng-model="destination">
+                <input type="text" ionic-autocomplete="{items: airports,onSelect:setDestinationAirport}"placeholder="Flight To*" ng-model="details.destination" ng-required="true">
             </label>
           </div>
         </div>
       </div>
 
       <div class="card  form-group" align="center" >
-        <div class="col form-group item-divider" align="center">
-          <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
-          <label class="item item-input form-group" >
-            <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date">
-          </label>
-        </div>
+      <div class="col form-group item-divider" align="center">
+      <label style="color:red;font-family: 'Poiret One', cursive"><span class="label label-danger"><strong>Departure Date</strong></span></label>
+      <label class="item item-input form-group" >
+      <input type="date" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" align="center" placeholder="Dept Date"ng-model="depDate" ng-change="departureDate(depDate)" min={{depMinDate}} ng-required="true">
+      </label>
+      </div>
       </div>
 
 
-      <div class="card ">
-        <div class=" item item-divider">
-          <div class="row form-group card">
-            <label class="item item-input item-select form-group " style="width:600px">
-              <div class="input-label form-group col">
-                Adults Count
+         <div class="row">
+            <label class="item item-input item-select form-group" style="width:100%">
+              <div class="input-label form-group ">
+              <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Adults Count</p>
               </div>
               <select ng-model="details.adultsCount">
                 <option  value="1" style="color:red;font-family: 'Poiret One', cursive; text-align:center; font-weight:bold" >1 Adult</option>
@@ -59,10 +55,11 @@
             </label>
           </div>
 
-          <div class=" row form-group card">
-            <label class="item item-input item-select form-group" style="width:600px">
+
+          <div class="row">
+            <label class="item item-input item-select form-group" style="width:100%">
               <div class="input-label form-group ">
-                Children Count
+                <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">Children Count</p>
               </div>
               <select ng-model="details.childrenCount">
                 <option value="0">No Children</option>
@@ -76,10 +73,10 @@
           </div>
 
 
-          <div class="row form-group card">
-            <label class="item item-input item-select form-group" style="width:600px">
+          <div class="row">
+            <label class="item item-input item-select form-group" style="width:100%">
               <div class="input-label form-group">
-                class
+                <p style="color:red;font-family: 'Poiret One', cursive; font-weight:bold">class</p>
               </div>
               <select ng-model="details.class">
                 <option value="1">economy</option>
@@ -90,29 +87,33 @@
 
 
 
-          <div class="row form-group card " style="height: 50px" >
-            <label class="item-content form-group col col-75">Search Other Airlines </label>
-            <div class="col form-group">
+          <div class="row">
+            <label class="item form-group" style="width:100%">
+            <div class="row">
+            <div class="col-80">
+              <div class="input-label form-group ">
+              <p style="color:red;font-family: 'Poiret One', cursive; text-align:left; font-weight:bold">Search Other Airlines
+              </p>
+              </div>
+              </div>
+            <div class="col-10">
+            <label class="checkbox checkbox-assertive">
               <input type="checkbox" ng-model="details.otherAirlines" ng-click="flipOtherAirlines()">
+              <div class="track">
+              <div class="handle"></div>
+             </div>
+            </label>
+            </div>
+            </div>
+            </label>
             </div>
 
-
-
-
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="col form-group"  style="margin-bottom: 10px;text-align:center ">
-        <button class="button   button-assertive form-group" ng-click="searchflights()"  style=" width:200px; margin-top:30px" >
+        <div class="col form-group"  style="margin-bottom: 30px;text-align:center ">
+        <button class="button   button-assertive form-group" style=" width:100%; margin-top:30px" >
           Search Flight
         </button>
-      </div>
-    </div>
+        </div>
+        </div>
 
 
   </form>

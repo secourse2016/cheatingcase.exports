@@ -15,4 +15,56 @@ background-size:100%;
 }
 
 
+/*Payment Styling*/
 
+
+.swiss-center{
+margin-left: auto;
+margin-right: auto;
+display: block;
+}
+
+.credCardImgContainer img{
+  width: auto;
+  max-width: 150px;
+}
+
+
+/*Form Validation*/
+label.item.has-error-lr,
+label.item.has-error {
+  border-bottom: 2px solid red;
+}
+
+label.item.valid-lr {
+  border-bottom: 2px solid green;
+}
+/** Styling for the error text and container **/
+
+.form-errors {
+  text-align: center;
+  /*padding: 2px 0 2px 16px;*/
+  color: red;
+}
+
+.ng-invalid.ng-dirty{
+  border-bottom: 2px solid red;
+  border-color: #FA787E;
+}
+
+.ng-submitted .ng-invalid-required{
+  border-bottom: 2px solid red;
+  border-color: #FA787E;
+}
+
+
+
+/* XXX: showPassengers nadaft el css el 3agib el kan ma7tot 20 mara 3ala kol element da  */
+
+.showPassengersDivContainer p,
+.showPassengersDivContainer input,
+.showPassengersDivContainer select{
+  color:red;
+  font-family: 'Poiret One', cursive;
+  font-weight:bold;
+}
