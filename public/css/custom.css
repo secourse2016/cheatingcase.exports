@@ -846,6 +846,50 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
+/*Checkbox shit not working no time ba2a*/
+/*
+.mainViewContainer #searchOptions input[type="checkbox"] {
+    display: none;
+}
+.mainViewContainer #searchOptions label {
+    position: relative;
+    padding-left: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 16px 28px 0 0;
+}
+
+.mainViewContainer #searchOptions label:before, label:after {
+    font-family: FontAwesome;
+    font-size: 50px;
+    position: absolute; top: 0; left: -49px; right: 10px;
+}
+
+.mainViewContainer #searchOptions label:before {
+}
+.mainViewContainer #searchOptions label:after {
+    content: '\f00c';
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0.5;
+    font-size: 27px;
+   top: 16px;
+   left: -42px;
+   color: #f2ca27;
+-webkit-transition: all 0.50s;
+    -moz-transition: all 0.50s;
+    -o-transition: all 0.50s;
+     transition: all 0.50s;
+}
+
+.mainViewContainer #searchOptions input[type="checkbox"]:checked + label:after {
+    max-width: 25px;
+    opacity: 1;
+    margin-right: 90px;
+}*/
+
+
+
 
 /*  PAYMENT INFO   */
 
