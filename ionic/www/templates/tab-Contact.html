@@ -1,7 +1,7 @@
 <ion-view view-title="Contact">
   <ion-content class= "padding" >
   <div class="card" >
-    <img src="../img/logo12.jpg"  style="max-width: 100%;height: auto" >
+    <img src="./img/logo12.jpg"  style="max-width: 100%;height: auto" >
   </div>
   <div class="card" align="center">
   <p style="color:red;font-size:20px;font-weight: bold;font-family: 'Poiret One', cursive;">messege</p>
@@ -12,7 +12,9 @@
      </div>
  </label>
 </div>
- <div ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen" id="replyForm">
+
+
+ <div ng-init="isReplyFormOpen = false" ng-show="isReplyFormOpen" id="replyForm" style="margin-bottom:100px">
   <div class="card" style="margin-top:10px" >
   	<div class="contactus">
   	<div class="item item-input ">
@@ -34,13 +36,13 @@
   <textarea  ng-model="msg" placeholder="Send a message..." height="100%" width="100%" required minlength="1" maxlength="1500" style="height:100px;width:340px;font-family: 'Poiret One', cursive;font-weight: bold" msd-elastic></textarea>
 </div>
 
- <div style="text-align:center" > 
+ <div style="text-align:center" >
       <button ng-model="contact" class="button icon-left ion-email  button-assertive" ng-click = "send()"  style=" width:130px; margin-top:10px" >
   <strong>Send Msg</strong>
-  
+
 </button>
 </div>
-  </div>	
-  	
+  </div>
+
   </ion-content>
   </ion-view>
