@@ -46,8 +46,10 @@
                         <div class="row searchFormInput" ng-show="isTripType(3)">
 
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
-                                <label >Booking Reference Number: </label>
-                                <input type="text" autocomplete="off" placeholder="Booking Number*" ng-required="isTripType(3)"  ng-model="bookingRefNum"  class="form-control">
+                              <div class="form-group">
+                                <label for="refNumInput"> <i class="glyphicon glyphicon-barcode"></i> Booking Ref. Number: </label>
+                                <input type="text" id="refNumInput" autocomplete="off" placeholder="Booking Number*" ng-required="isTripType(3)"  ng-model="bookingRefNum"  class="form-control">
+                              </div>
                             </div>
                         </div>
 
@@ -159,7 +161,7 @@
                                 <label for="searchOptions" style="margin-left: 10px">Search Options :</label>
                                 <div class="col-md-12" id="searchOptions">
                                     <label class="checkbox-inline" ng-model="otherAirlines">
-                                        <input type="checkbox" value="" ng-click="flipOtherAirlines()">Search Other Airlines</label>
+                                        <input type="checkbox" value="" ng-click="flipOtherAirlines()">Search Other Airlines <i class="fa fa-external-link" style="padding-left: 2px"></i></label>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +170,7 @@
 
                     <div class="row text-center wow pulse" data-wow-iteration="999" data-wow-offset="70" style="margin-bottom: 10px">
                         <button type="submit" class="btn btn-xl btn-md" id='btnSearch' ng-disabled="disabled" ng-show="!isTripType(3)">
-                          <span class="{{animation}}"></span> Search Flights</button>
+                          <span class="{{animation}}"></span><i class="fa fa-plane"></i> Search Flights</button>
 
                           <button class="btn btn-xl btn-md" ng-show="isTripType(3)">View Booking</button>
                     </div>

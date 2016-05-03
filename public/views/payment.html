@@ -8,7 +8,7 @@
       <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
         <div class="panel-group">
           <div class="panel panel-default panel-info-swiss">
-            <div class="panel-heading">PAYMENT INFORMATION <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
+            <div class="panel-heading"><i class="fa fa-credit-card"></i>PAYMENT INFORMATION <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-12 col-xs-12">
@@ -43,7 +43,7 @@
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <label for="couponCode"><i class="glyphicon glyphicon-heart"></i>COUPON CODE</label>
-                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" />
+                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Type your coupon number to enjoy our premium features."/>
                   </div>
                 </div>
               </div>
