@@ -1,0 +1,46 @@
+<ion-view view-title="Flights One Way">
+  <ion-content class="padding">
+   <div class="padding">
+
+    <p style="text-align:center;font-size:15px; color:black;font-family: 'Poiret One', cursive"><strong>view booking </strong></p>
+     <div ng-repeat="passenger in booking.passengerDetails">
+        <booking-passenger passenger="passenger" index="$index+1"> </booking-passenger>
+      </div>
+        <div>
+          <div class="card">
+            <div class="row">
+            <div class="col-10"></div>
+                <div class="col-50">
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">cost: <br>{{booking.cost|currency}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Booking number: <br>{{booking.refNum}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Outgoing Flight ID :<br>{{booking.outgoingFlightId}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Return Flight ID : <br>{{booking.returnFlightId} </p>
+                    </div>
+                    <div class="row">
+                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>:{{booking.class}}</p>
+                    </div>
+
+                </div>
+                </div>
+                </div>
+                </div>
+                <div>
+<ul class="pagination">
+  <li ng-repeat="seat in booking.outgoingSeats" class="seats"><a href="">{{seat.seatNum}}</a></li>
+</ul>
+</div>
+<div>
+<ul class="pagination">
+  <li ng-repeat="seat in booking.returnSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
+</ul>
+</div>
+</div>
+</ion-content>
+</ion-view>
