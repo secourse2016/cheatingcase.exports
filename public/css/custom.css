@@ -1150,3 +1150,9 @@ background-color: #3a78c3
       -webkit-justify-content: center;
       justify-content: center;
 }
+
+@media only screen and (max-width: 480px) {
+  .notMobile{
+  display: none;
+  }
+}
