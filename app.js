@@ -270,6 +270,7 @@ app.get('/viewbooking/:refNum', function (req, res){
         var outgoingSeats = filterSeats(flight.seats, refNum);
         bookingData.outgoingSeats = outgoingSeats;
         bookingData.origin = flight.origin;
+        bookingData.destination = flight.destination;
         bookingData.outgoingFlightDate = flight.departureDateTime;
 
         if(bookingData.returnFlightId && bookingData.returnFlightId != null){
@@ -277,7 +278,6 @@ app.get('/viewbooking/:refNum', function (req, res){
 
             var returnSeats = filterSeats(flightRet.seats, refNum);
             bookingData.returnSeats = returnSeats;
-            bookingData.destination = flightRet.origin;
             bookingData.returnFlightDate = flightRet.departureDateTime;
 
             res.send(bookingData);

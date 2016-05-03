@@ -17,6 +17,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
   $scope.returnFlightAirlineURL = "";
 
   $scope.refNum = "";
+  $scope.refNum2 = "";
   $scope.receipt_number= 0;
 
   $scope.book = function(){
@@ -89,18 +90,18 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
                   null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
                     if(resReturn.data.errorMessage == null) {
                       console.log('SUCCESS: case return is NOT swissAir and is different than outgoing');
-                      $scope.refNum += "Booking: " + resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details.";
+                      $scope.refNum2 += "Booking: " + resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details.";
                     }
                     else {
                       console.log('FAILURE: case return is NOT swissAir and is different than outgoing');
-                      $scope.refNum += "Booking: " + resReturn.data.errorMessage + ".";
+                      $scope.refNum2 += "Booking: " + resReturn.data.errorMessage + ".";
                     }
                     stripe.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
                 });
               });
           } else {
             console.log('FAILURE: case return is NOT swissAir and is different than outgoing');
-            $scope.refNum += "Booking: Could Not Retrieve Airline's \""+$scope.returnFlightAirline+"\" Public Key.";
+            $scope.refNum2 += "Booking: Could Not Retrieve Airline's \""+$scope.returnFlightAirline+"\" Public Key.";
           }
         });
       } else {
@@ -114,11 +115,11 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
             null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
               if(resReturn.data.errorMessage == null) {
                 console.log('SUCCESS: case return IS swissAir and it is different than outgoing');
-                $scope.refNum += "Booking: " + resReturn.data.refNum + " Please go to \"View Booking\" to view your booking details.";
+                $scope.refNum2 += "Booking: " + resReturn.data.refNum + " Please go to \"View Booking\" to view your booking details.";
               }
               else {
                 console.log('FAILURE: case return IS not swissAir and it is different than outgoing');
-                $scope.refNum += "Booking: " + resReturn.data.errorMessage + ".";
+                $scope.refNum2 += "Booking: " + resReturn.data.errorMessage + ".";
               }
           });
         });
