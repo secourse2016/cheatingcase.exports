@@ -241,6 +241,7 @@ $scope.send=function(){
     "class":"1",
     "otherAirlines":false
   };
+  // $scope.shown=false;
 
   AirportsSrv.setOtherAirlines("false");
 
@@ -286,6 +287,7 @@ $scope.send=function(){
   });
 
   $scope.searchflights = function(){
+    // $scope.shown=true;
     AirportsSrv.getConcatFlightsOneWay(
       AirportsSrv.getSelectedOriginAirport(),
       AirportsSrv.getSelectedDestinationAirport(),
