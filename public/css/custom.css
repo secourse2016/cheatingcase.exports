@@ -729,6 +729,32 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 /*swissair gig panels*/
 
+
+.panel-info-swiss{
+  border-color: rgb(228,40,18);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.panel-info-swiss .panel-heading {
+    color: #fff;
+    background-color: rgb(228,40,18);
+    font-weight: bolder;
+    font-size: 20px;
+}
+.panel-info-swiss .panel-body {
+    color: black;
+    font-size: 12px;
+    font-weight: lighter;
+    padding-top: 15px;
+}
+
+.panel-info-swiss label{
+  color: rgb(228,40,18);
+}
+
+.flightsInfoContainer .panel-info-swiss .panel-body{
+  padding: 0px;
+}
+
 .gig .panel-heading+.panel-collapse>.list-group,
 .gig .panel-heading+.panel-collapse>.panel-body {
     border-top: none;
@@ -743,13 +769,17 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #fff;
 }
 .gig .panel-title {
-    color: #fff;
+    color: #FF4D4D;
     font-weight: bolder;
     font-size: 20px;
 }
 
 .gig .panel-title .collapsed{
-    border-color: #fff;
+/*#E42812; */
+}
+
+.gig .panel-heading{
+  background-color: #fff;
 }
 
 /*Should I merge here? TODO*/
@@ -835,6 +865,82 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-left: 20px;
   }
 }
+
+/***************************NEW FLIGHTS VIEW **********************************/
+.spaceBar{
+  text-align: center;
+}
+.btn-wd {
+  font-family: bebas-neue;
+  font-size: 18px;
+  font-weight: 100;
+  width: 280px;
+  padding: 5px 0px 0px 0px;
+  margin-bottom: 10px;
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 480px) {
+  .btn-wd {
+    width: 320px;
+    font-size: 20px;
+  }
+}
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+  .btn-wd {
+    width: 512px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+  .btn-wd {
+    width: 661px;
+    font-size: 24px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1200px) {
+  .btn-wd {
+    width: 751px;
+    font-size: 24px;
+    font-weight: 200;
+  }
+}
+
+.flightsInfoContainer .pager,
+ul.flightsPager{
+  margin-top: 0px;
+}
+
+ul.flightsPager li a{
+  background-color: #222;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: #fff;
+  outline: 0;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s
+}
+
+ul.flightsPager li a:hover,
+ul.flightsPager li a:focus,
+ul.flightsPager li a:active {
+  background-color: #E42812
+}
+
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg);}
     to { -webkit-transform: rotate(360deg);}
@@ -985,26 +1091,6 @@ margin-right: -15px;
   max-width: 150px
 }
 
-.panel-info-swiss{
-  border-color: rgb(228,40,18);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.panel-info-swiss .panel-heading {
-    color: #fff;
-    background-color: rgb(228,40,18);
-    font-weight: bolder;
-    font-size: 20px;
-}
-.panel-info-swiss .panel-body {
-    color: black;
-    font-size: 12px;
-    font-weight: lighter;
-    padding-top: 15px;
-}
-
-.panel-info-swiss label{
-  color: rgb(228,40,18);
-}
 
 .paymentContainer .intro-text .intro-lead-in{
   text-align: center;

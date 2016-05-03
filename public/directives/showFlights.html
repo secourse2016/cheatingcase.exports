@@ -2,11 +2,13 @@
   <div class="gig">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <label><input type="checkbox" ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled()">
-        <button class="btn btn-{{type}}" data-toggle="collapse"
-        data-target="#collapse{{type}}{{index}}">
-          Flight Number: {{flight.flightNumber}} <--> Cost: {{flight.cost|currency}}</button>
-          </label>
+        <input type="checkbox" ng-model="flight.checked" ng-click="$parent.clearOthers(index,type);$parent.isDisabled()">
+        <a data-toggle="collapse"
+        data-target="#collapse{{type}}{{index}}" href>
+        <!-- <button class="btn btn-{{type}}" > -->
+          Flight Number: {{flight.flightNumber}} <--> Cost: {{flight.cost|currency}}
+        <!-- </button> -->
+        </a>
 
         </h4>
       </div>
@@ -15,23 +17,23 @@
           <div class="row">
               <div class="col-sm-6 gig-left">
                   <div class="row">
-                      <h6 style="{{color}}">From</h6>
+                      <h6>From</h6>
                       <p>{{flight.origin}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">To</h6>
+                      <h6 >To</h6>
                       <p>{{flight.destination}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">Departure Time</h6>
+                      <h6 >Departure Time</h6>
                       <p>{{flight.departureDateTime|date:'medium'}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">Arrival Time</h6>
+                      <h6>Arrival Time</h6>
                       <p>{{flight.arrivalDateTime|date:'medium'}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">Class</h6>
+                      <h6>Class</h6>
                       <p>{{flight.class}}</p>
                   </div>
 
@@ -39,23 +41,23 @@
               <!-- End Panel-Gig Left -->
               <div class="col-sm-6 gig-right">
                 <div class="row">
-                    <h6 style="{{color}}">Airline</h6>
+                    <h6>Airline</h6>
                     <p>{{flight.Airline}}</p>
                 </div>
                   <div class="row">
-                      <h6 style="{{color}}">Flight Number</h6>
+                      <h6>Flight Number</h6>
                       <p>{{flight.flightNumber}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">Cost</h6>
+                      <h6>Cost</h6>
                       <p>{{flight.cost|currency}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">Aircraft Type</h6>
+                      <h6>Aircraft Type</h6>
                       <p>{{ flight.aircraftType}}</p>
                   </div>
                   <div class="row">
-                      <h6 style="{{color}}">Aircraft Model</h6>
+                      <h6>Aircraft Model</h6>
                       <p>{{ flight.aircraftModel}}</p>
                   </div>
               </div>
@@ -66,5 +68,8 @@
 
         </div>
       </div>
+    </div>
+    <div class="divisorDiv">
+            <hr style="border-top: 2px solid; color: #ff4d4d; max-width:90%; left: 5%; right: 5%; margin-top:0px; margin-bottom:0px">
     </div>
   </div>
