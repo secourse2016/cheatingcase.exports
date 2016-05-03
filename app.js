@@ -269,12 +269,17 @@ app.get('/viewbooking/:refNum', function (req, res){
 
         var outgoingSeats = filterSeats(flight.seats, refNum);
         bookingData.outgoingSeats = outgoingSeats;
+        bookingData.origin = flight.origin;
+        bookingData.outgoingFlightDate = flight.departureDateTime;
 
         if(bookingData.returnFlightId && bookingData.returnFlightId != null){
           db.db().collection('flights').findOne({ '_id': ObjectId(bookingData.returnFlightId) }, function (err, flightRet){
 
             var returnSeats = filterSeats(flightRet.seats, refNum);
             bookingData.returnSeats = returnSeats;
+            bookingData.destination = flightRet.origin;
+            bookingData.returnFlightDate = flightRet.departureDateTime;
+
             res.send(bookingData);
 
           });
