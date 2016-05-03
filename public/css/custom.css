@@ -680,6 +680,10 @@ body {
     padding-left: 10px;
 }
 
+.mainFormContainer .panel.panel-default{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 @media screen and (max-width: 480px) {
   .mainFormContainer{
     padding-left: 30px;
@@ -939,6 +943,7 @@ margin-right: -15px;
 
 .panel-info-swiss{
   border-color: rgb(228,40,18);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .panel-info-swiss .panel-heading {
     color: #fff;
