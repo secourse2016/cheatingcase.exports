@@ -8,12 +8,12 @@
       <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
         <div class="panel-group">
           <div class="panel panel-default panel-info-swiss">
-            <div class="panel-heading">PAYMENT INFORMATION <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
+            <div class="panel-heading"><i class="fa fa-credit-card"></i>PAYMENT INFORMATION <img class="pull-right notMobile" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
-                    <label for="cardNumber">CREDIT CARD NUMBER</label>
+                    <label for="cardNumber"><i class="glyphicon glyphicon-credit-card"></i>CREDIT CARD NUMBER</label>
                     <div class="input-group">
                       <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
                       <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
@@ -25,7 +25,7 @@
               <div class="row">
                 <div class="col-xs-12 col-md-7">
                   <div class="form-group">
-                    <label for="expDateInputGroup">EXPIRATION DATE</label>
+                    <label for="expDateInputGroup"><i class="glyphicon glyphicon-calendar"></i>EXPIRATION DATE</label>
                     <div class="" id="expDateInputGroup">
                       <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
                       <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-xs-12 col-md-5">
                   <div class="form-group">
-                    <label for="cvCode">CV CODE</label>
+                    <label for="cvCode"><i class="glyphicon glyphicon-barcode"></i>CV CODE</label>
                     <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
                   </div>
                 </div>
@@ -42,8 +42,8 @@
               <div class="row">
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
-                    <label for="couponCode">COUPON CODE</label>
-                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" />
+                    <label for="couponCode"><i class="glyphicon glyphicon-heart"></i>COUPON CODE</label>
+                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Type your coupon number to enjoy our premium features."/>
                   </div>
                 </div>
               </div>
@@ -54,7 +54,7 @@
               </div>
               <div class="row">
                 <div class="col-lg-12" style="text-align: center">
-                  <button type="submit" class="btn btn-xl btn-md" id='paySubmit'>Verify Card Info & Pay</button>
+                  <button type="submit" class="btn btn-xl btn-md" id='paySubmit'><i class="glyphicon glyphicon-ok pulse" style="transition: all 0.5s ease-in;" ng-show="paymentInfoForm.$valid"></i>Checkout</button>
                   <p>Your Booking Reference Number is :: {{refNum}}</p>
                 </div>
               </div>
