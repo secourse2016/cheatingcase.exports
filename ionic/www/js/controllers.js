@@ -287,7 +287,7 @@ $scope.send=function(){
   });
 
   $scope.searchflights = function(){
-    // $scope.shown=true;
+     $scope.shown=true;
     AirportsSrv.getConcatFlightsOneWay(
       AirportsSrv.getSelectedOriginAirport(),
       AirportsSrv.getSelectedDestinationAirport(),
@@ -374,6 +374,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
   });
 
   $scope.searchflights = function(){
+      $scope.shown = true;
       AirportsSrv.getConcatFlightsTwoWay(
       AirportsSrv.getSelectedOriginAirport(),
       AirportsSrv.getSelectedDestinationAirport(),
