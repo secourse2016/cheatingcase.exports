@@ -29,7 +29,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="row searchFormInput" ng-show="!isTripType(3)">
+                        <div class="row searchFormInput" id="outRetSearchInput" ng-show="!isTripType(3)">
                             <!-- from and to -->
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="originAirports"><i class="glyphicon glyphicon-globe"></i>Select Origin: </label>
@@ -96,7 +96,7 @@
 
                         <!-- Return  -->
 
-                        <div class="row" id="roundTripRow" ng-show="isTripType(2)">
+                        <div class="row searchFormInput" id="roundTripRow" ng-show="isTripType(2)">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate"><i class="fa fa-calendar-plus-o"></i>Return Date: </label>
                                 <p class="input-group" id="retDate">

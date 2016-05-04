@@ -711,13 +711,29 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
 /*Main Form*/
+@media only screen and (max-width: 992px) {
+  .mainFormContainer label{
+    margin-top: 10px;
+  }
+}
 
 .searchFormInput{
   margin-top:10px;
 }
 
-.searchFormInput .input-group{
+#outRetSearchInput.searchFormInput{
+  margin-bottom: 20px;
+}
+
+.searchFormInput .input-group,
+.searchFormInput #roundTripRow .input-group{
   margin: 0px;
+}
+
+@media only screen and (max-width: 992px) {
+  .searchFormInput{
+    margin-top: 5px;
+  }
 }
 
 .ng-invalid.ng-dirty{
@@ -1128,7 +1144,7 @@ margin-right: -15px;
 .mainViewContainer form i,
 .passengerInfoContainer i,
 .paymentContainer i{
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 .mainViewContainer .btn-default i{
