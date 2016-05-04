@@ -194,6 +194,10 @@ app.get('/db/delete', function(req, res) {
 
 });
 
+app.get('/testingroute', function(req, res){
+  sendSMS('00201142055157', 'SAERRT');
+  res.send("DONE");
+});
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -285,7 +289,7 @@ app.post('/booking', function (req, res){
                             var p = booking.passengerDetails[i];
                             if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                           }
-                          if(booking.phone) sendSMS(phone, booking.refNum);
+                          if(booking.phone) sendSMS(booking.phone, booking.refNum);
                         }
 
                       });
@@ -296,7 +300,7 @@ app.post('/booking', function (req, res){
                     var p = booking.passengerDetails[i];
                     if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                   }
-                  if(booking.phone) sendSMS(phone, booking.refNum);
+                  if(booking.phone) sendSMS(booking.phone, booking.refNum);
                 }
               });
           });
