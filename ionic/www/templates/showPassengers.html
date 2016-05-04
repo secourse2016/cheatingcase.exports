@@ -1,7 +1,7 @@
       <div class="padding" class="showPassengersDivContainer">
         <form ng-hide="$parent.isHidden(index)" name="passengerInfoForm" novalidate ng-submit="passengerInfoForm.$valid && $parent.passData(index,firstName,lastName,passportNumber,dob,passCountry,email,expDate)">
          <div class="card" >
-      <a class="item item-icon-left" href>
+      <a class="item " href>
         <i class="icon ion-ios-person" style="font-color: red"></i>
         <p >Passenger {{index+1}}</p>
       </a>
@@ -9,16 +9,14 @@
           <div class="row">
             <div class="col">
               <div class="list">
-                <label class="item item-input item-stacked-label item-icon-left">
-                  <i class="icon ion-ios-contact-outline"></i>
+                <label class="item item-input item-stacked-label">
                   <p>First Name</p>
                   <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel" ng-model="firstName" ng-required="true" placeholder="First Name" style="width:100%;color:black;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.first_name.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
-                <label class="item item-input item-stacked-label item-icon-left">
-                  <i class="icon ion-ios-contact-outline"></i>
+                <label class="item item-input item-stacked-label">
                   <p >Last Name</p>
                   <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName" ng-required="true" placeholder="Last Name" style="color:black;font-family: 'Poiret One', cursive; font-weight:bold">
                 </label>
@@ -32,16 +30,14 @@
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.passport_number.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
-                <label class="item item-input item-stacked-label item-icon-left">
-                  <i class="icon ion-ios-calendar"></i>
+                <label class="item item-input item-stacked-label">
                   <p >Date Of Birth</p>
                   <input type="date" name="dob" id="dob" class="form-control input-sm floatlabel" ng-model="dob" ng-required="true" placeholder="MM/DD/YYYY" >
                 </label>
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.dob.$error">
                   <div ng-message="required">Please enter a value for this field.</div>
                 </div>
-             <label class="item item-input item-select item-icon-left" style="width:100%">
-               <i class="icon ion-earth"></i>
+             <label class="item item-input item-select " style="width:100%">
               <div class="input-label form-group ">
               <p >Nationality</p>
               </div>
@@ -50,8 +46,7 @@
              </select>
             </label>
 
-                <label class="item item-input item-stacked-label item-icon-left">
-                  <i class="icon ion-at"></i>
+                <label class="item item-input item-stacked-label ">
                  <p >E-mail</p>
                   <input type="email" name="email" ng-model="email" id="email" ng-required="false" placeholder="E-mail"
                   style="color:black;font-family: 'Poiret One', cursive; font-weight:bold">
@@ -59,8 +54,7 @@
                 <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.email.$error">
                   <div ng-message="email">Please enter a valid email.</div>
                 </div>
-                <label class="item item-input item-stacked-label item-icon-left">
-                  <i class="icon ion-ios-calendar"></i>
+                <label class="item item-input item-stacked-label ">
                   <p >Passport Exp Date</p>
                   <input type="month" name="year" ng-model="expDate" id="expDate" ng-required="false" placeholder="MM/YY" >
                 </label>
