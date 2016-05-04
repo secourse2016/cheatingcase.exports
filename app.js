@@ -262,18 +262,18 @@ app.post('/booking', function (req, res){
                         if(errorRet) { res.send({ "refNum": null, "errorMessage": err }); return; }
                         else {
                           res.send({ "refNum": bookingRefNum, "errorMessage": null });
-                          for(var i=0; i<passengerDetails.length; i++) {
-                            var p = passengerDetails[i];
+                          for(var i=0; i<booking.passengerDetails.length; i++) {
+                            var p = booking.passengerDetails[i];
                             if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
                           }
                         }
-                        
+
                       });
                   });
                 } else {
                   res.send({ "refNum": bookingRefNum, "errorMessage": null });
-                  for(var i=0; i<passengerDetails.length; i++) {
-                    var p = passengerDetails[i];
+                  for(var i=0; i<booking.passengerDetails.length; i++) {
+                    var p = booking.passengerDetails[i];
                     if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
                   }
                 }
