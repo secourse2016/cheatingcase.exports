@@ -1,4 +1,4 @@
-<div class="container flightsInfoContainer">
+<!-- <div class="container flightsInfoContainer">
   <div class="row flightsInfoContainer">
     <div class="initial-position" set-class-when-at-top="fix-to-top" padding-when-at-top="75">
       <div class="fluid-container" >
@@ -14,4 +14,46 @@
     <div class="col-lg-7">
     </div>
 </div>
+</div> -->
+
+
+<!-- NEW VIEW STARTS HERE -->
+
+<div class="container flightsInfoContainer">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div style="max-width: 0px" id="navFly"></div>
+            <h2 class="section-heading wow fadeInDown" data-wow-offset="250">Flight Selection</h2>
+            <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230">Swiss Air wishes you a safe flight.</h3>
+        </div>
+    </div>
+    <div class="row flightsInfoContainer">
+        <div class="col-lg-12">
+            <div class="panel panel-default panel-info-swiss">
+                <div class="panel-heading">Outgoing <span class="pull-right"> <i class="material-icons" style="padding-left:10px">flight_takeoff</i> </span></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div ng-repeat="outgoingFlight in outgoingFlights">
+                                <show-flights flight="outgoingFlight" type="findType(outgoingFlight)" color="findColor(outgoingFlight)" index="$index"> </show-flights>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="pager ">
+                                <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+                                <li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row spaceBar">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-xl btn-md" ng-disabled="disabled" ng-click="proceed()"><i class="fa fa-card"></i> Proceed </button>
+        </div>
+    </div>
 </div>

@@ -15,21 +15,39 @@ var stripe  = require('stripe')(process.env.STRIPESECRETKEY);
 var teams   = require('./teams.json');
 var randomstring = require("randomstring");
 
-var sendgrid  = require('sendgrid')('process.env.SENDGRIDKEY');
+var sendgrid  = require('sendgrid')(process.env.SENDGRIDKEY);
 
 var sendMail = function (toEmail, toName, refNum, cb){
   sendgrid.send({
     to        : toEmail,
     from      : 'customer-service@swiss-air.me',
-    fromname  : 'Swiss Air',
+    fromname  : 'Airline Swiss Air',
     subject   : 'Booking Flight : "'+refNum+'" Swiss Air',
     text      : 'Dear '+toName+', \n\nWe\'d like to thank you for choosing Swiss Air, You can view your flight booking with the Reference Number "'+refNum+'" On our website swiss-air.me, Feel free to contact us at customer-service@swiss-air.me \n\n'
   }, function(err, json) {
-    if (err) { return console.error(err); }
-    console.log(json);
-    res.send({ 'data': json, 'error': err });
+    console.log({ 'data': json, 'error': err });
     if(cb) cb(err, json);
   });
+}
+
+var sendSMS = function (number, refNum){
+  var smsBody = {
+    "from": "00201121508662",
+    "to": [number],
+    "body": "Thanks for chosing SwissAir, Your Booking RefNum is "+refNum+"."
+  };
+  request({ 'url': 'https://api.mblox.com/xms/v1/swissair12/batches',
+            'method': "POST",
+            'json': true,   // <--Very important!!!
+            'body': smsBody,
+            'timeout': parseInt(process.env.TIMEOUT),
+            'headers': {
+              'Content-Type': "application/json",
+              'Authorization': ("Bearer "+process.env.SMSKEY)
+            }
+          }, function (error, response, body){
+            console.log({ 'error': error, 'data': body });
+          });
 }
 
 var generateRefNum = function(cb){
@@ -176,6 +194,10 @@ app.get('/db/delete', function(req, res) {
 
 });
 
+app.get('/testingroute', function(req, res){
+  sendSMS('00201142055157', 'SAERRT');
+  res.send("DONE");
+});
 
 // Middleware Function for securing routes using JWT
 app.use(function(req, res, next) {
@@ -224,7 +246,8 @@ app.post('/booking', function (req, res){
         'cost'            : req.body.cost,
         'outgoingFlightId': req.body.outgoingFlightId,
         'returnFlightId'  : req.body.returnFlightId,
-        'refNum'          : bookingRefNum
+        'refNum'          : bookingRefNum,
+        'phone'           : req.body.phone
       };
 
       db.db().collection('bookings').insert(booking, function (errIns, doc){
@@ -262,20 +285,22 @@ app.post('/booking', function (req, res){
                         if(errorRet) { res.send({ "refNum": null, "errorMessage": err }); return; }
                         else {
                           res.send({ "refNum": bookingRefNum, "errorMessage": null });
-                          for(var i=0; i<passengerDetails.length; i++) {
-                            var p = passengerDetails[i];
-                            if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
+                          for(var i=0; i<booking.passengerDetails.length; i++) {
+                            var p = booking.passengerDetails[i];
+                            if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                           }
+                          if(booking.phone) sendSMS(booking.phone, booking.refNum);
                         }
-                        
+
                       });
                   });
                 } else {
                   res.send({ "refNum": bookingRefNum, "errorMessage": null });
-                  for(var i=0; i<passengerDetails.length; i++) {
-                    var p = passengerDetails[i];
-                    if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
+                  for(var i=0; i<booking.passengerDetails.length; i++) {
+                    var p = booking.passengerDetails[i];
+                    if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                   }
+                  if(booking.phone) sendSMS(booking.phone, booking.refNum);
                 }
               });
           });
@@ -354,6 +379,27 @@ app.get('/airlinedetails', function (req, res){
               res.send({ 'pubKey': body, 'url': teams[airLine], 'errorMessage': null });
             }
           });
+});
+
+app.post('/contactus', function(req, res){
+
+  if( !(req.body.name && req.body.email && req.body.phone && req.body.message) ) {
+    res.send({ 'message': 'Sorry, We were unable to retrieve you message because of missing fields' }); return;
+  }
+
+  db.db().collection('contactus').insert(req.body, function(errIns, doc){
+    sendgrid.send({
+      to        : 'customer-service@swiss-air.me',
+      from      : 'customer-service@swiss-air.me',
+      fromname  : 'Airline Swiss Air',
+      subject   : 'Contact Us Message From "'+req.body.name+' <'+req.body.email+'>" - Swiss Air',
+      text      : req.body.message
+    }, function(err, json) {
+      console.log({ 'data': json, 'error': err });
+      res.send({ 'message': (err || ("Thanks for your feedback we'll try to contact you soon at: "+req.body.email)) });
+    });
+  });
+
 });
 
 // NOTE: seated version of oneway search route

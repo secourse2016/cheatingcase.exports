@@ -1,61 +1,183 @@
 <div class="container viewBookingPage">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div style="max-width: 0px" id="navFly"></div>
-            <h2 class="section-heading wow fadeInDown" data-wow-offset="250" style="visibility: visible; animation-name: fadeInDown;">Booking Information</h2>
-            <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230" style="visibility: visible; animation-name: fadeInDown;">Everything in one place.</h3>
-        </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div style="max-width: 0px" id="navFly"></div>
+      <h2 class="section-heading wow fadeInDown" data-wow-offset="250" style="visibility: visible; animation-name: fadeInDown;">Booking Information</h2>
+      <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230" style="visibility: visible; animation-name: fadeInDown;">Everything in one place.</h3>
     </div>
-    <div class="row swissBadgeBigContainer">
-        <div class="col-lg-12 swissBadgeContainer">
-            <div class="row swissBadge">
-                <div class="col-md-4 col-sm-12 col-xs-12 swissBadge-left">
-                    <h2 class="swissBadge-header">BOOKING NUMBER<span class="help-block subtext-gig">{{booking.refNum}}</span></h2>
-                    <h5 class="swissBadge-header">COST<span class="help-block subtext-gig">{{booking.cost|currency}}</span></h5>
-                    <h5 class="swissBadge-header">CLASS<span class="help-block subtext-gig">{{booking.class}}</span></h5>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-middle">
-                    <h5 class="swissBadge-header">Outgoing: <span class="help-block subtext-gig">{{booking.origin}} --> {{booking.destination}}</span></h5>
-                    <h5 class="swissBadge-header">Outgoing Flight Date: <span class="help-block subtext-gig">{{booking.outgoingFlightDate|date:'medium'}}</span></h5>
-                    <h5 class="swissBadge-header">Outgoing Flight ID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
-                    <h5 class="swissBadge-header">Seats:
-                      <span class="help-block subtext-gig">
-                      <ul class="pagination">
-                        <li ng-repeat="seat in booking.outgoingSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
-                      </ul>
-                    </span>
-                    </h5>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-right" ng-hide="checkReturn()">
-                  <h5 class="swissBadge-header">Return: <span class="help-block subtext-gig">{{booking.destination}} --> {{booking.origin}}</span></h5>
-                    <h5 class="swissBadge-header">Return Flight Date: <span class="help-block subtext-gig">{{booking.returnFlightDate|date:'medium'}}</span></h5>
-                    <h5 class="swissBadge-header">Return Flight ID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
-                    <h5 class="swissBadge-header">Seats:
-                      <span class="help-block subtext-gig">
-                      <ul class="pagination">
-                        <li ng-repeat="seat in booking.returnSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
-                      </ul>
-                    </span>
-                    </h5>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <hr>
-        </div>
-    </div>
-    <div class="row passengerAndMap">
-        <div class="col-md-12 col-sm-12 col-xs-12 passengerCol">
-            <h2>PASSENGER INFORMATION</h2>
-            <div class="panel-group bookingPassenger" id="accordion">
-                <div class="panel gig" ng-repeat="passenger in booking.passengerDetails">
-                    <booking-passenger passenger="passenger" index="$index+1"></booking-passenger>
+
+
+
+  <div class="row bookingInfoContainer">
+    <div class="col-lg-12">
+      <div class="panel-group">
+        <div class="panel panel-default panel-info-swiss">
+          <div class="panel-heading">BOOKING NUMBER: {{booking.refNum}} <span class="pull-right">COST: {{booking.cost|currency}}</span></div>
+          <div class="panel-body">
+            <div class="row outFlightViewBigContainer">
+              <div class="col-lg-12 outFlightViewContainer">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2 class="swissBadge-header">{{booking.origin}} <i class="fa fa-long-arrow-right"></i> {{booking.destination}}</h2>
+                  </div>
                 </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5 class="">Outgoing Flight Date: <span class="help-block subtext-gig">{{booking.outgoingFlightDate|date:'medium'}}</span></h5>
+                    <h5 class="">Seats:
+                      <span class="help-block subtext-gig">
+                        <ul class="pagination">
+                          <li ng-repeat="seat in booking.outgoingSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
+                        </ul>
+                      </span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5 class="">Outgoing Flight ID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
+                    <h5 class="">CLASS: <span class="help-block subtext-gig">{{booking.class}}</span></h5>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="row divisorDiv">
+              <div class="col-lg-12">
+                <hr style="border-top: 2px solid; color: #ff4d4d; max-width:80%">
+              </div>
+            </div>
+            <div class="row retFlightViewBigContainer" ng-hide="checkReturn()">
+              <div class="col-lg-12 retFlightViewContainer">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2 class="swissBadge-header">{{booking.destination}} <i class="fa fa-long-arrow-right"></i> {{booking.origin}}</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5 class="">Return Flight Date: <span class="help-block subtext-gig">{{booking.returnFlightDate|date:'medium'}}</span></h5>
+                    <h5 class="">Seats:
+                      <span class="help-block subtext-gig">
+                        <ul class="pagination">
+                          <li ng-repeat="seat in booking.returnSeats" class="seats" ><a href="">{{seat.seatNum}}</a></li>
+                        </ul>
+                      </span>
+                    </h5>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5 class="">Return Flight ID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
+                    <h5 class="">CLASS: <span class="help-block subtext-gig">{{booking.class}}</span></h5>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div class="row divisorDiv">
+    <div class="col-lg-12">
+      <hr style="border-top: 2px solid; color: #ff4d4d; max-width:90%">
+    </div>
+  </div>
+
+  <div class="row passengerAndMap">
+    <div class="col-md-12 col-sm-12 col-xs-12 passengerCol">
+      <h2 class="text-center">PASSENGER INFORMATION</h2>
+      <div class="panel-group bookingPassenger" id="accordion">
+        <div class="panel gig" ng-repeat="passenger in booking.passengerDetails">
+          <booking-passenger passenger="passenger" index="$index+1"></booking-passenger>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <<<<<<< HEAD -->
+<!-- SEAT MAP -->
+<!-- <div class="row swissBadgeBigContainer">
+<div class="col-lg-12 swissBadgeContainer">
+<div class="row swissBadgeSeat">
+<div class="col-md-6 col-sm-12 col-xs-12">
+<h2 class="swissBadge-header">Outgoing Seats</h2>
+
+<div class="panel-group bookingPassenger" id="accordion">
+<div class="panel gig">
+<div class="panel-body">
+<div class="row">
+<div class="col-lg-12 seatMapContainer">
+<div class="panel panel-title-default">
+<div class="panel-body">
+bjj
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 </div>
+<div class="col-md-6 col-sm-12 col-xs-12">
+<h2 class="swissBadge-header">Return Seats</h2>
+<div class="panel-group bookingPassenger" id="accordion">
+<div class="panel gig">
+<div class="panel-body">
+<div class="row">
+<div class="col-lg-12 seatMapContainer">
+<div class="panel panel-default">
+<div class="panel-body">
+<div class="row">
+<div class="col-lg-12 seatsButtonsContainer">
+<button type="button" name="button" class="btn btn-default business">1A</button>
+<button type="button" name="button" class="btn btn-default booked">1B</button>
+<button type="button" name="button" class="btn btn-default business">1J</button>
+<button type="button" name="button" class="btn btn-default business">1K</button>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12 seatsButtonsContainer">
+<button type="button" name="button" class="btn btn-default business">2A</button>
+<button type="button" name="button" class="btn btn-default business">2B</button>
+<button type="button" name="button" class="btn btn-default booked">2J</button>
+<button type="button" name="button" class="btn btn-default business">2K</button>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12 seatsButtonsContainer">
+<button type="button" class="btn btn-default economy" name="button">6A</button>
+<button type="button" class="btn btn-default economy"name="button">6B</button>
+<button type="button" class="btn btn-default booked" name="button">6J</button>
+<button type="button" class="btn btn-default economy" name="button">6K</button>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12 seatsButtonsContainer">
+<button type="button" class="btn btn-default economy" name="button">6A</button>
+<button type="button" class="btn btn-default economy"name="button">6B</button>
+<button type="button" class="btn btn-default economy" name="button">6J</button>
+<button type="button" class="btn btn-default selected" name="button">6K</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+</div>
+</div>
+</div> -->
+<!-- ./SEAT MAP -->
+<!-- =======
+
+>>>>>>> f553af4a46d75eeaca11f43e94d4982568304b79 -->

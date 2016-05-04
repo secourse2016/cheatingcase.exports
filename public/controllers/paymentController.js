@@ -1,5 +1,5 @@
 swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
-  
+
   $scope.otherAirline = false;
    $scope.formHide = false;
 
@@ -22,17 +22,15 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
   $scope.refNum = "";
   $scope.refNum2 = "";
   $scope.receipt_number= 0;
-  
+
   if($scope.outgoingFlightAirline!="Swiss Air" && $scope.returnFlightAirline !="Swiss Air" ){
     console.log($scope.outgoingFlightAirline)
     $scope.otherAirline = true;
   }
-  
-  $scope.hideForm = function () {
-    $scope.formHide = true ;
-  }
+
 
   $scope.book = function(){
+    $scope.formHide = true ;
     var sameAirline = ($scope.outgoingFlightAirline == $scope.returnFlightAirline);
 
     if($scope.outgoingFlightAirline != "Swiss Air") {
@@ -47,7 +45,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
               "exp_year": $scope.cardExpYear
             }).then(function(paymentToken){
               AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
-                ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
+                ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class,$scope.phone).then(function (resOutgoing){
                   if(resOutgoing.data.errorMessage == null) {
                     console.log('SUCCESS: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
                     $scope.refNum += "Booking: " + resOutgoing.data.refNum + " Please refer to \""+$scope.outgoingFlightAirlineURL+"\" to view your booking details.";
@@ -72,7 +70,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
         "exp_year": $scope.cardExpYear
       }).then(function (paymentToken){
         AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
-          ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
+          ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class,$scope.phone).then(function (resOutgoing){
             if(resOutgoing.data.errorMessage == null) {
               console.log('SUCCESS: case outgoing IS swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
               $scope.refNum += "Booking: " + resOutgoing.data.refNum + " Please go to \"View Booking\" to view your booking details.";
@@ -99,7 +97,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
                 "exp_year": $scope.cardExpYear
               }).then(function(paymentToken){
                 AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
-                  null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
+                  null, paymentToken, $scope.returnFlightAirline, $scope.class,$scope.phone).then(function (resReturn){
                     if(resReturn.data.errorMessage == null) {
                       console.log('SUCCESS: case return is NOT swissAir and is different than outgoing');
                       $scope.refNum2 += "Booking: " + resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details.";
@@ -124,7 +122,7 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
           "exp_year": $scope.cardExpYear
         }).then(function (paymentToken){
           AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
-            null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
+            null, paymentToken, $scope.returnFlightAirline, $scope.class,$scope.phone).then(function (resReturn){
               if(resReturn.data.errorMessage == null) {
                 console.log('SUCCESS: case return IS swissAir and it is different than outgoing');
                 $scope.refNum2 += "Booking: " + resReturn.data.refNum + " Please go to \"View Booking\" to view your booking details.";
