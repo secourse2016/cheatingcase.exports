@@ -1,164 +1,172 @@
-<section class="container paymentContainer" id="paymentContainer">
-  <div class="row intro-text">
-    <div ng-hide="otherAirline" class="intro-lead-in wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Thank you for choosing SWISS AIR</div>
-  </div>
-
-  <div class="row paymentInfoContainer">
-    <div class="col-xs-12 col-sm-12 col-md-7">
-      <form ng-hide="formHide" name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book() ; hideForm()">
-        <div class="panel-group">
-          <div class="panel panel-default panel-info-swiss">
-            <div class="panel-heading">PAYMENT <<>> COST :: {{cost|currency}} <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-12 col-xs-12">
-                  <div class="form-group">
-                    <label for="cardNumber">CREDIT CARD NUMBER</label>
-                    <div class="input-group">
-                      <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
-                      <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                    </div>
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-md-7">
-                  <div class="form-group">
-                    <label for="expDateInputGroup">EXPIRATION DATE</label>
-                    <div class="" id="expDateInputGroup">
-                      <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
-                      <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-5">
-                  <div class="form-group">
-                    <label for="cvCode">CV CODE</label>
-                    <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 col-xs-12">
-                  <div class="form-group">
-                    <label for="couponCode">COUPON CODE</label>
-                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <hr width="80%" height="5px" style="color: black">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12" style="text-align: center">
-                  <button type="submit" class="btn btn-xl btn-md" id='paySubmit'>Verify Card Info & Pay</button>
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="container paymentContainer" id="paymentContainer">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div style="max-width: 0px" id="navFly"></div>
+            <h2 class="section-heading wow fadeInDown" data-wow-offset="250">Payment</h2>
+            <h3 class="section-subheading text-muted wow fadeInDown" data-wow-offset="230">Swiss Air wishes you a safe flight.</h3>
         </div>
-      </form>
-      
-      
-<div ng-show="formHide">
-  <label>
-    <p>{{refNum}}</p>
-    <p>{{refNum2}}</p>
-  </label>
-  <form action="/">
-    <button type="submit" class="btn btn-xl btn-md">Go To Home Page</button>
-</form>
-     
-  </div>
-      <!-- ./ payment info FORM -->
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5 carouselContainer">
-      <!-- Carousal -->
+
+    <div class="row paymentInfoContainer">
+        <div class="col-xs-12 col-sm-12 col-md-7">
+            <form ng-hide="formHide" name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-info-swiss">
+                        <div class="panel-heading"><i class="fa fa-credit-card"></i>PAYMENT INFORMATION <img class="pull-right notMobile" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="cardNumber"><i class="glyphicon glyphicon-credit-card"></i>CREDIT CARD NUMBER</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" ng-minLength="16" ng-maxLength="19" />
+                                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                        </div>
+                                        <!-- <p class="help-block text-danger"></p> -->
+                                        <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$error">
+                                            <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-7">
+                                    <div class="form-group">
+                                        <label for="expDateInputGroup"><i class="glyphicon glyphicon-calendar"></i>EXPIRATION DATE</label>
+                                        <div class="" id="expDateInputGroup">
+                                            <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
+                                            <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
+                                        </div>
+                                        <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.expMonth.$error">
+                                            <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-5">
+                                    <div class="form-group">
+                                        <label for="cvCode"><i class="glyphicon glyphicon-barcode"></i>CV CODE</label>
+                                        <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" ng-minLength="3" ng-maxLength="5" />
+                                        <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
+                                            <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="form-group">
+                                      <label for="phoneNo"><i class="fa fa-phone"></i>Valid Phone Number: </label>
+                                      <input type="tel" class="form-control" name="phoneNo" ng-required="false" ng-model="phoneNo" placeholder="00201124711175" ng-minLength="14" ng-maxLength="14" />
+                                      <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.phoneNo.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                      </div>
+                                  </div>
+                              </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="couponCode"><i class="glyphicon glyphicon-heart"></i>COUPON CODE</label>
+                                        <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Type your coupon number to enjoy our premium features." ng-minLength="7" ng-maxLength="7" />
+                                        <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.couponCode.$error">
+                                            <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr width="80%" height="5px" style="color: black">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: center">
+                                    <button type="submit" class="btn btn-xl btn-md" id='paySubmit'><i class="glyphicon glyphicon-ok pulse" style="transition: all 0.5s ease-in;" ng-show="paymentInfoForm.$valid"></i>Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div ng-hide="!formHide">
+              <label>
+                <p>{{refNum}}</p>
+                <p>{{refNum2}}</p>
+              </label>
+              <form action="/">
+                <button type="submit" class="btn btn-xl btn-md">Go To Home Page</button>
+            </form>
+              </div>
+            <!-- ./ payment info FORM -->
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 carouselContainer">
+            <!-- Carousal -->
 
 
 
 
 
 
-      <div id="carousel-example" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example" data-slide-to="1"></li>
-          <li data-target="#carousel-example" data-slide-to="2"></li>
-        </ol>
+            <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example" data-slide-to="1"></li>
+                    <li data-target="#carousel-example" data-slide-to="2"></li>
+                </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <div style="background:url(../img/payment/payment1.jpg) center center;
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div style="background:url(../img/payment/payment1.jpg) center center;
             background-size:cover;" class="slider-size">
-            <div class="carousel-caption">
-              <h2>Welcome Aboard</h2>
-              <p>Content text to go here. </p>
-            </div>
-          </div>
-        </div>
+                            <div class="carousel-caption">
+                                <h2>Welcome Aboard</h2>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="item">
-          <div style="background:url(../img/payment/payment2.jpg) center center;
+                    <div class="item">
+                        <div style="background:url(../img/payment/payment2.jpg) center center;
           background-size:cover;" class="slider-size">
-          <div class="carousel-caption">
-            <h2>Welcome Aboard</h2>
-            <p>Content text to go here. </p>
-          </div>
-        </div>
-      </div>
+                            <div class="carousel-caption">
+                                <h2>Welcome Aboard</h2>
+                            </div>
+                        </div>
+                    </div>
 
-      <div class="item">
-        <div style="background:url(../img/payment/payment3.jpg) center center;
+                    <div class="item">
+                        <div style="background:url(../img/payment/payment3.jpg) center center;
         background-size:cover;" class="slider-size">
-        <div class="carousel-caption">
-          <h2>Welcome Aboard</h2>
-          <p>Content text to go here. </p>
+                            <div class="carousel-caption">
+                                <h2>Welcome Aboard</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="javascript:void(0)" data-slide="prev" data-target="#carousel-example">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="javascript:void(0)" data-slide="next" data-target="#carousel-example">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+
+                </div>
+                <!-- ./ CAROUSAL INNER -->
+
+
+            </div>
+            <!-- Carousal ./././././ -->
         </div>
-      </div>
     </div>
+    <!-- End Payment INFO CONTAINER -->
 
-    <!-- Controls -->
-    <a class="left carousel-control" href="javascript:void(0)"
-    data-slide="prev" data-target="#carousel-example">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="javascript:void(0)"
-  data-slide="next" data-target="#carousel-example">
-  <span class="glyphicon glyphicon-chevron-right"></span>
-</a>
-
-</div>
-<!-- ./ CAROUSAL INNER -->
-
-
-</div>
-<!-- Carousal ./././././ -->
-</div>
-</div>
-<!-- End Payment INFO CONTAINER -->
-
-
-
-<div class="row spaceBar">
-  <div class="col-lg-12">
-    <div class="row" style="display:none;">
-      <div class="col-xs-12"> <p class="payment-errors"></p>
-      </div>
-    </div>
-
-  </div>
-</div>
-<script type='text/javascript'>
+    <!-- carousel autostart and loop-->
+    <script type='text/javascript'>
         $(document).ready(function() {
             $('.carousel').carousel({
                 interval: 5000
             })
         });
     </script>
-</section>
+</div>
