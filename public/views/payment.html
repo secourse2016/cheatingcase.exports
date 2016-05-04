@@ -53,7 +53,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col-xs-12">
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="form-group">
+                                      <label for="phoneNo"><i class="fa fa-phone"></i>Valid Phone Number: </label>
+                                      <input type="tel" class="form-control" name="phoneNo" ng-required="false" ng-model="phoneNo" placeholder="00201124711175" ng-minLength="14" ng-maxLength="14" />
+                                      <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.phoneNo.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                      </div>
+                                  </div>
+                              </div>
+                                <div class="col-md-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="couponCode"><i class="glyphicon glyphicon-heart"></i>COUPON CODE</label>
                                         <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Type your coupon number to enjoy our premium features." ng-minLength="7" ng-maxLength="7" />
