@@ -19,25 +19,27 @@
               <div ng-message="required">Please enter a value for this field.</div>
             </div>
 
-            <label class="item item-input item-stacked-label">
-              <div class="row">
-                <div class="col col-50">
+              <div class="row" style="padding: 0px">
+                <div class="col col-50" style="padding: 0px">
+                  <label class="item item-input item-stacked-label">
                   <span class="input-label">Expiary Month</span>
                   <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="details.cardExpMonth" />
+                  </label>
                 </div>
-                <div class="col col-50">
+                <div class="col col-50" style="padding: 0px">
+                <label class="item item-input item-stacked-label">
                   <span class="input-label">Expiary Year</span>
                   <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="details.cardExpYear" />
                 </div>
+              </label>
               </div>
-            </label>
             <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.expYear.$error || paymentInfoForm.$submitted && paymentInfoForm.expMonth.$error">
               <div ng-message="required">Please enter a value for this field.</div>
               <div ng-message="number">Please enter a numerical value for this field.</div>
             </div>
             <label class="item item-input item-stacked-label">
               <span class="input-label">CV Code</span>
-              <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
+              <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="details.cvCode" />
             </label>
             <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
               <div ng-message="required">Please enter a value for this field.</div>

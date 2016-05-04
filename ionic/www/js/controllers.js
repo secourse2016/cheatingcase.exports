@@ -825,18 +825,13 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
       if($scope.outgoingFlightAirline != "Swiss Air") {
         AirportsSrv.getAirlineDetails($scope.outgoingFlightAirline).then(function (res){
           if(res.data.errorMessage == null) {
-            console.log(res);
-            console.log($scope.watchCardnumber);
-            console.log($scope.watchCardExpMonth);
-            console.log($scope.watchCardExpYear);
-            console.log($scope.watchCvCode);
               $scope.outgoingFlightAirlineURL = res.data.url;
               stripe.setPublishableKey(res.data.pubKey);
               stripe.card.createToken({
-                "number": $scope.cardnumber,
-                "cvc": $scope.cvCode,
-                "exp_month": $scope.cardExpMonth,
-                "exp_year": $scope.cardExpYear
+                "number": $scope.watchCardnumber,
+                "cvc": $scope.watchCvCode,
+                "exp_month": $scope.watchCardExpMonth,
+                "exp_year": $scope.watchCardExpYear
               }).then(function(paymentToken){
                 AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
                   ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
@@ -858,10 +853,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
         });
       } else {
         stripe.card.createToken({
-          "number": $scope.cardnumber,
-          "cvc": $scope.cvCode,
-          "exp_month": $scope.cardExpMonth,
-          "exp_year": $scope.cardExpYear
+          "number": $scope.watchCardnumber,
+          "cvc": $scope.watchCvCode,
+          "exp_month": $scope.watchCardExpMonth,
+          "exp_year": $scope.watchCardExpYear
         }).then(function (paymentToken){
           AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
             ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
@@ -885,10 +880,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
                 $scope.returnFlightAirlineURL = res.data.url;
                 stripe.setPublishableKey(res.data.pubKey);
                 stripe.card.createToken({
-                  "number": $scope.cardnumber,
-                  "cvc": $scope.cvCode,
-                  "exp_month": $scope.cardExpMonth,
-                  "exp_year": $scope.cardExpYear
+                  "number": $scope.watchCardnumber,
+                  "cvc": $scope.watchCvCode,
+                  "exp_month": $scope.watchCardExpMonth,
+                  "exp_year": $scope.watchCardExpYear
                 }).then(function(paymentToken){
                   AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
                     null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
@@ -910,10 +905,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
           });
         } else {
           stripe.card.createToken({
-            "number": $scope.cardnumber,
-            "cvc": $scope.cvCode,
-            "exp_month": $scope.cardExpMonth,
-            "exp_year": $scope.cardExpYear
+            "number": $scope.watchCardnumber,
+            "cvc": $scope.watchCvCode,
+            "exp_month": $scope.watchCardExpMonth,
+            "exp_year": $scope.watchCardExpYear
           }).then(function (paymentToken){
             AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
               null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
