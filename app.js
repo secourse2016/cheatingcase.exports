@@ -21,13 +21,11 @@ var sendMail = function (toEmail, toName, refNum, cb){
   sendgrid.send({
     to        : toEmail,
     from      : 'customer-service@swiss-air.me',
-    fromname  : 'Swiss Air',
+    fromname  : 'Airline Swiss Air',
     subject   : 'Booking Flight : "'+refNum+'" Swiss Air',
     text      : 'Dear '+toName+', \n\nWe\'d like to thank you for choosing Swiss Air, You can view your flight booking with the Reference Number "'+refNum+'" On our website swiss-air.me, Feel free to contact us at customer-service@swiss-air.me \n\n'
   }, function(err, json) {
-    if (err) { return console.error(err); }
-    console.log(json);
-    res.send({ 'data': json, 'error': err });
+    console.log({ 'data': json, 'error': err });
     if(cb) cb(err, json);
   });
 }
@@ -264,7 +262,7 @@ app.post('/booking', function (req, res){
                           res.send({ "refNum": bookingRefNum, "errorMessage": null });
                           for(var i=0; i<booking.passengerDetails.length; i++) {
                             var p = booking.passengerDetails[i];
-                            if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
+                            if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                           }
                         }
 
@@ -274,7 +272,7 @@ app.post('/booking', function (req, res){
                   res.send({ "refNum": bookingRefNum, "errorMessage": null });
                   for(var i=0; i<booking.passengerDetails.length; i++) {
                     var p = booking.passengerDetails[i];
-                    if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
+                    if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                   }
                 }
               });
