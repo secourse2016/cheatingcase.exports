@@ -15,10 +15,13 @@
                   <div class="form-group">
                     <label for="cardNumber"><i class="glyphicon glyphicon-credit-card"></i>CREDIT CARD NUMBER</label>
                     <div class="input-group">
-                      <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" />
+                      <input type="number" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" ng-model="cardnumber" ng-minLength="16" ng-maxLength="19"/>
                       <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                     </div>
-                    <p class="help-block text-danger"></p>
+                    <!-- <p class="help-block text-danger"></p> -->
+                    <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$error">
+                      <div ng-messages-include="views/validationMsgs.html"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -30,12 +33,18 @@
                       <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
                       <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
                     </div>
+                    <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.expMonth.$error">
+                      <div ng-messages-include="views/validationMsgs.html"></div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-5">
                   <div class="form-group">
                     <label for="cvCode"><i class="glyphicon glyphicon-barcode"></i>CV CODE</label>
-                    <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" />
+                    <input type="number" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="cvCode" ng-minLength="3" ng-maxLength="5"/>
+                    <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
+                      <div ng-messages-include="views/validationMsgs.html"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -43,7 +52,10 @@
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <label for="couponCode"><i class="glyphicon glyphicon-heart"></i>COUPON CODE</label>
-                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Type your coupon number to enjoy our premium features."/>
+                    <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Type your coupon number to enjoy our premium features." ng-minLength="7" ng-maxLength="7"/>
+                    <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.couponCode.$error">
+                      <div ng-messages-include="views/validationMsgs.html"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -89,7 +101,6 @@
             background-size:cover;" class="slider-size">
             <div class="carousel-caption">
               <h2>Welcome Aboard</h2>
-              <p>Content text to go here. </p>
             </div>
           </div>
         </div>
@@ -99,7 +110,6 @@
           background-size:cover;" class="slider-size">
           <div class="carousel-caption">
             <h2>Welcome Aboard</h2>
-            <p>Content text to go here. </p>
           </div>
         </div>
       </div>
@@ -109,7 +119,6 @@
         background-size:cover;" class="slider-size">
         <div class="carousel-caption">
           <h2>Welcome Aboard</h2>
-          <p>Content text to go here. </p>
         </div>
       </div>
     </div>
@@ -145,5 +154,12 @@
 
   </div>
 </div>
-
+<!-- carousel autostart and loop-->
+<script type='text/javascript'>
+    $(document).ready(function() {
+         $('.carousel').carousel({
+             interval: 5000
+         })
+    });
+</script>
 </section>
