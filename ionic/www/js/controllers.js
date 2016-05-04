@@ -788,10 +788,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
               $scope.outgoingFlightAirlineURL = res.data.url;
               stripe.setPublishableKey(res.data.pubKey);
               stripe.card.createToken({
-                "number": $scope.cardnumber,
-                "cvc": $scope.cardCvCode,
-                "exp_month": $scope.cardExpMonth,
-                "exp_year": $scope.cardExpYear
+                "number": $scope.details.cardnumber,
+                "cvc": $scope.details.cardCvCode,
+                "exp_month": $scope.details.cardExpMonth,
+                "exp_year": $scope.details.cardExpYear
               }).then(function(paymentToken){
                 AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
                   ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
@@ -813,10 +813,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
         });
       } else {
         stripe.card.createToken({
-          "number": $scope.cardnumber,
-          "cvc": $scope.cardCvCode,
-          "exp_month": $scope.cardExpMonth,
-          "exp_year": $scope.cardExpYear
+          "number": $scope.details.cardnumber,
+          "cvc": $scope.details.cardCvCode,
+          "exp_month": $scope.details.cardExpMonth,
+          "exp_year": $scope.details.cardExpYear
         }).then(function (paymentToken){
           AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
             ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
@@ -840,10 +840,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
                 $scope.returnFlightAirlineURL = res.data.url;
                 stripe.setPublishableKey(res.data.pubKey);
                 stripe.card.createToken({
-                  "number": $scope.cardnumber,
-                  "cvc": $scope.cardCvCode,
-                  "exp_month": $scope.cardExpMonth,
-                  "exp_year": $scope.cardExpYear
+                  "number": $scope.details.cardnumber,
+                  "cvc": $scope.details.cardCvCode,
+                  "exp_month": $scope.details.cardExpMonth,
+                  "exp_year": $scope.details.cardExpYear
                 }).then(function(paymentToken){
                   AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
                     null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
@@ -865,10 +865,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
           });
         } else {
           stripe.card.createToken({
-            "number": $scope.cardnumber,
-            "cvc": $scope.cardCvCode,
-            "exp_month": $scope.cardExpMonth,
-            "exp_year": $scope.cardExpYear
+            "number": $scope.details.cardnumber,
+            "cvc": $scope.details.cardCvCode,
+            "exp_month": $scope.details.cardExpMonth,
+            "exp_year": $scope.details.cardExpYear
           }).then(function (paymentToken){
             AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
               null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
