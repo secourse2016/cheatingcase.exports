@@ -716,12 +716,22 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top:10px;
 }
 
+.searchFormInput .input-group{
+  margin: 0px;
+}
+
 .ng-invalid.ng-dirty{
   border-color: #FA787E;
 }
 
 .ng-submitted .ng-invalid-required{
   border-color: #FA787E;
+}
+
+.form-errors {
+  text-align: center;
+  /*padding: 2px 0 2px 16px;*/
+  color: #FA787E;
 }
 
 /*Other Airlines CheckBox*/

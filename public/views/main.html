@@ -34,12 +34,18 @@
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="originAirports"><i class="glyphicon glyphicon-globe"></i>Select Origin: </label>
                                 <input name="originAirports" id="originAirports" type="text" autocomplete="off" placeholder="Flying From*" ng-required="!isTripType(3)" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
-                                <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span>
+                                <!-- <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span> -->
+                                <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.originAirports.$error">
+                                  <div ng-messages-include="views/validationMsgs.html"></div>
+                                </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="destinationAirports"><i class="glyphicon glyphicon-globe"></i>Select Destination: </label>
                                 <input name="destinationAirports" id="destinationAirports" type="text" autocomplete="off" placeholder="Flying To*" ng-required="!isTripType(3)" ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
-                                <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span>
+                                <!-- <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span> -->
+                                <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.destinationAirports.$error">
+                                  <div ng-messages-include="views/validationMsgs.html"></div>
+                                </div>
                             </div>
                         </div>
 
@@ -48,7 +54,10 @@
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                               <div class="form-group">
                                 <label for="refNumInput"> <i class="glyphicon glyphicon-barcode"></i> Booking Ref. Number: </label>
-                                <input type="text" id="refNumInput" autocomplete="off" placeholder="Booking Number*" ng-required="isTripType(3)"  ng-model="bookingRefNum"  class="form-control">
+                                <input type="text" id="refNumInput" autocomplete="off" placeholder="Booking Number*" ng-required="isTripType(3)"  ng-model="bookingRefNum"  class="form-control" name="refNumInput">
+                                <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.refNumInput.$error">
+                                  <div ng-messages-include="views/validationMsgs.html"></div>
+                                </div>
                               </div>
                             </div>
                         </div>
@@ -59,13 +68,16 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="depDate"><i class="fa fa-calendar-plus-o"></i>Departure Date: </label>
                                 <p class="input-group" id="depDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="!isTripType(3)" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions"  close-text="Close" >
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="departureDate" ng-required="!isTripType(3)" placeholder="Departure" is-open="popup1.opened" datepicker-options="dateOptions"  close-text="Close" name="depDate">
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()">
                                   <i class="glyphicon glyphicon-calendar"></i>
                                 </button>
                               </span>
                                 </p>
+                                <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.depDate.$error">
+                                  <div ng-messages-include="views/validationMsgs.html"></div>
+                                </div>
                             </div>
 
                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -88,13 +100,16 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="retDate"><i class="fa fa-calendar-plus-o"></i>Return Date: </label>
                                 <p class="input-group" id="retDate">
-                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="isTripType(2)" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptionsReturn"  close-text="Close" >
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="returnDate" ng-required="isTripType(2)" placeholder="Return" is-open="popup2.opened" datepicker-options="dateOptionsReturn"  close-text="Close" name="retDate" >
                                     <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open2()">
                                   <i class="glyphicon glyphicon-calendar"></i>
                                 </button>
                               </span>
                                 </p>
+                                <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.retDate.$error">
+                                  <div ng-messages-include="views/validationMsgs.html"></div>
+                                </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">

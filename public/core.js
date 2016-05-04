@@ -1,4 +1,4 @@
-var swissAir = angular.module('swissAir', ['ui.bootstrap','angular-stripe', 'ngRoute']);
+var swissAir = angular.module('swissAir', ['ui.bootstrap','angular-stripe', 'ngRoute', 'ngMessages']);
 
 swissAir.config(function ($routeProvider, $locationProvider, stripeProvider) {
 
