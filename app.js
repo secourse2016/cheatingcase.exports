@@ -15,6 +15,23 @@ var stripe  = require('stripe')(process.env.STRIPESECRETKEY);
 var teams   = require('./teams.json');
 var randomstring = require("randomstring");
 
+var sendgrid  = require('sendgrid')('process.env.SENDGRIDKEY');
+
+var sendMail = function (toEmail, toName, refNum, cb){
+  sendgrid.send({
+    to        : toEmail,
+    from      : 'customer-service@swiss-air.me',
+    fromname  : 'Swiss Air',
+    subject   : 'Booking Flight : "'+refNum+'" Swiss Air',
+    text      : 'Dear '+toName+', \n\nWe\'d like to thank you for choosing Swiss Air, You can view your flight booking with the Reference Number "'+refNum+'" On our website swiss-air.me, Feel free to contact us at customer-service@swiss-air.me \n\n'
+  }, function(err, json) {
+    if (err) { return console.error(err); }
+    console.log(json);
+    res.send({ 'data': json, 'error': err });
+    if(cb) cb(err, json);
+  });
+}
+
 var generateRefNum = function(cb){
   var r = "SA" + randomstring.generate({ length:5, charset: 'alphanumeric', readable: true, capitalization: 'uppercase'});
   db.db().collection('bookings').find({'refNum': r}).toArray(function (err, data){
@@ -243,12 +260,22 @@ app.post('/booking', function (req, res){
                       'emptyEconomy': newEmptyEconomyRet, 'emptyBusiness': newEmptyBusinessRet }}, function (errorRet, resultsRet){
 
                         if(errorRet) { res.send({ "refNum": null, "errorMessage": err }); return; }
-                        else res.send({ "refNum": bookingRefNum, "errorMessage": null });
-
+                        else {
+                          res.send({ "refNum": bookingRefNum, "errorMessage": null });
+                          for(var i=0; i<passengerDetails.length; i++) {
+                            var p = passengerDetails[i];
+                            if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
+                          }
+                        }
+                        
                       });
                   });
                 } else {
                   res.send({ "refNum": bookingRefNum, "errorMessage": null });
+                  for(var i=0; i<passengerDetails.length; i++) {
+                    var p = passengerDetails[i];
+                    if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), bookingRefNum);
+                  }
                 }
               });
           });
