@@ -6,12 +6,12 @@
   <div class="card">
   <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" style="font-family: 'Poiret One', cursive; font-weight:bold" placeholder="Booking number" data-ng-model="searchForce">
+      <input type="text" style="font-family: 'Poiret One', cursive; font-weight:bold" placeholder="Booking number" ng-model="bookingRefNum">
     </label>
   </div>
 
    <div align="center">
-    <button class="button icon-left ion-search button-assertive" style="width:120px"><strong>Search</strong></button>
+    <button class="button icon-left ion-search button-assertive" style="width:120px" ng-click="viewBooking(bookingRefNum)"><strong>Search</strong></button>
     </div>
 
   <div class="card">

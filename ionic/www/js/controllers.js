@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
   }, 500);
 })
 
-.controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state) {
+.controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state,AirportsSrv) {
 
  $ionicLoading.show({
     content: 'Loading',
@@ -35,6 +35,20 @@ angular.module('starter.controllers', [])
 
   $scope.search=function(){
    $state.go('tab.search');
+  }
+
+  $scope.viewBooking = function(bookingRefNum) {
+    //AirportsSrv.setbookingRefNum(bookingRefNum);
+    AirportsSrv.viewBooking(bookingRefNum).success(function (data){
+      if(data.error){
+
+      } else {
+        AirportsSrv.setViewedBooking(data);
+        $state.go('viewBooking');
+      }
+
+    });
+
   }
 })
 
@@ -300,9 +314,14 @@ $scope.send=function(){
         $state.go('flightsOneWay');
       });
 
-
   };
-
+  function AirportCodes() {
+    AirportsSrv.getAirportCodes().success(function(airports) {
+      console.log("hello");
+         $scope.Airports = airports;
+     });
+  };
+  AirportCodes();
   $scope.airports=[{"iata":"UTK"},{"iata":"FIV"},{"iata":"FAK"},{"iata":"BWS"},{"iata":"WKK"},{"iata":"TSS"},{"iata":"FOB"},{"iata":"ABP"},{"iata":"ALV"},{"iata":"ADC"},{"iata":"TJP"},{"iata":"AEE"},{"iata":"AEI"},{"iata":"AEK"},{"iata":"OLR"},{"iata":"AFR"},{"iata":"AFT"},{"iata":"ATD"},{"iata":"VEV"},{"iata":"GEF"},{"iata":"AGG"},{"iata":"AKS"},{"iata":"BAS"},{"iata":"FRE"},{"iata":"HIR"},{"iata":"MBU"},{"iata":"IRA"},{"iata":"SCZ"},{"iata":"MUA"},{"iata":"GZO"},{"iata":"MNY"},{"iata":"PRS"},{"iata":"OTV"},{"iata":"RNL"},{"iata":"EGM"},{"iata":"RUS"},{"iata":"VAO"},{"iata":"AGK"},{"iata":"KGE"},{"iata":"AGL"},{"iata":"RIN"},{"iata":"RBV"},{"iata":"AHT"},{"iata":"AHY"},{"iata":"AIE"},{"iata":"AIH"},{"iata":"AIP"},{"iata":"AOS"},{"iata":"AKM"},{"iata":"ALZ"},{"iata":"AMC"},{"iata":"AME"},{"iata":"AMF"},{"iata":"AMU"},{"iata":"AMY"},{"iata":"ANH"},{"iata":"INU"},{"iata":"ANL"},{"iata":"CNZ"},{"iata":"DRC"},{"iata":"GGC"},{"iata":"JMB"},{"iata":"KNP"},{"iata": "BOM"},{"iata": "DEL"},{"iata": "CAI"},{"iata": "JED"},{"iata": "HKG"},{"iata": "TBE"},{"iata": "JNB"},{"iata": "CPT"},{"iata": "RUH"},{"iata": "LHR"},{"iata": "JFK"},{"iata": "LCF"},{"iata": "LAX"},{"iata": "SFO"},{"iata": "FRA"},{"iata": "TXL"},{"iata": "FCO"},{  "iata": "LIN"}];
 })
 
@@ -465,7 +484,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
   $scope.isDisabled = function(){
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
-          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
+          console.log($scope.seats);
+          console.log($scope.outgoingFlights[i].cost);
+          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.details.seats;
+          console.log($scope.Total);
           $scope.disabled=false;
           return;
         }
@@ -625,7 +647,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
     var broke = false;
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
-          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
+          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.details.seats ;
           $scope.outgoingDisabled = false;
           broke=true;
           break;
@@ -634,7 +656,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     for(var j=0;j<$scope.returnFlights.length;j++){
         if($scope.returnFlights[j].checked){
-          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
+          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.details.seats ;
           $scope.returnDisabled = false;
           if(broke){
             $scope.Total = $scope.outgoingCost + $scope.returnCost
@@ -711,177 +733,168 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 })
 
 .controller('viewBookingController',function($scope,AirportsSrv){
-  $scope.booking = {
-  "_id": "5723a6172ed7677425a9f6d1",
-  "passengerDetails": [
-    {
-      "firstName": "Alaa",
-      "lastName": "Badran",
-      "passportNum": 6549865749865,
-      "dateOfBirth": 862434000000,
-      "nationality": "Egypt",
-      "email": "alaa.badran@hotmail.com",
-      "passportExpiryDate": 1580508000000
-    },
-    {
-      "firstName": "Mark",
-      "lastName": "Nader",
-      "passportNum": 132871283712,
-      "dateOfBirth": 862434000000,
-      "nationality": "Egypt",
-      "email": "alaa.badran@hotmail.com",
-      "passportExpiryDate": 1580508000000
-    }
-  ],
-  "class": "business",
-  "cost": 1704,
-  "outgoingFlightId": "5723994361c4675922339d83",
-  "returnFlightId": "123721362163739d83",
-  "refNum": "SA18652",
-  "outgoingSeats": [
-    {
-      "seatNum": "1K",
-      "refNum": "SA18652"
-    },
-    {
-      "seatNum": "1H",
-      "refNum": "SA18652"
+   $scope.booking = AirportsSrv.getViewedBooking();
 
-    }
-  ],
-   "returnSeats": [
-    {
-      "seatNum": "2K",
-      "refNum": "SA18652"
-    },
-    {
-      "seatNum": "1A",
-      "refNum": "SA18652"
+   $scope.checkNationality = function(index){
+     return (($scope.booking.passengerDetails[index-1].nationality == undefined) || ($scope.booking.passengerDetails[index-1].nationality == "") || ($scope.booking.passengerDetails[index-1].nationality == null));
+   };
 
-    }
-  ]
-};
-  // $scope.booking = AirportsSrv.getViewedBooking();
+   $scope.checkEmail = function(index){
+     return (($scope.booking.passengerDetails[index-1].email == undefined) || ($scope.booking.passengerDetails[index-1].email == "") || ($scope.booking.passengerDetails[index-1].email == null));
+   };
 
-  $scope.checkNationality = function(index){
-    return ($scope.booking.passengerDetails[index-1].nationality == undefined);
-  };
-
-  $scope.checkEmail = function(index){
-    return ($scope.booking.passengerDetails[index-1].email == undefined);
-  };
+   $scope.checkReturn = function(){
+     return (($scope.booking.returnFlightId == undefined) || ($scope.booking.returnFlightId == null));
+   };
 })
 
 //paymentController start
-.controller('paymentController',function($scope,AirportsSrv,stripe){
+.controller('paymentController',function($scope,AirportsSrv,stripe,$state){
 
-  // retrieved Info About Outgoing Flight
-  $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
-  $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
+    // retrieved Info About Outgoing Flight
+    $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
+    $scope.outgoingFlightAirline= AirportsSrv.getOutgoingFlightAirline();
 
-  // retrieved Info About Return Flight
-  $scope.returnFlightID= AirportsSrv.getReturnFlightID();
-  $scope.returnFlightAirline= AirportsSrv.getReturnFlightAirline();
+    // retrieved Info About Return Flight
+    $scope.returnFlightID= AirportsSrv.getReturnFlightID();
+    $scope.returnFlightAirline= AirportsSrv.getReturnFlightAirline();
 
-  // retrieved Cost
-  $scope.cost= AirportsSrv.getCost();
-  $scope.class = AirportsSrv.getSelectedClass();
+    // retrieved Cost
+    $scope.cost= AirportsSrv.getCost();
+    $scope.class = AirportsSrv.getSelectedClass();
 
-  $scope.passengerDetails = AirportsSrv.getPassengerArray();
-  $scope.outgoingFlightAirlineURL = "";
-  $scope.returnFlightAirlineURL = "";
+    $scope.passengerDetails = AirportsSrv.getPassengerArray();
+    $scope.outgoingFlightAirlineURL = "";
+    $scope.returnFlightAirlineURL = "";
 
+    $scope.refNum = "";
+    $scope.refNum2 = "";
+    $scope.hidden =false;
 
-  $scope.receipt_number= 0;
+    $scope.details={
+      "cardnumber":"",
+      "cardCvCode":"",
+      "cardExpMonth":"",
+      "cardExpYear":""
+    };
 
-  $scope.book = function(){
-    var sameAirline = ($scope.outgoingFlightAirline == $scope.returnFlightAirline);
+    $scope.goToHome = function (){
+      $state.go('tab.Home');
+    };
 
-    if($scope.outgoingFlightAirline != "Swiss Air") {
-      AirportsSrv.getAirlineDetails($scope.outgoingFlightAirline).then(function (res){
-        if(res.data.errorMessage == null) {
-            $scope.outgoingFlightAirlineURL = res.data.url;
-            stripe.setPublishableKey(res.data.pubKey);
-            stripe.card.createToken({
-              "number": $scope.cardnumber,
-              "cvc": $scope.cvCode,
-              "exp_month": $scope.cardExpMonth,
-              "exp_year": $scope.cardExpYear
-            }).then(function(paymentToken){
-              AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
-                ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
-                  if(resOutgoing.data.errorMessage == null) $scope.refNum = resOutgoing.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details";
-                  else $scope.refNum = resOutgoing.data.errorMessage;
-                  stripe.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
-              });
-            });
-        } else {
-          $scope.refNum = "Could Not Retrieve Airline's \""+$scope.outgoingFlightAirline+"\" Public Key.";
-        }
-      });
-    } else {
-      stripe.card.createToken({
-        "number": $scope.cardnumber,
-        "cvc": $scope.cvCode,
-        "exp_month": $scope.cardExpMonth,
-        "exp_year": $scope.cardExpYear
-      }).then(function (paymentToken){
-        AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
-          ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
-            if(resOutgoing.data.errorMessage == null) $scope.refNum = resOutgoing.data.refNum;
-            else $scope.refNum = resOutgoing.data.errorMessage;
-        });
-      });
-    }
+    $scope.book = function(){
+      $scope.hidden = true;
+      var sameAirline = ($scope.outgoingFlightAirline == $scope.returnFlightAirline);
 
-    if($scope.returnFlightAirline && !(sameAirline)) {
-
-      if($scope.returnFlightAirline != "Swiss Air") {
-        AirportsSrv.getAirlineDetails($scope.returnFlightAirline).then(function (res){
+      if($scope.outgoingFlightAirline != "Swiss Air") {
+        AirportsSrv.getAirlineDetails($scope.outgoingFlightAirline).then(function (res){
           if(res.data.errorMessage == null) {
-              $scope.returnFlightAirlineURL = res.data.url;
+            console.log(res);
+              $scope.outgoingFlightAirlineURL = res.data.url;
               stripe.setPublishableKey(res.data.pubKey);
               stripe.card.createToken({
-                "number": $scope.cardnumber,
-                "cvc": $scope.cvCode,
-                "exp_month": $scope.cardExpMonth,
-                "exp_year": $scope.cardExpYear
+                "number": $scope.details.cardnumber,
+                "cvc": $scope.details.cardCvCode,
+                "exp_month": $scope.details.cardExpMonth,
+                "exp_year": $scope.details.cardExpYear
               }).then(function(paymentToken){
-                AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
-                  null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
-                    if(resReturn.data.errorMessage == null) $scope.refNum = resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details";
-                    else $scope.refNum = resReturn.data.errorMessage;
+                AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
+                  ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
+                    if(resOutgoing.data.errorMessage == null) {
+                      console.log('SUCCESS: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+                      $scope.refNum += "Booking: " + resOutgoing.data.refNum + " Please refer to \""+$scope.outgoingFlightAirlineURL+"\" to view your booking details.";
+                    }
+                    else {
+                      console.log('FAILURE: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+                      $scope.refNum += "Booking: " + resOutgoing.data.errorMessage + ".";
+                    }
                     stripe.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
                 });
               });
           } else {
-            $scope.refNum += "Could Not Retrieve Airline's \""+$scope.returnFlightAirline+"\" Public Key.";
+            console.log('FAILURE: case outgoing is not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+            $scope.refNum += "Booking: Could Not Retrieve Airline's \""+$scope.outgoingFlightAirline+"\" Public Key.";
           }
         });
       } else {
         stripe.card.createToken({
-          "number": $scope.cardnumber,
-          "cvc": $scope.cvCode,
-          "exp_month": $scope.cardExpMonth,
-          "exp_year": $scope.cardExpYear
+          "number": $scope.details.cardnumber,
+          "cvc": $scope.details.cardCvCode,
+          "exp_month": $scope.details.cardExpMonth,
+          "exp_year": $scope.details.cardExpYear
         }).then(function (paymentToken){
-          AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
-            null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
-              if(resReturn.data.errorMessage == null) $scope.refNum += resReturn.data.refNum;
-              else $scope.refNum += resReturn.data.errorMessage;
+          AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.outgoingFlightID,
+            ((sameAirline)?($scope.returnFlightID):(null)), paymentToken, $scope.outgoingFlightAirline, $scope.class).then(function (resOutgoing){
+              if(resOutgoing.data.errorMessage == null) {
+                console.log('SUCCESS: case outgoing IS swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+                $scope.refNum += "Booking: " + resOutgoing.data.refNum + " Please go to \"View Booking\" to view your booking details.";
+              }
+              else {
+                console.log('FAILURE: case outgoing IS not swissAir and it is '+ ((sameAirline)?'the same as':'different from') + 'the return airline.');
+                $scope.refNum += "Booking: " + resOutgoing.data.errorMessage + ".";
+              }
           });
         });
+      }
+
+      if($scope.returnFlightAirline && !(sameAirline)) {
+
+        if($scope.returnFlightAirline != "Swiss Air") {
+          AirportsSrv.getAirlineDetails($scope.returnFlightAirline).then(function (res){
+            if(res.data.errorMessage == null) {
+                $scope.returnFlightAirlineURL = res.data.url;
+                stripe.setPublishableKey(res.data.pubKey);
+                stripe.card.createToken({
+                  "number": $scope.details.cardnumber,
+                  "cvc": $scope.details.cardCvCode,
+                  "exp_month": $scope.details.cardExpMonth,
+                  "exp_year": $scope.details.cardExpYear
+                }).then(function(paymentToken){
+                  AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
+                    null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
+                      if(resReturn.data.errorMessage == null) {
+                        console.log('SUCCESS: case return is NOT swissAir and is different than outgoing');
+                        $scope.refNum2 += "Booking: " + resReturn.data.refNum + " Please refer to \""+$scope.returnFlightAirlineURL+"\" to view your booking details.";
+                      }
+                      else {
+                        console.log('FAILURE: case return is NOT swissAir and is different than outgoing');
+                        $scope.refNum2 += "Booking: " + resReturn.data.errorMessage + ".";
+                      }
+                      stripe.setPublishableKey('pk_test_0HCCWDzLKJrDq1i0QuB7yrXA');
+                  });
+                });
+            } else {
+              console.log('FAILURE: case return is NOT swissAir and is different than outgoing');
+              $scope.refNum2 += "Booking: Could Not Retrieve Airline's \""+$scope.returnFlightAirline+"\" Public Key.";
+            }
+          });
+        } else {
+          stripe.card.createToken({
+            "number": $scope.details.cardnumber,
+            "cvc": $scope.details.cardCvCode,
+            "exp_month": $scope.details.cardExpMonth,
+            "exp_year": $scope.details.cardExpYear
+          }).then(function (paymentToken){
+            AirportsSrv.createBooking($scope.passengerDetails, $scope.cost, $scope.returnFlightID,
+              null, paymentToken, $scope.returnFlightAirline, $scope.class).then(function (resReturn){
+                if(resReturn.data.errorMessage == null) {
+                  console.log('SUCCESS: case return IS swissAir and it is different than outgoing');
+                  $scope.refNum2 += "Booking: " + resReturn.data.refNum + " Please go to \"View Booking\" to view your booking details.";
+                }
+                else {
+                  console.log('FAILURE: case return IS not swissAir and it is different than outgoing');
+                  $scope.refNum2 += "Booking: " + resReturn.data.errorMessage + ".";
+                }
+            });
+          });
+
+        }
 
       }
 
-    }
 
+    };
 
-  };
-
-  $scope.$watch('receipt_number', function() {
-    $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
-  });
 })
 
 //paymentController end

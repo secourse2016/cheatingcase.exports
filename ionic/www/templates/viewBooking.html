@@ -12,13 +12,13 @@
             <div class="col-10"></div>
                 <div class="col-50">
                     <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">cost: <br>{{booking.cost|currency}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">cost: <br>{{booking.cost|currency}}</p>
                     </div>
                     <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>{{booking.class}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">Class: <br>{{booking.class}}</p>
                     </div>
                     <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Booking number: <br>{{booking.refNum}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">Booking number: <br>{{booking.refNum}}</p>
                     </div>
                 </div>
                 </div>
@@ -33,21 +33,21 @@
                         <p style="font-weight: bold;font-family: 'Oswald', sans-serif">OutGoing Details : </p>
                     </div>
                       <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">origin : {{booking.origin}} ------->    Destination : {{booking.destination}} </p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">{{booking.origin}} --> {{booking.destination}} </p>
                     </div>
                <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">outGoing flight Date :  <br>{{booking.outgoingFlightDate| date:'medium'}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">outGoing flight Date :  <br>{{booking.outgoingFlightDate| date:'medium'}}</p>
                     </div>
                     <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Outgoing Flight ID :<br>{{booking.outgoingFlightId}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">Outgoing Flight ID :<br>{{booking.outgoingFlightId}}</p>
                     </div>
-              
-                                   
-                     <div class="card" align="center">
+
+
+                     <div>
      <div class="row">
      <div class="col-80">
 
-<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>outgoing seats :</strong></p>
+<p style="color:red;font-weight: bold;font-family: 'Raleway', sans-serif"><strong>outgoing seats :</strong></p>
      </div>
      <div class="col-10">
     <label class="checkbox checkbox-assertive">
@@ -62,7 +62,7 @@
     </div>
 
                <div class="row" id="collapse{{type}}{{index}}" ng-init="outgoing.checked" ng-show="outgoing.checked">
-<p style="font-weight: bold;font-family: 'Oswald', sans-serif"> outgoing Seats :
+<p style="font-weight: bold;font-family: 'Oswald', sans-serif">
 <ul class="pagination">
   <li ng-repeat="seat in booking.outgoingSeats" class="seats"><a href="">{{seat.seatNum}}</a></li>
 </ul>
@@ -75,28 +75,28 @@
 
                 <div>
                    <div class="card">
-            <div class="row">
+            <div class="row" ng-hide="checkReturn()">
             <div class="col-10"></div>
                 <div class="col-50">
                     <div class="row">
                         <p style="font-weight: bold;font-family: 'Oswald', sans-serif">Return Details :</p>
                     </div>
                      <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">origin : {{booking.destination}} ------->    Destination : {{booking.origin}} </p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">{{booking.destination}} --> {{booking.origin}} </p>
                     </div>
                <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">return flight Date : <br>{{booking.returnFlightDate| date:'medium'}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">return flight Date : <br>{{booking.returnFlightDate| date:'medium'}}</p>
                     </div>
                     <div class="row">
-                        <p style="font-weight: bold;font-family: 'Oswald', sans-serif">return Flight ID :<br>{{booking.returnFlightId}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">return Flight ID :<br>{{booking.returnFlightId}}</p>
                     </div>
-              
-                                   
-                     <div class="card" align="center">
+
+
+                     <div>
      <div class="row">
      <div class="col-80">
 
-<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>return seats :</strong></p>
+<p style="color:red;font-weight: bold;font-family: 'Raleway', sans-serif"><strong>return seats :</strong></p>
      </div>
      <div class="col-10">
     <label class="checkbox checkbox-assertive">
@@ -111,7 +111,7 @@
     </div>
 
                <div class="row" id="collapse{{type}}{{index}}" ng-init="return.checked" ng-show="return.checked">
-<p style="font-weight: bold;font-family: 'Oswald', sans-serif"> return Seats :
+<p style="font-weight: bold;font-family: 'Oswald', sans-serif">
 <ul class="pagination">
   <li ng-repeat="seat in booking.returnSeats" class="seats"><a href="">{{seat.seatNum}}</a></li>
 </ul>

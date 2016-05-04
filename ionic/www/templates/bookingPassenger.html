@@ -3,7 +3,7 @@
      <div class="row">
      <div class="col-80">
 
-<p style="{{color}};font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Passenger {{index}} Details</strong></p>
+<p style="font-weight: bold;font-family: 'Raleway', sans-serif"><strong>Passenger {{index}} Details</strong></p>
      </div>
      <div class="col-10">
     <label class="checkbox checkbox-assertive">
@@ -23,13 +23,13 @@
             <div class="col-10"></div>
                 <div class="col-50">
                     <div class="row">
-                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">First Name : <br>{{passenger.firstName}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">First Name : <br>{{passenger.firstName}}</p>
                     </div>
                     <div class="row">
-                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Date of Birth : <br>{{passenger.dateOfBirth|date:'medium'}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">Date of Birth : <br>{{passenger.dateOfBirth|date:'medium'}}</p>
                     </div>
                     <div class="row">
-                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Nationality : <br>{{passenger.nationality}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif" ng-hide="$parent.checkNationality(index)">Nationality : <br>{{passenger.nationality}}</p>
                     </div>
 
 
@@ -37,14 +37,14 @@
                 <!-- End Panel-Gig Left -->
                 <div class="col-40">
                   <div class="row">
-                      <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Last Name : <br>{{passenger.lastName}}</p>
+                      <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">Last Name : <br>{{passenger.lastName}}</p>
                   </div>
                     <div class="row">
-                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Passport Number : <br>{{passenger.passportNum}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif">Passport Number : <br>{{passenger.passportNum}}</p>
                     </div>
 
                     <div class="row">
-                        <p style="{{color}};font-weight: bold;font-family: 'Oswald', sans-serif">Email : <br>{{passenger.email}}</p>
+                        <p style="color:red;font-weight: bold;font-family: 'Oswald', sans-serif" ng-hide="$parent.checkEmail(index)">Email : <br>{{passenger.email}}</p>
                     </div>
 
                 </div>
