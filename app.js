@@ -30,6 +30,29 @@ var sendMail = function (toEmail, toName, refNum, cb){
   });
 }
 
+var sendSMS = function (number, refNum){
+  var smsBody = {
+    "from": "00201121508662",
+    "to": [number],
+    "body": "Thanks for chosing SwissAir, Your Booking RefNum is "+refNum+"."
+  }
+  request({ 'url': 'https://api.mblox.com/xms/v1/swissair12/batches',
+            'method': "POST",
+            'json': true,   // <--Very important!!!
+            'body': smsBody,
+            'timeout': parseInt(process.env.TIMEOUT),
+            'headers': {
+              'Content-Type': "application/json",
+              'Authorization': "Bearer "+process.env.SMSKEY
+            }
+          }, function (error, response, body){
+            if(error || response.statusCode != 200) res.send({ 'refNum': null, 'errorMessage': (error || response.statusCode) });
+            else {
+              res.send(body);
+            }
+          });
+}
+
 var generateRefNum = function(cb){
   var r = "SA" + randomstring.generate({ length:5, charset: 'alphanumeric', readable: true, capitalization: 'uppercase'});
   db.db().collection('bookings').find({'refNum': r}).toArray(function (err, data){
@@ -264,6 +287,7 @@ app.post('/booking', function (req, res){
                             var p = booking.passengerDetails[i];
                             if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                           }
+                          if(booking.phone) sendSMS(phone, booking.refNum);
                         }
 
                       });
@@ -274,6 +298,7 @@ app.post('/booking', function (req, res){
                     var p = booking.passengerDetails[i];
                     if(p.email) sendMail(p.email, (p.firstName+' '+p.lastName), booking.refNum);
                   }
+                  if(booking.phone) sendSMS(phone, booking.refNum);
                 }
               });
           });
@@ -352,6 +377,27 @@ app.get('/airlinedetails', function (req, res){
               res.send({ 'pubKey': body, 'url': teams[airLine], 'errorMessage': null });
             }
           });
+});
+
+app.post('/contactus', function(req, res){
+
+  if( !(req.body.name && req.body.email && req.body.phone && req.body.message) ) {
+    res.send({ 'message': 'Sorry, We were unable to retrieve you message because of missing fields' }); return;
+  }
+
+  db.db().collection('contactus').insert(req.body, function(errIns, doc){
+    sendgrid.send({
+      to        : 'customer-service@swiss-air.me',
+      from      : 'customer-service@swiss-air.me',
+      fromname  : 'Airline Swiss Air',
+      subject   : 'Contact Us Message From "'+req.body.name+' <'+req.body.email+'>" - Swiss Air',
+      text      : req.body.message
+    }, function(err, json) {
+      console.log({ 'data': json, 'error': err });
+      res.send({ 'message': (err || ("Thanks for your feedback we'll try to contact you soon at: "+req.body.email)) });
+    });
+  });
+
 });
 
 // NOTE: seated version of oneway search route
