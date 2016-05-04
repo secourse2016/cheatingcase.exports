@@ -15,7 +15,7 @@ var stripe  = require('stripe')(process.env.STRIPESECRETKEY);
 var teams   = require('./teams.json');
 var randomstring = require("randomstring");
 
-var sendgrid  = require('sendgrid')('process.env.SENDGRIDKEY');
+var sendgrid  = require('sendgrid')(process.env.SENDGRIDKEY);
 
 var sendMail = function (toEmail, toName, refNum, cb){
   sendgrid.send({
