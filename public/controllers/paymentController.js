@@ -28,11 +28,9 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
     $scope.otherAirline = true;
   }
 
-  $scope.hideForm = function () {
-    $scope.formHide = true ;
-  }
 
   $scope.book = function(){
+    $scope.formHide = true ;
     var sameAirline = ($scope.outgoingFlightAirline == $scope.returnFlightAirline);
 
     if($scope.outgoingFlightAirline != "Swiss Air") {
