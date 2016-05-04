@@ -749,7 +749,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 })
 
 //paymentController start
-.controller('paymentController',function($scope,AirportsSrv,stripe){
+.controller('paymentController',function($scope,AirportsSrv,stripe,$state){
 
     // retrieved Info About Outgoing Flight
     $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
@@ -761,7 +761,6 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     // retrieved Cost
     $scope.cost= AirportsSrv.getCost();
-    console.log("cost is" + $scope.cost);
     $scope.class = AirportsSrv.getSelectedClass();
 
     $scope.passengerDetails = AirportsSrv.getPassengerArray();
@@ -770,7 +769,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     $scope.refNum = "";
     $scope.refNum2 = "";
-    $scope.receipt_number= 0;
+    $scope.hidden =false;
 
     $scope.details={
       "cardnumber":"",
@@ -778,7 +777,13 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
       "cardExpMonth":"",
       "cardExpYear":""
     };
+
+    $scope.goToHome = function (){
+      $state.go('tab.Home');
+    };
+
     $scope.book = function(){
+      $scope.hidden = true;
       var sameAirline = ($scope.outgoingFlightAirline == $scope.returnFlightAirline);
 
       if($scope.outgoingFlightAirline != "Swiss Air") {
@@ -890,9 +895,6 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     };
 
-    $scope.$watch('receipt_number', function() {
-      $scope.bookingRefNumber = "JSW"+$scope.receipt_number;
-    });
 })
 
 //paymentController end

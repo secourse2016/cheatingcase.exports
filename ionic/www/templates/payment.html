@@ -1,11 +1,11 @@
-<ion-view view-title="payment">
+<ion-view view-title="Payment --> Total :{{cost|currency}}">
   <ion-content class="padding">
     <div class="row">
       <div class="col credCardImgContainer" align="center">
         <img class="img-responsive" style="height: auto" src="./img/card-in-use.png">
       </div>
     </div>
-    <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
+    <form name="paymentInfoForm" novalidate ng-hide="hidden" ng-submit="paymentInfoForm.$valid && book()">
       <div class="row">
         <div class="col">
 
@@ -58,11 +58,15 @@
           <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
             <strong>Checkout</strong>
           </button>
-          <p>{{refNum}}</p>
-          <p>{{refNum2}}</p>
+
         </div>
       </div>
     </form>
+    <p>{{refNum}}</p>
+    <p>{{refNum2}}</p>
+    <button class="button button-medium ion-card  button-assertive" style="  margin-top:10px" id='paySubmit' ng-hide="!hidden" ng-click="goToHome()">
+      <strong>Back To Home</strong>
+    </button>
   </ion-content>
 </ion-view>
 

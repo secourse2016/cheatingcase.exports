@@ -40,8 +40,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     url: '/about',
     views: {
       'tab-about': {
-        templateUrl: 'templates/viewBooking.html',
-        controller: 'viewBookingController'
+        templateUrl: 'templates/tab-about.html',
+        controller: 'AboutCtrl'
       }
     }
   })
