@@ -29,7 +29,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="row searchFormInput" id="outRetSearchInput" ng-show="!isTripType(3)">
+                        <div class="row searchFormInput" id="outRetSearchInput" ng-show="!isTripType(3)" ng-class="{mrgnBtmNone: searchForm.$submitted && searchForm.originAirports.$error}">
                             <!-- from and to -->
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="originAirports"><i class="glyphicon glyphicon-globe"></i>Select Origin: </label>
