@@ -12,7 +12,7 @@
           <div class="list">
             <label class="item item-input item-stacked-label item-icon-right">
               <span class="input-label">Card Number</span>
-              <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="cardnumber" min="0" max="9999999999999999" />
+              <input type="number" class="form-control" name="cardNumber" placeholder="sixteen digits card number" required autofocus data-stripe="number" ng-model="details.cardnumber" min="0" max="9999999999999999" />
               <i class="icon ion-card"></i>
             </label>
             <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cardNumber.$error">
@@ -23,11 +23,11 @@
               <div class="row">
                 <div class="col col-50">
                   <span class="input-label">Expiary Month</span>
-                  <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="cardExpMonth" />
+                  <input type="number" min="1" max="12" class="form-control" id="expMonth" name="expMonth" placeholder="MM" required data-stripe="exp_month" ng-model="details.cardExpMonth" />
                 </div>
                 <div class="col col-50">
                   <span class="input-label">Expiary Year</span>
-                  <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="cardExpYear" />
+                  <input type="number" min="00" max="99" class="form-control" id="expYear" name="expYear" placeholder="YY" required data-stripe="exp_year" ng-model="details.cardExpYear" />
                 </div>
               </div>
             </label>
@@ -55,6 +55,8 @@
           <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
             <strong>Checkout</strong>
           </button>
+          <p>{{refNum}}</p>
+          <p>{{refNum2}}</p>
         </div>
       </div>
     </form>

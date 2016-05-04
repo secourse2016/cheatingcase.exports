@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 })
 
 .config(function($stateProvider, $urlRouterProvider,stripeProvider) {
-  
+
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -40,8 +40,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     url: '/about',
     views: {
       'tab-about': {
-        templateUrl: 'templates/tab-about.html',
-        controller: 'AboutCtrl'
+        templateUrl: 'templates/viewBooking.html',
+        controller: 'viewBookingController'
       }
     }
   })
