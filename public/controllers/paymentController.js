@@ -1,7 +1,7 @@
 swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
   
   $scope.otherAirline = false;
-  
+   $scope.formHide = false;
 
   // retrieved Info About Outgoing Flight
   $scope.outgoingFlightID= AirportsSrv.getOutgoingFlightID();
@@ -26,6 +26,10 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
   if($scope.outgoingFlightAirline!="Swiss Air" && $scope.returnFlightAirline !="Swiss Air" ){
     console.log($scope.outgoingFlightAirline)
     $scope.otherAirline = true;
+  }
+  
+  $scope.hideForm = function () {
+    $scope.formHide = true ;
   }
 
   $scope.book = function(){
