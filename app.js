@@ -35,7 +35,7 @@ var sendSMS = function (number, refNum){
     "from": "00201121508662",
     "to": [number],
     "body": "Thanks for chosing SwissAir, Your Booking RefNum is "+refNum+"."
-  }
+  };
   request({ 'url': 'https://api.mblox.com/xms/v1/swissair12/batches',
             'method': "POST",
             'json': true,   // <--Very important!!!
@@ -43,13 +43,10 @@ var sendSMS = function (number, refNum){
             'timeout': parseInt(process.env.TIMEOUT),
             'headers': {
               'Content-Type': "application/json",
-              'Authorization': "Bearer "+process.env.SMSKEY
+              'Authorization': ("Bearer "+process.env.SMSKEY)
             }
           }, function (error, response, body){
-            if(error || response.statusCode != 200) res.send({ 'refNum': null, 'errorMessage': (error || response.statusCode) });
-            else {
-              res.send(body);
-            }
+            console.log({ 'error': error, 'data': body });
           });
 }
 
