@@ -806,19 +806,6 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
       "cardExpMonth":"",
       "cardExpYear":""
     };
-
-    $scope.$watch('details.cardnumber', function() {
-      $scope.watchCardnumber = $scope.details.cardnumber;
-    });
-    $scope.$watch('details.cvCode', function() {
-      $scope.watchCvCode = $scope.details.cvCode;
-    });
-    $scope.$watch('details.cardExpMonth', function() {
-      $scope.watchCardExpMonth = $scope.details.cardExpMonth;
-    });
-    $scope.$watch('details.cardExpYear', function() {
-      $scope.watchCardExpYear = $scope.details.cardExpYear;
-    });
     $scope.book = function(){
       var sameAirline = ($scope.outgoingFlightAirline == $scope.returnFlightAirline);
 
