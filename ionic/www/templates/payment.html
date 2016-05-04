@@ -39,7 +39,8 @@
             </div>
             <label class="item item-input item-stacked-label">
               <span class="input-label">CV Code</span>
-              <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="details.cvCode" />
+
+              <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="details.cardCvCode" />
             </label>
             <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
               <div ng-message="required">Please enter a value for this field.</div>
