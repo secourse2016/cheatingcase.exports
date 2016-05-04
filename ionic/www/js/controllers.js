@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
   }, 500);
 })
 
-.controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state) {
+.controller('SearchCtrl', function($scope, $ionicLoading, $timeout, $state,AirportsSrv) {
 
  $ionicLoading.show({
     content: 'Loading',
@@ -35,6 +35,20 @@ angular.module('starter.controllers', [])
 
   $scope.search=function(){
    $state.go('tab.search');
+  }
+
+  $scope.viewBooking = function(bookingRefNum) {
+    //AirportsSrv.setbookingRefNum(bookingRefNum);
+    AirportsSrv.viewBooking(bookingRefNum).success(function (data){
+      if(data.error){
+
+      } else {
+        AirportsSrv.setViewedBooking(data);
+        $state.go('viewBooking');
+      }
+
+    });
+
   }
 })
 
@@ -470,7 +484,10 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
   $scope.isDisabled = function(){
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
-          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.seats;
+          console.log($scope.seats);
+          console.log($scope.outgoingFlights[i].cost);
+          $scope.Total = parseInt($scope.outgoingFlights[i].cost) * $scope.details.seats;
+          console.log($scope.Total);
           $scope.disabled=false;
           return;
         }
@@ -630,7 +647,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
     var broke = false;
     for(var i=0;i<$scope.outgoingFlights.length;i++){
         if($scope.outgoingFlights[i].checked){
-          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.seats ;
+          $scope.outgoingCost = parseInt($scope.outgoingFlights[i].cost) * $scope.details.seats ;
           $scope.outgoingDisabled = false;
           broke=true;
           break;
@@ -639,7 +656,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     for(var j=0;j<$scope.returnFlights.length;j++){
         if($scope.returnFlights[j].checked){
-          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.seats ;
+          $scope.returnCost = parseInt($scope.returnFlights[j].cost) * $scope.details.seats ;
           $scope.returnDisabled = false;
           if(broke){
             $scope.Total = $scope.outgoingCost + $scope.returnCost
@@ -716,57 +733,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 })
 
 .controller('viewBookingController',function($scope,AirportsSrv){
-  $scope.booking = {
-  "_id": "5723a6172ed7677425a9f6d1",
-  "passengerDetails": [
-    {
-      "firstName": "Alaa",
-      "lastName": "Badran",
-      "passportNum": 6549865749865,
-      "dateOfBirth": 862434000000,
-      "nationality": "Egypt",
-      "email": "alaa.badran@hotmail.com",
-      "passportExpiryDate": 1580508000000
-    },
-    {
-      "firstName": "Mark",
-      "lastName": "Nader",
-      "passportNum": 132871283712,
-      "dateOfBirth": 862434000000,
-      "nationality": "Egypt",
-      "email": "alaa.badran@hotmail.com",
-      "passportExpiryDate": 1580508000000
-    }
-  ],
-  "class": "business",
-  "cost": 1704,
-  "outgoingFlightId": "5723994361c4675922339d83",
-  "returnFlightId": "123721362163739d83",
-  "refNum": "SA18652",
-  "outgoingSeats": [
-    {
-      "seatNum": "1K",
-      "refNum": "SA18652"
-    },
-    {
-      "seatNum": "1H",
-      "refNum": "SA18652"
-
-    }
-  ],
-   "returnSeats": [
-    {
-      "seatNum": "2K",
-      "refNum": "SA18652"
-    },
-    {
-      "seatNum": "1A",
-      "refNum": "SA18652"
-
-    }
-  ]
-};
-  // $scope.booking = AirportsSrv.getViewedBooking();
+   $scope.booking = AirportsSrv.getViewedBooking();
 
   $scope.checkNationality = function(index){
     return ($scope.booking.passengerDetails[index-1].nationality == undefined);
@@ -790,6 +757,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     // retrieved Cost
     $scope.cost= AirportsSrv.getCost();
+    console.log("cost is" + $scope.cost);
     $scope.class = AirportsSrv.getSelectedClass();
 
     $scope.passengerDetails = AirportsSrv.getPassengerArray();

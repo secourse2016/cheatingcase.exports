@@ -120,6 +120,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
                 controller: 'ConfirmationController'
   })
 
+  .state('viewBooking', {
+                url: '/viewBooking',
+                templateUrl: 'templates/viewBooking.html',
+                controller: 'viewBookingController'
+  })
+
   .state('pay', {
                 url: '/pay',
                 templateUrl: 'templates/payment.html',

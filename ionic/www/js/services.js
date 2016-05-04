@@ -118,6 +118,14 @@ angular.module('starter.services', [])
       this.bookingRefNum = value;
     },
 
+    setViewedBooking: function(value) {
+      this.viewedBooking = value;
+    },
+
+    getViewedBooking: function() {
+      return this.viewedBooking;
+    },
+
     formatDate: function (date) {
       month = '' + (date.getMonth() + 1),
         day = '' + date.getDate(),
