@@ -1,5 +1,5 @@
 swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
-  
+
   $scope.otherAirline = false;
    $scope.formHide = false;
 
@@ -22,12 +22,12 @@ swissAir.controller('paymentController',function($scope,AirportsSrv,stripe){
   $scope.refNum = "";
   $scope.refNum2 = "";
   $scope.receipt_number= 0;
-  
+
   if($scope.outgoingFlightAirline!="Swiss Air" && $scope.returnFlightAirline !="Swiss Air" ){
     console.log($scope.outgoingFlightAirline)
     $scope.otherAirline = true;
   }
-  
+
   $scope.hideForm = function () {
     $scope.formHide = true ;
   }
