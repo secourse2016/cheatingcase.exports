@@ -9,7 +9,7 @@ $scope.checkEmail = function(index){
   return (($scope.booking.passengerDetails[index-1].email == undefined) || ($scope.booking.passengerDetails[index-1].email == "") || ($scope.booking.passengerDetails[index-1].email == null));
 };
 
-$scope.checkReturn = function(index){
+$scope.checkReturn = function(){
   return (($scope.booking.returnFlightId == undefined) || ($scope.booking.returnFlightId == null));
 };
 
