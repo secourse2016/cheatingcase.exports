@@ -802,7 +802,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
 
     $scope.details={
       "cardnumber":"",
-      "cvCode":"",
+      "cardCvCode":"",
       "cardExpMonth":"",
       "cardExpYear":""
     };
@@ -826,10 +826,6 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
         AirportsSrv.getAirlineDetails($scope.outgoingFlightAirline).then(function (res){
           if(res.data.errorMessage == null) {
             console.log(res);
-            console.log($scope.watchCardnumber);
-            console.log($scope.watchCardExpMonth);
-            console.log($scope.watchCardExpYear);
-            console.log($scope.watchCvCode);
               $scope.outgoingFlightAirlineURL = res.data.url;
               stripe.setPublishableKey(res.data.pubKey);
               stripe.card.createToken({
