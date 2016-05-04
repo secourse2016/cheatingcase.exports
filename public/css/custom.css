@@ -957,6 +957,10 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
 
+.flightsInfoContainer .panel-info-swiss .gig .panel-body{
+    padding-left: 40px;
+}
+
 .flightsInfoContainer .pager,
 ul.flightsPager{
   margin-top: 0px;
@@ -1153,6 +1157,14 @@ margin-right: -15px;
 .passengerInfoContainer i,
 .paymentContainer i{
   padding-right: 5px;
+}
+
+.passengerInfoContainer .input-group.email{
+  min-width: 40%;
+}
+
+.passengerInfoContainer .email input{
+min-width: 100%;
 }
 
 .mainViewContainer .btn-default i{
