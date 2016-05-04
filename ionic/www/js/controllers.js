@@ -817,7 +817,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
               stripe.setPublishableKey(res.data.pubKey);
               stripe.card.createToken({
                 "number": $scope.cardnumber,
-                "cvc": $scope.cvCode,
+                "cvc": $scope.cardCvCode,
                 "exp_month": $scope.cardExpMonth,
                 "exp_year": $scope.cardExpYear
               }).then(function(paymentToken){
@@ -842,7 +842,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
       } else {
         stripe.card.createToken({
           "number": $scope.cardnumber,
-          "cvc": $scope.cvCode,
+          "cvc": $scope.cardCvCode,
           "exp_month": $scope.cardExpMonth,
           "exp_year": $scope.cardExpYear
         }).then(function (paymentToken){
@@ -869,7 +869,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
                 stripe.setPublishableKey(res.data.pubKey);
                 stripe.card.createToken({
                   "number": $scope.cardnumber,
-                  "cvc": $scope.cvCode,
+                  "cvc": $scope.cardCvCode,
                   "exp_month": $scope.cardExpMonth,
                   "exp_year": $scope.cardExpYear
                 }).then(function(paymentToken){
@@ -894,7 +894,7 @@ $scope.retMinDate = AirportsSrv.formatDate(nextDay);
         } else {
           stripe.card.createToken({
             "number": $scope.cardnumber,
-            "cvc": $scope.cvCode,
+            "cvc": $scope.cardCvCode,
             "exp_month": $scope.cardExpMonth,
             "exp_year": $scope.cardExpYear
           }).then(function (paymentToken){
