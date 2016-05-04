@@ -242,7 +242,8 @@ app.post('/booking', function (req, res){
         'cost'            : req.body.cost,
         'outgoingFlightId': req.body.outgoingFlightId,
         'returnFlightId'  : req.body.returnFlightId,
-        'refNum'          : bookingRefNum
+        'refNum'          : bookingRefNum,
+        'phone'           : req.body.phone
       };
 
       db.db().collection('bookings').insert(booking, function (errIns, doc){
