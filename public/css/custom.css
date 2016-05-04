@@ -672,6 +672,10 @@ body {
         font-size: 300px;
         color:#ff4d4d;
     }
+
+    .mainFormContainer i.material-icons{
+      font-size: 15px;
+    }
 /*}*/
 
 
