@@ -15,7 +15,7 @@
                     <h5 class="swissBadge-header">CLASS<span class="help-block subtext-gig">{{booking.class}}</span></h5>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-middle">
-                    <h5 class="swissBadge-header">Outgoing: <span class="help-block subtext-gig">{{booking.origin}} --> {{booking.destination}}</span></h5>
+                    <h2 class="swissBadge-header">{{booking.origin}} --> {{booking.destination}}<span class="pull-right swissBadgeAirline">Date</span></h2>
                     <h5 class="swissBadge-header">Outgoing Flight Date: <span class="help-block subtext-gig">{{booking.outgoingFlightDate|date:'medium'}}</span></h5>
                     <h5 class="swissBadge-header">Outgoing Flight ID: <span class="help-block subtext-gig">{{booking.outgoingFlightId}}</span></h5>
                     <h5 class="swissBadge-header">Seats:
@@ -26,8 +26,8 @@
                     </span>
                     </h5>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-right" ng-hide="checkReturn()">
-                  <h5 class="swissBadge-header">Return: <span class="help-block subtext-gig">{{booking.destination}} --> {{booking.origin}}</span></h5>
+                <div class="col-md-4 col-sm-6 col-xs-12 swissBadge-right">
+                    <h2 class="swissBadge-header">{{booking.destination}} --> {{booking.origin}}<span class="pull-right swissBadgeAirline">Date</span></h2>
                     <h5 class="swissBadge-header">Return Flight Date: <span class="help-block subtext-gig">{{booking.returnFlightDate|date:'medium'}}</span></h5>
                     <h5 class="swissBadge-header">Return Flight ID: <span class="help-block subtext-gig">{{booking.returnFlightId}}</span></h5>
                     <h5 class="swissBadge-header">Seats:
@@ -41,7 +41,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-12">
             <hr>
@@ -57,5 +56,90 @@
             </div>
         </div>
     </div>
+<!-- <<<<<<< HEAD -->
+    <!-- SEAT MAP -->
+    <!-- <div class="row swissBadgeBigContainer">
+        <div class="col-lg-12 swissBadgeContainer">
+            <div class="row swissBadgeSeat">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <h2 class="swissBadge-header">Outgoing Seats</h2>
 
+                    <div class="panel-group bookingPassenger" id="accordion">
+                        <div class="panel gig">
+                            <div class="panel-body">
+                                <div class="row">
+                                  <div class="col-lg-12 seatMapContainer">
+                                    <div class="panel panel-title-default">
+                                      <div class="panel-body">
+                                        bjj
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <h2 class="swissBadge-header">Return Seats</h2>
+                    <div class="panel-group bookingPassenger" id="accordion">
+                        <div class="panel gig">
+                            <div class="panel-body">
+                                <div class="row">
+                                  <div class="col-lg-12 seatMapContainer">
+                                    <div class="panel panel-default">
+                                      <div class="panel-body">
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" name="button" class="btn btn-default business">1A</button>
+                                            <button type="button" name="button" class="btn btn-default booked">1B</button>
+                                            <button type="button" name="button" class="btn btn-default business">1J</button>
+                                            <button type="button" name="button" class="btn btn-default business">1K</button>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" name="button" class="btn btn-default business">2A</button>
+                                            <button type="button" name="button" class="btn btn-default business">2B</button>
+                                            <button type="button" name="button" class="btn btn-default booked">2J</button>
+                                            <button type="button" name="button" class="btn btn-default business">2K</button>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" class="btn btn-default economy" name="button">6A</button>
+                                            <button type="button" class="btn btn-default economy"name="button">6B</button>
+                                            <button type="button" class="btn btn-default booked" name="button">6J</button>
+                                            <button type="button" class="btn btn-default economy" name="button">6K</button>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12 seatsButtonsContainer">
+                                            <button type="button" class="btn btn-default economy" name="button">6A</button>
+                                            <button type="button" class="btn btn-default economy"name="button">6B</button>
+                                            <button type="button" class="btn btn-default economy" name="button">6J</button>
+                                            <button type="button" class="btn btn-default selected" name="button">6K</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div> -->
+    <!-- ./SEAT MAP -->
+<!-- =======
+
+>>>>>>> f553af4a46d75eeaca11f43e94d4982568304b79 -->
 </div>

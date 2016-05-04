@@ -56,3 +56,15 @@ label.item.valid-lr {
   border-bottom: 2px solid red;
   border-color: #FA787E;
 }
+
+
+
+/* XXX: showPassengers nadaft el css el 3agib el kan ma7tot 20 mara 3ala kol element da  */
+
+.showPassengersDivContainer p,
+.showPassengersDivContainer input,
+.showPassengersDivContainer select{
+  color:red;
+  font-family: 'Poiret One', cursive;
+  font-weight:bold;
+}
