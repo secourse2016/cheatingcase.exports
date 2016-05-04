@@ -104,7 +104,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-Forwarded-For, X-Access-Token, Content-Type, Authorization, Accept, Origin');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   var dataLog = {
     'ipAddress': req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress,
     'URL': req.url,
