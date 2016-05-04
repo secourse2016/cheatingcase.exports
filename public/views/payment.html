@@ -1,6 +1,6 @@
 <section class="container paymentContainer" id="paymentContainer">
   <div class="row intro-text">
-    <div class="intro-lead-in wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Thank you for choosing SWISS AIR</div>
+    <div ng-hide="otherAirline" class="intro-lead-in wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Thank you for choosing SWISS AIR</div>
   </div>
 
   <div class="row paymentInfoContainer">
@@ -8,7 +8,7 @@
       <form name="paymentInfoForm" novalidate ng-submit="paymentInfoForm.$valid && book()">
         <div class="panel-group">
           <div class="panel panel-default panel-info-swiss">
-            <div class="panel-heading">PAYMENT INFORMATION <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
+            <div class="panel-heading">PAYMENT <<>> COST :: {{cost}} <img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png" style="margin-top: -10px"></div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-12 col-xs-12">
