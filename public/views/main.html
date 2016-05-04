@@ -34,7 +34,6 @@
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="originAirports"><i class="glyphicon glyphicon-globe"></i>Select Origin: </label>
                                 <input name="originAirports" id="originAirports" type="text" autocomplete="off" placeholder="Flying From*" ng-required="!isTripType(3)" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetOriginAirport($item.iata)">
-                                <!-- <span class="help-block" ng-show="searchForm.$submitted && searchForm.originAirports.$invalid">Required</span> -->
                                 <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.originAirports.$error">
                                   <div ng-messages-include="views/validationMsgs.html"></div>
                                 </div>
@@ -42,7 +41,6 @@
                             <div class="col-md-6 col-sm-12 col-xs-12 ">
                                 <label for="destinationAirports"><i class="glyphicon glyphicon-globe"></i>Select Destination: </label>
                                 <input name="destinationAirports" id="destinationAirports" type="text" autocomplete="off" placeholder="Flying To*" ng-required="!isTripType(3)" ng-model="selectedDestination" uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10" class="form-control" , typeahead-on-select="SetDestinationAirport($item.iata)">
-                                <!-- <span class="help-block" ng-show="searchForm.$submitted && searchForm.destinationAirports.$invalid">Required</span> -->
                                 <div class="form-errors" ng-messages="searchForm.$submitted && searchForm.destinationAirports.$error">
                                   <div ng-messages-include="views/validationMsgs.html"></div>
                                 </div>
@@ -178,10 +176,10 @@
                             <div class="col-md-12 text-left ">
                                 <label for="searchOptions" style="margin-left: 10px">Search Options :</label>
                                 <div class="col-md-12" id="searchOptions">
-                                  <!-- <ul><li> -->
+                                   <!-- <li> -->
                                       <input type="checkbox" value="" ng-click="flipOtherAirlines()">
                                         <label class="" ng-model="otherAirlines">Search Other Airlines <i class="fa fa-external-link" style="padding-left: 2px"></i></label>
-                                    <!-- </li></ul> -->
+                                    <!-- </li> -->
                                   </div>
                             </div>
                         </div>

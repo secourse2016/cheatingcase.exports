@@ -1259,6 +1259,40 @@ min-width: 100%;
   }
 }
 
+
+.viewBookingPage .passengersInfo{
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media only screen and (min-width:992px) {
+  .viewBookingPage .outFlightViewBigContainer,
+  .viewBookingPage .retFlightViewBigContainer
+  {
+    display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+  }
+
+  .viewBookingPage .outFlightViewContainer,
+  .viewBookingPage .retFlightViewContainer
+  {
+  max-width: 80%;
+  }
+
+}
+
+h2.swissBadge-header{
+    color: rgb(228,40,18);
+}
+
+/*.bookingInfoContainer h5{
+  color: #ff4d4d;
+}*/
+
+
+
 .subtext-gig {
     font-size: 18px;
     color: #333;
@@ -1270,10 +1304,7 @@ min-width: 100%;
   color: #333;
 }
 
-.viewBookingPage .passengersInfo{
-  margin-top: 20px;
-  text-align: center;
-}
+
 
 .passengerCol{
   padding-left: 40px;
