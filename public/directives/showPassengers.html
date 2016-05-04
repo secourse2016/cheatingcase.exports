@@ -14,12 +14,18 @@
                                     <div class="form-group">
                                         <label for="first_name"><i class="glyphicon glyphicon-user"></i>FIRST NAME</label>
                                         <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel" ng-model="firstName" ng-required="true" placeholder="First Name">
+                                        <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.first_name.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="last_name"><i class="glyphicon glyphicon-user"></i>LAST NAME</label>
                                         <input type="text" name="last_name" id="last_name" class="form-control input-sm" ng-model="lastName" ng-required="true" placeholder="Last Name">
+                                        <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.last_name.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -27,13 +33,19 @@
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="passport_number"><i class="glyphicon glyphicon-globe"></i>PASSPORT NUMBER</label>
-                                        <input type="text" name="passport_number" id="passport_number" class="form-control input-sm floatlabel" ng-model="passportNumber" ng-required="true" placeholder="xxx xxx xxx">
+                                        <input type="text" name="passport_number" id="passport_number" class="form-control input-sm floatlabel" ng-model="passportNumber" ng-required="true" placeholder="xxx xxx xxx" ng-minlength="7" ng-maxlength="9">
+                                        <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.passport_number.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="dob"><i class="fa fa-birthday-cake"></i>DATE OF BIRTH</label>
-                                        <input type="date" name="dob" id="dob" class="form-control input-sm floatlabel" ng-model="dob" ng-required="true" placeholder="Date Of Birth">
+                                        <input type="date" name="dob" id="dob" class="form-control input-sm floatlabel" ng-model="dob" ng-required="true" placeholder="Date Of Birth" min="1900-01-01" max="2000-01-01">
+                                        <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.dob.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -44,6 +56,9 @@
                                         <select name="repeatSelect" id="repeatSelect" ng-model="passCountry" ng-required="false">
                                             <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
                                         </select>
+                                        <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.repeatSelect.$error">
+                                          <div ng-messages-include="views/validationMsgs.html"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 cols-sm-6 col-md-6">
@@ -52,10 +67,16 @@
                                             <div class="input-group">
                                               <label for="email"><i class="fa fa-at"></i>EMAIL</label><br>
                                               <input type="email" name="email" ng-model="email" id="email" ng-required="false" placeholder="arya.stark@swiss-air.me">
+                                              <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.email.$error">
+                                                <div ng-messages-include="views/validationMsgs.html"></div>
+                                              </div>
                                             </div>
                                             <div class="input-group">
                                               <label for="expDate"><i class="fa fa-calendar-check-o"></i>PASSPORT EXP DATE</label><br>
                                               <input type="month" name="year" ng-model="expDate" id="expDate" ng-required="false" placeholder="MM/YY">
+                                              <div class="form-errors" ng-messages="passengerInfoForm.$submitted && passengerInfoForm.year.$error">
+                                                <div ng-messages-include="views/validationMsgs.html"></div>
+                                              </div>
                                             </div>
                                         </div>
                                     </div>
