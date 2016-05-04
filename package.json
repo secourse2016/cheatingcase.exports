@@ -25,7 +25,8 @@
     "stripe"      : "*",
     "chai"        : "*",
     "istanbul"    : "*",
-    "supertest"   : "*"
+    "supertest"   : "*",
+    "sendgrid"    : "*"
   },
   "repository": {
      "type": "git",
