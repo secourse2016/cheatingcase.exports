@@ -2,7 +2,7 @@
 # **Swiss Air** Web and Mobile App "_cheatingCase.exports_" Team.
 
 #### This is an application for an airline company for ticket booking/flight reservation.
-#### It was made as a Software Engineering Course project at the [GUC MET Faculty](met.guc.edu.eg) and It is just for educational purposes **No Real Company or Actual Payment Involved**.
+#### It was made as a Software Engineering Course project at the [GUC MET Faculty](http://met.guc.edu.eg) and It is just for educational purposes **No Real Company or Actual Payment Involved**.
 
 ## Additional Features
 - Email Notification of Booking Ref. Number (In case of a working email entered).
@@ -13,7 +13,7 @@
 #### Please read these Instructions carefully for running and grading our application
 
 ### For The Web App.
-- You can access through our deployed website [Swiss Air](www.swiss-air.me) or to be ran locally by the following instructions:
+- You can access through our deployed website [Swiss Air](http://www.swiss-air.me) or to be ran locally by the following instructions:
   - Clone our repo to your machine through ```` $ git clone https://github.com/secourse2016/cheatingcase.exports.git swiss-air ````
   - Get into the directory using ```` $ cd swiss-air ````
   - Install package dependencies ```` $ npm install ````
