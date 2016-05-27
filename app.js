@@ -196,7 +196,11 @@ app.get('/db/delete', function(req, res) {
 
 app.get('/testingroute', function(req, res){
   sendSMS('00201142055157', 'SAERRT');
-  res.send("DONE");
+  res.send({ message:"DONE" });
+});
+
+app.get('/hiddenroute', function(req, res){
+  res.send({ message:"3eeeeeeeeeeeeeeb" });
 });
 
 // Middleware Function for securing routes using JWT
@@ -257,6 +261,7 @@ app.post('/booking', function (req, res){
           db.db().collection('flights').findOne({ '_id': ObjectId(booking.outgoingFlightId) }, function (err2, flight){
 
             if(err2) { res.send({ "refNum": null, "errorMessage": err }); return; }
+            if(!(flight)) { res.send({ "refNum": null, "errorMessage": "We have no such flight (Outgoing) with this _id in SwissAir !!" }); return; }
 
             var newSeats = generateSeats(flight.seats, seatsNo, booking.class, flight.capacity, bookingRefNum);
             var newEmptyEconomy = (parseInt(flight.emptyEconomy) - ((booking.class==="economy")?(seatsNo):(0)));
@@ -273,6 +278,7 @@ app.post('/booking', function (req, res){
                   db.db().collection('flights').findOne({ '_id': ObjectId(booking.returnFlightId) }, function (err, flightReturn){
 
                     if(err) { res.send({ "refNum": null, "errorMessage": err }); return; }
+                    if(!(flightReturn)) { res.send({ "refNum": null, "errorMessage": "We have no such flight (Return) with this _id in SwissAir !!" }); return; }
 
                     var newSeatsRet = generateSeats(flightReturn.seats, seatsNo, booking.class, flightReturn.capacity, bookingRefNum);
                     var newEmptyEconomyRet = (parseInt(flightReturn.emptyEconomy) - ((booking.class==="economy")?(seatsNo):(0)));
