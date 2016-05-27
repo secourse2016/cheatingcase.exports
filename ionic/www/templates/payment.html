@@ -2,7 +2,7 @@
   <ion-content class="padding">
     <div class="row">
       <div class="col credCardImgContainer" align="center">
-        <img class="img-responsive" style="height: auto" src="img/card-in-use.png">
+        <img class="img-responsive" style="height: auto" src="./img/card-in-use.png">
       </div>
     </div>
     <form name="paymentInfoForm" novalidate ng-hide="hidden" ng-submit="paymentInfoForm.$valid && book()">
@@ -37,8 +37,7 @@
               <div ng-message="required">Please enter a value for this field.</div>
               <div ng-message="number">Please enter a numerical value for this field.</div>
             </div>
-            <label class="item item-input item-stacked-label item-icon-left">
-              <i class="icon ion-ios-locked"></i>
+            <label class="item item-input item-stacked-label">
               <span class="input-label">CV Code</span>
 
               <input type="number" class="form-control" ng-required="true" required required name="cvCode" id="cvCode" placeholder="CV" required data-stripe="cvc" ng-model="details.cardCvCode" />
@@ -46,8 +45,7 @@
             <div class="form-errors" ng-messages="paymentInfoForm.$submitted && paymentInfoForm.cvCode.$error">
               <div ng-message="required">Please enter a value for this field.</div>
             </div>
-            <label class="item item-input item-stacked-label item-icon-left">
-              <i class="icon ion-heart"></i>
+            <label class="item item-input item-stacked-label">
               <span class="input-label">Coupon Code</span>
               <input type="text" class="form-control" name="couponCode" ng-required="false" ng-model="coupon" placeholder="Coupon Code"></input>
             </label>
@@ -57,7 +55,7 @@
       </div>
       <div class="row">
         <div class="col" style="text-align: center">
-          <button class="button button-medium icon-left ion-cash  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
+          <button class="button button-medium icon-left ion-card  button-assertive" type="submit" style="  margin-top:10px" id='paySubmit'>
             <strong>Checkout</strong>
           </button>
 
