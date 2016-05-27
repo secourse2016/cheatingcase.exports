@@ -1,3 +1,4 @@
+##### **_DISCLAIMER_**: This Webapp was made for Academic Purposes ONLY, No actual companies or payments were involved !
 
 # **Swiss Air** Web and Mobile App "_cheatingCase.exports_" Team.
 
@@ -26,3 +27,14 @@
 ### For The Mobile Ionic App.
 - You can test it through our Deployed Mobile Application using the Ionic App
   - ```` app_id: a72ad533 ````
+
+## Team
+  - Scrum Master
+    - [Mark Nader](http://github.com/MarkNader)
+  - Scrum Members (Sorted Randomly)
+    - [Ahmed Reda](http://github.com/reda96)
+    - [Sedki Abdelhakim](http://github.com/sedki-abdelhakim)
+    - [Ahmed Omran](http://github.com/aomran94)
+    - [Baher Abdelmalek](http://github.com/baher10)
+    - [Ahmed Tarek](http://github.com/A-Tokyo)
+    - [Ahmed Hazem](http://github.com/ahmedhazemfekry)
